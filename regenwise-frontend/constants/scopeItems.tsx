@@ -3,7 +3,7 @@ import { ScopeItem } from '@/models/scopeItems';
 export const scopeItems: ScopeItem[] = [
   {
     id: '1',
-    title: 'Agriculture, Forestry and Stockbreeding',
+    title: 'In Agriculture, Forestry and Stockbreeding',
     description: `Regenerative agriculture and regenerative forestry are both holistic approaches that prioritize environmental health 
     and sustainability.Regenerative agriculture focuses on revitalizing the land and surrounding ecosystems rather than solely focusing 
     on crop production. By implementing practices like crop rotation, cover cropping, no-till farming, and integrating livestock, 
@@ -24,7 +24,7 @@ export const scopeItems: ScopeItem[] = [
   },
   {
     id: '2',
-    title: 'Energy, Buildings and Landscaping',
+    title: 'In Energy, Buildings and Landscaping',
     description: `Regenerative energy encompasses renewable sources like solar, wind, hydro, and geothermal energy that naturally 
     replenish over time. These sources are considered regenerative because they don't deplete finite resources and can be harnessed 
     without significant harm to the environment. Unlike non-renewable energy like coal and oil, regenerative energy is clean, 
@@ -37,7 +37,7 @@ export const scopeItems: ScopeItem[] = [
     healthy lifestyle. <br>
     Regenerative landscaping focuses on designing and maintaining outdoor spaces to promote regeneration, biodiversity, and ecosystem 
     function. It involves practices such as utilizing native plants, minimizing pesticide and fertilizer use, and fostering healthy 
-    soil biology. By employing regenerative landscaping, we can minimize environmental damage, support biodiversity, and create beautiful
+    soil biology. By employing regenerative landscaping, we can minimize environmental damage, support biodiversity, and build beautiful
     and functional outdoor spaces that offer various benefits, including a healthier environment.`,
     url: '',
     image: '/scope/6a.png',
@@ -49,12 +49,11 @@ export const scopeItems: ScopeItem[] = [
     id: '3',
     title: 'Others',
     description: `
-    Regenerative fisheries: Similar to regenerative aquaculture, regenerative fisheries focus on sustainable fishing practices that prioritize ecosystem health and long-term viability. This includes implementing fishing techniques that minimize bycatch, protecting critical habitats, and promoting responsible fishing quotas to prevent overfishing.<br>
+    Regenerative fisheries: Regenerative fisheries focus on sustainable fishing practices that prioritize ecosystem health and long-term viability. This includes implementing fishing techniques that minimize bycatch, protecting critical habitats, and promoting responsible fishing quotas to prevent overfishing.<br>
     Regenerative waste management: Regenerative practices can also be applied to waste management systems. This involves adopting methods such as composting, recycling, and waste-to-energy technologies to minimize waste sent to landfills and promote the regeneration of valuable resources.<br>
-    Regenerative urban planning: Regenerative principles can guide urban planning processes to create sustainable, resilient, and livable cities. This includes designing green spaces, implementing efficient transportation systems, and prioritizing renewable energy sources to reduce environmental impact and enhance quality of life.<br>
-    Regenerative water management: This practice focuses on restoring and preserving the health of water bodies, such as rivers, lakes, and wetlands. It involves implementing strategies to reduce pollution, restore natural water flows, and protect aquatic ecosystems, ensuring a sustainable and clean water supply for communities and wildlife.<br>
-    Regenerative wildlife conservation: Regenerative practices can extend to wildlife conservation efforts, aiming to restore and preserve biodiversity. This may involve creating protected areas, implementing conservation programs, and promoting sustainable wildlife management practices that prioritize habitat restoration and species recovery.<br>
-    Regenerative education and awareness: Encouraging education and awareness about regenerative practices is essential for widespread adoption. This involves promoting sustainability initiatives, organizing workshops, and creating educational resources to empower individuals and communities to actively participate in regenerative efforts.`,
+    Regenerative water management: This practice focuses on restoring and preserving the health of water bodies, such as rivers and lakes. It involves implementing strategies to reduce pollution, restore natural water flows, and protect aquatic ecosystems, ensuring a sustainable and clean water supply for communities and wildlife.<br>
+    Regenerative wildlife conservation: Regenerative practices can extend to wildlife conservation efforts, aiming to restore and preserve biodiversity. This may involve buildings protected areas, implementing conservation programs, and promoting sustainable wildlife management practices that prioritize habitat restoration and species recovery.<br>
+    Regenerative education and awareness: Encouraging education and awareness about regenerative practices is essential for widespread adoption. This involves promoting regen projects, organizing workshops, and preparing educational resources to canalize individuals and communities to actively participate in regenerative efforts.`,
     url: '',
     image: '/scope/3b.png',
     icon: '/scope/scope-icons/5.png',
