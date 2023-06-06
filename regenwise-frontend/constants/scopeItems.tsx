@@ -47,7 +47,7 @@ export const scopeItems: ScopeItem[] = [
 
   {
     id: '3',
-    title: 'Others',
+    title: 'In Other Fields',
     description: `
     Regenerative fisheries: Regenerative fisheries focus on sustainable fishing practices that prioritize ecosystem health and long-term viability. This includes implementing fishing techniques that minimize bycatch, protecting critical habitats, and promoting responsible fishing quotas to prevent overfishing.<br>
     Regenerative waste management: Regenerative practices can also be applied to waste management systems. This involves adopting methods such as composting, recycling, and waste-to-energy technologies to minimize waste sent to landfills and promote the regeneration of valuable resources.<br>
