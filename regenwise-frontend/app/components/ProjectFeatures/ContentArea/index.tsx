@@ -16,7 +16,7 @@ export default function ContentArea() {
         {`Human actions have caused significant harm to the environment and its inhabitants, now it is crucial for us to contribute 
         to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible management of environmental 
         systems. Our regen (the short form of the word regeneration) web platform aims to facilitate this contribution by offering various services and resources to users. The 
-        platform's two main databases on regeneration concepts and projects serve as the primary feature, connecting it to the world of data analytics and trustworthy web 3 database technologies. 
+        platform's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. 
         The platform's NFT markets is another essential feature that users may benefit from. The users can earn, buy, and sell valuable
         NFTs from our platform's collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning 
         experience through games that educate users about regen concepts and practices in fields like agriculture and energy.`}
