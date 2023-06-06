@@ -27,7 +27,7 @@ export const features: Feature[] = [
   },
   {
     id: '4',
-    title: 'Discover and Trade Meaningful NFTs',
+    title: 'Discover and Trade Valuable NFTs',
     description:
       'Discover and trade NFTs from regen collections via the platform\'s NFT Markets.',
     icon: '/scope/scope-icons/4.png',
