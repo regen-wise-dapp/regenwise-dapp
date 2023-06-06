@@ -10,17 +10,16 @@ export default function ContentArea() {
     <div className="flex flex-col max-w-[600px] w-full items-center justify-center">
       <SectionHeader
         title="About This Platform"
-        subtitle="For those eager to learn and make a meaningful contribution, this platform provides a diverse range of resources to delve into the concept of regeneration."
+        subtitle="For those eager to learn and make a meaningful contribution, this platform provides a diverse range of resources to delve into the concept and effort of regeneration."
       />
       <p className="text-center">
-        {`Human actions have caused significant harm to the environment and its inhabitants, but now it is crucial for us to contribute 
-        to the process of regeneration. "Regen" is a term used to describe the restoration and responsible management of environmental 
-        systems. Our regen web platform aims to facilitate this contribution by offering various services and resources to users. The 
-        platform's NFT markets serve as the primary feature, connecting it to the world of Web 3. Users can earn, buy, and sell valuable
-        NFTs from our platform's collections by earning points and entering the market. Additionally, we offer a unique learning 
-        experience through interactive games that educate users about regen practices in fields like agriculture and energy. 
-        The platform's knowledge base provides a wealth of information on regen practices and related topics, and users are encouraged 
-        to contribute by writing and reading articles and more.`}
+        {`Human actions have caused significant harm to the environment and its inhabitants, now it is crucial for us to contribute 
+        to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible management of environmental 
+        systems. Our regen (the short form of the word regeneration) web platform aims to facilitate this contribution by offering various services and resources to users. The 
+        platform's two main databases on regeneration concepts and projects serve as the primary feature, connecting it to the world of data analytics and trustworthy web 3 database technologies. 
+        The platform's NFT markets is another essential feature that users may benefit from. The users can earn, buy, and sell valuable
+        NFTs from our platform's collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning 
+        experience through games that educate users about regen concepts and practices in fields like agriculture and energy.`}
       </p>
       <div className="text-center">
         <Button

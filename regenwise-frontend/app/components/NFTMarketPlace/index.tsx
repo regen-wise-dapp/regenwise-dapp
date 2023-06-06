@@ -25,12 +25,12 @@ export default function NFTMarketPlace() {
         <div className={styles.second_content}>
           <SectionHeader
             title="Regen NFT Markets"
-            subtitle="Tokenize your regen efforts; observe, buy and sell NFTs from regen collections!"
+            subtitle="Explore, buy and sell meaningful NFTs from regen collections!"
           />
           <article>
             <p className="text-justify">
               The NFT marketplaces have exploded in recent years and we wanted
-              to carry the idea of regen into the NFT world.
+              to carry the idea of regen into the NFT world. The platform's NFT markets aim to amplify valuable regen endeavors:
             </p>
             <p className="flex flex-row text-justify">
               <span>
@@ -52,17 +52,8 @@ export default function NFTMarketPlace() {
                 work and be supported. After they prove the regen effort(s) that
                 they have been working on, we can tokenize them and sell as
                 NFTs. These NFTs can serve as symbols of support to the crucial
-                contributions for a regenerated world.
+                contributions to regen goal.
               </span>
-            </p>
-
-            <p className="text-justify">
-              {`
-              With increasing global awareness and concern for the environment, regenerative efforts are garnering significant attention. 
-              In line with this, our NFT markets aim to amplify these valuable endeavors, reaching a broader audience and engaging 
-              individuals who are passionate about making a positive impact. Whether you are a content creator, an enthusiast, 
-              a staunch supporter of regenerative practices, or simply curious about the concept, our NFT markets provide an 
-              excellent platform to explore, support, and contribute to these initiatives.`}
             </p>
           </article>
           <div className="text-center">
