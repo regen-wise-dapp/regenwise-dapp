@@ -24,7 +24,7 @@ export const scopeItems: ScopeItem[] = [
   },
   {
     id: '2',
-    title: 'In Energy, Buildings and Landscaping',
+    title: 'In Energy, Building and Landscaping',
     description: `Regenerative energy encompasses renewable sources like solar, wind, hydro, and geothermal energy that naturally 
     replenish over time. These sources are considered regenerative because they don't deplete finite resources and can be harnessed 
     without significant harm to the environment. Unlike non-renewable energy like coal and oil, regenerative energy is clean, 
