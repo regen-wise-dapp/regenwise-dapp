@@ -37,8 +37,12 @@ collection CandidateRegenProject {
   address?: string;
   link?: string;
   ghgPuller?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  likes?: number;
 
-  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string) {
+  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
       ${conditionZero}
       this.id = id;
       this.Cid = Cid;
@@ -54,6 +58,10 @@ collection CandidateRegenProject {
       this.address = address;
       this.link = link;
       this.ghgPuller = ghgPuller;
+      this.city = city;
+      this.state = state;
+      this.country = country;
+      this.likes = 0;
   }
 
   function setCid (Cid: string) {
@@ -129,6 +137,31 @@ collection CandidateRegenProject {
             ${conditionOne}
             this.ghgPuller = ghgPuller;
         }
+
+        function setCity (city: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.city = city;
+        }
+
+        function setState (state: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.state = state;
+        }
+
+        function setCountry (country: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.country = country;
+        }
+        
+        function setLikes (likes: number) {
+            ${conditionZero}
+            ${conditionOne}
+            this.likes = likes;
+        }
+        
 }
   
   @public
@@ -147,8 +180,12 @@ collection CandidateRegenProject {
     address?: string;
     link?: string;
     ghgPuller?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    likes?: number;
 
-    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string) {
+    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
@@ -165,6 +202,10 @@ collection CandidateRegenProject {
         this.address = address;
         this.link = link;
         this.ghgPuller = ghgPuller;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.likes = 0;
     }
 
     function setCid (Cid: string) {
@@ -240,6 +281,30 @@ collection CandidateRegenProject {
             ${conditionOne}
             this.ghgPuller = ghgPuller;
         }
+
+        function setCity (city: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.city = city;
+        }
+
+        function setState (state: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.state = state;
+        }
+
+        function setCountry (country: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.country = country;
+        }
+        
+        function setLikes (likes: number) {
+            ${conditionZero}
+            ${conditionOne}
+            this.likes = likes;
+        }
   }
 
   @public
@@ -253,8 +318,9 @@ collection CandidateRegenProject {
     explanation: string[];
     projects?: RegenProject[];
     link?: string;
+    likes?: number;
 
-    constructor (id: string, Cid?: string, name: string, adder: string, explanation: string[], subconcepts?: string[], projects?: RegenProject[], link?: string) {
+    constructor (id: string, Cid?: string, name: string, adder: string, explanation: string[], subconcepts?: string[], projects?: RegenProject[], link?: string, likes?: number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
@@ -266,6 +332,7 @@ collection CandidateRegenProject {
         this.subconcepts = subconcepts;
         this.projects = projects;
         this.link = link;
+        this.likes = 0;
     }
 
     function setCid (Cid: string) {
@@ -303,8 +370,11 @@ collection CandidateRegenProject {
         ${conditionOne}
         this.link = link;
     }
-    
 
-
+    function setLikes (likes: number) {
+        ${conditionZero}
+        ${conditionOne}
+        this.likes = likes;
     }
+}
 `,);

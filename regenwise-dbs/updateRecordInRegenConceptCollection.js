@@ -19,4 +19,4 @@ explanation: string[],
 subconcepts?: string[], 
 projects?: RegenProject[], 
 link?: string */
-await db.collection("RegenConcept").record("regeneration").call("setExplanation", [["Regeneration (in our platform's context) is a term used to describe the restoration and responsible management of environmental systems."]]);
+await db.collection("RegenConcept").record("regeneration").call("setLikes", [0]);
