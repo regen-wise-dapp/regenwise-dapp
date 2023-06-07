@@ -24,16 +24,16 @@ export const scopeItems: ScopeItem[] = [
   },
   {
     id: '2',
-    title: 'In Energy, Building and Landscaping',
+    title: 'In Energy, Buildings and Landscaping',
     description: `Regenerative energy encompasses renewable sources like solar, wind, hydro, and geothermal energy that naturally 
     replenish over time. These sources are considered regenerative because they don't deplete finite resources and can be harnessed 
     without significant harm to the environment. Unlike non-renewable energy like coal and oil, regenerative energy is clean, 
     sustainable, and crucial for reducing our carbon footprint and combating climate change. It plays a pivotal role in transitioning 
     towards a low-carbon economy.<br>
-    Regenerative building design prioritizes regeneration, energy efficiency, and environmental responsibility in architecture and 
-    construction. This approach minimizes environmental harm while promoting healthiness. Strategies for regenerative building design 
+    Regenerative building design and practices prioritize regeneration, energy efficiency, and environmental responsibility in architecture, construction and usage. This approach minimizes environmental harm while promoting healthiness.
+    Strategies for regenerative building design and usage
     include using renewable materials, maximizing natural light and ventilation, and integrating green spaces. By embracing regenerative
-    building design, we can reduce our carbon footprint, enhance indoor and outdoor spaces' quality, and foster a more sustainable and 
+    building design and practices, we can reduce our carbon footprint, enhance indoor and outdoor spaces' quality, and foster a more sustainable and 
     healthy lifestyle. <br>
     Regenerative landscaping focuses on designing and maintaining outdoor spaces to promote regeneration, biodiversity, and ecosystem 
     function. It involves practices such as utilizing native plants, minimizing pesticide and fertilizer use, and fostering healthy 
