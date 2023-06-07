@@ -6,11 +6,11 @@ import ProjectScope from './components/ProjectScope';
 
 export default function Home() {
   return (
-    <main>
+    <div>
       {/* <HomePageBanner /> */}
       <ProjectFeatures />
       <ProjectScope />
       <NFTMarketPlace />
-    </main>
+    </div>
   );
 }
