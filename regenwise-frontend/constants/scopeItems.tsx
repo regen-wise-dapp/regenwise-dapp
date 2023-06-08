@@ -22,16 +22,19 @@ export const scopeItems: ScopeItem[] = [
   {
     id: '2',
     title: 'In Energy and Buildings',
-    description: `Regenerative energy encompasses renewable sources like solar, wind, hydro, and geothermal energy that naturally 
-    replenish over time. These sources are considered regenerative because they don't deplete finite resources and can be harnessed 
-    without significant harm to the environment. Unlike non-renewable energy like coal and oil, regenerative energy is clean, 
-    sustainable, and crucial for reducing our carbon footprint and combating climate change. It plays a pivotal role in transitioning 
-    towards a low-carbon economy.<br>
-    Regenerative building design and practices prioritize regeneration, energy efficiency, and environmental responsibility in architecture, construction and usage. This approach minimizes environmental harm while promoting healthiness.
-    Strategies for regenerative building design and usage
-    include using renewable materials, maximizing natural light and ventilation, and integrating green spaces. By embracing regenerative
-    building design and practices, we can reduce our carbon footprint, enhance indoor and outdoor spaces' quality, and foster a more sustainable and 
-    healthy lifestyle.`,
+    description: `Regenerative energy encompasses renewable sources like solar, wind, hydro, and 
+    geothermal energy that naturally replenish over time. These sources are considered regenerative 
+    because they don't deplete finite resources and can be harnessed without significant 
+    harm to the environment. Unlike non-renewable energy sources like coal and oil, 
+    regenerative energy is clean, sustainable, and crucial for reducing our carbon 
+    footprint and countering the climate change. It plays a pivotal role in transitioning 
+    towards a low-carbon economy.<br /> Regenerative building design and practices prioritize 
+    regeneration, energy efficiency, and environmental responsibility in architecture, construction 
+    and usage. This approach minimizes environmental harm while promoting healthiness. 
+    Strategies for regenerative building design and usage include using renewable materials, 
+    maximizing natural light and ventilation, and integrating green spaces. 
+    By embracing regenerative building design and practices, we can reduce our carbon footprint, 
+    enhance indoor and outdoor spaces' quality, and foster a more regenerative and healthy lifestyle.`,
     url: '',
     image: '/scope/6a.png',
     icon: '/scope/scope-icons/2.png',
@@ -42,15 +45,10 @@ export const scopeItems: ScopeItem[] = [
     id: '3',
     title: 'In Other Fields',
     description: `
-    Regenerative fisheries: Regenerative fisheries focus on sustainable fishing practices that prioritize ecosystem health and long-term viability. This includes implementing fishing techniques that minimize bycatch, protecting critical habitats, and promoting responsible fishing quotas to prevent overfishing.<br>
-    Regenerative waste management: Regenerative practices can also be applied to waste management systems. This involves adopting methods such as composting, recycling, and waste-to-energy technologies to minimize waste sent to landfills and promote the regeneration of valuable resources.<br>
-    Regenerative water management: This practice focuses on restoring and preserving the health of water bodies, such as rivers and lakes. It involves implementing strategies to reduce pollution, restore natural water flows, and protect aquatic ecosystems, ensuring a sustainable and clean water supply for communities and wildlife.<br>
-    Regenerative wildlife conservation: Regenerative practices can extend to wildlife conservation efforts, aiming to restore and preserve biodiversity. This may involve buildings protected areas, implementing conservation programs, and promoting sustainable wildlife management practices that prioritize habitat restoration and species recovery.<br>
-    Regenerative education and awareness: Encouraging education and awareness about regenerative practices is essential for widespread adoption. This involves promoting regen projects, organizing workshops, and preparing educational resources to canalize individuals and communities to actively participate in regenerative efforts.
-    Regenerative landscaping: Regenerative landscaping focuses on designing and maintaining outdoor spaces to promote regeneration, biodiversity, and ecosystem 
-    function. It involves practices such as utilizing native plants, minimizing pesticide and fertilizer use, and fostering healthy 
-    soil biology. By employing regenerative landscaping, we can minimize environmental damage, support biodiversity, and build beautiful
-    and functional outdoor spaces that offer various benefits, including a healthier environment.`,
+    Other fields includes fields such as: <br>
+    Regenerative Education: Encouraging education and awareness about regenerative practices is essential for widespread adoption. This involves promoting regen projects, organizing workshops, and preparing educational resources to canalize individuals and communities to actively participate in regenerative efforts.<br>
+    Regenerative Waste Management: Regenerative practices can also be applied to waste management systems. This involves adopting methods such as composting, recycling, and waste-to-energy technologies to minimize waste sent to landfills and promote the regeneration of valuable resources.<br>
+    Regenerative Water Management: This practice focuses on restoring and preserving the health of water bodies, such as rivers and lakes. It involves implementing strategies to reduce pollution, restore natural water flows, and protect aquatic ecosystems, ensuring a sustainable and clean water supply for communities and wildlife.`,
     url: '',
     image: '/scope/3b.png',
     icon: '/scope/scope-icons/5.png',

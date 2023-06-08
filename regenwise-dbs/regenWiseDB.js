@@ -393,5 +393,11 @@ collection CandidateRegenProject {
         ${conditionOne}
         this.categories = categories;
     }
+
+    del () {
+        ${conditionZero}
+        ${conditionOne}
+        selfdestruct();
+      }
 }
 `,);
