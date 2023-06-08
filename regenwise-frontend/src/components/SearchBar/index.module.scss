@@ -1,0 +1,14 @@
+.main_container{
+    width: 100vw;
+    height: 180px;
+    background-color: #fab4a2;
+    box-shadow: 0px 1px 3px 0px;
+    .wrapper{
+        margin: auto;
+        max-width: 800px;
+        width: 100%;
+        padding: 2em;
+        display: flex;
+        align-items: center;
+    }
+}

@@ -1,0 +1,38 @@
+.main_container {
+  width: 100vw;
+  background-color: #fee1d9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .search_bar_container {
+    width: 100%;
+  }
+  .content_container {
+    .filter_bar_container {
+        grid-column: span 1;
+        display: none;
+      }
+      .list_container {
+        display: flex;
+        grid-column: span 1;
+      }
+    @media (min-width: 1200px) {
+      max-width: 1200px;
+      width: 100%;
+      flex: 1;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      grid-template-rows: 1fr;
+      align-items: stretch;
+      .filter_bar_container {
+        grid-column: span 1;
+        display: flex;
+      }
+      .list_container {
+        display: flex;
+        grid-column: span 1;
+      }
+    }
+  }
+}
