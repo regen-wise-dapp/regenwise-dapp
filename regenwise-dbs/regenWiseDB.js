@@ -11,6 +11,12 @@ const db = new Polybase({
         }
     }
 });
+// sign-in condition
+const conditionZero = "if (!ctx.publicKey){error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}";
+// pkey check for function call condition
+const conditionOne = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to call this function.');}";
+// pkey check for constructor
+const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to add a record to this collection.');}";
 
 
 await db.applySchema(`
@@ -25,16 +31,19 @@ collection CandidateRegenProject {
   isInstutional: boolean;
   status: string;
   implementers: string[];
-  categories: RegenConcept[];
+  categories: string[];
   contactEmail: string;
   date?: string;
   address?: string;
   link?: string;
   ghgPuller?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  likes?: number;
 
-  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
+  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
+      ${conditionZero}
       this.id = id;
       this.Cid = Cid;
       this.projectName = projectName;
@@ -49,117 +58,110 @@ collection CandidateRegenProject {
       this.address = address;
       this.link = link;
       this.ghgPuller = ghgPuller;
+      this.city = city;
+      this.state = state;
+      this.country = country;
+      this.likes = 0;
   }
 
   function setCid (Cid: string) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+      ${conditionZero}
+      ${conditionOne}
       this.Cid = Cid;
   }
 
   function setProjectName (projectName: string) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+      ${conditionZero}
+      ${conditionOne}
       this.projectName = projectName;
   }
 
   function setDescription (description: string[]) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+      ${conditionZero}
+      ${conditionOne}
       this.description = description;
   }
 
   function setIsInstutional (isInstutional: boolean) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+      ${conditionZero}
+      ${conditionOne}
       this.isInstutional = isInstutional;
   }
 
   function setImplementers (implementers: string[]) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+      ${conditionZero}
+      ${conditionOne}
       this.implementers = implementers;
   }
 
-    function setCategories (categories: RegenConcept[]) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+    function setCategories (categories: string[]) {
+      ${conditionZero}
+      ${conditionOne}
       this.categories = categories;
     }
 
 
     function setStatus (status: string) {
-    if (!ctx.publicKey)
-    {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-    if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-        error('You are not allowed to call this function.');
-    }
-    this.status = status;
+        ${conditionZero}
+        ${conditionOne}
+        this.status = status;
     }
 
     function setContactEmail (contactEmail: string) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
-      this.contactEmail = contactEmail;
+        ${conditionZero}
+        ${conditionOne}
+        this.contactEmail = contactEmail;
   }
 
 
     function setDate (date: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.date = date;
     }
 
     function setAddress (address: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.address = address;
         }
 
     function setLink (link: string) {
-            if (!ctx.publicKey)
-            {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-            if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-                error('You are not allowed to call this function.');
-            }
-            this.link = link;
+        ${conditionZero}
+        ${conditionOne}
+        this.link = link;
         }
 
         function setGhgPuller (ghgPuller: string) {
-            if (!ctx.publicKey)
-            {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-            if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-                error('You are not allowed to call this function.');
-            }
+            ${conditionZero}
+            ${conditionOne}
             this.ghgPuller = ghgPuller;
         }
+
+        function setCity (city: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.city = city;
+        }
+
+        function setState (state: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.state = state;
+        }
+
+        function setCountry (country: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.country = country;
+        }
+        
+        function setLikes (likes: number) {
+            ${conditionZero}
+            ${conditionOne}
+            this.likes = likes;
+        }
+        
 }
   
   @public
@@ -172,18 +174,20 @@ collection CandidateRegenProject {
     isInstutional: boolean;
     status: string;
     implementers: string[];
-    categories: RegenConcept[];
+    categories: string[];
     contactEmail: string;
     date?: string;
     address?: string;
     link?: string;
     ghgPuller?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    likes?: number;
 
-    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to this collection.');}
-        if (ctx.publicKey.toHex() != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca")
-        {error('You are not allowed to add a record to this collection.');}
+    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+        ${conditionZero}
+        ${conditionTwo}
         this.id = id;
         this.Cid = Cid;
         this.projectName = projectName;
@@ -198,116 +202,108 @@ collection CandidateRegenProject {
         this.address = address;
         this.link = link;
         this.ghgPuller = ghgPuller;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.likes = 0;
     }
 
     function setCid (Cid: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.Cid = Cid;
     }
   
     function setProjectName (projectName: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.projectName = projectName;
     }
   
     function setDescription (description: string[]) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.description = description;
     }
   
     function setIsInstutional (isInstutional: boolean) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.isInstutional = isInstutional;
     }
   
     function setImplementers (implementers: string[]) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.implementers = implementers;
     }
   
-      function setCategories (categories: RegenConcept[]) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+      function setCategories (categories: string[]) {
+        ${conditionZero}
+        ${conditionOne}
         this.categories = categories;
       }
   
   
       function setStatus (status: string) {
-      if (!ctx.publicKey)
-      {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-      if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-          error('You are not allowed to call this function.');
-      }
+      ${conditionZero}
+      ${conditionOne}
       this.status = status;
       }
   
       function setContactEmail (contactEmail: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.contactEmail = contactEmail;
     }
   
   
       function setDate (date: string) {
-          if (!ctx.publicKey)
-          {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-          if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-              error('You are not allowed to call this function.');
-          }
+        ${conditionZero}
+        ${conditionOne}
           this.date = date;
       }
   
       function setAddress (address: string) {
-          if (!ctx.publicKey)
-          {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-          if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-              error('You are not allowed to call this function.');
-          }
-          this.address = address;
+        ${conditionZero}
+        ${conditionOne}
+        this.address = address;
           }
   
       function setLink (link: string) {
-              if (!ctx.publicKey)
-              {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-              if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-                  error('You are not allowed to call this function.');
-              }
-              this.link = link;
+        ${conditionZero}
+        ${conditionOne}
+        this.link = link;
           }
 
           function setGhgPuller (ghgPuller: string) {
-            if (!ctx.publicKey)
-            {error('You should sign in first to call this function. If you think there is an error, contact us.');}
-            if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-                error('You are not allowed to call this function.');
-            }
+            ${conditionZero}
+            ${conditionOne}
             this.ghgPuller = ghgPuller;
+        }
+
+        function setCity (city: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.city = city;
+        }
+
+        function setState (state: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.state = state;
+        }
+
+        function setCountry (country: string) {
+            ${conditionZero}
+            ${conditionOne}
+            this.country = country;
+        }
+        
+        function setLikes (likes: number) {
+            ${conditionZero}
+            ${conditionOne}
+            this.likes = likes;
         }
   }
 
@@ -315,85 +311,93 @@ collection CandidateRegenProject {
   collection RegenConcept {
     id: string;
     Cid?: string;
-    subconcepts?: string[];
     name: string;
     adder: string;
-    adderPublicKeyH: string;
     explanation: string[];
-    projects?: RegenProject[];
+    categories?: string[];
+    subconcepts?: string[];
+    projects?: string[];
     link?: string;
+    adderPublicKeyH: string;
+    likes?: number;
 
-    constructor (id: string, Cid?: string, name: string, adder: string, explanation: string[], subconcepts?: string[], projects?: RegenProject[], link?: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey.toHex() != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca")
-        {error('You are not allowed to add a record to RegenConcept collection.');}
+    constructor (    
+        id: string,
+        Cid?: string,
+        name: string,
+        adder: string,
+        explanation: string[],
+        categories?: string[],
+        subconcepts?: string[],
+        projects?: string[],
+        link?: string) {
+        ${conditionZero}
+        ${conditionTwo}
         this.id = id;
         this.Cid = Cid;
         this.name = name;
         this.adder = adder;
-        this.adderPublicKeyH = ctx.publicKey.toHex();
         this.explanation = explanation;
+        this.categories = categories;
         this.subconcepts = subconcepts;
         this.projects = projects;
         this.link = link;
+        this.adderPublicKeyH = ctx.publicKey.toHex();
+        this.likes = 0;
     }
 
     function setCid (Cid: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.Cid = Cid;
     }
 
     function setName (name: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.name = name;
     }
 
     function setExplanation (explanation: string[]) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.explanation = explanation;
     }
 
     function setSubconcepts (subconcepts: string[]) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.subconcepts = subconcepts;
     }
 
-    function setProjects (projects: RegenProject[]) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+    function setProjects (projects: string[]) {
+        ${conditionZero}
+        ${conditionOne}
         this.projects = projects;
     }
 
     function setLink (link: string) {
-        if (!ctx.publicKey)
-        {error('You should sign in first to add a record to RegenConcept collection.');}
-        if (ctx.publicKey != "0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca") {
-            error('You are not allowed to call this function.');
-        }
+        ${conditionZero}
+        ${conditionOne}
         this.link = link;
     }
-    
 
-
+    function setLikes (likes: number) {
+        ${conditionZero}
+        ${conditionOne}
+        this.likes = likes;
     }
+
+    function setCategories (categories: string[]) {
+        ${conditionZero}
+        ${conditionOne}
+        this.categories = categories;
+    }
+
+    del () {
+        ${conditionZero}
+        ${conditionOne}
+        selfdestruct();
+      }
+}
 `,);
