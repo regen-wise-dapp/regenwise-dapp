@@ -24,7 +24,7 @@ await db.collection("RegenConcept").create(["regeneration",
                                             "Regeneration",
                                             "regenWiseTeam0",
                                             ["Regeneration (in our context) is a term used to describe the restoration and responsible management of environmental systems."],
-                                            ["Regenerative Agriculture, Forestry and Stockbreeding","Regenerative Energy, Building and Landscaping","Other Fields"],
+                                            ["Regenerative Agriculture, Forestry and Stockbreeding","Regenerative Energy and Buildings","Other Fields"],
                                             [],
                                             ""
                                         ]); 
