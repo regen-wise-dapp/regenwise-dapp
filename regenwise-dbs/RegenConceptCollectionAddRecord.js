@@ -23,17 +23,13 @@ const db = new Polybase({
         link?: string
     
 */
-await db.collection("RegenConcept").create(["others",
+await db.collection("RegenConcept").create(["regenerative-landscaping",
                                             "",
-                                            "Others",
+                                            "Regenerative Landscaping",
                                             "regenWiseTeam0",
-                                            ["'Others' includes regenerative fields like regenerative water management, waste management, wildlife conservation and so on."],
-                                            ["Regeneration"],
-                                            ["Careful Diets",
-                                            "Reduced Food Waste",
-                                            "Regeneration in Education",
-                                            "Recycling",
-                                            "Regenerative Landscaping"
+                                            ["Regenerative landscaping focuses on designing and maintaining outdoor spaces to promote regeneration, biodiversity, and ecosystem function. It involves practices such as utilizing native plants, minimizing pesticide and fertilizer use, and fostering healthy soil biology. By employing regenerative landscaping, we can minimize environmental damage, support biodiversity, and build beautiful and functional outdoor spaces that offer various benefits, including a healthier environment."],
+                                            ["Regeneration", "Others"],
+                                            [
                                           ],
                                             [],
                                             ""
