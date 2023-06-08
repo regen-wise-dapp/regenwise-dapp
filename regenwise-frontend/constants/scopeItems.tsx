@@ -3,20 +3,17 @@ import { ScopeItem } from '@/models/scopeItems';
 export const scopeItems: ScopeItem[] = [
   {
     id: '1',
-    title: 'In Agriculture, Forestry and Stockbreeding',
-    description: `Regenerative agriculture and regenerative forestry are both holistic approaches that prioritize environmental health 
-    and sustainability.Regenerative agriculture focuses on revitalizing the land and surrounding ecosystems rather than solely focusing 
-    on crop production. By implementing practices like crop rotation, cover cropping, no-till farming, and integrating livestock, 
-    regenerative agriculture enhances soil health, reduces erosion, and increases carbon sequestration. It also promotes biodiversity 
-    by creating habitats for diverse plant and animal species and helps mitigate climate change by sequestering more carbon and 
-    reducing greenhouse gas emissions. In summary, regenerative agriculture is an environmentally friendly method that aims to 
-    restore and regenerate the land instead of exploiting it. <br>
-    Similarly, regenerative forestry is an environmentally friendly approach 
-    to managing forest ecosystems. It places a strong emphasis on biodiversity, soil health, and carbon sequestration. Regenerative 
-    forestry practices include selective logging, natural regeneration, and the use of agroforestry techniques. By employing these 
-    strategies, regenerative forestry helps minimize the impact of deforestation, supports diverse ecosystems, and contributes to 
-    climate change mitigation by sequestering carbon in the soil and vegetation. Both regenerative agriculture and regenerative forestry 
-    play essential roles in fostering sustainable land and resource management while addressing pressing environmental challenges.`,
+    title: 'In Agriculture, Stockbreeding and Forestry',
+    description: `Regenerative agriculture, stockbreeding and forestry are all holistic approaches that 
+    prioritize environmental health and sustainability. Regenerative agriculture and stockbreeding focuses on revitalizing the land and 
+    surrounding ecosystems rather than solely focusing on production. By implementing practices like crop rotation, cover cropping, 
+    no-till farming, and integrating livestock, regenerative agriculture and stockbreeding conduce to enhance soil health, reduce erosion, and 
+    increase carbon sequestration. They also promote biodiversity by supplying habitats for diverse plant and animal species and 
+    help mitigate climate change by sequestering more carbon, and reducing greenhouse gas emissions. <br> 
+    Similarly, regenerative forestry is an environmentally friendly approach to managing forest ecosystems.
+    It places a strong emphasis on biodiversity, soil health, and carbon sequestration. 
+    In summary, regenerative agriculture, stockbreeding and forestry are integrated environmentally friendly solutions 
+    that aim to restore and regenerate the planet instead of just exploiting it.`,
     url: '',
     image: '/scope/4a.png',
     icon: '/scope/scope-icons/1.png',

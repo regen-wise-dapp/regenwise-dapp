@@ -31,7 +31,7 @@ collection CandidateRegenProject {
   isInstutional: boolean;
   status: string;
   implementers: string[];
-  categories: RegenConcept[];
+  categories: string[];
   contactEmail: string;
   date?: string;
   address?: string;
@@ -42,7 +42,7 @@ collection CandidateRegenProject {
   country?: string;
   likes?: number;
 
-  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
+  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
       ${conditionZero}
       this.id = id;
       this.Cid = Cid;
@@ -94,7 +94,7 @@ collection CandidateRegenProject {
       this.implementers = implementers;
   }
 
-    function setCategories (categories: RegenConcept[]) {
+    function setCategories (categories: string[]) {
       ${conditionZero}
       ${conditionOne}
       this.categories = categories;
@@ -174,7 +174,7 @@ collection CandidateRegenProject {
     isInstutional: boolean;
     status: string;
     implementers: string[];
-    categories: RegenConcept[];
+    categories: string[];
     contactEmail: string;
     date?: string;
     address?: string;
@@ -185,7 +185,7 @@ collection CandidateRegenProject {
     country?: string;
     likes?: number;
 
-    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
@@ -238,7 +238,7 @@ collection CandidateRegenProject {
         this.implementers = implementers;
     }
   
-      function setCategories (categories: RegenConcept[]) {
+      function setCategories (categories: string[]) {
         ${conditionZero}
         ${conditionOne}
         this.categories = categories;
@@ -311,27 +311,38 @@ collection CandidateRegenProject {
   collection RegenConcept {
     id: string;
     Cid?: string;
-    subconcepts?: string[];
     name: string;
     adder: string;
-    adderPublicKeyH: string;
     explanation: string[];
-    projects?: RegenProject[];
+    categories?: string[];
+    subconcepts?: string[];
+    projects?: string[];
     link?: string;
+    adderPublicKeyH: string;
     likes?: number;
 
-    constructor (id: string, Cid?: string, name: string, adder: string, explanation: string[], subconcepts?: string[], projects?: RegenProject[], link?: string, likes?: number) {
+    constructor (    
+        id: string,
+        Cid?: string,
+        name: string,
+        adder: string,
+        explanation: string[],
+        categories?: string[],
+        subconcepts?: string[],
+        projects?: string[],
+        link?: string) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
         this.Cid = Cid;
         this.name = name;
         this.adder = adder;
-        this.adderPublicKeyH = ctx.publicKey.toHex();
         this.explanation = explanation;
+        this.categories = categories;
         this.subconcepts = subconcepts;
         this.projects = projects;
         this.link = link;
+        this.adderPublicKeyH = ctx.publicKey.toHex();
         this.likes = 0;
     }
 
@@ -359,7 +370,7 @@ collection CandidateRegenProject {
         this.subconcepts = subconcepts;
     }
 
-    function setProjects (projects: RegenProject[]) {
+    function setProjects (projects: string[]) {
         ${conditionZero}
         ${conditionOne}
         this.projects = projects;
@@ -375,6 +386,12 @@ collection CandidateRegenProject {
         ${conditionZero}
         ${conditionOne}
         this.likes = likes;
+    }
+
+    function setCategories (categories: string[]) {
+        ${conditionZero}
+        ${conditionOne}
+        this.categories = categories;
     }
 }
 `,);
