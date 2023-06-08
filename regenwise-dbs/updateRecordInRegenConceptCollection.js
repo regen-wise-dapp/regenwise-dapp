@@ -11,12 +11,18 @@ const db = new Polybase({
       }}
   });
 
-/* id: string, 
-Cid?: string, 
-name: string, 
-adder: string, 
-explanation: string[], 
-subconcepts?: string[], 
-projects?: RegenProject[], 
-link?: string */
-await db.collection("RegenConcept").record("regeneration").call("setSubconcepts", [["Regenerative Agriculture, Forestry and Stockbreeding","Regenerative Energy and Buildings","Other Fields"]]);
+/*  
+    id: string;
+    Cid?: string;
+    name: string;
+    adder: string;
+    explanation: string[];
+    categories?: string[];
+    subconcepts?: string[];
+    projects?: string[];
+    link?: string;
+    adderPublicKeyH: string;
+    likes?: number;
+    
+*/
+await db.collection("RegenConcept").record("regenerative-agriculture-stockbreeding-and-forestry").call("setCategories", [["Regeneration"]]);
