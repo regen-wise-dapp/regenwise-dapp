@@ -5,16 +5,19 @@
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10;
+    background-color: white;
+    font-size:50px;
     text-align: center;
     font-weight: bolder;
-    text-shadow: 2px 5px crimson;
+    color:darkorange  ;
+    text-shadow: 2px 5px black;
     width: 90%;
     .word {
-      margin: 0px min(2vw, 16px);
+      margin: 10px min(2vw, 16px);
       display: inline-block;
       cursor: grab;
       &:hover {
-        color: darkgreen;
+        color: white;
         text-shadow: 2px 5px orange;
         animation-play-state: paused;
       }

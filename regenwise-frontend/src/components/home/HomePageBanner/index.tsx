@@ -32,11 +32,11 @@ export default function Banner() {
         <h1
           className={`${styles.header} ${creepster.className} text-4xl md:text-8xl`}
         >
-          <p className={`${styles.word1} ${styles.word}`}>CHOOSE</p>
-          <p className={`${styles.word2} ${styles.word}`}>YOUR </p>
-          <p className={`${styles.word3} ${styles.word}`}>WORLD </p>
-          <p className={`${styles.word4} ${styles.word}`}>TO </p>
-          <p className={`${styles.word5} ${styles.word}`}>LIVE!</p>
+          <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE</p>
+          <p className={`${styles.word2} ${styles.word}`}>TO SHARE</p>
+          <p className={`${styles.word3} ${styles.word}`}>SOME OF THE MOST IMPORTANT INFO</p>
+          <p className={`${styles.word4} ${styles.word}`}>OF OUR PLANET EARTH</p>
+          {/* <p className={`${styles.word5} ${styles.word}`}>PRESENTED HERE!</p> */}
         </h1>
         <div
           className={`${styles.left_content} flex-1 flex justify-center items-center flex-col`}
@@ -48,7 +48,7 @@ export default function Banner() {
             height={500}
             onClick={openSkullPage}
           />
-          <h2 className="mt-4 font-extrabold text-center">Polluted</h2>
+          <h2 className="mt-4 font-extrabold text-center">Pollution</h2>
         </div>
 
         <div
@@ -61,7 +61,7 @@ export default function Banner() {
             height={500}
             onClick={scrollToSection}
           />
-          <h2 className="mt-4 font-extrabold text-center">Regenerated</h2>
+          <h2 className="mt-4 font-extrabold text-center">Regeneration</h2>
         </div>
       </div>
       <AnimationModal isOpen={isOpen} onClose={handleClose} />
