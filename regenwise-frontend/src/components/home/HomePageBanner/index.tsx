@@ -13,18 +13,10 @@ const creepster = Creepster({
   subsets: ['latin'],
 });
 export default function Banner() {
-  const [isOpen, setIsOpen] = useState(false);
   const scrollToSection = () => {
     document.getElementById('main-page--scope-element')?.scrollIntoView(false);
   };
 
-  const openSkullPage = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
 
   return (
     <HomePageLayout>
@@ -46,7 +38,6 @@ export default function Banner() {
             alt="excess carbon emission"
             width={500}
             height={500}
-            onClick={openSkullPage}
           />
           <h2 className="mt-4 font-extrabold text-center">Pollution</h2>
         </div>
@@ -64,7 +55,6 @@ export default function Banner() {
           <h2 className="mt-4 font-extrabold text-center">Regeneration</h2>
         </div>
       </div>
-      <AnimationModal isOpen={isOpen} onClose={handleClose} />
     </HomePageLayout>
   );
 }
