@@ -98,7 +98,7 @@ export default function Navigation() {
         >
           <Offcanvas.Header
             closeButton
-            style={{ backgroundColor: 'DarkOrange' }}
+            style={{ backgroundColor: 'MidnightBlue' }}
           >
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand`}>
               <Navbar.Brand href="/">
