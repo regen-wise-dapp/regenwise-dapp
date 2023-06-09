@@ -14,7 +14,7 @@ export default function NFTMarketPlace() {
       <div className={styles.main_container}>
         <div className={styles.first_content}>
           <Image
-            src="/scope/1a.png"
+            src="/scope/1b.png"
             alt="NFT Market"
             width={500}
             height={500}
