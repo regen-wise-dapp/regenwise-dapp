@@ -27,7 +27,7 @@ export default function Banner() {
           <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE</p>
           <p className={`${styles.word2} ${styles.word}`}>TO SHARE</p>
           <p className={`${styles.word3} ${styles.word}`}>SOME OF THE MOST IMPORTANT INFO</p>
-          <p className={`${styles.word4} ${styles.word}`}>OF OUR PLANET EARTH</p>
+          <p className={`${styles.word4} ${styles.word}`}>OF THE PLANET EARTH</p>
           {/* <p className={`${styles.word5} ${styles.word}`}>PRESENTED HERE!</p> */}
         </h1>
         <div
