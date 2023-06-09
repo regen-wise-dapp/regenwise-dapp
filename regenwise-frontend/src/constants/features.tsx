@@ -11,9 +11,9 @@ export const features: Feature[] = [
   },
   {
     id: '2',
-    title: 'Share Your Regen Projects and Project Ideas',
+    title: 'Share Your Regen Projects and Plans',
     description:
-      'Contribute to regen efforts by adding your project(s) and project idea(s) to our database and let them be inspirations for others.',
+      'Contribute to regen efforts by adding your project(s) and project idea(s) to our database.',
     icon: '/scope/scope-icons/2.png',
     backgroundColor: '#fbe6d4',
   },
@@ -21,7 +21,7 @@ export const features: Feature[] = [
     id: '3',
     title: 'Explore Regen Data To Get Insights',
     description:
-      'Access to a range of concepts, ideas and projects related to regenerative practices is easy through our 	well-grounded databases.',
+      'Access to various concepts and projects related to regen through our well-grounded databases.',
     icon: '/scope/scope-icons/3.png',
     backgroundColor: '#f0fffc',
   },
