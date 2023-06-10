@@ -17,7 +17,7 @@ const db = new Polybase({
     name: string;
     adder: string;
     explanation: string[];
-    categories?: string[];
+    categories?: RegenConcept[];
     subconcepts?: string[];
     projects?: string[];
     link?: string;
@@ -27,4 +27,12 @@ const db = new Polybase({
 */
 // await db.collection("RegenConcept").record("others").call("setSubconcepts", [["Regenerative Water Management", "Regenerative Waste Management", "Regenerative Fisheries", "Regenerative Education", "Regenerative Landscaping", "Regenerative Diets"]]);
 
-await db.collection("RegenConcept").record("others").call("setExplanation", [["'Others' includes regenerative fields like regenerative education, regenerative diets, regenerative landscaping, regenerative waste management, regenerative water management, regenerative fisheries."]]);
+await db.collection("RegenConcept").record("regenerative-education").call("setCategories", [[db.collection("RegenConcept").record("regeneration")]]);
+
+// await db.collection("RegenConcept").record("regenerative-energy").call("setCategories", [[]]);
+// await db.collection("RegenConcept").record("regenerative-energy-and-buildings").call("setCategories", [[]]);
+// await db.collection("RegenConcept").record("regenerative-fisheries").call("setCategories", [[]]);
+// await db.collection("RegenConcept").record("regenerative-landscaping").call("setCategories", [[]]);
+// await db.collection("RegenConcept").record("regenerative-waste-management").call("setCategories", [[]]);
+// await db.collection("RegenConcept").record("regenerative-water-management").call("setCategories", [[]]);
+// console.log(await db.collection("RegenConcept").record("regeneration").get());
