@@ -25,4 +25,4 @@ const db = new Polybase({
     likes?: number;
     
 */
-await db.collection("").record("").call("del");
+await db.collection("RegenConcept").record("others").call("del");

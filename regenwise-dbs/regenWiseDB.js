@@ -24,14 +24,14 @@ await db.applySchema(`
 @public
 collection CandidateRegenProject {
   id: string;
-  Cid?: string;
+  cid?: string;
   projectName: string;
   adderPublicKeyH: string;
   description: string[];
   isInstutional: boolean;
   status: string;
   implementers: string[];
-  categories: string[];
+  categories: RegenConcept[];
   contactEmail: string;
   date?: string;
   address?: string;
@@ -42,10 +42,10 @@ collection CandidateRegenProject {
   country?: string;
   likes?: number;
 
-  constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
+  constructor (id: string, cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
       ${conditionZero}
       this.id = id;
-      this.Cid = Cid;
+      this.cid = cid;
       this.projectName = projectName;
       this.adderPublicKeyH = ctx.publicKey.toHex();
       this.description = description;
@@ -64,10 +64,10 @@ collection CandidateRegenProject {
       this.likes = 0;
   }
 
-  function setCid (Cid: string) {
+  function setCid (cid: string) {
       ${conditionZero}
       ${conditionOne}
-      this.Cid = Cid;
+      this.cid = cid;
   }
 
   function setProjectName (projectName: string) {
@@ -94,7 +94,7 @@ collection CandidateRegenProject {
       this.implementers = implementers;
   }
 
-    function setCategories (categories: string[]) {
+    function setCategories (categories: RegenConcept[]) {
       ${conditionZero}
       ${conditionOne}
       this.categories = categories;
@@ -167,14 +167,14 @@ collection CandidateRegenProject {
   @public
   collection RegenProject {
     id: string;
-    Cid?: string;
+    cid?: string;
     projectName: string;
     adderPublicKeyH: string;
     description: string[];
     isInstutional: boolean;
     status: string;
     implementers: string[];
-    categories: string[];
+    categories: RegenConcept[];
     contactEmail: string;
     date?: string;
     address?: string;
@@ -185,11 +185,11 @@ collection CandidateRegenProject {
     country?: string;
     likes?: number;
 
-    constructor (id: string, Cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+    constructor (id: string, cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
-        this.Cid = Cid;
+        this.cid = cid;
         this.projectName = projectName;
         this.adderPublicKeyH = ctx.publicKey.toHex();
         this.description = description;
@@ -208,10 +208,10 @@ collection CandidateRegenProject {
         this.likes = 0;
     }
 
-    function setCid (Cid: string) {
+    function setCid (cid: string) {
         ${conditionZero}
         ${conditionOne}
-        this.Cid = Cid;
+        this.cid = cid;
     }
   
     function setProjectName (projectName: string) {
@@ -238,7 +238,7 @@ collection CandidateRegenProject {
         this.implementers = implementers;
     }
   
-      function setCategories (categories: string[]) {
+      function setCategories (categories: RegenConcept[]) {
         ${conditionZero}
         ${conditionOne}
         this.categories = categories;
@@ -310,31 +310,31 @@ collection CandidateRegenProject {
   @public
   collection RegenConcept {
     id: string;
-    Cid?: string;
+    cid?: string;
     name: string;
     adder: string;
     explanation: string[];
-    categories?: string[];
-    subconcepts?: string[];
-    projects?: string[];
+    categories?: RegenConcept[];
+    subconcepts?: RegenConcept[];
+    projects?: RegenProject[];
     link?: string;
     adderPublicKeyH: string;
     likes?: number;
 
     constructor (    
         id: string,
-        Cid?: string,
+        cid?: string,
         name: string,
         adder: string,
         explanation: string[],
-        categories?: string[],
-        subconcepts?: string[],
-        projects?: string[],
+        categories?: RegenConcept[],
+        subconcepts?: RegenConcept[],
+        projects?: RegenProject[],
         link?: string) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
-        this.Cid = Cid;
+        this.cid = cid;
         this.name = name;
         this.adder = adder;
         this.explanation = explanation;
@@ -346,10 +346,10 @@ collection CandidateRegenProject {
         this.likes = 0;
     }
 
-    function setCid (Cid: string) {
+    function setCid (cid: string) {
         ${conditionZero}
         ${conditionOne}
-        this.Cid = Cid;
+        this.cid = cid;
     }
 
     function setName (name: string) {
@@ -364,13 +364,13 @@ collection CandidateRegenProject {
         this.explanation = explanation;
     }
 
-    function setSubconcepts (subconcepts: string[]) {
+    function setSubconcepts (subconcepts: RegenConcept[]) {
         ${conditionZero}
         ${conditionOne}
         this.subconcepts = subconcepts;
     }
 
-    function setProjects (projects: string[]) {
+    function setProjects (projects: RegenProject[]) {
         ${conditionZero}
         ${conditionOne}
         this.projects = projects;
@@ -388,7 +388,7 @@ collection CandidateRegenProject {
         this.likes = likes;
     }
 
-    function setCategories (categories: string[]) {
+    function setCategories (categories: RegenConcept[]) {
         ${conditionZero}
         ${conditionOne}
         this.categories = categories;
