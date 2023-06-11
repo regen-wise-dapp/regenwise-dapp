@@ -4,21 +4,12 @@ import styles from './index.module.scss';
 import Link from 'next/link';
 
 interface Props {
-  concept: Concept;
+  concept: any;
 }
 
 export default function ConceptItem({ concept }: Props) {
   return (
     <div className={styles.project_item}>
-      <Link
-        className={styles.link}
-        href={`knowledge/${setSlugify(concept.name)}`}
-      >
-        <h3 className="cursor-pointer hover:text-orange-900 font-semibold text-lime-900">
-          {concept.name}
-        </h3>
-      </Link>
-
       <p>{concept.explanation}</p>
       {/* <div className={`${styles.categories} text-sm`}>
         {concept.tags.map((tag, index, array) => {

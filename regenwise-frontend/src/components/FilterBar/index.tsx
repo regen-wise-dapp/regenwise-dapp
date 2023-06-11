@@ -10,7 +10,7 @@ const FilterList = dynamic(() => import('./FilterList'));
 
 export interface AdvanceFilter {
   years: number[];
-  categories: string[];
+  subconcepts: string[];
   tags: string[];
 }
 

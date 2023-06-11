@@ -34,10 +34,11 @@ export default function Banner() {
         >
           <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE</p>
           <p className={`${styles.word2} ${styles.word}`}>TO SHARE</p>
-          <p className={`${styles.word3} ${styles.word}`}>
-            SOME OF THE MOST IMPORTANT INFO
-          </p>
+          <p className={`${styles.word3} ${styles.word}`}>SOME OF THE</p>
           <p className={`${styles.word4} ${styles.word}`}>
+            MOST IMPORTANT INFO
+          </p>
+          <p className={`${styles.word5} ${styles.word}`}>
             OF THE PLANET EARTH
           </p>
         </h1>
@@ -55,12 +56,14 @@ export default function Banner() {
                 width={500}
                 height={500}
               />
-              <h2
-                className="mt-4 font-extrabold text-center"
-                style={{ zIndex: '12' }}
-              >
-                Degradation
-              </h2>
+              <div className={`${styles.title_container}`}>
+                <h2
+                  className="font-extrabold text-center"
+                  style={{ zIndex: '12' }}
+                >
+                  Degradation
+                </h2>
+              </div>
             </div>
           </div>
           <div
@@ -76,12 +79,14 @@ export default function Banner() {
                 width={500}
                 height={500}
               />
-              <h2
-                className="mt-4 font-extrabold text-center"
-                style={{ zIndex: '12' }}
-              >
-                Regeneration
-              </h2>
+              <div className={`${styles.title_container}`}>
+                <h2
+                  className="font-extrabold text-center"
+                  style={{ zIndex: '12' }}
+                >
+                  Regeneration
+                </h2>
+              </div>
             </div>
           </div>
         </div>
