@@ -27,7 +27,7 @@ export default function Banner() {
   };
 
   return (
-    <HomePageLayout>
+    <HomePageLayout style={{ padding: '2em 5em' }}>
       <div className={`${styles.main_container}`}>
         <h1
           className={`${styles.header} ${creepster.className} text-4xl md:text-8xl md:font-size-30px`}
