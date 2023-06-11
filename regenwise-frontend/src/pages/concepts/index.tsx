@@ -5,11 +5,12 @@ import { debounce } from 'lodash';
 import axios from 'axios';
 import FilterBar, { AdvanceFilter } from '@/components/FilterBar';
 import SearchBar from '@/components/SearchBar';
-import ConceptList from '@/components/concepts/ConceptList';
 import { OrderDirection } from '@/constants/misc';
 import { Concept } from '@/models/concept';
 import { GetServerSideProps } from 'next';
 import { fetcherWithNoCache } from '@/utils/fetcher';
+import ConceptsNavBar from '@/components/concepts/ConceptsNavBar';
+import ConceptItem from '@/components/concepts/ConceptItem';
 
 interface Props {
   concepts: Concept[];
@@ -17,28 +18,21 @@ interface Props {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const concepts = await fetcherWithNoCache(``);
-    return { props: { concepts } };
+    const concepts = await fetcherWithNoCache(
+      `https://testnet.polybase.xyz/v0/collections/regenwise-db%2FRegenConcept/records`
+    );
+    const preparedData = concepts.data.map((item: any) => item.data);
+    console.log(preparedData);
+    return { props: { concepts: preparedData } };
   } catch (error) {
     return { props: { concepts: [] } };
   }
 };
 
 export default function Concepts({ concepts }: Props) {
-  const [search, setSearch] = useState('');
-  const [advanceFilters, setAdvanceFilters] = useState<AdvanceFilter>({
-    years: [],
-    tags: [],
-    categories: [],
-  } as AdvanceFilter);
-  const [order, setOrder] = useState({
-    orderDirection: '' as OrderDirection,
-    orderType: '',
-  });
+  const [selectedConcept, setSelectedConcept] = useState({});
 
-  const handleSearch = debounce((search: string) => {
-    setSearch(search);
-  }, 300);
+  const handleSearch = () => {};
 
   return (
     <div className={styles.main_container}>
@@ -47,20 +41,10 @@ export default function Concepts({ concepts }: Props) {
       </section>
       <div className={styles.content_container}>
         <section className={styles.filter_bar_container}>
-          <FilterBar
-            onHandleOrderSelection={setOrder}
-            onHandleAllFilterItemsArray={(filters: AdvanceFilter) =>
-              setAdvanceFilters(filters)
-            }
-          />
+          <ConceptsNavBar concepts={concepts ?? []} />
         </section>
         <section className={styles.list_container}>
-          <ConceptList
-            concepts={concepts ?? []}
-            order={order}
-            filter={search}
-            advanceFilters={advanceFilters}
-          />
+          <ConceptItem concept={selectedConcept} />
         </section>
       </div>
     </div>

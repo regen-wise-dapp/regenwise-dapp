@@ -27,6 +27,6 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: flexbox;
+  display: none;
 }
 
