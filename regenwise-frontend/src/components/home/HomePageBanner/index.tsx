@@ -22,7 +22,7 @@ export default function Banner() {
     <HomePageLayout>
       <div className={`${styles.main_container} flex flex-row relative`}>
         <h1
-          className={`${styles.header} ${creepster.className} text-4xl md:text-8xl`}
+          className={`${styles.header} ${creepster.className} text-4xl md:text-8xl md:font-size-30px`}
         >
           <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE</p>
           <p className={`${styles.word2} ${styles.word}`}>TO SHARE</p>
@@ -34,25 +34,25 @@ export default function Banner() {
           className={`${styles.left_content} flex-1 flex justify-center items-center flex-col`}
         >
           <Image
-            src="/banner/carbon_3.png"
+            src="/banner/carbon_0a.jpg"
             alt="excess carbon emission"
             width={500}
             height={500}
           />
-          <h2 className="mt-4 font-extrabold text-center">Pollution</h2>
+          <h2 className="mt-4 font-extrabold text-center" style={{"zIndex":"12"}}>Degradation</h2>
         </div>
 
         <div
           className={`${styles.right_content} flex-1 flex justify-center items-center flex-col`}
         >
           <Image
-            src="/banner/carbon_2.png"
+            src="/banner/carbon_1a.jpg"
             alt="excess neutralization"
             width={500}
             height={500}
             onClick={scrollToSection}
           />
-          <h2 className="mt-4 font-extrabold text-center">Regeneration</h2>
+          <h2 className="mt-4 font-extrabold text-center" style={{"zIndex":"12"}} >Regeneration</h2>
         </div>
       </div>
     </HomePageLayout>

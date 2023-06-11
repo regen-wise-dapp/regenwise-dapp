@@ -23,7 +23,22 @@ const db = new Polybase({
         link?: string
     
 */
-await db.collection("RegenConcept").create(["regeneration",
+
+await db.collection("RegenConcept").create(["regenerative-agriculture",
+                                            "",
+                                            "Regenerative Agriculture",
+                                            "regenWiseTeam0",
+                                            [["Explanation"]],
+                                            [["Categories"]],
+                                            [[]],
+                                            [[]],
+                                            ""
+                                        ])
+
+
+
+
+/* await db.collection("RegenConcept").create(["regeneration",
                                             "<cid>",
                                             "Regeneration",
                                             "regenWiseTeam0",
@@ -32,4 +47,4 @@ await db.collection("RegenConcept").create(["regeneration",
                                             [[]],
                                             [[]],
                                             ""
-                                        ]); 
+                                        ]);  */
