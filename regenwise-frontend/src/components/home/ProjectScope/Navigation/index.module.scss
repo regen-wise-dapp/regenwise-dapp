@@ -14,7 +14,7 @@
     gap: 1em;
   }
   .cockpit_item {
-    box-shadow: 0px 0px 5px 2px white;
+    box-shadow: 0px 0px 5px 2px chocolate;
     box-sizing: border-box;
     height: 125px;
     display: flex;
@@ -27,7 +27,7 @@
     cursor: pointer;
     &:hover {
       transform: scale(0.98);
-      box-shadow: 0px 0px 1px 1px white;
+      box-shadow: 0px 0px 1px 1px chocolate;
       transition: all ease-in-out 0.15s;
     }
     @media (min-width: 992px) {
