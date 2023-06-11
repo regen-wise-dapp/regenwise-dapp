@@ -32,15 +32,10 @@ export default function Banner() {
         <h1
           className={`${styles.header} ${creepster.className} text-4xl md:text-8xl md:font-size-30px`}
         >
-          <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE</p>
-          <p className={`${styles.word2} ${styles.word}`}>TO SHARE</p>
-          <p className={`${styles.word3} ${styles.word}`}>SOME OF THE</p>
-          <p className={`${styles.word4} ${styles.word}`}>
-            MOST IMPORTANT INFO
-          </p>
-          <p className={`${styles.word5} ${styles.word}`}>
-            OF THE PLANET EARTH
-          </p>
+          <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE TO SHARE</p>
+          <p className={`${styles.word2} ${styles.word}`}>SOME OF THE MOST IMPORTANT INFO</p>
+          <p className={`${styles.word3} ${styles.word}`}>OF THE PLANET EARTH</p>
+
         </h1>
         <div className={`${styles.content_container}`}>
           <div

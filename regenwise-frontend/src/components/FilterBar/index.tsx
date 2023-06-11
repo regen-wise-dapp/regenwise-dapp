@@ -12,6 +12,7 @@ export interface AdvanceFilter {
   years: number[];
   subconcepts: string[];
   tags: string[];
+  categories: string[];
 }
 
 interface Props {

@@ -25,9 +25,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Projects({ projects }: Props) {
   const [search, setSearch] = useState('');
   const [advanceFilters, setAdvanceFilters] = useState<AdvanceFilter>({
-    years: [],
-    tags: [],
-    categories: [],
+    years: [0],
+    tags: [""],
+    categories: [""],
   } as AdvanceFilter);
   const [order, setOrder] = useState({
     orderDirection: '' as OrderDirection,
