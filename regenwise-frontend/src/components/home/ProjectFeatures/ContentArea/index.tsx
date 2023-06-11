@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 export default function ContentArea() {
   const router = useRouter();
   return (
-    <div className="flex flex-col max-w-[600px] w-full items-center justify-center">
+    <div className="flex flex-col max-w-[600px] w-full items-center justify-center text-black">
       <SectionHeader
         title="About This Platform"
         subtitle="For those eager to learn and make a meaningful contribution, this platform provides a diverse range of resources to delve into the concept and effort of regeneration."
