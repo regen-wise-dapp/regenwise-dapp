@@ -42,7 +42,7 @@ export const scopeItems: ScopeItem[] = [
     By embracing regenerative building design and practices, we can reduce our carbon footprint, 
     enhance indoor and outdoor spaces' quality, and foster a more regenerative and healthy lifestyle.`,
     url: '',
-    image: '/scope/6a.png',
+    image: '/scope/6b.png',
     icon: '/scope/scope-icons/3.png',
     backgroundColor: '#fff8f0',
   },

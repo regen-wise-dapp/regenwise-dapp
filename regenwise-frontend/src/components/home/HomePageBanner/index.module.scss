@@ -1,7 +1,7 @@
 .main_container {
   .header {
     position: absolute;
-    top: -40px;
+    top: -60px;
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10;
@@ -40,11 +40,15 @@
   }
   .right_content {
     img {
+      z-index: 11;
+      margin-top: 90px;
       animation: gazingAround1 infinite 50s;
     }
   }
   .left_content {
     img {
+      z-index: 11;
+      margin-top: 90px;
       animation: gazingAround2 infinite 50s;
     }
   }
