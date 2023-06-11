@@ -4,7 +4,7 @@
   padding: 10vh 5vw;
   display: flex;
   @media (min-width: 768px) {
-    min-height: 100vh;
+    min-height: calc(100vh - 72px);
   }
   .wrapper {
     flex: 1;
