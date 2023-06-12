@@ -15,7 +15,9 @@
     --background-end-rgb: rgb(245, 214, 238);
   }
 }
-
+html, body{
+  width: 100vw;
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: #0b0b24;

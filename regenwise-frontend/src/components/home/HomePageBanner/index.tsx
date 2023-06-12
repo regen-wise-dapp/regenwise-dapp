@@ -27,14 +27,14 @@ export default function Banner() {
   };
 
   return (
-    <HomePageLayout style={{ padding: '2em 5em' }}>
+    <HomePageLayout style={{ paddingTop: '2em', paddingBottom: '2em' }}>
       <div className={`${styles.main_container}`}>
         <h1
-          className={`${styles.header} ${creepster.className} text-4xl md:text-8xl md:font-size-30px`}
+          className={`${styles.header} ${creepster.className}`}
         >
-          <p className={`${styles.word1} ${styles.word}`}>REGENWISE IS HERE TO SHARE</p>
-          <p className={`${styles.word2} ${styles.word}`}>SOME OF THE MOST IMPORTANT INFO</p>
-          <p className={`${styles.word3} ${styles.word}`}>OF THE PLANET EARTH</p>
+          <p className={`${styles.word1} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}>REGENWISE IS HERE TO SHARE</p>
+          <p className={`${styles.word2} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}>SOME OF THE MOST IMPORTANT INFO</p>
+          <p className={`${styles.word3} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}>OF THE PLANET EARTH</p>
 
         </h1>
         <div className={`${styles.content_container}`}>
