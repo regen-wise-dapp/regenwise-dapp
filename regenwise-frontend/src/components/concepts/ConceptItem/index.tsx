@@ -13,7 +13,7 @@ export default function ConceptItem({ concept }: Props) {
       <SectionHeader title={concept.name} darkTheme></SectionHeader>
       <p className="text-center">{concept.explanation}</p>
       <p className="text-center">
-        <span className="font-extrabold">Publisehd By: </span>
+        <span className="font-extrabold">Published By: </span>
         <span className="capitalize">{`${concept?.adder}`}</span>
       </p>
     </div>
