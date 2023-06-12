@@ -12,13 +12,35 @@ import { useRouter } from 'next/router';
 import Timer from '@src/components/quests/Timer';
 import { EASY } from '@src/constants/misc';
 import { useSelector } from 'react-redux';
-import { quests } from '@src/constants/quests';
-import { RootState } from '@store/index';
+import { quests, testQuestions } from '@src/constants/quests';
+import { AppDispatch, RootState } from '@store/index';
+import Loading from '@src/components/shared/Loading';
+import AlertModal from '@src/components/quests/AlertModal';
+import { useDispatch } from 'react-redux';
+import { setModalOpen } from '@slices/gameModalSlice';
 
 const press_Start_2P = Press_Start_2P({
   weight: ['400'],
   subsets: ['latin'],
 });
+
+export interface QuestState {
+  questions: QuestionItem[];
+  answers: string[];
+  totalQuestTime: number;
+  points: number;
+}
+
+export interface Option {
+  id: string;
+  option: string;
+}
+
+export interface QuestionItem {
+  question: string;
+  options: Option[];
+  correctAnswer: string;
+}
 
 export const getServerSideProps: GetStaticProps = async () => {
   try {
@@ -34,6 +56,7 @@ export const getServerSideProps: GetStaticProps = async () => {
 };
 
 export default function index() {
+  const dispatch = useDispatch<AppDispatch>();
   const [isSetupCompleted, setsIsSetupCompleted] = useState(false);
   const [isTimerVisible, setIsTimerVisible] = useState(false);
   const [selectedQuest, setselectedQuest] = useState('');
@@ -45,10 +68,24 @@ export default function index() {
     (state: RootState) => state.authentication.user
   );
   const router = useRouter();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [questState, setQuestState] = useState<QuestState>({
+    questions: [] as QuestionItem[],
+    answers: [] as string[],
+    totalQuestTime: 0,
+    points: 0,
+  } as QuestState);
 
   useEffect(() => {
     if (router.query.id) {
       setselectedQuest((router.query.id as string) ?? '');
+      const questions = structuredClone(testQuestions);
+      setQuestState({
+        questions: questions,
+        answers: [] as string[],
+        totalQuestTime: 0,
+        points: 0,
+      });
     }
   }, [router]);
 
@@ -67,11 +104,35 @@ export default function index() {
     setsIsSetupCompleted(true);
   };
 
+  const handleAnswer = (event: any) => {
+    setCurrentQuestion((prev) => {
+      if (currentQuestion < questState.questions.length - 1) {
+        return prev + 1;
+      } else {
+        dispatch(
+          setModalOpen([
+            'Quest Finished',
+            'Congradulations. You have finished this quest. You can observe your statistics.',
+          ])
+        );
+        return prev;
+      }
+    });
+    const answers = structuredClone(questState.answers);
+    answers.push(event);
+    setQuestState((prev) => {
+      return {
+        ...prev,
+        answers: answers,
+      };
+    });
+  };
+
   return (
     <div
       className={`${styles.main_container} flex flex-1 first-letter:flex flex-col items-center bg-black`}
     >
-      <div className={`${styles.header} w-full flex justify-center pt-12`}>
+      <div className={`${styles.header} w-full flex justify-center p-6`}>
         <div
           className={`${press_Start_2P.className} ${
             isTimerVisible === true ? 'block' : 'hidden'
@@ -107,9 +168,20 @@ export default function index() {
           </>
         )}
       </div>
-      <div className="flex flex-1 w-full justify-center py-5">
+      <div className="flex flex-1 w-full justify-center">
         {isSetupCompleted ? (
-          <QuestLayout setupConfigs={setupConfigs as SetupConfigs} />
+          questState.questions?.length > 0 ? (
+            <QuestLayout
+              currentQuestion={currentQuestion}
+              totalNumberOfQuestions={questState?.questions.length}
+              questionItem={questState?.questions[currentQuestion]}
+              onHandleAnswer={handleAnswer}
+            />
+          ) : (
+            <div className="flex m-auto justify-center items-center">
+              <Loading loadingMessage="Loading..." theme="light"></Loading>
+            </div>
+          )
         ) : (
           <QuestSetup
             isMember={isAuthenticated ? true : false}
@@ -118,6 +190,7 @@ export default function index() {
           />
         )}
       </div>
+      <AlertModal></AlertModal>
     </div>
   );
 }
