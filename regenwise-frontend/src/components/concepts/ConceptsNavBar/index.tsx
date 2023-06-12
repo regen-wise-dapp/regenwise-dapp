@@ -1,12 +1,22 @@
 import React from 'react';
 import styles from './index.module.scss';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Concept } from '@/models/concept';
 
 interface Props {
-  concepts: any;
+  concepts: Concept[];
+  onHandleSelectConcept: (item: Concept) => void;
+  searchTerm?: string;
 }
 
-export default function ConceptsNavBar({ concepts }: Props) {
+export default function ConceptsNavBar({
+  concepts,
+  onHandleSelectConcept,
+  searchTerm,
+}: Props) {
+  const handleClick = (item: Concept) => {
+    onHandleSelectConcept(item);
+  };
   return (
     <div className={`${styles.main_container}`}>
       <div className={`${styles.header}`}>
@@ -14,9 +24,20 @@ export default function ConceptsNavBar({ concepts }: Props) {
       </div>
       <div className={`${styles.list}`}>
         <ListGroup>
-          {concepts.map((item: any) => {
-            return <ListGroupItem className="my-1">{item.name}</ListGroupItem>;
-          })}
+          {concepts
+            .filter((item) =>
+              item.name.toLowerCase().includes(searchTerm?.toLowerCase() ?? '')
+            )
+            .map((item: Concept) => {
+              return (
+                <ListGroupItem
+                  className={`${styles.list_item} my-1`}
+                  onClick={() => handleClick(item)}
+                >
+                  {item.name}
+                </ListGroupItem>
+              );
+            })}
         </ListGroup>
       </div>
     </div>

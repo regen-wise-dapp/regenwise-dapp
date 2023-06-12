@@ -24,12 +24,12 @@ export default function SearchBar({ onHandleSearch }: Props) {
           className="mb-3 w-full font-extrabold text-center"
           controlId="exampleForm.ControlInput1"
         >
-          <Form.Label>Search projects with these terms</Form.Label>
+          <Form.Label>Search concepts with these terms</Form.Label>
           <Form.Control
             style={{ height: '60px', borderRadius: '50px', padding: '0 2em' }}
             type="text"
             value={search}
-            placeholder="regenerative agriculture"
+            placeholder="Regenerative Agriculture"
             onChange={handleChange}
           />
         </Form.Group>
