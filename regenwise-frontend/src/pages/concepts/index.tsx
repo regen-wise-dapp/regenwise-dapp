@@ -22,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
       `https://testnet.polybase.xyz/v0/collections/regenwise-db%2FRegenConcept/records`
     );
     const preparedData = concepts.data.map((item: any) => item.data);
-    console.log(preparedData);
     return { props: { concepts: preparedData } };
   } catch (error) {
     return { props: { concepts: [] } };
@@ -30,9 +29,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export default function Concepts({ concepts }: Props) {
-  const [selectedConcept, setSelectedConcept] = useState({});
+  const [selectedConcept, setSelectedConcept] = useState({} as Concept);
+  const [searchTerm, setSearchTerm] = useState('');
+  useEffect(() => {
+    if (concepts) {
+      setSelectedConcept(concepts[0]);
+    }
+  }, []);
 
-  const handleSearch = () => {};
+  const handleSearch = (event: any) => {
+    setSearchTerm(event);
+  };
 
   return (
     <div className={styles.main_container}>
@@ -41,10 +48,14 @@ export default function Concepts({ concepts }: Props) {
       </section>
       <div className={styles.content_container}>
         <section className={styles.filter_bar_container}>
-          <ConceptsNavBar concepts={concepts ?? []} />
+          <ConceptsNavBar
+            concepts={concepts ?? []}
+            searchTerm={searchTerm} 
+            onHandleSelectConcept={(event) => setSelectedConcept(event)}
+          />
         </section>
         <section className={styles.list_container}>
-          <ConceptItem concept={selectedConcept} />
+          <ConceptItem concept={selectedConcept}/>
         </section>
       </div>
     </div>
