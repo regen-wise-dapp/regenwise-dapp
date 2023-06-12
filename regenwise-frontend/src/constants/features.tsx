@@ -1,4 +1,4 @@
-import { Feature } from "@/models/feature";
+import { Feature } from "@src/models/feature";
 
 export const features: Feature[] = [
   {

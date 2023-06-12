@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import Image from 'next/image';
-import { scopeItems } from '@/constants/scopeItems';
-import { ScopeItem } from '@/models/scopeItems';
+import { scopeItems } from '@src/constants/scopeItems';
+import { ScopeItem } from '@src/models/scopeItems';
 
 interface Props {
   onChangeItem: (index: number) => void;

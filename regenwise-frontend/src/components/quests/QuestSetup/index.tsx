@@ -2,11 +2,11 @@ import { Button } from 'react-bootstrap';
 import styles from './index.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../../../slices/authenticationSlice';
-import { setModalOpen } from '../../../../slices/gameModalSlice';
-import { fetchUserInfo } from '../../../../slices/userSlice';
-import { AppDispatch } from '../../../../store';
 import { useRouter } from 'next/router';
+import { setUser } from '@slices/authenticationSlice';
+import { setModalOpen } from '@slices/gameModalSlice';
+import { fetchUserInfo } from '@slices/userSlice';
+import { AppDispatch } from '@store/index';
 
 interface Props {
   isMember: boolean;

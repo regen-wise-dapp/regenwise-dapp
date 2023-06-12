@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './BoxGroup.module.scss';
-import { features } from '@/constants/features';
+import { features } from '@src/constants/features';
 export default function BoxGorupArea() {
   return (
     <div className={styles.main_container}>

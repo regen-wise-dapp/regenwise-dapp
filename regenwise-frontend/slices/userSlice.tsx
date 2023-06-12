@@ -1,6 +1,6 @@
 'use client';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetcherWithNoCache } from '../src/utils/fetcher';
+import { fetcherWithNoCache } from '@src/utils/fetcher';
 
 export const fetchUserInfo = createAsyncThunk(
   'user/fetchUserInfo',

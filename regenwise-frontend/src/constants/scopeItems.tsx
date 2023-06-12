@@ -1,4 +1,4 @@
-import { ScopeItem } from '@/models/scopeItems';
+import { ScopeItem } from '@src/models/scopeItems';
 
 export const scopeItems: ScopeItem[] = [
   {

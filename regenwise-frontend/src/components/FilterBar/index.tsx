@@ -2,8 +2,8 @@ import styles from './index.module.scss';
 import dynamic from 'next/dynamic';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { years, categories, tags } from '@/constants/filterItems';
-import { OrderDirection } from '@/constants/misc';
+import { years, categories, tags } from '@src/constants/filterItems';
+import { OrderDirection } from '@src/constants/misc';
 
 const SortingSection = dynamic(() => import('./SortingSection'));
 const FilterList = dynamic(() => import('./FilterList'));

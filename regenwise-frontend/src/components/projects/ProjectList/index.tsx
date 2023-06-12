@@ -1,13 +1,12 @@
 import dynamic from 'next/dynamic';
 import styles from './index.module.scss';
 import { useState } from 'react';
-import { AdvanceFilter } from '@/components/FilterBar';
-import PaginationBar from '@/components/shared/PaginationBar';
-import { OrderDirection, Ascending } from '@/constants/misc';
-import { Project } from '@/models/project';
+
 import ProjectItem from '../ProjectItem';
-
-
+import { AdvanceFilter } from '@src/components/FilterBar';
+import PaginationBar from '@src/components/shared/PaginationBar';
+import { OrderDirection, Ascending } from '@src/constants/misc';
+import { Project } from '@src/models/project';
 
 interface Props {
   projects: Project[];

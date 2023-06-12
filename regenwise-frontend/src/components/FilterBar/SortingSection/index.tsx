@@ -1,4 +1,4 @@
-import { Ascending, Descending, OrderDirection } from '@/constants/misc';
+import { Ascending, Descending, OrderDirection } from '@src/constants/misc';
 import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 

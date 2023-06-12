@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setModalClose } from '../../../../../slices/gameModalSlice';
-import { RootState, AppDispatch } from '../../../../../store';
 import styles from './index.module.scss';
 import { Button } from 'react-bootstrap';
 import { useCallback, useRef } from 'react';
+import { setModalClose } from '@slices/gameModalSlice';
+import { RootState, AppDispatch } from '@store/index';
+
 
 export default function AlertModal() {
   const buttonRef = useRef(null);

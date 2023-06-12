@@ -1,8 +1,8 @@
 'use client';
+import HomePageLayout from '@src/components/shared/HomePageLayout';
+import SectionHeader from '@src/components/shared/SectionHeader';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-import HomePageLayout from '../../shared/HomePageLayout';
-import SectionHeader from '../../shared/SectionHeader';
 
 const Navigation = dynamic(() => import('./Navigation'));
 const ContentDisplay = dynamic(() => import('./ContentDisplay'));

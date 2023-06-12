@@ -3,12 +3,12 @@ import styles from './index.module.scss';
 import { useState } from 'react';
 import { debounce } from 'lodash';
 import { GetServerSideProps } from 'next';
-import FilterBar, { AdvanceFilter } from '@/components/FilterBar';
-import SearchBar from '@/components/shared/SearchBar';
-import ProjectList from '@/components/projects/ProjectList';
-import { OrderDirection } from '@/constants/misc';
-import { Project } from '@/models/project';
-import { fetcherWithNoCache } from '../../utils/fetcher';
+import FilterBar, { AdvanceFilter } from '@src/components/FilterBar';
+import SearchBar from '@src/components/shared/SearchBar';
+import ProjectList from '@src/components/projects/ProjectList';
+import { OrderDirection } from '@src/constants/misc';
+import { Project } from '@src/models/project';
+import { fetcherWithNoCache } from '@src/utils/fetcher';
 
 interface Props {
   projects: Project[];
@@ -26,8 +26,8 @@ export default function Projects({ projects }: Props) {
   const [search, setSearch] = useState('');
   const [advanceFilters, setAdvanceFilters] = useState<AdvanceFilter>({
     years: [0],
-    tags: [""],
-    categories: [""],
+    tags: [''],
+    categories: [''],
   } as AdvanceFilter);
   const [order, setOrder] = useState({
     orderDirection: '' as OrderDirection,

@@ -1,8 +1,8 @@
 'use client';
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '../slices/userSlice';
-import authenticationSlice from '../slices/authenticationSlice';
-import gameModalSlice from '../slices/gameModalSlice';
+import userReducer from '@slices/userSlice';
+import authenticationSlice from '@slices/authenticationSlice';
+import gameModalSlice from '@slices/gameModalSlice';
 
 const store = configureStore({
   reducer: {

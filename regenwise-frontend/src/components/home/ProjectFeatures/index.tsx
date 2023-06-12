@@ -1,5 +1,5 @@
+import HomePageLayout from '@src/components/shared/HomePageLayout';
 import dynamic from 'next/dynamic';
-import HomePageLayout from '../../shared/HomePageLayout';
 
 const ContentArea = dynamic(() => import('./ContentArea'));
 const BoxGorupArea = dynamic(() => import('./BoxGorupArea'));
