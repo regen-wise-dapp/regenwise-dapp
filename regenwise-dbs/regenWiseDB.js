@@ -21,160 +21,18 @@ const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d2134
 
 await db.applySchema(`
 
-@public
-collection CandidateRegenProject {
-  id: string;
-  cid?: string;
-  projectName: string;
-  adderPublicKeyH: string;
-  description: string[];
-  isInstutional: boolean;
-  status: string;
-  implementers: string[];
-  categories: RegenConcept[];
-  contactEmail: string;
-  date?: string;
-  address?: string;
-  link?: string;
-  ghgPuller?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-  likes?: number;
-
-  constructor (id: string, cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number ) {
-      ${conditionZero}
-      this.id = id;
-      this.cid = cid;
-      this.projectName = projectName;
-      this.adderPublicKeyH = ctx.publicKey.toHex();
-      this.description = description;
-      this.isInstutional = isInstutional;
-      this.status = status;
-      this.implementers = projects;
-      this.categories = categories;
-      this.contactEmail = contactEmail;
-      this.date = date;
-      this.address = address;
-      this.link = link;
-      this.ghgPuller = ghgPuller;
-      this.city = city;
-      this.state = state;
-      this.country = country;
-      this.likes = 0;
-  }
-
-  function setCid (cid: string) {
-      ${conditionZero}
-      ${conditionOne}
-      this.cid = cid;
-  }
-
-  function setProjectName (projectName: string) {
-      ${conditionZero}
-      ${conditionOne}
-      this.projectName = projectName;
-  }
-
-  function setDescription (description: string[]) {
-      ${conditionZero}
-      ${conditionOne}
-      this.description = description;
-  }
-
-  function setIsInstutional (isInstutional: boolean) {
-      ${conditionZero}
-      ${conditionOne}
-      this.isInstutional = isInstutional;
-  }
-
-  function setImplementers (implementers: string[]) {
-      ${conditionZero}
-      ${conditionOne}
-      this.implementers = implementers;
-  }
-
-    function setCategories (categories: RegenConcept[]) {
-      ${conditionZero}
-      ${conditionOne}
-      this.categories = categories;
-    }
-
-
-    function setStatus (status: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.status = status;
-    }
-
-    function setContactEmail (contactEmail: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.contactEmail = contactEmail;
-  }
-
-
-    function setDate (date: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.date = date;
-    }
-
-    function setAddress (address: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.address = address;
-        }
-
-    function setLink (link: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.link = link;
-        }
-
-        function setGhgPuller (ghgPuller: string) {
-            ${conditionZero}
-            ${conditionOne}
-            this.ghgPuller = ghgPuller;
-        }
-
-        function setCity (city: string) {
-            ${conditionZero}
-            ${conditionOne}
-            this.city = city;
-        }
-
-        function setState (state: string) {
-            ${conditionZero}
-            ${conditionOne}
-            this.state = state;
-        }
-
-        function setCountry (country: string) {
-            ${conditionZero}
-            ${conditionOne}
-            this.country = country;
-        }
-        
-        function setLikes (likes: number) {
-            ${conditionZero}
-            ${conditionOne}
-            this.likes = likes;
-        }
-        
-}
-  
   @public
   collection RegenProject {
     id: string;
     cid?: string;
-    projectName: string;
+    name: string;
     adderPublicKeyH: string;
     description: string[];
     isInstutional: boolean;
     status: string;
+    approvalStatus: string[];
     implementers: string[];
-    categories: RegenConcept[];
+    concepts: string[];
     contactEmail: string;
     date?: string;
     address?: string;
@@ -185,7 +43,7 @@ collection CandidateRegenProject {
     country?: string;
     likes?: number;
 
-    constructor (id: string, cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, implementers: string[], categories: RegenConcept[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+    constructor (id: string, cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, approvalStatus: string[], implementers: string[], concepts: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
@@ -195,8 +53,9 @@ collection CandidateRegenProject {
         this.description = description;
         this.isInstutional = isInstutional;
         this.status = status;
-        this.implementers = projects;
-        this.categories = categories;
+        this.approvalStatus = approvalStatus;
+        this.implementers = implementers;
+        this.concepts = concepts;
         this.contactEmail = contactEmail;
         this.date = date;
         this.address = address;
@@ -238,10 +97,10 @@ collection CandidateRegenProject {
         this.implementers = implementers;
     }
   
-      function setCategories (categories: RegenConcept[]) {
+      function setConcepts (concepts: string[]) {
         ${conditionZero}
         ${conditionOne}
-        this.categories = categories;
+        this.concepts = concepts;
       }
   
   
@@ -250,6 +109,12 @@ collection CandidateRegenProject {
       ${conditionOne}
       this.status = status;
       }
+
+      function setApprovalStatus (approvalStatus: string) {
+        ${conditionZero}
+        ${conditionOne}
+        this.status = approvalStatus;
+        }
   
       function setContactEmail (contactEmail: string) {
         ${conditionZero}
@@ -314,9 +179,9 @@ collection CandidateRegenProject {
     name: string;
     adder: string;
     explanation: string[];
-    categories?: RegenConcept[];
-    subconcepts?: RegenConcept[];
-    projects?: RegenProject[];
+    parentConcepts?: string[];
+    childConcepts?: string[];
+    projects?: string[];
     link?: string;
     adderPublicKeyH: string;
     likes?: number;
@@ -327,9 +192,9 @@ collection CandidateRegenProject {
         name: string,
         adder: string,
         explanation: string[],
-        categories?: RegenConcept[],
-        subconcepts?: RegenConcept[],
-        projects?: RegenProject[],
+        parentConcepts?: string[],
+        childConcepts?: string[],
+        projects?: string[],
         link?: string) {
         ${conditionZero}
         ${conditionTwo}
@@ -338,8 +203,8 @@ collection CandidateRegenProject {
         this.name = name;
         this.adder = adder;
         this.explanation = explanation;
-        this.categories = categories;
-        this.subconcepts = subconcepts;
+        this.parentConcepts = parentConcepts;
+        this.childConcepts = childConcepts;
         this.projects = projects;
         this.link = link;
         this.adderPublicKeyH = ctx.publicKey.toHex();
@@ -364,13 +229,13 @@ collection CandidateRegenProject {
         this.explanation = explanation;
     }
 
-    function setSubconcepts (subconcepts: RegenConcept[]) {
+    function setChildConcepts (childConcepts: string[]) {
         ${conditionZero}
         ${conditionOne}
-        this.subconcepts = subconcepts;
+        this.childConcepts = childConcepts;
     }
 
-    function setProjects (projects: RegenProject[]) {
+    function setProjects (projects: string[]) {
         ${conditionZero}
         ${conditionOne}
         this.projects = projects;
@@ -388,10 +253,10 @@ collection CandidateRegenProject {
         this.likes = likes;
     }
 
-    function setCategories (categories: RegenConcept[]) {
+    function setParentConcepts (parentConcepts: string[]) {
         ${conditionZero}
         ${conditionOne}
-        this.categories = categories;
+        this.parentConcepts = parentConcepts;
     }
 
     del () {
