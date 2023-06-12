@@ -3,7 +3,7 @@ import { ethPersonalSign } from '@polybase/eth';
 import 'dotenv/config';
 
 const db = new Polybase({
-    defaultNamespace: "regenwise-db",
+    defaultNamespace: "regenwise-regen-db",
   });
 
 /*  

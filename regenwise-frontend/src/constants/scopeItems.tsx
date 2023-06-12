@@ -13,12 +13,12 @@ export const scopeItems: ScopeItem[] = [
   {
     id: '2',
     title: 'In Agriculture and Forestry',
-    description: `<h5>Regenerative agriculture, stockbreeding and forestry focuses on revitalizing the soil and 
+    description: `<h5>Regenerative agriculture and forestry focuses on revitalizing the soil and 
     surrounding ecosystems rather than solely focusing on production. By implementing practices like crop rotation, cover cropping, 
-    no-till farming, agroforestry and integrating livestock, these conduce to enhance soil health, reduce erosion, and 
+    no-till farming, agroforestry and integrating livestock (especially cattle), these conduce to enhance soil health, reduce erosion, and 
     increase carbon sequestration. They also promote biodiversity by supplying habitats for diverse plant and animal species and 
     help mitigate climate change by sequestering more carbon, and reducing greenhouse gas emissions.
-    In summary, regenerative agriculture, stockbreeding and forestry are integrated environmentally friendly solutions 
+    In summary, regenerative agriculture and forestry are integrated environmentally friendly solutions 
     that aim to restore and regenerate the planet instead of just exploiting it.</h5>`,
     url: '',
     image: '/scope/4b.png',
