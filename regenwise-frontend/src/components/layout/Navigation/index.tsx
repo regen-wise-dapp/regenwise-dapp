@@ -5,14 +5,13 @@ import Link from 'next/link';
 import { Navbar, Container, Nav, Button, Offcanvas } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-
 import { useRouter } from 'next/router';
-import { menuItems } from '@/constants/menuItems';
-import useMediaQuery from '@/hooks/useMediaQuery';
-import { setUser } from '../../../../slices/authenticationSlice';
-import { setModalOpen } from '../../../../slices/gameModalSlice';
-import { fetchUserInfo } from '../../../../slices/userSlice';
-import { AppDispatch } from '../../../../store';
+import { menuItems } from '@src/constants/menuItems';
+import useMediaQuery from '@src/hooks/useMediaQuery';
+import { setUser } from '@slices/authenticationSlice';
+import { setModalOpen } from '@slices/gameModalSlice';
+import { fetchUserInfo } from '@slices/userSlice';
+import { AppDispatch } from '@store/index';
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);

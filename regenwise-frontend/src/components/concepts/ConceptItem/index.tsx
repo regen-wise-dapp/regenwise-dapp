@@ -1,7 +1,6 @@
-import { Concept } from '@/models/concept';
-import setSlugify from '../../../utils/setSlugify';
+import SectionHeader from '@src/components/shared/SectionHeader';
+import { Concept } from '@src/models/concept';
 import styles from './index.module.scss';
-import SectionHeader from '@/components/shared/SectionHeader';
 
 interface Props {
   concept: Concept;

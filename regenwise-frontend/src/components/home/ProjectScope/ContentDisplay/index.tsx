@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { scopeItems } from '@/constants/scopeItems';
+import { scopeItems } from '@src/constants/scopeItems';
 
 interface Props {
   index: number;

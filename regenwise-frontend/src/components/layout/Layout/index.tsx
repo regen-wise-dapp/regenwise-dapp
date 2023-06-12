@@ -2,12 +2,12 @@ import dynamic from 'next/dynamic';
 import { FC, memo, PropsWithChildren, ReactNode, useEffect } from 'react';
 import { Roboto } from 'next/font/google';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../../store';
-import { setUser } from '../../../../slices/authenticationSlice';
-import { fetchUserInfo } from '../../../../slices/userSlice';
-import Navigation from '../Navigation';
+import { AppDispatch } from '@store/index';
+import { setUser } from '@slices/authenticationSlice';
+import { fetchUserInfo } from '@slices/userSlice';
 
 const Footer = dynamic(() => import('../Footer'));
+const Navigation = dynamic(() => import('../Navigation'));
 
 interface Props {
   children?: ReactNode;
@@ -41,4 +41,3 @@ const Layout: FC<PropsWithChildren<Props>> = memo((props: Props) => {
 });
 Layout.displayName = 'Layout';
 export default Layout;
-

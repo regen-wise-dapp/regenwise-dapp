@@ -19,7 +19,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": [
+      "@store/*": ["./store/*"],
+      "@slices/*": ["./slices/*"],
+      "@src/*": [
         "./src/*"
       ]
     },

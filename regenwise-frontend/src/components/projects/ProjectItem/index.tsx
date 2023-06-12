@@ -1,5 +1,6 @@
-import { Project } from '@/models/project';
-import setSlugify from '../../../utils/setSlugify';
+
+import { Project } from '@src/models/project';
+import setSlugify from '@src/utils/setSlugify';
 import styles from './index.module.scss';
 import Link from 'next/link';
 interface Props {

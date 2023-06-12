@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import Image from 'next/image';
 import { Press_Start_2P } from 'next/font/google';
 import Link from 'next/link';
-import { quests } from '@/constants/quests';
+import { quests } from '@src/constants/quests';
 import { Modal, Button } from 'react-bootstrap';
 
 const press_Start_2P = Press_Start_2P({

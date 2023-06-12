@@ -1,13 +1,12 @@
 import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import { Provider } from 'react-redux';
-import store from '../../store';
-import Layout from '../components/layout/Layout';
+import Layout from '@src/components/layout/Layout';
+import store from '@store/index';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;

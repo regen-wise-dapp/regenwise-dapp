@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 import { Creepster } from 'next/font/google';
 import dynamic from 'next/dynamic';
-import HomePageLayout from '../../shared/HomePageLayout';
+import HomePageLayout from '@src/components/shared/HomePageLayout';
 
 const AnimationModal = dynamic(() => import('./AnimationModal'));
 
@@ -15,13 +15,16 @@ const creepster = Creepster({
 export default function Banner() {
   const [isOpen, setIsOpen] = useState(false);
   const scrollToSection = () => {
-    document.getElementById('main-page--scope-element')?.scrollIntoView({ block: "center" });
+    document
+      .getElementById('main-page--scope-element')
+      ?.scrollIntoView({ block: 'center' });
   };
 
   const scrollToSectionTwo = () => {
-    document.getElementById('main-page--content-element')?.scrollIntoView({ block: "center" });
+    document
+      .getElementById('main-page--content-element')
+      ?.scrollIntoView({ block: 'center' });
   };
-
 
   const handleClose = () => {
     setIsOpen(false);
@@ -30,13 +33,22 @@ export default function Banner() {
   return (
     <HomePageLayout style={{ paddingTop: '2em', paddingBottom: '2em' }}>
       <div className={`${styles.main_container}`}>
-        <h1
-          className={`${styles.header} ${creepster.className}`}
-        >
-          <p className={`${styles.word1} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}>REGENWISE IS HERE TO SHARE</p>
-          <p className={`${styles.word2} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}>SOME OF THE MOST IMPORTANT INFO</p>
-          <p className={`${styles.word3} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}>OF THE PLANET EARTH</p>
-
+        <h1 className={`${styles.header} ${creepster.className}`}>
+          <p
+            className={`${styles.word1} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}
+          >
+            REGENWISE IS HERE TO SHARE
+          </p>
+          <p
+            className={`${styles.word2} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}
+          >
+            SOME OF THE MOST IMPORTANT INFO
+          </p>
+          <p
+            className={`${styles.word3} ${styles.word} text-4xl md:text-5xl lg:text-6xl`}
+          >
+            OF THE PLANET EARTH
+          </p>
         </h1>
         <div className={`${styles.content_container}`}>
           <div

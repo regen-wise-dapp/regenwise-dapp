@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic';
-import HomePageBanner from '../components/home/HomePageBanner';
-import ProjectFeatures from '../components/home/ProjectFeatures';
-import ProjectScope from '../components/home/ProjectScope';
-import NFTMarketPlace from '../components/home/NFTMarketPlace';
+import HomePageBanner from '@src/components/home/HomePageBanner';
+import NFTMarketPlace from '@src/components/home/NFTMarketPlace';
+import ProjectFeatures from '@src/components/home/ProjectFeatures';
+import ProjectScope from '@src/components/home/ProjectScope';
 
 export default function Home() {
   return (

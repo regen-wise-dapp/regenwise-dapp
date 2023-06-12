@@ -1,7 +1,8 @@
-import QuestBanner from '@/components/quests/QuestBanner';
-import QuestList from '@/components/quests/QuestList';
+
 import React from 'react';
 import styles from './index.module.scss';
+import QuestBanner from '@src/components/quests/QuestBanner';
+import QuestList from '@src/components/quests/QuestList';
 
 export default function Games() {
   return (

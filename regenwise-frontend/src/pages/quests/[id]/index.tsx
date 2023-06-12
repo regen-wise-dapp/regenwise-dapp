@@ -1,6 +1,6 @@
-import GameLayout from '@/components/quests/GameLayout';
-import GameSetup, { SetupConfigs } from '@/components/quests/QuestSetup';
-import { fetcher } from '@/utils/fetcher';
+import GameLayout from '@src/components/quests/GameLayout';
+import GameSetup, { SetupConfigs } from '@src/components/quests/QuestSetup';
+import { fetcher } from '@src/utils/fetcher';
 import { GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
 import { Press_Start_2P } from 'next/font/google';
@@ -9,11 +9,11 @@ import { Button } from 'react-bootstrap';
 import { MdOutlineArrowBack } from 'react-icons/md';
 import { MdOutlineTimer } from 'react-icons/md';
 import { useRouter } from 'next/router';
-import Timer from '@/components/quests/Timer';
-import { EASY } from '@/constants/misc';
+import Timer from '@src/components/quests/Timer';
+import { EASY } from '@src/constants/misc';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../../store';
-import { quests } from '@/constants/quests';
+import { quests } from '@src/constants/quests';
+import { RootState } from '@store/index';
 
 const press_Start_2P = Press_Start_2P({
   weight: ['400'],
@@ -22,14 +22,12 @@ const press_Start_2P = Press_Start_2P({
 
 export const getServerSideProps: GetStaticProps = async () => {
   try {
-    const wordsData = await fetcher(
-      'https://goregenway.netlify.app/.netlify/functions/words'
-    );
-    return { props: { wordsData } };
+    const questionsData = await fetcher('');
+    return { props: { questionsData } };
   } catch (error) {
     return {
       props: {
-        wordsData: null,
+        questionsData: null,
       },
     };
   }

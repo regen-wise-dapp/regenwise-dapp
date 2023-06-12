@@ -2,10 +2,9 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 import { Button } from 'react-bootstrap';
 import { HiOutlineBadgeCheck } from 'react-icons/hi';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import HomePageLayout from '../../shared/HomePageLayout';
-import SectionHeader from '../../shared/SectionHeader';
+import HomePageLayout from '@src/components/shared/HomePageLayout';
+import SectionHeader from '@src/components/shared/SectionHeader';
 
 export default function NFTMarketPlace() {
   const router = useRouter();
