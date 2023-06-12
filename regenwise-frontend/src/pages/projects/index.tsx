@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { debounce } from 'lodash';
 import { GetServerSideProps } from 'next';
 import FilterBar, { AdvanceFilter } from '@/components/FilterBar';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/shared/SearchBar';
 import ProjectList from '@/components/projects/ProjectList';
 import { OrderDirection } from '@/constants/misc';
 import { Project } from '@/models/project';
