@@ -22,9 +22,6 @@ export default function Banner() {
     document.getElementById('main-page--content-element')?.scrollIntoView(false);
   };
 
-  const openSkullPage = () => {
-    setIsOpen(true);
-  };
 
   const handleClose = () => {
     setIsOpen(false);
