@@ -2,12 +2,13 @@
 import styles from './index.module.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import SearchBar from '@/components/shared/SearchBar';
-import { Concept } from '@/models/concept';
 import { GetServerSideProps } from 'next';
-import { fetcherWithNoCache } from '@/utils/fetcher';
-import ConceptsNavBar from '@/components/concepts/ConceptsNavBar';
-import ConceptItem from '@/components/concepts/ConceptItem';
+import ConceptItem from '@src/components/concepts/ConceptItem';
+import ConceptsNavBar from '@src/components/concepts/ConceptsNavBar';
+import SearchBar from '@src/components/shared/SearchBar';
+import { Concept } from '@src/models/concept';
+import { fetcherWithNoCache } from '@src/utils/fetcher';
+
 
 interface Props {
   concepts: Concept[];
