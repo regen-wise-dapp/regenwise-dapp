@@ -19,7 +19,7 @@ export default function Banner() {
   };
 
   const scrollToSectionTwo = () => {
-    document.getElementById('main-page--content-element')?.scrollIntoView(false);
+    document.getElementById('main-page--content-element')?.scrollIntoView(true);
   };
 
 
