@@ -17,10 +17,12 @@ export default function ProjectScope() {
         title="Regenerative Practices"
         subtitle="To contribute to the efforts of making our world a healthier place to live, there are some concepts that we should embrace"
       />
-      <div className='flex flex-col gap-5' id='main-page--scope-element'>
+      <div className='flex flex-col gap-5' >
+<div id='main-page--scope-element'>
         <Navigation onChangeItem={(index) => setSelectedItem(index)} />
+        </div>
         <ContentDisplay index={selectedItem} />
-      </div>
+        </div>
     </HomePageLayout>
   );
 }
