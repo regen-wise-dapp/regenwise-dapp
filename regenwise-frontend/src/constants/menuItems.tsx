@@ -4,19 +4,19 @@ export const menuItems = [
     link: '/',
   },
   {
-    label: 'Quests',
-    link: '/quests',
+    label: 'Concepts',
+    link: '/concepts',
   },
   {
     label: 'Projects',
     link: '/projects',
   },
   {
-    label: 'Concepts',
-    link: '/concepts',
-  },
-  {
     label: 'NFT Markets',
     link: '/nftmarket',
+  },
+  {
+    label: 'Quests',
+    link: '/quests',
   },
 ];
