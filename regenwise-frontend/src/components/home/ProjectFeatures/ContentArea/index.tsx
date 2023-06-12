@@ -1,4 +1,5 @@
 import SectionHeader from '@src/components/shared/SectionHeader';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
 
