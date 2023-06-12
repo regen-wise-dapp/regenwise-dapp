@@ -1,0 +1,104 @@
+.card_container {
+  width: 330px !important;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px 1px white, 0px 0px 10px 1px yellow, 0px 0px 15px 1px crimson;
+  background-image: linear-gradient(
+      216deg,
+      rgba(77, 77, 77, 0.05) 0%,
+      rgba(77, 77, 77, 0.05) 25%,
+      rgba(42, 42, 42, 0.05) 25%,
+      rgba(42, 42, 42, 0.05) 38%,
+      rgba(223, 223, 223, 0.05) 38%,
+      rgba(223, 223, 223, 0.05) 75%,
+      rgba(36, 36, 36, 0.05) 75%,
+      rgba(36, 36, 36, 0.05) 100%
+    ),
+    linear-gradient(
+      44deg,
+      rgba(128, 128, 128, 0.05) 0%,
+      rgba(128, 128, 128, 0.05) 34%,
+      rgba(212, 212, 212, 0.05) 34%,
+      rgba(212, 212, 212, 0.05) 57%,
+      rgba(25, 25, 25, 0.05) 57%,
+      rgba(25, 25, 25, 0.05) 89%,
+      rgba(135, 135, 135, 0.05) 89%,
+      rgba(135, 135, 135, 0.05) 100%
+    ),
+    linear-gradient(
+      241deg,
+      rgba(55, 55, 55, 0.05) 0%,
+      rgba(55, 55, 55, 0.05) 14%,
+      rgba(209, 209, 209, 0.05) 14%,
+      rgba(209, 209, 209, 0.05) 60%,
+      rgba(245, 245, 245, 0.05) 60%,
+      rgba(245, 245, 245, 0.05) 69%,
+      rgba(164, 164, 164, 0.05) 69%,
+      rgba(164, 164, 164, 0.05) 100%
+    ),
+    linear-gradient(
+      249deg,
+      rgba(248, 248, 248, 0.05) 0%,
+      rgba(248, 248, 248, 0.05) 32%,
+      rgba(148, 148, 148, 0.05) 32%,
+      rgba(148, 148, 148, 0.05) 35%,
+      rgba(202, 202, 202, 0.05) 35%,
+      rgba(202, 202, 202, 0.05) 51%,
+      rgba(181, 181, 181, 0.05) 51%,
+      rgba(181, 181, 181, 0.05) 100%
+    ),
+    linear-gradient(92deg, hsl(214, 0%, 11%), hsl(214, 0%, 11%));
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .image_container {
+    width: 330px;
+    height: 330px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid lightgrey;
+    background-color: white;
+    img {
+      object-fit: cover;
+    }
+  }
+  .content {
+    flex: 1;
+    padding: 1em;
+    .title {
+      color: blanchedalmond;
+      position: relative;
+      text-shadow: 2px 1px crimson;
+      letter-spacing: 0.15em;
+      padding: 0.25em 0;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: white;
+        box-shadow: 0px 0px 5px 1px orange, 0px 0px 10px 1px crimson;
+      }
+    }
+    .information {
+      padding: 1em 0;
+      color: white;
+    }
+  }
+
+  .button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px 1px grey, 0px 0px 10px 1px yellow,
+      0px 0px 15px 1px orange;
+    border-radius: 25px;
+    .icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

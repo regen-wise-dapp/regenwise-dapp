@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import QuestBanner from '@src/components/quests/QuestBanner';
 import QuestList from '@src/components/quests/QuestList';
 
-export default function Games() {
+export default function Quests() {
   return (
     <div className={styles.main_container}>
       <div className={styles.wrapper}>
