@@ -34,7 +34,7 @@ export default function QuestList() {
                 <Image src={quest.image} fill alt={quest.name}></Image>
               </div>
               <div className={styles.text_container}>
-                <h2 className={`${press_Start_2P.className} `}>{quest.name}</h2>
+                <p className={`${press_Start_2P.className} `}>{quest.name}</p>
               </div>
             </Link>
           );
