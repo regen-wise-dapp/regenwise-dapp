@@ -39,4 +39,6 @@ const db = new Polybase({
 // await db.collection("RegenConcept").record("regenerative-energy").call("setCategories", [[db.collection("RegenConcept").record("regeneration"), db.collection("RegenConcept").record("regenerative-energy-and-buildings")]]);
 // await db.collection("RegenConcept").record("regenerative-buildings").call("setCategories", [[db.collection("RegenConcept").record("regeneration"), db.collection("RegenConcept").record("regenerative-energy-and-buildings")]]);
 
-console.log(await db.collection("RegenConcept").record("regeneration"));
+// await db.collection("RegenConcept").record("regenerative-water-management").call("setLink", [JSON.stringify((await db.collection("RegenConcept").record("regeneration").get()).data)]);
+// console.log(await ((await db.collection("RegenConcept").record(JSON.stringify((await db.collection("RegenConcept").record("regenerative-water-management").get()).data.categories[0].id))).get()));
+console.log((await db.collection("RegenConcept").record((await db.collection("RegenConcept").record("regenerative-water-management").get()).data.categories[0].id).get()).data);

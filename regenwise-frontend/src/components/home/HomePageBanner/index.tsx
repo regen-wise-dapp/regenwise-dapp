@@ -15,12 +15,13 @@ const creepster = Creepster({
 export default function Banner() {
   const [isOpen, setIsOpen] = useState(false);
   const scrollToSection = () => {
-    document.getElementById('main-page--scope-element')?.scrollIntoView(false);
+    document.getElementById('main-page--scope-element')?.scrollIntoView({ block: "center" });
   };
 
-  const openSkullPage = () => {
-    setIsOpen(true);
+  const scrollToSectionTwo = () => {
+    document.getElementById('main-page--content-element')?.scrollIntoView(false);
   };
+
 
   const handleClose = () => {
     setIsOpen(false);
@@ -43,7 +44,7 @@ export default function Banner() {
           >
             <div
               className={`${styles.image_container}`}
-              onClick={openSkullPage}
+              onClick={scrollToSectionTwo}
             >
               <Image
                 src="/banner/carbon_0a.jpg"
