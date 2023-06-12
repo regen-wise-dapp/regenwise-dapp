@@ -1,0 +1,31 @@
+.main_container {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 1em;
+        justify-content: center;
+      }
+      .image_container {
+        max-width: 350px;
+        padding: 1em;
+        width: 100%;
+        img {
+          object-fit: cover;
+          box-shadow: 0px 0px 3px 0px grey;
+          border-radius: 50%;
+        }
+      }
+      .information_container {
+        flex: 1;
+        max-width: 500px;
+        width: 100%;
+      }
+    }
+  }
+}

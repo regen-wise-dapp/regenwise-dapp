@@ -1,0 +1,31 @@
+.list_item_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0px 0px 3px 0px;
+  background-color: #212529;
+  color: white;
+  border-radius: 1em;
+  &:nth-child(2n + 2) {
+    background-color: #304152;
+  }
+  .image_container {
+    margin: 1em;
+    box-shadow: 0px 0px 4px 0px white;
+    border-radius: 1em;
+    background-color: white;
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+    img {
+      object-fit: cover;
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+    justify-content: space-between;
+  }
+}

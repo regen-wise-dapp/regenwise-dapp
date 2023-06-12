@@ -9,7 +9,6 @@ import SearchBar from '@src/components/shared/SearchBar';
 import { Concept } from '@src/models/concept';
 import { fetcherWithNoCache } from '@src/utils/fetcher';
 
-
 interface Props {
   concepts: Concept[];
 }
@@ -48,12 +47,12 @@ export default function Concepts({ concepts }: Props) {
         <section className={styles.filter_bar_container}>
           <ConceptsNavBar
             concepts={concepts ?? []}
-            searchTerm={searchTerm} 
+            searchTerm={searchTerm}
             onHandleSelectConcept={(event) => setSelectedConcept(event)}
           />
         </section>
         <section className={styles.list_container}>
-          <ConceptItem concept={selectedConcept}/>
+          <ConceptItem concept={selectedConcept} />
         </section>
       </div>
     </div>

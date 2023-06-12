@@ -29,7 +29,7 @@ export const features: Feature[] = [
   {
 
     id: '4',
-    title: 'Engage in Meaningful Games',
+    title: 'Engage in Meaningful Quests',
     description:
       'Enjoy educational games while learning about regen in details. Compete with others and get opportunities to earn prizes.',
     icon: '/scope/scope-icons/1.png',

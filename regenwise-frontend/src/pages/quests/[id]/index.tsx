@@ -1,5 +1,5 @@
-import GameLayout from '@src/components/quests/GameLayout';
-import GameSetup, { SetupConfigs } from '@src/components/quests/QuestSetup';
+import QuestLayout from '@src/components/quests/QuestLayout';
+import QuestSetup, { SetupConfigs } from '@src/components/quests/QuestSetup';
 import { fetcher } from '@src/utils/fetcher';
 import { GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
@@ -62,7 +62,7 @@ export default function index() {
     });
   };
 
-  const prepareGame = (setupConfig: SetupConfigs) => {
+  const prepareQuest = (setupConfig: SetupConfigs) => {
     setSetupConfigs(setupConfig);
     setsIsSetupCompleted(true);
   };
@@ -109,11 +109,11 @@ export default function index() {
       </div>
       <div className="flex flex-1 w-full justify-center py-5">
         {isSetupCompleted ? (
-          <GameLayout setupConfigs={setupConfigs as SetupConfigs} />
+          <QuestLayout setupConfigs={setupConfigs as SetupConfigs} />
         ) : (
-          <GameSetup
+          <QuestSetup
             isMember={isAuthenticated ? true : false}
-            onHandleSetup={prepareGame}
+            onHandleSetup={prepareQuest}
             selectedQuest={selectedQuest}
           />
         )}
