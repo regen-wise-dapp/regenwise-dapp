@@ -3,7 +3,7 @@ import { ethPersonalSign } from '@polybase/eth';
 import 'dotenv/config';
 
 const db = new Polybase({
-    defaultNamespace: "regenwise-db",
+    defaultNamespace: "regenwise-regen-db",
     signer: (data) => {
       return {
         h: 'eth-personal-sign',
@@ -25,4 +25,4 @@ const db = new Polybase({
     likes?: number;
     
 */
-await db.collection("RegenConcept").record("regenerative-agriculture-stockbreeding-and-forestry").call("del");
+await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("del");

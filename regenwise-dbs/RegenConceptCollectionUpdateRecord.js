@@ -3,7 +3,7 @@ import { ethPersonalSign } from '@polybase/eth';
 import 'dotenv/config';
 
 const db = new Polybase({
-    defaultNamespace: "regenwise-db",
+    defaultNamespace: "regenwise-regen-db",
     signer: (data) => {
       return {
         h: 'eth-personal-sign',
@@ -28,17 +28,17 @@ const db = new Polybase({
 // await db.collection("RegenConcept").record("others").call("setSubconcepts", [["Regenerative Water Management", "Regenerative Waste Management", "Regenerative Fisheries", "Regenerative Education", "Regenerative Landscaping", "Regenerative Diets"]]);
 
 
-await db.collection("RegenConcept").record("regeneration").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-education").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-agriculture-stockbreeding-and-forestry").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-energy-and-buildings").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-fisheries").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-landscaping").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-waste-management").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-water-management").call("setCategories", [[]]);
+await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setAdder", ["regenWiseTeam0"]);
+// await db.collection("RegenConcept").record("regenerative-education").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-energy-and-buildings").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-fisheries").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-landscaping").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-waste-management").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-water-management").call("setParentConcepts", [[]]);
 
-// await db.collection("RegenConcept").record("regenerative-energy").call("setCategories", [[]]);
-// await db.collection("RegenConcept").record("regenerative-buildings").call("setCategories", [[]]);
+// await db.collection("RegenConcept").record("regenerative-energy").call("setParentConcepts", [[]]);
+// await db.collection("RegenConcept").record("regenerative-buildings").call("setParentConcepts", [[]]);
 
 // await db.collection("RegenConcept").record("regenerative-water-management").call("setLink", [JSON.stringify((await db.collection("RegenConcept").record("regeneration").get()).data)]);
 // console.log(await ((await db.collection("RegenConcept").record(JSON.stringify((await db.collection("RegenConcept").record("regenerative-water-management").get()).data.categories[0].id))).get()));

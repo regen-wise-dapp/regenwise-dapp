@@ -3,6 +3,15 @@ import { ethPersonalSign } from '@polybase/eth';
 import 'dotenv/config';
 
 const db = new Polybase({
+    defaultNamespace: "regenwise-regen-db",
+    signer: (data) => {
+      return {
+        h: 'eth-personal-sign',
+        sig: ethPersonalSign(process.env.key0, data)
+      }}
+  });
+
+ const db1 = new Polybase({
     defaultNamespace: "regenwise-db",
     signer: (data) => {
       return {
@@ -11,27 +20,32 @@ const db = new Polybase({
       }}
   });
 
+
+const concept = await db1.collection("RegenConcept").record("regenerative-water-management").get()
+// console.log(concept.data);
+
+
+
 /*  
         id: string,
-        Cid?: string,
+        cid?: string,
         name: string,
         adder: string,
         explanation: string[],
-        categories?: string[],
-        subconcepts?: RegenConcept[],
-        projects?: RegenProject[],
+        parentConcepts?: string[],
+        childConcepts?: string[],
+        projects?: string[],
         link?: string
     
 */
-
-await db.collection("RegenConcept").create(["regenerative-agriculture",
+await db.collection("RegenConcept").create([concept.data.id,
                                             "",
-                                            "Regenerative Agriculture",
-                                            "regenWiseTeam0",
-                                            [["Explanation"]],
-                                            [["Categories"]],
-                                            [[]],
-                                            [[]],
+                                            concept.data.name,
+                                            "regenWiseTeam",
+                                            concept.data.explanation,
+                                            ["regeneration"],
+                                            [],
+                                            [],
                                             ""
                                         ])
 

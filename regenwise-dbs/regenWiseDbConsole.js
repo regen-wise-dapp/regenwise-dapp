@@ -1,99 +1,10 @@
-import { Polybase } from "@polybase/client";
-import { ethPersonalSign } from '@polybase/eth'
-import 'dotenv/config'
-
-const db = new Polybase({
-    defaultNamespace: "regenwise-regen-db",
-    signer: (data) => {
-        return {
-            h: 'eth-personal-sign',
-            sig: ethPersonalSign(process.env.key0, data)
-        }
-    }
-});
-// sign-in condition
 const conditionZero = "if (!ctx.publicKey){error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}";
 // pkey check for function call condition
 const conditionOne = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to call this function.');}";
 // pkey check for constructor
 const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to add a record to this collection.');}";
 
-
-await db.applySchema(`
-
-
-  @public 
-  collection user 
-  {
-    id: string;
-    userName?: string;
-    name?: string;
-    surname?:string;
-    projects?: string[];
-    points?: number;
-    nftCids?: string[];
-    publicKeyH?: string;
-
-    constructor (id: string, userName: string, name: string, surname: string, projects?: string[], points?: number, nftCids?: string[], publicKeyH?: string) {
-        ${conditionZero}
-        ${conditionTwo}
-        this.id = id;
-        this.userName = userName;
-        this.name = name;
-        this.surname = surname;
-        this.projects = projects;
-        this.points = points;
-        this.nftCids = nftCids;
-        this.publicKeyH = publicKeyH;
-    }
-
-    function setUserName (userName: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.userName = userName;
-    }
-
-    function setName (name: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.name = name;
-    }
-
-    function setSurname (surname: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.surname = surname;
-    }
-
-    function setProjects (projects: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.projects = projects;
-    }
-
-    function setPoints (points: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.points = points;
-    }
-
-    function setNftCids (nftCids: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.nftCids = nftCids;
-    }
-
-    function setPublicKeyH (publicKeyH: string) {
-        ${conditionZero}
-        ${conditionOne}
-        this.publicKeyH = publicKeyH;
-    }
-    del () {
-        ${conditionZero}
-        ${conditionOne}
-        selfdestruct();
-      }
-  }
+console.log(`
 
   @public
   collection RegenProject {
@@ -244,12 +155,6 @@ await db.applySchema(`
             ${conditionOne}
             this.likes = likes;
         }
-
-        del () {
-            ${conditionZero}
-            ${conditionOne}
-            selfdestruct();
-          }
   }
 
   @public
@@ -351,4 +256,4 @@ await db.applySchema(`
         selfdestruct();
       }
 }
-`,);
+`)
