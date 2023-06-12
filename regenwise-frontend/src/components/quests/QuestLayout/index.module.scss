@@ -1,0 +1,18 @@
+.main_container {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  flex-direction: column;
+  .question_section {
+    display: flex;
+    padding: 2em 0;
+    border-bottom: 1px solid rgb(36, 34, 34);
+  }
+  .answer_section {
+    flex: 1;
+    display: flex;
+  }
+  .controller_section {
+    height: 10%;
+  }
+}

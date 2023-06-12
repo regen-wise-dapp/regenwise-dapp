@@ -111,7 +111,7 @@ export default function QuestSetup({
                 className={styles.start_button}
                 onClick={() => handleSetup('')}
               >
-                START THE GAME
+                START THE QUEST
               </Button>
             </div>
           ) : (
