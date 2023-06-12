@@ -27,15 +27,17 @@ const concept = await db1.collection("RegenConcept").record("regenerative-water-
 
 
 /*  
-        id: string,
-        cid?: string,
-        name: string,
-        adder: string,
-        explanation: string[],
-        parentConcepts?: string[],
-        childConcepts?: string[],
-        projects?: string[],
-        link?: string
+    id: string;
+    cid?: string;
+    name: string;
+    adder: string;
+    explanation: string[];
+    parentConcepts?: string[];
+    childConcepts?: string[];
+    projects?: string[];
+    link?: string;
+    // adderPublicKeyH: string;
+    // likes?: number;
     
 */
 await db.collection("RegenConcept").create([concept.data.id,

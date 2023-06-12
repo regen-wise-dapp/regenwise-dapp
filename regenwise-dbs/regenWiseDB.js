@@ -104,7 +104,7 @@ await db.applySchema(`
     description: string[];
     isInstutional: boolean;
     status: string;
-    approvalStatus: string[];
+    approvalStatus: string;
     implementers: string[];
     concepts: string[];
     contactEmail: string;
@@ -117,12 +117,12 @@ await db.applySchema(`
     country?: string;
     likes?: number;
 
-    constructor (id: string, cid?: string, projectName: string, description: string[], isInstutional: boolean, status: string, approvalStatus: string[], implementers: string[], concepts: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+    constructor (id: string, cid?: string, name: string, description: string[], isInstutional: boolean, status: string, approvalStatus: string, implementers: string[], concepts: string[], contactEmail:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
         this.cid = cid;
-        this.projectName = projectName;
+        this.name = name;
         this.adderPublicKeyH = ctx.publicKey.toHex();
         this.description = description;
         this.isInstutional = isInstutional;
@@ -147,10 +147,10 @@ await db.applySchema(`
         this.cid = cid;
     }
   
-    function setProjectName (projectName: string) {
+    function setName (name: string) {
         ${conditionZero}
         ${conditionOne}
-        this.projectName = projectName;
+        this.name = name;
     }
   
     function setDescription (description: string[]) {
