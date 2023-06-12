@@ -1,11 +1,8 @@
 'use client';
 import styles from './index.module.scss';
 import { useEffect, useState } from 'react';
-import { debounce } from 'lodash';
 import axios from 'axios';
-import FilterBar, { AdvanceFilter } from '@/components/FilterBar';
-import SearchBar from '@/components/SearchBar';
-import { OrderDirection } from '@/constants/misc';
+import SearchBar from '@/components/shared/SearchBar';
 import { Concept } from '@/models/concept';
 import { GetServerSideProps } from 'next';
 import { fetcherWithNoCache } from '@/utils/fetcher';
