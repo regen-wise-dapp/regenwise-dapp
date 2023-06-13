@@ -1,4 +1,4 @@
-import { EASY, HARD, MEDIUM } from '@/constants/misc';
+import { EASY, HARD, MEDIUM } from "@src/constants/misc";
 
 export const getTurns = (difficulty: string) => {
   switch (difficulty) {

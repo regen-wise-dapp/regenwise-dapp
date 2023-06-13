@@ -4,3 +4,4 @@ export type OrderDirection = 'ascending' | 'descending';
 export const EASY = 'easy';
 export const MEDIUM = 'medium';
 export const HARD = 'hard';
+export type DifficultyLevels = 'easy' | 'medium' | 'hard';
