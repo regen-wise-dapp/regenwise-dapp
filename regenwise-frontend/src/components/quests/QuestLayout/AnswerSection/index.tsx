@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
-import { Option } from '@src/pages/quests/[id]';
+import { Option } from '@src/models/quest';
 
 interface Props {
   options: Option[];

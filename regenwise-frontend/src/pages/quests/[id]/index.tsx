@@ -1,5 +1,4 @@
 import QuestLayout from '@src/components/quests/QuestLayout';
-import QuestSetup, { SetupConfigs } from '@src/components/quests/QuestSetup';
 import { fetcher } from '@src/utils/fetcher';
 import { GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
@@ -7,30 +6,25 @@ import styles from './index.module.scss';
 import { useRouter } from 'next/router';
 import { EASY } from '@src/constants/misc';
 import { useSelector } from 'react-redux';
-import { testQuestions } from '@src/constants/quests';
-import { RootState } from '@store/index';
+import { AppDispatch, RootState } from '@store/index';
 import Loading from '@src/components/shared/Loading';
 import AlertModal from '@src/components/quests/AlertModal';
 import QuestAnalytics from '@src/components/quests/QuestAnalytics';
-
-export interface QuestState {
-  questions: QuestionItem[];
-  answers: string[];
-  correctAnswers: number;
-  totalQuestTime: number;
-  points: number;
-}
-
-export interface Option {
-  id: string;
-  option: string;
-}
-
-export interface QuestionItem {
-  question: string;
-  options: Option[];
-  correctAnswer: string;
-}
+import {
+  calculatePoints,
+  calculateRemainingTime,
+  calculcateCorrectAnswers,
+  getQuestions,
+} from '@src/utils/questOperations';
+import {
+  QuestState,
+  QuestionItem,
+  Option,
+  SetupConfigs,
+} from '@src/models/quest';
+import QuestSetup from '@src/components/quests/QuestSetup';
+import { useDispatch } from 'react-redux';
+import { setGameContinue, setGameFinished } from '@slices/questSlice';
 
 export const getServerSideProps: GetStaticProps = async () => {
   try {
@@ -46,8 +40,13 @@ export const getServerSideProps: GetStaticProps = async () => {
 };
 
 export default function index() {
+  const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
+  const remainingTime = useSelector(
+    (state: RootState) => state.quest.remainingTime
+  );
   const [isSetupCompleted, setsIsSetupCompleted] = useState(false);
-  const [selectedQuest, setselectedQuest] = useState('');
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [setupConfigs, setSetupConfigs] = useState({
     track: '',
     difficulty: EASY,
@@ -55,39 +54,37 @@ export default function index() {
   const isAuthenticated = useSelector(
     (state: RootState) => state.authentication.user
   );
-  const router = useRouter();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questState, setQuestState] = useState<QuestState>({
     questions: [] as QuestionItem[],
-    answers: [] as string[],
+    answers: [] as Option[],
     correctAnswers: 0,
     totalQuestTime: 0,
     points: 0,
   } as QuestState);
 
-  useEffect(() => {
-    if (router.query.id) {
-      setselectedQuest((router.query.id as string) ?? '');
-      const questions = structuredClone(testQuestions);
-      setQuestState({
-        questions: questions,
-        answers: [] as string[],
-        correctAnswers: 0,
-        totalQuestTime: 0,
-        points: 0,
-      });
-    }
-  }, [router]);
-
   const prepareQuest = (setupConfig: SetupConfigs) => {
-    setSetupConfigs(setupConfig);
+    setSetupConfigs((prev) => {
+      return {
+        ...prev,
+        difficulty: setupConfig.difficulty,
+      };
+    });
     setsIsSetupCompleted(true);
   };
 
-  const handleAnswer = (event: any) => {
-    setCurrentQuestion((prev) => {
-      return prev + 1;
+  const handlePlayAgain = () => {
+    setsIsSetupCompleted(false);
+    setCurrentQuestion(0);
+    setQuestState({
+      questions: [],
+      answers: [] as Option[],
+      correctAnswers: 0,
+      totalQuestTime: 0,
+      points: 0,
     });
+  };
+
+  const handleAnswer = (event: any) => {
     const answers = structuredClone(questState.answers);
     answers.push(event);
     setQuestState((prev) => {
@@ -96,7 +93,76 @@ export default function index() {
         answers: answers,
       };
     });
+
+    setCurrentQuestion((prev) => {
+      return prev + 1;
+    });
   };
+
+  const finishGame = () => {
+    console.log('finished');
+    setCurrentQuestion(questState.questions.length);
+    dispatch(setGameFinished());
+  };
+
+  //This useState is to initialize the quest
+  useEffect(() => {
+    if (setupConfigs.track !== '' && setupConfigs.difficulty) {
+      const questions = getQuestions(
+        setupConfigs.track,
+        setupConfigs.difficulty
+      );
+      setQuestState({
+        questions: questions,
+        answers: [] as Option[],
+        correctAnswers: 0,
+        totalQuestTime: 0,
+        points: 0,
+      });
+      dispatch(setGameContinue());
+    }
+  }, [setupConfigs]);
+
+  useEffect(() => {
+    if (router.query.id) {
+      setSetupConfigs((prev) => {
+        return {
+          track: (router.query.id as string) ?? '',
+          difficulty: prev.difficulty,
+        };
+      });
+    }
+  }, [router]);
+
+  //This useState is for finalizing the game
+  useEffect(() => {
+    if (
+      questState.questions.length > 0 &&
+      questState.questions.length === currentQuestion
+    ) {
+      setQuestState((prev) => {
+        let state = {
+          ...prev,
+          correctAnswers: calculcateCorrectAnswers(
+            prev.questions,
+            prev.answers
+          ),
+          totalQuestTime: calculateRemainingTime(
+            remainingTime,
+            setupConfigs.difficulty
+          ),
+          points: calculatePoints(
+            prev.questions,
+            prev.answers,
+            setupConfigs.difficulty,
+            remainingTime
+          ),
+        };
+        return state;
+      });
+      dispatch(setGameFinished());
+    }
+  }, [currentQuestion]);
 
   return (
     <div
@@ -111,15 +177,20 @@ export default function index() {
                 correctAnswers={questState.correctAnswers}
                 time={questState.totalQuestTime}
                 score={questState.points}
+                totalQuestion={questState.answers.length}
+                onHandlePlayAgain={handlePlayAgain}
               ></QuestAnalytics>
             ) : (
-              <QuestLayout
-                currentQuestion={currentQuestion}
-                totalNumberOfQuestions={questState?.questions.length}
-                questionItem={questState?.questions[currentQuestion]}
-                onHandleAnswer={handleAnswer}
-                setupConfigs={setupConfigs}
-              />
+              questState?.questions[currentQuestion] && (
+                <QuestLayout
+                  currentQuestion={currentQuestion}
+                  totalNumberOfQuestions={questState?.questions.length}
+                  questionItem={questState?.questions[currentQuestion]}
+                  onHandleAnswer={handleAnswer}
+                  setupConfigs={setupConfigs}
+                  onHandleFinish={finishGame}
+                />
+              )
             )
           ) : (
             <div className="flex m-auto justify-center items-center">
@@ -130,7 +201,7 @@ export default function index() {
           <QuestSetup
             isMember={isAuthenticated ? true : false}
             onHandleSetup={prepareQuest}
-            selectedQuest={selectedQuest}
+            selectedQuest={setupConfigs.track}
           />
         )}
       </div>

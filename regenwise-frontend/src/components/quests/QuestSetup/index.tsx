@@ -8,41 +8,14 @@ import { setModalOpen } from '@slices/gameModalSlice';
 import { fetchUserInfo } from '@slices/userSlice';
 import { AppDispatch } from '@store/index';
 import { DifficultyLevels, EASY } from '@src/constants/misc';
+import { SetupConfigs } from '@src/models/quest';
+import { difficultyButtons } from '@src/constants/quests';
 
 interface Props {
   isMember: boolean;
   onHandleSetup: ({}: SetupConfigs) => void;
   selectedQuest: string;
 }
-
-export interface SetupConfigs {
-  difficulty: DifficultyLevels;
-  track: string;
-}
-
-export interface DifficultyButton {
-  id: DifficultyLevels;
-  name: string;
-  link: DifficultyLevels;
-}
-
-const difficultyButtons: DifficultyButton[] = [
-  {
-    id: 'easy',
-    name: 'EASY',
-    link: 'easy',
-  },
-  {
-    id: 'medium',
-    name: 'MEDIUM',
-    link: 'medium',
-  },
-  {
-    id: 'hard',
-    name: 'HARD',
-    link: 'hard',
-  },
-];
 
 export default function QuestSetup({
   isMember,
