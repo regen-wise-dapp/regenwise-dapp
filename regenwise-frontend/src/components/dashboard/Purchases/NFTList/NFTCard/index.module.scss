@@ -1,7 +1,8 @@
 .card_container {
-  width: 330px !important;
+  width: 340px !important;
   box-sizing: border-box;
-  box-shadow: 0px 0px 5px 1px white, 0px 0px 10px 1px yellow, 0px 0px 15px 1px crimson;
+  box-shadow: 0px 0px 5px 1px white, 0px 0px 15px 1px yellow,
+    0px 0px 20px 1px orange, 0px 0px 35px 1px crimson;
   background-image: linear-gradient(
       216deg,
       rgba(77, 77, 77, 0.05) 0%,
@@ -52,19 +53,27 @@
   display: flex;
   flex-direction: column;
   .image_container {
-    width: 330px;
-    height: 330px;
+    width: 340px;
+    height: 425px;
     overflow: hidden;
     position: relative;
     border-bottom: 1px solid lightgrey;
     background-color: white;
     img {
       object-fit: cover;
+      transition: all 0.3s ease-in-out;
+      &:hover{
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+        filter: brightness(1.25);
+      }
     }
   }
   .content {
     flex: 1;
     padding: 1em;
+    display: flex;
+    flex-direction: column;
     .title {
       color: blanchedalmond;
       position: relative;
@@ -83,8 +92,27 @@
       }
     }
     .information {
+      flex: 1;
       padding: 1em 0;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .description {
+        position: relative;
+        flex: 1;
+        margin-bottom: 2em;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -1em;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: white;
+          box-shadow: 0px 0px 5px 1px orange, 0px 0px 10px 1px crimson;
+        }
+      }
     }
   }
 

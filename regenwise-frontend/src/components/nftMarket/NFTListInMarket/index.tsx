@@ -1,7 +1,7 @@
 import { CardGroup } from 'react-bootstrap';
 import styles from './index.module.scss';
-import { NFTItem } from '@/models/nftItem';
 import dynamic from 'next/dynamic';
+import { NFTItem } from '@src/models/nftItem';
 
 const NFTCardInMarket = dynamic(() => import('./NFTCardInMarket'));
 
