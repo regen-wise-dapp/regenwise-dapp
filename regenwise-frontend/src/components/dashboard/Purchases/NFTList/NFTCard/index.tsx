@@ -1,8 +1,8 @@
-import { NFTItem } from '@/models/nftItem';
 import styles from './index.module.scss';
 import { Button, Form } from 'react-bootstrap';
 import Image from 'next/image';
 import { useState } from 'react';
+import { NFTItem } from '@src/models/nftItem';
 
 interface Props {
   card: NFTItem;
@@ -19,10 +19,12 @@ export default function NFTCard({ card, executeRelist }: Props) {
       </div>
       <div className={styles.content}>
         <div className={styles.title}>
-          <h3 className="font-extrabold">{`${card.name}`}</h3>
+          <h3 className="font-extrabold text-center">{`${card.name}`}</h3>
         </div>
         <div className={styles.information}>
-          <h4 className="font-extrabold">{`${card.description}`}</h4>
+          <h4
+            className={`${styles.description} text-base text-center`}
+          >{`${card.description}`}</h4>
         </div>
         <Form.Control
           id="salePrice"

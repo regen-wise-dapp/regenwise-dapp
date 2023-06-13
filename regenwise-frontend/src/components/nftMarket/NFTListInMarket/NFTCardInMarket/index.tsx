@@ -16,11 +16,11 @@ export default function NFTCardInMarket({ card, onHandleBuy }: Props) {
       </div>
       <div className={styles.content}>
         <div className={styles.title}>
-          <h3 className="font-extrabold">{`${card.name}`}</h3>
+          <h3 className="font-extrabold text-center">{`${card.name}`}</h3>
         </div>
         <div className={styles.information}>
-          <h4 className="font-extrabold">{`${card.description}`}</h4>
-          <h4 className="font-extrabold">{`${card.value} TBNB`}</h4>
+          <h4 className={`${styles.description} text-base text-center`}>{`${card.description}`}</h4>
+          <h4 className="font-extrabold text-center">{`${card.value} MATIC`}</h4>
         </div>
         <Button
           className={styles.button}
