@@ -1,5 +1,3 @@
-import { Option, QuestionItem } from '@src/pages/quests/[id]';
-import { SetupConfigs } from '../QuestSetup';
 import AnswerSection from './AnswerSection';
 import ControllerSection from './ControllerSection';
 import QuestionSection from './QuestionSection';
@@ -10,6 +8,7 @@ import { Button } from 'react-bootstrap';
 import { MdOutlineArrowBack, MdOutlineTimer } from 'react-icons/md';
 import Timer from '../Timer';
 import { Press_Start_2P } from 'next/font/google';
+import { QuestionItem, SetupConfigs, Option } from '@src/models/quest';
 
 const press_Start_2P = Press_Start_2P({
   weight: ['400'],
@@ -21,15 +20,17 @@ interface Props {
   currentQuestion: number;
   totalNumberOfQuestions: number;
   onHandleAnswer: (item: Option) => void;
+  onHandleFinish: () => void;
   setupConfigs: SetupConfigs;
 }
 
 export default function QuestLayout({
+  currentQuestion,
   questionItem,
   totalNumberOfQuestions,
-  currentQuestion,
   onHandleAnswer,
   setupConfigs,
+  onHandleFinish,
 }: Props) {
   const [isTimerVisible, setIsTimerVisible] = useState(true);
 
@@ -43,7 +44,9 @@ export default function QuestLayout({
     });
   };
 
-  const finishQuest = () => {};
+  const finishQuest = () => {
+    onHandleFinish();
+  };
 
   return (
     <div className={`${styles.main_container}`}>
@@ -75,20 +78,28 @@ export default function QuestLayout({
         </div>
       </div>
       <div className={`${styles.question_section}`}>
-        <QuestionSection questionText={questionItem.question}></QuestionSection>
+        {questionItem.question && (
+          <QuestionSection
+            questionText={questionItem.question}
+          ></QuestionSection>
+        )}
       </div>
       <div className={`${styles.answer_section}`}>
-        <AnswerSection
-          options={questionItem.options}
-          correctOption={questionItem.correctAnswer}
-          onHandleAnswer={onHandleAnswer}
-        ></AnswerSection>
+        {questionItem.options && questionItem.correctAnswer && (
+          <AnswerSection
+            options={questionItem.options}
+            correctOption={questionItem.correctAnswer}
+            onHandleAnswer={onHandleAnswer}
+          ></AnswerSection>
+        )}
       </div>
       <div className={`${styles.controller_section}`}>
-        <ControllerSection
-          totalNumberOfQuestions={totalNumberOfQuestions}
-          currentQuestion={currentQuestion}
-        ></ControllerSection>
+        {totalNumberOfQuestions && currentQuestion && (
+          <ControllerSection
+            totalNumberOfQuestions={totalNumberOfQuestions}
+            currentQuestion={currentQuestion}
+          ></ControllerSection>
+        )}
       </div>
     </div>
   );
