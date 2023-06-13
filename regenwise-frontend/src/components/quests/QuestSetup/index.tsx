@@ -7,6 +7,7 @@ import { setUser } from '@slices/authenticationSlice';
 import { setModalOpen } from '@slices/gameModalSlice';
 import { fetchUserInfo } from '@slices/userSlice';
 import { AppDispatch } from '@store/index';
+import { DifficultyLevels, EASY } from '@src/constants/misc';
 
 interface Props {
   isMember: boolean;
@@ -15,11 +16,17 @@ interface Props {
 }
 
 export interface SetupConfigs {
-  difficulty: string;
+  difficulty: DifficultyLevels;
   track: string;
 }
 
-const difficultyButtons = [
+export interface DifficultyButton {
+  id: DifficultyLevels;
+  name: string;
+  link: DifficultyLevels;
+}
+
+const difficultyButtons: DifficultyButton[] = [
   {
     id: 'easy',
     name: 'EASY',
@@ -42,7 +49,7 @@ export default function QuestSetup({
   onHandleSetup,
   selectedQuest,
 }: Props) {
-  const [difficulty, setDifficulty] = useState('easy');
+  const [difficulty, setDifficulty] = useState<DifficultyLevels>(EASY);
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
@@ -143,4 +150,3 @@ export default function QuestSetup({
     </div>
   );
 }
-

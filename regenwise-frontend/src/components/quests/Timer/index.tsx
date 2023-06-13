@@ -1,29 +1,42 @@
 import { useState, useEffect } from 'react';
+import { DifficultyLevels, EASY, HARD, MEDIUM } from '@src/constants/misc';
 
 interface Props {
-  reset: boolean;
+  difficulty: DifficultyLevels;
+  onTimeFinish: () => void;
 }
 
-function Timer({ reset }: Props) {
+function Timer({ difficulty, onTimeFinish }: Props) {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
+    console.log('difficulty', difficulty);
+    switch (difficulty) {
+      case EASY:
+        setTime(180);
+        break;
+      case MEDIUM:
+        setTime(300);
+        break;
+      case HARD:
+        setTime(420);
+        break;
+    }
+  }, [difficulty]);
+
+  useEffect(() => {
     let timerId: any;
-
-    timerId = setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
-    }, 1000);
-
+    if (time > 0) {
+      timerId = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else {
+      onTimeFinish();
+    }
     return () => {
       clearInterval(timerId);
     };
-  }, []);
-
-  useEffect(() => {
-    if (reset === true) {
-      setTime(0);
-    }
-  }, [reset]);
+  }, [time]);
 
   const formatTime = (timeInSeconds: any) => {
     const hours = Math.floor(timeInSeconds / 3600)
