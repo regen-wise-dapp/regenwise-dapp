@@ -33,8 +33,9 @@ export default async function handler(
   const db = new Polybase({
     defaultNamespace: "regenwise-db",
   });
+  const collectionReference = db.collection("RegenConcept");
 
-  const jsonDataData = await db.collection("RegenConcept").record("regenerative-education").get();
+  const jsonDataData = await collectionReference.get();
   
 
 
