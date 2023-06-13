@@ -2,7 +2,6 @@ import 'dotenv/config';
 
 // deployer wallet private key from environment variables
 export const key1 = process.env.NEXT_PUBLIC_key1;
-console.log(key1);
 // NFT Marketplace contract adrresses
 export const mumbaiResellConAddr = "0x958B1A9DFac62B4D7CAaef55eD3BD1AE0077192f"; // mumbai testnet
 export const sepoliaResellConAddr = "0x"; // sepolia testnet
