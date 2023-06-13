@@ -3,7 +3,7 @@ import { Polybase } from "@polybase/client";
 
 // Initializing the cors middleware
 const cors = Cors({
-  methods: ['POST', 'GET', 'HEAD'],
+  methods: ['GET', 'POST'],
 })
 
 // Helper method to wait for a middleware to execute before continuing
