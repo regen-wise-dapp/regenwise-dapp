@@ -1,8 +1,8 @@
 import { CardGroup, Card } from 'react-bootstrap';
 import DashboardHeader from '../../shared/DashboardHeader';
 import styles from './index.module.scss';
-import { NFTItem } from '@/models/nftItem';
 import NFTCard from './NFTCard';
+import { NFTItem } from '@src/models/nftItem';
 
 interface Props {
   header: string;
