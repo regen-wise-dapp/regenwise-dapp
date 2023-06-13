@@ -77,7 +77,6 @@ export default function NFTmarket() {
     setLoading(true);
     setLoadingMessage('Loading');
     const provider = new ethers.providers.JsonRpcProvider(testNet);
-    console.log(key1);
     const key = key1;
     const wallet = new ethers.Wallet(key as any, provider);
     const contract = new ethers.Contract(
