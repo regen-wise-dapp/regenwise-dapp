@@ -36,9 +36,11 @@ export const calculatePoints = (
   const incorrectAnswers = questionItems.length - correctAnswers;
   const difficultyFactor = getDifficultyFactor(difficulty);
   const score =
-    correctAnswers * 10 * difficultyFactor -
-    incorrectAnswers * 5 +
-    remainingTime;
+    correctAnswers * 100 * difficultyFactor -
+    incorrectAnswers * 50 +
+    (correctAnswers - incorrectAnswers > 0
+      ? remainingTime * (correctAnswers - incorrectAnswers)
+      : 0);
   return score > 0 ? score : 0;
 };
 
