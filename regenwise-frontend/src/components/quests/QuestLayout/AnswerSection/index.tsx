@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { Option } from '@src/models/quest';
+import { LayoutGroup, motion } from 'framer-motion';
 
 interface Props {
   options: Option[];
@@ -15,8 +16,8 @@ export default function AnswerSection({
   correctOption,
   onHandleAnswer,
 }: Props) {
+  console.log('dbg');
   const [clickedOption, setClickedOption] = useState('');
-
   const handleClick = (item: Option) => {
     setClickedOption(item.id);
     setTimeout(() => {
@@ -26,26 +27,32 @@ export default function AnswerSection({
   };
 
   return (
-    <div className={styles.main_container}>
-      {options.map((item, index) => {
-        return (
-          <div
-            key={item.id}
-            style={
-              clickedOption === item.id
-                ? correctOption === item.id
-                  ? { backgroundColor: 'green' }
-                  : { backgroundColor: 'red' }
-                : {}
-            }
-            className={styles.list_item}
-            onClick={() => handleClick(item)}
-          >
-            <div className={styles.option_letter}>{optionLetters[index]}</div>
-            <div className={styles.option_text}>{item.option}</div>
-          </div>
-        );
-      })}
-    </div>
+    <LayoutGroup>
+      <div className={styles.main_container}>
+        {options.map((item, index) => {
+          return (
+            <motion.div
+              initial={{ opacity: 0}}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 2, ease: 'easeInOut' }}
+              key={item.id}
+              style={
+                clickedOption === item.id
+                  ? correctOption === item.id
+                    ? { backgroundColor: 'green' }
+                    : { backgroundColor: 'red' }
+                  : {}
+              }
+              className={styles.list_item}
+              onClick={() => handleClick(item)}
+            >
+              <div className={styles.option_letter}>{optionLetters[index]}</div>
+              <div className={styles.option_text}>{item.option}</div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </LayoutGroup>
   );
 }

@@ -98,7 +98,7 @@ export const getQuestions = (track: string, difficulty: DifficultyLevels) => {
 export const generateUniqueNumbers = (amount: number, length: number) => {
   const numbers = new Set();
   while (numbers.size < amount) {
-    const randomNumber = Math.floor(Math.random() * length) + 1;
+    const randomNumber = Math.floor(Math.random() * length);
     numbers.add(randomNumber);
   }
 
@@ -134,4 +134,36 @@ export const calculateRemainingTime = (
       break;
   }
   return remainingTime;
+};
+
+export const calculateTimeDifferenceInSeconds = (
+  startDate: Date,
+  endDate: Date
+) => {
+  const start = new Date(startDate).getTime();
+  const end = new Date(endDate).getTime();
+  const differenceInMilliseconds = end - start;
+  const differenceInSeconds = Math.floor(differenceInMilliseconds / 1000);
+
+  return differenceInSeconds;
+};
+
+export const shuffleArray = (questions: any[]) => {
+  // Make a copy of the original array to avoid modifying the input array
+  let shuffledArray = questions.slice();
+  let currentIndex = shuffledArray.length;
+
+  // While there are elements remaining to shuffle
+  while (currentIndex !== 0) {
+    // Generate a random index from 0 to currentIndex (exclusive)
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // Swap the current element with the randomly selected element
+    let temporaryValue = shuffledArray[currentIndex];
+    shuffledArray[currentIndex] = shuffledArray[randomIndex];
+    shuffledArray[randomIndex] = temporaryValue;
+  }
+
+  return shuffledArray;
 };

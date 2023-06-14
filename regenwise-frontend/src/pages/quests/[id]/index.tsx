@@ -13,8 +13,10 @@ import QuestAnalytics from '@src/components/quests/QuestAnalytics';
 import {
   calculatePoints,
   calculateRemainingTime,
+  calculateTimeDifferenceInSeconds,
   calculcateCorrectAnswers,
   getQuestions,
+  shuffleArray,
 } from '@src/utils/questOperations';
 import {
   QuestState,
@@ -42,11 +44,9 @@ export const getServerSideProps: GetStaticProps = async () => {
 export default function index() {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const remainingTime = useSelector(
-    (state: RootState) => state.quest.remainingTime
-  );
   const [isSetupCompleted, setsIsSetupCompleted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentTime] = useState(new Date());
   const [setupConfigs, setSetupConfigs] = useState({
     track: '',
     difficulty: EASY,
@@ -100,7 +100,6 @@ export default function index() {
   };
 
   const finishGame = () => {
-    console.log('finished');
     setCurrentQuestion(questState.questions.length);
     dispatch(setGameFinished());
   };
@@ -108,12 +107,16 @@ export default function index() {
   //This useState is to initialize the quest
   useEffect(() => {
     if (setupConfigs.track !== '' && setupConfigs.difficulty) {
-      const questions = getQuestions(
+      const questions: QuestionItem[] = getQuestions(
         setupConfigs.track,
         setupConfigs.difficulty
       );
+      let shuffledQuestions = questions.map((item) => {
+        return { ...item, options: shuffleArray(item.options) };
+      });
+
       setQuestState({
-        questions: questions,
+        questions: shuffledQuestions,
         answers: [] as Option[],
         correctAnswers: 0,
         totalQuestTime: 0,
@@ -140,6 +143,10 @@ export default function index() {
       questState.questions.length > 0 &&
       questState.questions.length === currentQuestion
     ) {
+      const timePassed = calculateTimeDifferenceInSeconds(
+        currentTime,
+        new Date()
+      );
       setQuestState((prev) => {
         let state = {
           ...prev,
@@ -147,15 +154,12 @@ export default function index() {
             prev.questions,
             prev.answers
           ),
-          totalQuestTime: calculateRemainingTime(
-            remainingTime,
-            setupConfigs.difficulty
-          ),
+          totalQuestTime: timePassed,
           points: calculatePoints(
             prev.questions,
             prev.answers,
             setupConfigs.difficulty,
-            remainingTime
+            calculateRemainingTime(timePassed, setupConfigs.difficulty)
           ),
         };
         return state;
