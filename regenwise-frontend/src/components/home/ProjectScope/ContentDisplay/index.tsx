@@ -37,7 +37,7 @@ export default function ContentDisplay({ index }: Props) {
                 <Button
                   style={{ borderRadius: '20px', padding: '0.4em 2em', marginTop: "1em" }}
                   variant="danger"
-                  onClick={() => router.push(`/knowledge`)}
+                  onClick={() => router.push(`/concepts`)}
                 >
                   Learn More
                 </Button>

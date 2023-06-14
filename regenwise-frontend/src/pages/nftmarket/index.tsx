@@ -97,7 +97,7 @@ export default function NFTmarket() {
       let itemArray = [] as any;
       if (Number(await contract.totalSupply()) === 0) {
         (document as any).getElementById('nftInfo').innerHTML =
-          'There is no nft in your wallet from this collection to show.';
+          'There is no nft listed from this collection to show right now.';
       } else {
         contract.totalSupply().then(async (result: any) => {
           for (let i = 0; i < Number(result); i++) {
@@ -170,7 +170,7 @@ export default function NFTmarket() {
       )}
       <Alert style={{ textAlign: 'center' }} variant={'warning'}>
         Since the platform fetches data from the blockchain, it may take some
-        time to load. Be patient about this. <br /> Also, from time to time,
+        time to load (generally 10 to 30 seconds). Be patient about this. <br /> Also, from time to time,
         there may be problems while getting the data. Try refreshing the page
         and inform us if the problem continues.
       </Alert>
