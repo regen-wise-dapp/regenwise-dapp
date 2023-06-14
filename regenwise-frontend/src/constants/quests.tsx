@@ -286,7 +286,7 @@ export const energyQuestions = [
         id: '3',
         option: 'Energy derived from sustainable and renewable sources',
       },
-      { id: '4', option: 'Energy obtained through nuclear power plants' },
+      { id: '4', option: 'Energy obtained through wind turbines' },
       { id: '5', option: 'None of the above' },
     ],
     correctAnswer: '3',
@@ -331,7 +331,7 @@ export const energyQuestions = [
     question: "Which renewable energy source uses the Earth's internal heat?",
     options: [
       { id: '1', option: 'Solar power' },
-      { id: '2', option: 'Hydroelectric power' },
+      { id: '2', option: 'Hydropower' },
       { id: '3', option: 'Geothermal energy' },
       { id: '4', option: 'Biomass energy' },
       { id: '5', option: 'None of the above' },
@@ -344,7 +344,7 @@ export const energyQuestions = [
       { id: '1', option: 'To increase carbon emissions' },
       { id: '2', option: 'To convert sunlight into electricity' },
       { id: '3', option: 'To extract and burn fossil fuels' },
-      { id: '4', option: 'To generate nuclear energy' },
+      { id: '4', option: 'To reach wind energy' },
       { id: '5', option: 'None of the above' },
     ],
     correctAnswer: '2',
@@ -382,7 +382,7 @@ export const energyQuestions = [
       { id: '1', option: 'To deplete freshwater resources' },
       {
         id: '2',
-        option: 'To generate electricity from flowing or falling water',
+        option: 'To obtain energy from flowing or falling water',
       },
       { id: '3', option: 'To extract and burn fossil fuels' },
       { id: '4', option: 'To increase air pollution' },
@@ -394,7 +394,7 @@ export const energyQuestions = [
     question:
       'Which renewable energy source relies on plant and animal matter?',
     options: [
-      { id: '1', option: 'Nuclear power' },
+      { id: '1', option: 'Wind power' },
       { id: '2', option: 'Solar power' },
       { id: '3', option: 'Geothermal energy' },
       { id: '4', option: 'Biomass energy' },
@@ -406,7 +406,7 @@ export const energyQuestions = [
     question: 'What is the role of tidal energy in regenerative energy?',
     options: [
       { id: '1', option: 'To increase reliance on fossil fuels' },
-      { id: '2', option: 'To generate electricity from ocean tides' },
+      { id: '2', option: 'To obtain energy from ocean tides' },
       { id: '3', option: 'To extract and burn biomass' },
       { id: '4', option: 'To increase air pollution' },
       { id: '5', option: 'None of the above' },
@@ -417,7 +417,7 @@ export const energyQuestions = [
     question: 'Which renewable energy source utilizes the heat from the sun?',
     options: [
       { id: '1', option: 'Hydropower' },
-      { id: '2', option: 'Geothermal energy' },
+      { id: '2', option: 'Solar energy' },
       { id: '3', option: 'Wind power' },
       { id: '4', option: 'Biomass energy' },
       { id: '5', option: 'None of the above' },
@@ -454,7 +454,7 @@ export const energyQuestions = [
       { id: '1', option: 'To increase greenhouse gas emissions' },
       { id: '2', option: 'To convert fossil fuels into electricity' },
       { id: '3', option: 'To generate energy from organic matter' },
-      { id: '4', option: 'To increase reliance on nuclear power' },
+      { id: '4', option: 'To increase reliance on fossil fuels' },
       { id: '5', option: 'None of the above' },
     ],
     correctAnswer: '3',
