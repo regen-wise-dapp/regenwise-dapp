@@ -35,35 +35,70 @@ export default async function handler(
     defaultNamespace: "regenwise-regen-db",
   });
 
-  const collectionReference = db.collection("RegenProject");
-  const collectionReference1 = db.collection("RegenConcept");
+  const collectionReference0 = db.collection("RegenConcept");
+  const collectionReference1 = db.collection("RegenProject");
+  
 
-  const projectsData0 = (await collectionReference.get()).data;
+  const projectsData0 = (await collectionReference1.get()).data;
 
-  const projectsData = [];
+  let projectsData = [];
 
   projectsData0.forEach((project) => projectsData.push(project.data));
 
-  let projectConcepts = [];
-  let projectConceptObjects = [];
-  const projectDataV2 = [];
-  let projectConceptObject = [];
-  
+  projectsData = structuredClone(projectsData);
+  projectsData.forEach((project) => project.conceptsObjects = []);
 
-  // projectConceptObjects.push(
+  
+  
+  let projectsConcepts = [];
+  let projectsConceptsGetObjectsFunction;
+  let projectsConceptsObjects = [];
+  let projectConcept = {};
+
   projectsData.forEach((project) => {
-    
-    projectConcepts = structuredClone(project.concepts);
-    projectConcepts.map( (concept) => {
-      projectConceptObject.push((collectionReference1.record(concept).get()).data);
+    project.concepts.forEach((concept) => {
+      if (!(projectsConcepts.includes(concept))) {
+      projectsConcepts.push(concept);
+      }
     }
     )
-    Promise.all(projectConceptObjects).then((value) => console.log(value))
+  }
+  )
+
+  projectsConceptsGetObjectsFunction = async () => {
+    projectsConcepts.forEach(async (concept) => {
+      projectConcept = await collectionReference0.record(concept).get();
+      projectConcept = projectConcept.data;
+      projectsConceptsObjects.push(projectConcept);
+      if (projectsConceptsObjects.length === projectsConcepts.length)
+      {
+        projectsConceptsObjects.forEach((object) => {
+          projectsData.forEach((project) => {
+            if (project.concepts.includes(object.id))
+            {
+              project.conceptsObjects.push(object);
+            }
+          })
+
+        }
+        )
+        res.status(200).send(projectsData);
+      }
+    })
+    
+  }
+
+  await projectsConceptsGetObjectsFunction();
+  
 
 
-  });
 
   
 
 
+
+    
 }
+  
+
+

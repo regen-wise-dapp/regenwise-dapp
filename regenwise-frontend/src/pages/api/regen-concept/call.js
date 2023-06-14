@@ -31,7 +31,7 @@ export default async function handler(
   // Run the middleware
   await runMiddleware(req, res, cors)
   const db = new Polybase({
-    defaultNamespace: "regenwise-db",
+    defaultNamespace: "regenwise-regen-db",
   });
 
   const jsonDataData = db.collection("RegenConcept").where("likes", "==", 0).get();
