@@ -16,7 +16,6 @@ export default function AnswerSection({
   correctOption,
   onHandleAnswer,
 }: Props) {
-  console.log('dbg');
   const [clickedOption, setClickedOption] = useState('');
   const handleClick = (item: Option) => {
     setClickedOption(item.id);
@@ -35,7 +34,7 @@ export default function AnswerSection({
               initial={{ opacity: 0}}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 2, ease: 'easeInOut' }}
+              transition={{ duration: 2, ease: 'easeOut' }}
               key={item.id}
               style={
                 clickedOption === item.id

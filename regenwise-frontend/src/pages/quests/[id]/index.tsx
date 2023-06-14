@@ -46,7 +46,7 @@ export default function index() {
   const dispatch = useDispatch<AppDispatch>();
   const [isSetupCompleted, setsIsSetupCompleted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState(new Date());
   const [setupConfigs, setSetupConfigs] = useState({
     track: '',
     difficulty: EASY,
@@ -107,6 +107,7 @@ export default function index() {
   //This useState is to initialize the quest
   useEffect(() => {
     if (setupConfigs.track !== '' && setupConfigs.difficulty) {
+      setCurrentTime(new Date());
       const questions: QuestionItem[] = getQuestions(
         setupConfigs.track,
         setupConfigs.difficulty
@@ -147,6 +148,7 @@ export default function index() {
         currentTime,
         new Date()
       );
+      console.log(timePassed);
       setQuestState((prev) => {
         let state = {
           ...prev,
