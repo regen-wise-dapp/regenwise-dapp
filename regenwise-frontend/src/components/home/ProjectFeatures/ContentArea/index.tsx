@@ -25,7 +25,7 @@ export default function ContentArea() {
         <Button
           style={{ borderRadius: '20px', padding: '0.4em 2em' }}
           variant="danger"
-          onClick={() => router.push(`/about`)}
+          onClick={() => router.push(`/concepts`)}
         >
           Learn More
         </Button>
