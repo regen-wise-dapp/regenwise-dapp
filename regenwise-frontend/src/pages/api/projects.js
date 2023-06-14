@@ -1,6 +1,5 @@
 import Cors from 'cors';
 import { Polybase } from "@polybase/client";
-import { promises } from 'dns';
 
 // Initializing the cors middleware
 const cors = Cors({
