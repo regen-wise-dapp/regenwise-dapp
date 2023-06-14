@@ -1,6 +1,5 @@
 import Cors from 'cors';
 import { Polybase } from "@polybase/client";
-import { promises } from 'dns';
 
 // Initializing the cors middleware
 const cors = Cors({
@@ -36,35 +35,68 @@ export default async function handler(
   });
 
   const collectionReference0 = db.collection("RegenConcept");
-  const collectionReference1 = db.collection("RegenProject");
   
 
-  const projectsData0 = (await collectionReference1.get()).data;
+  const conceptsData0 = (await collectionReference0.get()).data;
 
-  const projectsData = [];
+  let conceptsData = [];
 
-  projectsData0.forEach((project) => projectsData.push(project.data));
+  conceptsData0.forEach((concept) => conceptsData.push(concept.data));
 
-  let projectConcepts = [];
-  let projectConceptObjects = [];
-  const projectDataV2 = [];
-  let projectConceptObject = [];
+  conceptsData = structuredClone(conceptsData);
+  conceptsData.forEach((concept) => concept.parentConceptsObjects = []);
+
   
+  
+  let conceptsParentConcepts = [];
+  let conceptsParentConceptsGetObjectsFunction;
+  let conceptsParentConceptsObjects = [];
+  let conceptParentConcept = {};
 
-  // projectConceptObjects.push(
-  projectsData.forEach((project) => {
-    
-    projectConcepts = structuredClone(project.concepts);
-    projectConcepts.map( (concept) => {
-      projectConceptObject.push((collectionReference0.record(concept).get()).data);
+  conceptsData.forEach((concept) => {
+    concept.parentConcepts.forEach((concept) => {
+      if (!(conceptsParentConcepts.includes(concept))) {
+        conceptsParentConcepts.push(concept);
+      }
     }
     )
-    Promise.all(projectConceptObjects).then((value) => console.log(value))
+  }
+  )
+
+  conceptsParentConceptsGetObjectsFunction = async () => {
+    conceptsParentConcepts.forEach(async (concept) => {
+      conceptParentConcept = await collectionReference0.record(concept).get();
+      conceptParentConcept = conceptParentConcept.data;
+      conceptsParentConceptsObjects.push(conceptParentConcept);
+      if (conceptsParentConceptsObjects.length === conceptsParentConcepts.length)
+      {
+        conceptsParentConceptsObjects.forEach((object) => {
+            conceptsData.forEach((concept) => {
+            if (concept.parentConcepts.includes(object.id))
+            {
+                concept.parentConceptsObjects.push(object);
+            }
+          })
+
+        }
+        )
+        res.status(200).send(conceptsData);
+      }
+    })
+    
+  }
+
+  await conceptsParentConceptsGetObjectsFunction();
+  
 
 
-  });
 
   
 
 
+
+    
 }
+  
+
+
