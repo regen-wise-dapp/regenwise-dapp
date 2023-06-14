@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 import dynamic from 'next/dynamic';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { years, categories, tags } from '@src/constants/filterItems';
+import { years, implementers, concepts } from '@src/constants/filterItems';
 import { OrderDirection } from '@src/constants/misc';
 
 const SortingSection = dynamic(() => import('./SortingSection'));
@@ -10,9 +10,8 @@ const FilterList = dynamic(() => import('./FilterList'));
 
 export interface AdvanceFilter {
   years: number[];
-  subconcepts: string[];
-  tags: string[];
-  categories: string[];
+  implementers: string[];
+  concepts: string[];
 }
 
 interface Props {
@@ -28,15 +27,15 @@ export default function FilterBar({
   onHandleAllFilterItemsArray,
 }: Props) {
   const [yearsFilter, setYearsFilter] = useState([]);
-  const [tagsFilter, setTagsFilter] = useState([]);
-  const [categoriesFilter, setCategoriesFilter] = useState([]);
+  const [ceonceptsFilter, setConceptsFilter] = useState([]);
+  const [implementersFilter, setImplementersFilter] = useState([]);
 
   const handleFilter = () => {
     const filterObject = {
       years: yearsFilter,
-      tags: tagsFilter,
-      categories: categoriesFilter,
-    }
+      concepts: ceonceptsFilter,
+      implementers: implementersFilter,
+    };
     onHandleAllFilterItemsArray(filterObject);
   };
 
@@ -63,17 +62,17 @@ export default function FilterBar({
               }
             />
             <FilterList
-              filterItems={categories}
-              header="Categories"
+              filterItems={implementers}
+              header="Implementers"
               onHandleFilterItemsArray={(filterItems) =>
-                setCategoriesFilter(filterItems)
+                setImplementersFilter(filterItems)
               }
             />
             <FilterList
-              filterItems={tags}
-              header="Tags"
+              filterItems={concepts}
+              header="Concepts"
               onHandleFilterItemsArray={(filterItems) =>
-                setTagsFilter(filterItems)
+                setConceptsFilter(filterItems)
               }
             />
             <Button variant="dark" onClick={handleFilter}>

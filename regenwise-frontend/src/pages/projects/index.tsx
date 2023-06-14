@@ -16,7 +16,9 @@ interface Props {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const projects = await fetcherWithNoCache(``);
+    const projects = await fetcherWithNoCache(
+      `http://localhost:3000/api/projects`
+    );
     return { props: { projects } };
   } catch (error) {
     return { props: { projects: [] } };
@@ -25,9 +27,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Projects({ projects }: Props) {
   const [search, setSearch] = useState('');
   const [advanceFilters, setAdvanceFilters] = useState<AdvanceFilter>({
-    years: [0],
-    tags: [''],
-    categories: [''],
+    years: [],
+    implementers: [],
+    concepts: [],
   } as AdvanceFilter);
   const [order, setOrder] = useState({
     orderDirection: '' as OrderDirection,
@@ -53,12 +55,14 @@ export default function Projects({ projects }: Props) {
           />
         </section>
         <section className={styles.list_container}>
-          <ProjectList
-            projects={projects ?? []}
-            order={order}
-            filter={search}
-            advanceFilters={advanceFilters}
-          />
+          {projects && (
+            <ProjectList
+              projects={projects}
+              order={order}
+              filter={search}
+              advanceFilters={advanceFilters}
+            />
+          )}
         </section>
       </div>
     </div>

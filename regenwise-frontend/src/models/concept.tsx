@@ -1,5 +1,5 @@
 export interface Concept {
-  Cid: string;
+  cid: string;
   date: Date;
   adder: string;
   adderPublicKeyH: string;
