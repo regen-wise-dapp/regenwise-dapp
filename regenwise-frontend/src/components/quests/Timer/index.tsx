@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { DifficultyLevels, EASY, HARD, MEDIUM } from '@src/constants/misc';
-import { AppDispatch, RootState } from '@store/index';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setRemainingTime } from '@slices/questSlice';
-import { EASY_GAME_TIME, MEDIUM_GAME_TIME, HARD_GAME_TIME } from '@src/constants/quests';
+import {
+  EASY_GAME_TIME,
+  MEDIUM_GAME_TIME,
+  HARD_GAME_TIME,
+} from '@src/constants/quests';
 
 interface Props {
   difficulty: DifficultyLevels;
@@ -13,10 +13,6 @@ interface Props {
 
 function Timer({ difficulty, onTimeFinish }: Props) {
   const [time, setTime] = useState(EASY_GAME_TIME);
-  const isFinished = useSelector(
-    (state: RootState) => state.quest.isGameFinished
-  );
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     switch (difficulty) {
@@ -40,7 +36,6 @@ function Timer({ difficulty, onTimeFinish }: Props) {
           return prevTime - 1;
         });
       }, 1000);
-      dispatch(setRemainingTime(time - 1));
     } else {
       onTimeFinish();
     }

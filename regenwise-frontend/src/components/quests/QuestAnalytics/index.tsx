@@ -47,7 +47,7 @@ export default function QuestAnalytics({
         </div>
         <div className={styles.difficulty_section}>
           <h3 className="text-center mb-0 text-white font-bold">
-            {`Duriation: ${time}`} seconds
+            {`Duration: ${time}`} seconds
           </h3>
         </div>
         <div className={styles.difficulty_section}>

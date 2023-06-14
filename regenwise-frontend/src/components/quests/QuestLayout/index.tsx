@@ -3,7 +3,7 @@ import ControllerSection from './ControllerSection';
 import QuestionSection from './QuestionSection';
 import styles from './index.module.scss';
 import router from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { MdOutlineArrowBack, MdOutlineTimer } from 'react-icons/md';
 import Timer from '../Timer';
@@ -33,6 +33,11 @@ export default function QuestLayout({
   onHandleFinish,
 }: Props) {
   const [isTimerVisible, setIsTimerVisible] = useState(true);
+  const [answerSectionKey, setAnswerSectionKey] = useState(Date.now());
+
+  useEffect(() => {
+    setAnswerSectionKey(Date.now());
+  }, [questionItem]);
 
   const goBack = () => {
     router.push(`/quests`);
@@ -87,6 +92,7 @@ export default function QuestLayout({
       <div className={`${styles.answer_section}`}>
         {questionItem.options && questionItem.correctAnswer && (
           <AnswerSection
+            key={answerSectionKey}
             options={questionItem.options}
             correctOption={questionItem.correctAnswer}
             onHandleAnswer={onHandleAnswer}
@@ -94,12 +100,10 @@ export default function QuestLayout({
         )}
       </div>
       <div className={`${styles.controller_section}`}>
-        {totalNumberOfQuestions && currentQuestion && (
-          <ControllerSection
-            totalNumberOfQuestions={totalNumberOfQuestions}
-            currentQuestion={currentQuestion}
-          ></ControllerSection>
-        )}
+        <ControllerSection
+          totalNumberOfQuestions={totalNumberOfQuestions}
+          currentQuestion={currentQuestion}
+        ></ControllerSection>
       </div>
     </div>
   );

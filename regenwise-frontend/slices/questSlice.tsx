@@ -12,7 +12,6 @@ const questSlice = createSlice({
   reducers: {
     setGameFinished: (state) => {
       state.isGameFinished = true;
-      console.log('dbg', state.isGameFinished);
     },
 
     setGameContinue: (state) => {
