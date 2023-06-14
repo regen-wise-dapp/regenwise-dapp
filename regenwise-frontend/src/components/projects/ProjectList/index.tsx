@@ -28,39 +28,41 @@ export default function ProjectList({
   const itemPerPage = 5;
 
   const sortedProjects = projects
-    .filter((project) => {
+    .filter((project: Project) => {
       // Filter by title
-      return project.title.toLowerCase().includes(filter.toLowerCase());
+      return project.name.toLowerCase().includes(filter.toLowerCase());
     })
     .filter((project) => {
       const projectYear = new Date(project.date).getFullYear().toString();
-      const projectCategories = project.categories.map((cat) =>
-        cat.toLowerCase()
+      const projectConcepts = project.concepts.map((concept) =>
+        concept.toLowerCase()
       );
-      const projectTags = project.tags.map((tag) => tag.toLowerCase());
+      const projectImplementers = project.implementers.map((imp) =>
+        imp.toLowerCase()
+      );
 
       const matchYear =
         advanceFilters.years?.length === 0
           ? true
           : advanceFilters.years?.includes(Number(projectYear));
-      const matchCategory =
-        advanceFilters.categories?.length === 0
+      const matchConcepts =
+        advanceFilters.concepts?.length === 0
           ? true
-          : advanceFilters.categories?.some((cat) =>
-              projectCategories.includes(cat.toLowerCase())
+          : advanceFilters.concepts?.some((concept) =>
+              projectConcepts.includes(concept.toLowerCase())
             );
-      const matchTags =
-        advanceFilters.tags?.length === 0
+      const matchImplementers =
+        advanceFilters.implementers?.length === 0
           ? true
-          : advanceFilters.tags?.some((tag) =>
-              projectTags.includes(tag.toLowerCase())
+          : advanceFilters.implementers?.some((imp) =>
+              projectImplementers.includes(imp.toLowerCase())
             );
 
-      return matchYear && matchCategory && matchTags;
+      return matchYear && matchConcepts && matchImplementers;
     })
     .sort((a: Project, b: Project) => {
       if (order.orderType === '' || !order.orderDirection) {
-        return b.views - a.views;
+        return b.likes - a.likes;
       } else {
         let aValue, bValue;
 
@@ -68,11 +70,11 @@ export default function ProjectList({
           aValue = new Date(a.date).getTime();
           bValue = new Date(b.date).getTime();
         } else if (order.orderType === 'Name') {
-          aValue = a.title.toLowerCase();
-          bValue = b.title.toLowerCase();
+          aValue = a.name.toLowerCase();
+          bValue = b.name.toLowerCase();
         } else if (order.orderType === 'Popularity') {
-          aValue = a.views;
-          bValue = b.views;
+          aValue = a.likes;
+          bValue = b.likes;
         }
         if (aValue !== undefined && bValue !== undefined) {
           if (typeof aValue !== 'number' || typeof bValue !== 'number') {
@@ -90,7 +92,6 @@ export default function ProjectList({
         }
       }
     });
-
   return (
     <div className={styles.main_container}>
       <div className={styles.projects_container}>
@@ -110,4 +111,3 @@ export default function ProjectList({
     </div>
   );
 }
-

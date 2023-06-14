@@ -148,7 +148,6 @@ export default function index() {
         currentTime,
         new Date()
       );
-      console.log(timePassed);
       setQuestState((prev) => {
         let state = {
           ...prev,
