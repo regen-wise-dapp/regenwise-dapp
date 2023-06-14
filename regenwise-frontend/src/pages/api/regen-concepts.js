@@ -1,6 +1,8 @@
 import Cors from 'cors';
 import { Polybase } from "@polybase/client";
 
+// // // projects objects are to be added
+
 // Initializing the cors middleware
 const cors = Cors({
   methods: ['GET', 'POST'],
