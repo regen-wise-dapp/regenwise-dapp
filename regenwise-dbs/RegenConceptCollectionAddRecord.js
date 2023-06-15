@@ -11,19 +11,6 @@ const db = new Polybase({
       }}
   });
 
- const db1 = new Polybase({
-    defaultNamespace: "regenwise-db",
-    signer: (data) => {
-      return {
-        h: 'eth-personal-sign',
-        sig: ethPersonalSign(process.env.key0, data)
-      }}
-  });
-
-
-const concept = await db1.collection("RegenConcept").record("regenerative-water-management").get()
-// console.log(concept.data);
-
 
 
 /*  
@@ -36,19 +23,17 @@ const concept = await db1.collection("RegenConcept").record("regenerative-water-
     childConcepts?: string[];
     projects?: string[];
     link?: string;
-    // adderPublicKeyH: string;
-    // likes?: number;
-    
+ 
 */
-await db.collection("RegenConcept").create([concept.data.id,
-                                            "",
-                                            concept.data.name,
+await db.collection("RegenConcept").create(["id",
+                                            "cid",
+                                            "name",
                                             "regenWiseTeam",
-                                            concept.data.explanation,
-                                            ["regeneration"],
-                                            [],
-                                            [],
-                                            ""
+                                            ["explanation"],
+                                            ["parent-concepts"],
+                                            ["child-concepts"],
+                                            ["projects"],
+                                            "link"
                                         ])
 
 
