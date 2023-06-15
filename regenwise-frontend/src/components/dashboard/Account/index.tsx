@@ -1,4 +1,4 @@
-import { User } from '@/models/user';
+import { User } from '@src/models/user';
 import dynamic from 'next/dynamic';
 
 const AccountDetails = dynamic(() => import('./AccountDetails'));
