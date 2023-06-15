@@ -1,3 +1,4 @@
+import { DropdownItem } from '@src/models/dropdownItem';
 import { Navbar, Container, Dropdown } from 'react-bootstrap';
 
 interface Props {
