@@ -28,11 +28,12 @@ const db = new Polybase({
 // await db.collection("RegenConcept").record("others").call("setSubconcepts", [["Regenerative Water Management", "Regenerative Waste Management", "Regenerative Fisheries", "Regenerative Education", "Regenerative Landscaping", "Regenerative Diets"]]);
 
 
-await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setAdder", ["regenWiseTeam0"]);
+await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setProjects", [["regenwise-nft-collection-zero","regenwise-web-platform"]]);
 // await db.collection("RegenConcept").record("regenerative-education").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-energy-and-buildings").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-fisheries").call("setParentConcepts", [[]]);
+
 // await db.collection("RegenConcept").record("regenerative-landscaping").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-waste-management").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-water-management").call("setParentConcepts", [[]]);
