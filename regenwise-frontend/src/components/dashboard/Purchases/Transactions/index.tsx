@@ -2,7 +2,7 @@ import React from 'react';
 import DashboardHeader from '../../shared/DashboardHeader';
 import styles from './index.module.scss';
 import TableTemplate from '../../Stats/shared/TableTemplate';
-import { TransactionData } from '@/models/transaction';
+import { TransactionData } from '@src/models/transaction';
 
 interface Props {
   transactionData: TransactionData[];

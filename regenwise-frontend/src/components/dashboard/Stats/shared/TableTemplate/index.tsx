@@ -2,7 +2,8 @@ import React from 'react';
 import TableHeader from '../TableHeader';
 import { Table } from 'react-bootstrap';
 import styles from './index.module.scss';
-import { TableColumn } from '@/models/stats';
+import { TableColumn } from '@src/models/stats';
+import { DropdownItem } from '@src/models/dropdownItem';
 
 interface Props {
   data: any[];
