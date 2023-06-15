@@ -1,8 +1,10 @@
 .main_container {
   padding: 1em;
   .wrapper {
-    background-color: #e9fcef;
-    box-shadow: 0px 0px 3px 0px black;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0px 10px 0 rgb(200, 184, 12);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     padding: 1em;
     display: flex;
     flex-direction: column;

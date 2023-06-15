@@ -1,6 +1,9 @@
 .main_container {
   width: 100vw;
-  background-color: #fee1d9;
+  background-color: #171b32;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%231A1E32'/%3E%3C/svg%3E");
+  min-height: 100vh;
+  /* background by SVGBackgrounds.com */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,13 +12,13 @@
   }
   .content_container {
     .filter_bar_container {
-        grid-column: span 1;
-        display: none;
-      }
-      .list_container {
-        display: flex;
-        grid-column: span 1;
-      }
+      grid-column: span 1;
+      display: none;
+    }
+    .list_container {
+      display: flex;
+      grid-column: span 1;
+    }
     @media (min-width: 1200px) {
       max-width: 1200px;
       width: 100%;
