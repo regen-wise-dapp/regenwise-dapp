@@ -43,7 +43,12 @@ export default function Projects({ projects }: Props) {
   return (
     <div className={styles.main_container}>
       <section className={styles.search_bar_container}>
-        <SearchBar onHandleSearch={handleSearch} />
+        <SearchBar
+          animativeHeader
+          onHandleSearch={handleSearch}
+          headerText="REGEN PROJECTS"
+          bannerImage="/projects/banner1.jpg"
+        />
       </section>
       <div className={styles.content_container}>
         <section className={styles.filter_bar_container}>

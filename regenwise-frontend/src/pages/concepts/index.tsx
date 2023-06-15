@@ -41,7 +41,11 @@ export default function Concepts({ concepts }: Props) {
   return (
     <div className={styles.main_container}>
       <section className={styles.search_bar_container}>
-        <SearchBar onHandleSearch={handleSearch} />
+        <SearchBar
+          onHandleSearch={handleSearch}
+          headerText="REGEN CONCEPTS"
+          bannerImage="/concepts/banner.jpg"
+        />
       </section>
       <div className={styles.content_container}>
         <section className={styles.filter_bar_container}>
