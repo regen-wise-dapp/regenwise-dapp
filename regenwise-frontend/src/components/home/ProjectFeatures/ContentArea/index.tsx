@@ -10,7 +10,7 @@ export default function ContentArea() {
     <div className="mt-5 flex flex-col max-w-[600px] w-full items-center justify-center" id='main-page--content-element'>
       <SectionHeader
         title="Overcoming Degradation via Regeneration"
-        subtitle="For those eager to learn and make a meaningful contribution, this platform provides a diverse range of resources to delve into the concept and effort of regeneration."
+        subtitle="For those eager to learn and make a meaningful contribution, this platform provides a diverse range of resources to delve into the concepts and efforts of regeneration."
       />
       <p className="text-center"  >
         {`Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute 
