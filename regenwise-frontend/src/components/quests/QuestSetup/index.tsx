@@ -97,7 +97,7 @@ export default function QuestSetup({
           ) : (
             <div className="flex flex-column items-center">
               <h3 className="text-center mb-4 text-white">
-                Join the Challange First!
+                Join the Challenge First!
               </h3>
               <h4 className="text-center mb-4 text-base text-white m-0">
                 To take part in the competition(s) and get an opportunity to
