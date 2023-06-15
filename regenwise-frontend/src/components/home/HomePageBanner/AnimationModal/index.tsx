@@ -30,7 +30,7 @@ const AnimationModal = ({ isOpen, onClose }: ModalProps) => {
       onClick={handleClose}
     >
       <div className={styles.modal_content}>
-        <Image src="/banner/skull.png" alt="skull" width={540} height={500} />
+        <Image src="/banner/ifreq.png" alt="green" width={540} height={500} />
         <h2 style={{"textAlign":"center"}}>Coughing, choking and various damages to the environment! Think Again!</h2>
         <Button variant="light" onClick={handleClose}>
           Select Again!
