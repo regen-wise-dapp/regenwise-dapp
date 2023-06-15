@@ -40,10 +40,6 @@ export default async function handler(
 
   // Rest of the API logic
 
-  // const call0 = await fetch('https://testnet.polybase.xyz/v0/collections/regenwise-db%2FRegenConcept/records/regeneration');
-  // const jsonData = await call0.json();
-  // const jsonDataData = jsonData.data;
-
   const concept = await jsonDataData.then((concept) => { 
     const array = []; 
     concept.data.forEach(data => { 

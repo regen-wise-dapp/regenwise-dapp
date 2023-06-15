@@ -16,7 +16,7 @@ interface Props {
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const concepts = await fetcherWithNoCache(
-      `https://testnet.polybase.xyz/v0/collections/regenwise-db%2FRegenConcept/records`
+      `https://testnet.polybase.xyz/v0/collections/regenwise-regen-db%2FRegenConcept/records`
     );
     const preparedData = concepts.data.map((item: any) => item.data);
     return { props: { concepts: preparedData } };
