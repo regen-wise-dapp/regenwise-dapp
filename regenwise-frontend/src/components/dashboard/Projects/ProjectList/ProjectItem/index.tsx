@@ -18,13 +18,13 @@ export default function ProjectItem({ projectItem }: Props) {
   return (
     <div className={`${styles.list_item_container}`}>
       <div className={`${styles.image_container}`}>
-        <Image src="/dashboard/post.png" fill alt={projectItem?.title} />
+        <Image src="/dashboard/post.png" fill alt={projectItem?.name} />
       </div>
       <div className={`${styles.content}`}>
-        <h3>{projectItem.title}</h3>
-        <p className="italic">{projectItem.shortDescription}</p>
+        <h3>{projectItem.name}</h3>
+        <p className="italic">{projectItem.description}</p>
         <div>
-          {projectItem.categories.map((item, index, array) => {
+          {projectItem.concepts.map((item, index, array) => {
             return (
               <span key={item} className="capitalize">{`${item}${
                 index !== array.length - 1 ? ', ' : ''
