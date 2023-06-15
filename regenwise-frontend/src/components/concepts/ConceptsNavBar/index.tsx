@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './index.module.scss';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import { Concept } from '@/models/concept';
+import { Concept } from '@src/models/concept';
+
 
 interface Props {
   concepts: Concept[];
