@@ -18,4 +18,6 @@ const db = new Polybase({
         link?: string
     
 */
-console.log(await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").get()); 
+// console.log(await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").get()); 
+  
+console.log((await db.collection("RegenConcept").get()).data);
