@@ -80,23 +80,10 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <img  src="/public/Images/home_1.png" alt="Logo" width="830" height="350">
 <img  src="/public/Images/home_2.png" alt="Logo" width="830" height="350">
 <img  src="/public/Images/home_3.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/home_4.png" alt="Logo" width="830" height="350">
-
-### Dashboard
-<img  src="/public/Images/dashboard_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/dashboard_2.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/dashboard_3.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/dashboard_4.png" alt="Logo" width="830" height="350">
-
-### Quests
-<img  src="/public/Images/quests_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/quests_2.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/quests_3.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/quests_4.png" alt="Logo" width="830" height="350">
 
 ### Concepts Page
-<img  src="/public/Images/knowledge_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/knowledge_2.png" alt="Logo" width="830" height="350">
+<img  src="/public/Images/concepts_1.png" alt="Logo" width="830" height="350">
+<img  src="/public/Images/concepts_2.png" alt="Logo" width="830" height="350">
 
 ### Projects
 <img  src="/public/Images/projects_1.png" alt="Logo" width="830" height="350">
@@ -106,6 +93,16 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 ### NFT Markets
 <img  src="/public/Images/markets_1.png" alt="Logo" width="830" height="350">
 <img  src="/public/Images/markets_2.png" alt="Logo" width="830" height="350">
+
+### Quests
+<img  src="/public/Images/quests_1.png" alt="Logo" width="830" height="350">
+<img  src="/public/Images/quests_2.png" alt="Logo" width="830" height="350">
+<img  src="/public/Images/quests_3.png" alt="Logo" width="830" height="350">
+
+### Dashboard
+<img  src="/public/Images/dashboard_1.png" alt="Logo" width="830" height="350">
+<img  src="/public/Images/dashboard_2.png" alt="Logo" width="830" height="350">
+<img  src="/public/Images/dashboard_3.png" alt="Logo" width="830" height="350">
 
 
 
@@ -150,18 +147,17 @@ If you want to run the project on your local machine, read the steps below:
 <!-- ROADMAP -->
 ## Roadmap in Broad Terms
 
-* Finish the demo of the web platform including frontend design (Done)
-* Get feedback from the demo users and improve accordingly
+* Finish the mvp of the DApp including frontend design (Almost Done)
+* Get feedback from the users and improve accordingly
 * Try to find funding for the project
-* Make any unfunctional components that were designed work
-* Explore and try some other api's for fetching the data faster
-* Add new games to the platform
-* Consider <strong>BNB Greenfield</strong> as the storage base for very precious data
+* Explore and try some other api's for fetching the data from the chain faster
+* Add new quests to the platform
 * Add the Tokenized Regenerative Effort (TRE) Market as the second NFT Marketplace
 * Develop a marketing strategy to promote the platform to the target audience
 * Implement analytics tools to track engagement and content performance
 * <strong>Finish the production version of the web platform until the first quarter of the 2024 ends</strong>
-* Evaluate scalability options as the user base grows
+* Evaluate scalability options as the database grows
+* Consider using <strong>Bacalhau</strong> for computations on the regen data
 * Mobile app development
 
 
