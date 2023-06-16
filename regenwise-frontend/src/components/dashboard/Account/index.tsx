@@ -1,5 +1,6 @@
 import { User } from '@src/models/user';
 import dynamic from 'next/dynamic';
+import AccountRegister from './AccountRegister';
 
 const AccountDetails = dynamic(() => import('./AccountDetails'));
 const AccountType = dynamic(() => import('./AccountType'));
@@ -10,6 +11,9 @@ interface Props {
 
 export default function Account({ user }: Props) {
   const changeUserDetails = (val: User) => {};
+  const registerUser = (val: any) => {
+    console.log(val);
+  };
 
   return (
     <div>
@@ -19,7 +23,7 @@ export default function Account({ user }: Props) {
           <AccountType user={user} />
         </div>
       ) : (
-        <div>No user found...</div>
+        <AccountRegister publicId={''} onRegisterUser={registerUser} />
       )}
     </div>
   );
