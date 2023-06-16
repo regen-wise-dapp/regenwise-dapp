@@ -1,6 +1,6 @@
 import { Concept } from "./concept";
 
-export interface ProjectProp {
+export interface Project {
   adderPublicKeyH: string;
   address: string;
   approvalStatus: ApprovalStatus;

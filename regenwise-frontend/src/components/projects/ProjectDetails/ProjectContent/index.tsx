@@ -1,8 +1,8 @@
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import styles from './index.module.scss';
 
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
 export default function ProjectContent({ project }: Props) {

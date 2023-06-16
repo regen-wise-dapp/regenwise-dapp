@@ -1,5 +1,4 @@
-import { concepts } from '@src/constants/filterItems';
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ResponseError } from '@src/models/ResponseError';
 import { Polybase } from '@polybase/client';
@@ -22,7 +21,7 @@ export function runMiddleware(req: any, res: any, fn: any) {
 
 export default async function ProjectHandler(
   req: NextApiRequest,
-  res: NextApiResponse<ProjectProp | ResponseError>
+  res: NextApiResponse<Project | ResponseError>
 ) {
   await runMiddleware(req, res, cors);
   const { query } = req;

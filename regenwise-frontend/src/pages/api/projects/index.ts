@@ -1,7 +1,6 @@
 import Cors from 'cors';
 import { Polybase } from '@polybase/client';
-import { ProjectProp } from '@src/models/project';
-import { Concept } from '@src/models/concept';
+import { Project } from '@src/models/project';
 import { ResponseError } from '@src/models/ResponseError';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -25,7 +24,7 @@ export function runMiddleware(req: any, res: any, fn: any) {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ProjectProp[] | ResponseError>
+  res: NextApiResponse<Project[] | ResponseError>
 ) {
   // Run the middleware
   await runMiddleware(req, res, cors);
@@ -37,7 +36,7 @@ export default async function handler(
   const collectionReference1 = db.collection('RegenProject');
   const projectsData0 = (await collectionReference1.get()).data;
 
-  let projectsData: ProjectProp[] = [];
+  let projectsData: Project[] = [];
   projectsData0.forEach((project) => projectsData.push(project.data));
 
   projectsData = structuredClone(projectsData);

@@ -1,7 +1,5 @@
-import dynamic from 'next/dynamic';
 import styles from './index.module.scss';
 import { useState } from 'react';
-
 import ProjectItem from '../ProjectItem';
 import { AdvanceFilter } from '@src/components/FilterBar';
 import PaginationBar from '@src/components/shared/PaginationBar';
