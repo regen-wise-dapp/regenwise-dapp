@@ -45,6 +45,7 @@ export default function Concepts({ concepts }: Props) {
           onHandleSearch={handleSearch}
           headerText="REGEN CONCEPTS"
           bannerImage="/concepts/banner.jpg"
+          animativeHeader
         />
       </section>
       <div className={styles.content_container}>

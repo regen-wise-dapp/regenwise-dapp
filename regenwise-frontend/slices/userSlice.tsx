@@ -6,8 +6,9 @@ export const fetchUserInfo = createAsyncThunk(
   'user/fetchUserInfo',
   async (id: string) => {
     const response = await fetcherWithNoCache(
-      ``
+      `http://localhost:3000/api/users/${id}`
     );
+    console.log(response);
     return response;
   }
 );
@@ -40,4 +41,3 @@ const userSlice = createSlice({
 export const { setCurrentUser } = userSlice.actions;
 
 export default userSlice.reducer;
-

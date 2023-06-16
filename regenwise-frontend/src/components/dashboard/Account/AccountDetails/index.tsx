@@ -17,11 +17,16 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
     id: '',
     name: '',
     surname: '',
-    profession: '',
     email: '',
     date: new Date(),
     image: '',
-    accountType: '',
+    nftCids: [],
+    points: '',
+    projects: [],
+    projectObjects: [],
+    publicKeyH: '',
+    role: '',
+    userName: '',
   } as User);
 
   useEffect(() => {
@@ -58,7 +63,11 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
             <Image
               width={350}
               height={350}
-              src={`/${formValues?.image}`}
+              src={
+                formValues?.image
+                  ? `/users/${formValues?.image}.png`
+                  : `/users/no_user.png`
+              }
               alt="user_image"
             />
           </div>
@@ -96,21 +105,21 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="profession">
-              <Form.Label className="font-extrabold">Profession</Form.Label>
+            <Form.Group className="mb-3" controlId="username">
+              <Form.Label className="font-extrabold">Username</Form.Label>
               <Form.Control
                 type="text"
-                value={formValues?.profession ?? ''}
+                value={formValues?.userName ?? ''}
                 onChange={handleFormInput}
                 readOnly={!isEditable}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="title">
-              <Form.Label className="font-extrabold">Account Type</Form.Label>
+            <Form.Group className="mb-3" controlId="publicId">
+              <Form.Label className="font-extrabold">Public Id</Form.Label>
               <Form.Control
                 type="text"
-                value={formValues?.accountType?.toLocaleUpperCase() ?? ''}
+                value={formValues?.id?.toLocaleUpperCase() ?? ''}
                 onChange={handleFormInput}
                 disabled
               />
@@ -174,4 +183,3 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
     </div>
   );
 }
-
