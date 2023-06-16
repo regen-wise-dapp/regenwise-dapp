@@ -6,31 +6,24 @@ import { Project } from '@src/models/project';
 import ProjectItem from './ProjectItem';
 import PaginationBar from '@src/components/shared/PaginationBar';
 
-export default function ProjectList() {
-  const [data, setData] = useState<Project[]>([]);
+interface Props{
+  projects: Project[]
+}
+
+export default function ProjectList({projects}: Props) {
   const [isLoading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const itemPerPage = 5;
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      const projects = await fetcher('');
-      setData(projects);
-      setLoading(false);
-    }
-
-    fetchData();
-  }, []);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No project data</p>;
+  if (!projects) return <p>No project data</p>;
   return (
     <div className={`${styles.main_container}`}>
       <div className={`${styles.wrapper}`}>
         <DashboardHeader header="MY PROJECTS" />
         <div className={`${styles.list}`}>
-          {data
+          {projects
             .slice((page - 1) * itemPerPage, page * itemPerPage)
             .map((item: Project) => {
               return <ProjectItem key={item.id} projectItem={item} />;
@@ -38,7 +31,7 @@ export default function ProjectList() {
         </div>
         <div className="flex justify-center my-4">
           <PaginationBar
-            numberOfItems={data.length}
+            numberOfItems={projects.length}
             itemsInPage={itemPerPage}
             onHandlePage={(page) => setPage(page)}
           />

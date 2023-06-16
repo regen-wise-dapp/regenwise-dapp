@@ -6,32 +6,42 @@ import Account from '@src/components/dashboard/Account';
 import Purchases from '@src/components/dashboard/Purchases';
 import Stats from '@src/components/dashboard/Stats';
 import Projects from '@src/components/dashboard/Projects';
+import { User } from '@src/models/user';
+import Image from 'next/image';
 
 function Dashboard() {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const tabComponents = [
     {
       eventKey: 'nftList',
-      title: 'MY NFT LIST',
+      title: 'MY NFTs',
+      icon: '/dashboard/nft.png',
       component: <Purchases />,
       display: true,
     },
     {
       eventKey: 'stats',
       title: 'Stats',
+      icon: '/dashboard/stats.png',
       component: <Stats />,
       display: true,
     },
     {
       eventKey: 'editor',
       title: 'Projects',
-      component: <Projects />,
+      icon: '/dashboard/project.png',
+      component: currentUser ? (
+        <Projects projects={(currentUser as User)?.projectsObjects ?? []} />
+      ) : (
+        <></>
+      ),
       display: true,
     },
     {
       eventKey: 'account',
       title: 'Account',
-      component: currentUser ? <Account user={currentUser[0]} /> : <></>,
+      icon: '/dashboard/user.png',
+      component: currentUser ? <Account user={currentUser} /> : <></>,
       display: true,
     },
   ];
@@ -50,10 +60,21 @@ function Dashboard() {
               return (
                 <Tab
                   eventKey={item.eventKey}
-                  title={item.title}
+                  title={
+                    <div className="flex flex-col items-center">
+                      <Image
+                        className="mb-2"
+                        src={item.icon}
+                        alt={item.title}
+                        width={60}
+                        height={60}
+                      ></Image>
+                      <p className="mb-0 text-sm md:text-base">{item.title}</p>
+                    </div>
+                  }
                   key={item.eventKey}
                 >
-                  <div className="p-4">{item.component}</div>
+                  <div className="p-4 ">{item.component}</div>
                 </Tab>
               );
             })}
@@ -64,4 +85,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-

@@ -18,12 +18,14 @@ export default function ProjectItem({ projectItem }: Props) {
   return (
     <div className={`${styles.list_item_container}`}>
       <div className={`${styles.image_container}`}>
-        <Image src="/dashboard/post.png" fill alt={projectItem?.name} />
+        <Image src="/quests/quest-1.png" fill alt={projectItem?.name} />
       </div>
       <div className={`${styles.content}`}>
         <h3>{projectItem.name}</h3>
-        <p className="italic">{projectItem.description}</p>
-        <div>
+        <div className={styles.description}>
+          <p>{projectItem.description}</p>
+        </div>
+        <div className={styles.concepts}>
           {projectItem.concepts.map((item, index, array) => {
             return (
               <span key={item} className="capitalize">{`${item}${
@@ -32,7 +34,6 @@ export default function ProjectItem({ projectItem }: Props) {
             );
           })}
         </div>
-        <div>{new Date(projectItem.date).toDateString()}</div>
         <div className="flex justify-center gap-2">
           <Button
             onClick={() => setOpen(true)}
@@ -74,4 +75,3 @@ export default function ProjectItem({ projectItem }: Props) {
     </div>
   );
 }
-

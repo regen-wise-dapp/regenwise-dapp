@@ -26,7 +26,7 @@ export default function AccountType({ user }: Props) {
             <p className="">
               Your current account is{' '}
               <span className="font-extrabold text-orange-700">
-                {user.accountType.toUpperCase()}
+                {user.userName?.toUpperCase()}
               </span>{' '}
               account.
             </p>

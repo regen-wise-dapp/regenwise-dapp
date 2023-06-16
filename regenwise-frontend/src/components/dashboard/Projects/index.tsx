@@ -3,8 +3,13 @@ import ProjectList from './ProjectList';
 import styles from './index.module.scss';
 import { useState } from 'react';
 import ProjectEditor from './ProjectEditor';
+import { Project } from '@src/models/project';
 
-export default function Projects() {
+interface Props{
+  projects: Project[];
+}
+
+export default function Projects({projects}: Props) {
   const [activeButton, setActiveButton] = useState([true, false]);
 
   const openEditor = () => {
@@ -42,7 +47,7 @@ export default function Projects() {
           NEW PROJECT
         </Button>
       </div>
-      {activeButton[0] === true && <ProjectList />}
+      {activeButton[0] === true && <ProjectList projects={projects}/>}
       {activeButton[1] === true && <ProjectEditor project={""}/>}
     </div>
   );
