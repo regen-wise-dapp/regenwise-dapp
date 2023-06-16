@@ -1,11 +1,11 @@
 import styles from './index.module.scss';
 import Avatar from '@src/components/shared/Avatar';
 import Divider from '@src/components/shared/Divider';
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import { Table } from 'react-bootstrap';
 
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
 export default function ProjectAuthor({ project }: Props): JSX.Element {

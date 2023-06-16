@@ -1,4 +1,4 @@
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import styles from './index.module.scss';
 import {
   FaUserAlt,
@@ -15,7 +15,7 @@ FaHeart;
 FaBookOpen;
 
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
 export default function ProjectInfo({ project }: Props) {

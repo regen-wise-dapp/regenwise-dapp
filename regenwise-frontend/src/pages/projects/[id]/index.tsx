@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './index.module.scss';
 import { fetcherWithNoCache } from '@src/utils/fetcher';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ProjectProp } from '@src/models/project';
-import Project from '@src/components/projects/Project';
+import { Project } from '@src/models/project';
+import ProjectDetails from '@src/components/projects/ProjectDetails';
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const { id } = context.query;
   console.log(id);
   try {
-    const project: ProjectProp = await fetcherWithNoCache(
+    const project: Project = await fetcherWithNoCache(
       `http://localhost:3000/api/projects/${id}`
     );
     console.log('dbg');
@@ -24,14 +24,14 @@ export const getServerSideProps: GetServerSideProps = async (
 };
 
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
 export default function ProjectPage({ project }: Props) {
   console.log(project);
   return (
     <div className={`${styles.main_container}`}>
-      <Project project={project} />
+      <ProjectDetails project={project} />
     </div>
   );
 }

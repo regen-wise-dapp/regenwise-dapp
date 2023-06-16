@@ -4,15 +4,15 @@ import ProjectBanner from './ProjectBanner';
 import ProjectContent from './ProjectContent';
 import ProjectInfo from './ProjectInfo';
 import ProjectLeftSidebar from './ProjectLeftSidebar';
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import ProjectOwner from './ProjectOwner';
 import ProjectConceptsIcons from './ProjectConceptsIcons';
 
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
-export default function Project({ project }: Props) {
+export default function ProjectDetails({ project }: Props) {
   return (
     <div className={styles.main_container}>
       <div className={styles.left_sidebar}>
