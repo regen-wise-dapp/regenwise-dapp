@@ -11,8 +11,6 @@ interface Props {
 }
 
 export default function AccountRegister({ publicId, onRegisterUser }: Props) {
-  const [isEditable, setIsEditable] = useState(false);
-  const [open, setOpen] = useState(false);
   const [formValues, setFormValues] = useState<User>({
     id: '',
     name: '',
@@ -39,13 +37,7 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
   };
 
   const saveAccountDetails = () => {
-    setIsEditable(false);
     onRegisterUser(formValues);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (
@@ -73,7 +65,6 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
                 value={formValues?.name ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your name"
-                readOnly={!isEditable}
               />
             </Form.Group>
 
@@ -84,7 +75,6 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
                 value={formValues?.surname ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your surname"
-                readOnly={!isEditable}
               />
             </Form.Group>
 
@@ -95,7 +85,6 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
                 value={formValues?.email ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your email"
-                readOnly={!isEditable}
               />
             </Form.Group>
 
@@ -105,7 +94,6 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
                 type="text"
                 value={formValues?.userName ?? ''}
                 onChange={handleFormInput}
-                readOnly={!isEditable}
               />
             </Form.Group>
 
@@ -119,61 +107,21 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
               />
             </Form.Group>
             <div className="flex justify-center gap-2">
-              {!isEditable ? (
-                <Button
-                  style={{
-                    borderRadius: '20px',
-                    width: '130px',
-                    padding: '0.4em 2em',
-                  }}
-                  variant="success"
-                  onClick={() => setIsEditable(true)}
-                >
-                  EDIT
-                </Button>
-              ) : (
-                <>
-                  <Button
-                    style={{
-                      borderRadius: '20px',
-                      width: '130px',
-                      padding: '0.4em 2em',
-                    }}
-                    variant="success"
-                    onClick={saveAccountDetails}
-                  >
-                    REGISTER
-                  </Button>
-                  <Button
-                    style={{
-                      borderRadius: '20px',
-                      width: '130px',
-                      padding: '0.4em 2em',
-                    }}
-                    variant="dark"
-                    onClick={() => setIsEditable(false)}
-                  >
-                    CANCEL
-                  </Button>
-                </>
-              )}
+              <Button
+                style={{
+                  borderRadius: '20px',
+                  width: '130px',
+                  padding: '0.4em 2em',
+                }}
+                variant="success"
+                onClick={saveAccountDetails}
+              >
+                REGISTER
+              </Button>
             </div>
           </div>
         </div>
       </div>
-      <Modal show={open} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Not yet ready!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          This functionality is not yet ready. We are working on it!
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }

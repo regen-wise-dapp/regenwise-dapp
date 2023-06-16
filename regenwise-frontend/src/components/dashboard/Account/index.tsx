@@ -17,7 +17,7 @@ export default function Account({ user }: Props) {
 
   return (
     <div>
-      {user ? (
+      {user.id ? (
         <div>
           <AccountDetails user={user} onChangeUserDetails={changeUserDetails} />
           <AccountType user={user} />
