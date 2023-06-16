@@ -30,11 +30,14 @@ await db.applySchema(`
     name?: string;
     surname?:string;
     projects?: string[];
-    points?: number;
+    points?: string;
     nftCids?: string[];
     publicKeyH?: string;
+    image?: string;
+    date?: string;
+    role?: string;
 
-    constructor (id: string, userName: string, name: string, surname: string, projects?: string[], points?: number, nftCids?: string[], publicKeyH?: string) {
+    constructor (id: string, userName?: string, name?: string, surname?: string, projects?: string[], nftCids?: string[], publicKeyH?: string, image?: string, date?: string, role?: string) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
@@ -42,9 +45,12 @@ await db.applySchema(`
         this.name = name;
         this.surname = surname;
         this.projects = projects;
-        this.points = points;
+        this.points = "0";
         this.nftCids = nftCids;
         this.publicKeyH = publicKeyH;
+        this.image = image;
+        this.date = date;
+        this.role = role;
     }
 
     function setUserName (userName: string) {
@@ -65,7 +71,7 @@ await db.applySchema(`
         this.surname = surname;
     }
 
-    function setProjects (projects: string) {
+    function setProjects (projects: string[]) {
         ${conditionZero}
         ${conditionOne}
         this.projects = projects;
@@ -77,7 +83,7 @@ await db.applySchema(`
         this.points = points;
     }
 
-    function setNftCids (nftCids: string) {
+    function setNftCids (nftCids: string[]) {
         ${conditionZero}
         ${conditionOne}
         this.nftCids = nftCids;
@@ -88,6 +94,32 @@ await db.applySchema(`
         ${conditionOne}
         this.publicKeyH = publicKeyH;
     }
+
+    function setIsRegistered (isRegistered: boolean) {
+        ${conditionZero}
+        ${conditionOne}
+        this.isRegistered = isRegistered;
+    }
+
+    function setImage (image: string) {
+        ${conditionZero}
+        ${conditionOne}
+        this.image = image;
+    }
+    
+    function setDate (date: string) {
+        ${conditionZero}
+        ${conditionOne}
+        this.date = date;
+    }
+
+    function setRole (role: string) {
+        ${conditionZero}
+        ${conditionOne}
+        this.role = role;
+    }
+
+
     del () {
         ${conditionZero}
         ${conditionOne}
