@@ -1,11 +1,11 @@
-import { Project } from '@src/models/project';
+import { ProjectProp } from '@src/models/project';
 import setSlugify from '@src/utils/setSlugify';
 import { AiFillHeart } from 'react-icons/ai';
 import styles from './index.module.scss';
 import Link from 'next/link';
 import { Badge } from 'react-bootstrap';
 interface Props {
-  project: Project;
+  project: ProjectProp;
 }
 
 export default function ProjectItem({ project }: Props) {
@@ -32,18 +32,24 @@ export default function ProjectItem({ project }: Props) {
           );
         })}
       </div>
-      <div className={` text-sm font-semibold text-lime-900 mb-1`}>
-        <span>{`Owner: ${project.implementers.map(
-          (item, index, array) =>
-            `${item} ${index !== array.length - 1 ? ', ' : ''} `
-        )}`}</span>
-      </div>
+
       <div className="flex flex-row gap-1">
-        <Badge pill bg="secondary" style={{ height: '20px', minWidth: '60px' }}>
+        {/* <Badge pill bg="secondary" style={{ height: '20px', minWidth: '60px' }}>
           <span className="flex flex-row justify-center items-center">
             {`${project.likes} Likes`}
           </span>
-        </Badge>
+        </Badge> */}
+        <div className={` text-sm font-semibold text-lime-900 mb-1`}>
+          <Badge
+            pill
+            bg="secondary"
+            style={{ height: '20px', minWidth: '60px' }}
+          >
+            <span>{` ${project.implementers.map(
+              (item, index, array) => `${item} `
+            )}`}</span>
+          </Badge>
+        </div>
         <Badge pill bg="secondary" style={{ height: '20px', minWidth: '60px' }}>
           {`${project.date}`}
         </Badge>

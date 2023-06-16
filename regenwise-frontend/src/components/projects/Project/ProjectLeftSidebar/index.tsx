@@ -8,7 +8,7 @@ AiTwotoneHeart;
 export default function ProjectLeftSidebar() {
   const router = useRouter();
   const handleClick = () => {
-    router.push('/knowledge');
+    router.push('/projects');
   };
   const socials = [
     {
