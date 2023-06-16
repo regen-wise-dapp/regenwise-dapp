@@ -7,11 +7,11 @@ import FilterBar, { AdvanceFilter } from '@src/components/FilterBar';
 import SearchBar from '@src/components/shared/SearchBar';
 import ProjectList from '@src/components/projects/ProjectList';
 import { OrderDirection } from '@src/constants/misc';
-import { Project } from '@src/models/project';
+import { ProjectProp } from '@src/models/project';
 import { fetcherWithNoCache } from '@src/utils/fetcher';
 
 interface Props {
-  projects: Project[];
+  projects: ProjectProp[];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {

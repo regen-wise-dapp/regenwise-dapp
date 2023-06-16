@@ -11,5 +11,7 @@ export interface Concept {
   name: string;
   projects: string[];
   subconcepts: string[];
+  parentConcepts: string[];
+  parentConceptsObjects: Concept[]
 }
 
