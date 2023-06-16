@@ -8,7 +8,6 @@ export const fetchUserInfo = createAsyncThunk(
     const response = await fetcherWithNoCache(
       `http://localhost:3000/api/users/${id}`
     );
-    console.log(response);
     return response;
   }
 );

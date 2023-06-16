@@ -18,6 +18,7 @@ function Dashboard() {
       icon: '/dashboard/nft.png',
       component: <Purchases />,
       display: true,
+      disabled: (!currentUser || !(currentUser as User).id ),
     },
     {
       eventKey: 'stats',
@@ -25,6 +26,7 @@ function Dashboard() {
       icon: '/dashboard/stats.png',
       component: <Stats />,
       display: true,
+      disabled: (!currentUser || !(currentUser as User).id ),
     },
     {
       eventKey: 'editor',
@@ -35,6 +37,7 @@ function Dashboard() {
       ) : (
         <></>
       ),
+      disabled: (!currentUser || !(currentUser as User).id ),
       display: true,
     },
     {
@@ -42,6 +45,7 @@ function Dashboard() {
       title: 'Account',
       icon: '/dashboard/user.png',
       component: currentUser ? <Account user={currentUser} /> : <></>,
+      disabled: false,
       display: true,
     },
   ];
@@ -60,6 +64,7 @@ function Dashboard() {
               return (
                 <Tab
                   eventKey={item.eventKey}
+                  disabled={item.disabled}
                   title={
                     <div className="flex flex-col items-center">
                       <Image
