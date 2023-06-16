@@ -1,0 +1,21 @@
+.main_container {
+  border-radius: 25px;
+  padding: 2em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px 0px #191d32;
+  background-color: rgb(252, 241, 224);
+  table {
+    margin: 0px;
+    tr {
+      td {
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
