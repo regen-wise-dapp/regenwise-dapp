@@ -1,11 +1,20 @@
+import { Project } from './project';
+
 export interface User {
+  accountType: AccountType;
+  date: Date;
+  email: string;
   id: string;
   name: string;
-  surname: string;
-  profession: string;
-  email: string;
-  date: Date;
+  nftCids?: string[];
   image: string;
-  accountType: string;
+  points?: string;
+  projects?: string[];
+  projectObjects?: Project[];
+  publicKeyH?: string;
   role: string;
+  surname: string;
+  userName?: string;
 }
+
+export type AccountType = 'free' | 'paid';

@@ -18,11 +18,11 @@ const Editor = dynamic<EditorProps>(
   { ssr: false }
 );
 
-interface ProjectProps {
+interface Props {
   project: string;
 }
 
-export default function ProjectEditor(props: ProjectProps) {
+export default function ProjectEditor(props: Props) {
   const [tag, setTag] = useState<string>('');
   const [category, setCategory] = useState<string>('');
   const [open, setOpen] = useState(false);
@@ -57,7 +57,7 @@ export default function ProjectEditor(props: ProjectProps) {
       content: html,
     };
     //do backend post request in here, use debounce mechanism as well
-    setOpen(true)
+    setOpen(true);
   };
 
   const addTag = () => {
@@ -222,7 +222,9 @@ export default function ProjectEditor(props: ProjectProps) {
         <Modal.Header closeButton>
           <Modal.Title>Not yet ready!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>This functionality is not yet ready. We are working on it!</Modal.Body>
+        <Modal.Body>
+          This functionality is not yet ready. We are working on it!
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import Image from 'next/image';
 import Link from 'next/link';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
 const getImage = (id: string) => {

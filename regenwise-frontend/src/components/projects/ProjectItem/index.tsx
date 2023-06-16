@@ -1,11 +1,11 @@
-import { ProjectProp } from '@src/models/project';
+import { Project } from '@src/models/project';
 import setSlugify from '@src/utils/setSlugify';
 import { AiFillHeart } from 'react-icons/ai';
 import styles from './index.module.scss';
 import Link from 'next/link';
 import { Badge } from 'react-bootstrap';
 interface Props {
-  project: ProjectProp;
+  project: Project;
 }
 
 export default function ProjectItem({ project }: Props) {
