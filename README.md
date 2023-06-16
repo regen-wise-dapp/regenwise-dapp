@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/regen-wise-dapp/regenwise-dapp">
-    <img  src="/regenwise-frontend/public/logo.svg" alt="Logo" width="300" height="100">
+    <img  src="/regenwise-frontend/public/read/Cover1.png" alt="Logo" width="640" height="360">
   </a>
 
 <h2 align="center"> Summary of The RegenWise DApp Project</h2>
