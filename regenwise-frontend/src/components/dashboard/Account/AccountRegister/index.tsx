@@ -5,8 +5,11 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { User } from '@src/models/user';
 import DashboardHeader from '../../shared/DashboardHeader';
 import { Polybase } from '@polybase/client/dist';
-import { Auth } from '@polybase/auth'
-import { ethPersonalSignRecoverPublicKey } from '@polybase/eth'
+import { Auth } from '@polybase/auth';
+import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@store/index';
+import { fetchUserInfo } from '@slices/userSlice';
 
 ///////////////////// Polybase Code 0 Beginning ///////////////////////
 
@@ -14,13 +17,13 @@ const db = new Polybase({
   defaultNamespace: 'regenwise-regen-db',
 });
 
-const auth = typeof window !== "undefined" ? new Auth() : null;
+const auth = typeof window !== 'undefined' ? new Auth() : null;
 
 async function getPublicKeyH() {
-  const msg = 'Login Process'
-  const sig = await auth?.ethPersonalSign(msg)
-  const publicKeyH = ethPersonalSignRecoverPublicKey((sig as any), msg)
-  return '0x' + publicKeyH.slice(4)
+  const msg = 'Login Process';
+  const sig = await auth?.ethPersonalSign(msg);
+  const publicKeyH = ethPersonalSignRecoverPublicKey(sig as any, msg);
+  return '0x' + publicKeyH.slice(4);
 }
 
 ///////////////////// Polybase Code 0 End ///////////////////////
@@ -31,11 +34,9 @@ interface Props {
 }
 
 export default function AccountRegister({ publicId, onRegisterUser }: Props) {
-
   ///////////////////// Polybase Code 1 Beginning ///////////////////////
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [publicKey, setPublicKey] = useState<string | null>(null)
+  const dispatch = useDispatch<AppDispatch>();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   ///////////////////// Polybase Code 1 End ///////////////////////
 
@@ -66,61 +67,58 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
 
   ///////////////////// Polybase Code 2 Beginning ///////////////////////
 
-  async function signIn ( /*valuesToAdd:any*/ )  {
-    const res = await auth?.signIn()
+  async function signIn() {
+    const res = await auth?.signIn();
 
     // if publickey was received
-    let publicKeyH = (res as any).publicKey
+    let publicKeyH = (res as any).publicKey;
     let pKey = window.ethereum.selectedAddress;
     if (!publicKeyH) {
       publicKeyH = await getPublicKeyH();
     }
 
-    console.log("PublicKeyH is: ", publicKeyH);
-
     if (auth) {
-    db.signer(async (data: string) => {
-      return {
-        h: 'eth-personal-sign',
-        sig: await auth?.ethPersonalSign(data),
-      }
-    })
-  }
-
-        // Add user if not exists
-        try {
-          const userData = (await db.collection('user').record(pKey).get()).data
-          if (userData) {
-          console.log('Userrrrrrr', userData)
-          }
-          else {
-          await db.collection('user').create([pKey, publicKeyH /*,valuesToAdd*/])
-          }
-        } catch (e) {
-          console.log(e);
+      db.signer(async (data: string) => {
+        return {
+          h: 'eth-personal-sign',
+          sig: await auth?.ethPersonalSign(data),
         };
-    
-        setIsLoggedIn(!!res)
-      }
+      });
+    }
 
-      // useEffect(() => {
-      //   auth?.onAuthUpdate((authState) => {
-      //     setIsLoggedIn(!!authState)
-    
-      //     db.signer(async (data: string) => {
-      //       return {
-      //         h: 'eth-personal-sign',
-      //         sig: await auth?.ethPersonalSign(data),
-      //       }
-      //     })
-      //   })
-      // })
+    // Add user if not exists
+    try {
+      const userData = (await db.collection('user').record(pKey).get()).data;
+      if (!userData) {
+        await db
+          .collection('user')
+          .create([
+            pKey,
+            publicKeyH,
+            formValues.name,
+            formValues.surname,
+            formValues.email,
+            formValues.userName,
+            formValues.date,
+            [],
+            [],
+            '',
+            'standard',
+          ]);
+        dispatch(fetchUserInfo((window as any).ethereum.selectedAddress));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+    setIsLoggedIn(!!res);
+  }
 
   ///////////////////// Polybase Code 2 End ///////////////////////
 
-  const saveAccountDetails = async() => {
+  const saveAccountDetails = async () => {
     /* form values should be added in this order: name, surname, email, userName, date */
-    signIn(/*[]*/);
+    signIn();
     onRegisterUser(formValues);
   };
 
@@ -172,12 +170,13 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="username">
+            <Form.Group className="mb-3" controlId="userName">
               <Form.Label className="font-extrabold">Username</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.userName ?? ''}
                 onChange={handleFormInput}
+                placeholder="Enter your username"
               />
             </Form.Group>
 
