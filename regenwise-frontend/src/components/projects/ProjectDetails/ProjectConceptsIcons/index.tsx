@@ -12,31 +12,31 @@ interface Props {
 const getImage = (id: string) => {
   switch (id) {
     case 'regenerative-education':
-      return '/quests/quest-1.png';
+      return '/quests/quest-1z.png';
 
     case 'regeneration':
-      return '/quests/quest-1.png';
+      return '/quests/quest-1z.png';
 
     case 'regenerative-energy':
-      return '/quests/quest-2.png';
+      return '/quests/quest-2z.png';
 
     case 'regenerative-buildings':
-      return '/quests/quest-3.png';
+      return '/quests/quest-3z.png';
 
     case 'regenerative-agriculture-and-forestry':
-      return '/quests/quest-4.png';
+      return '/quests/quest-4z.png';
 
     case 'regenerative-fisheries':
-      return '/quests/quest-5.png';
+      return '/quests/quest-5z.png';
 
     case 'regenerative-landscaping':
-      return '/quests/quest-3.png';
+      return '/quests/quest-3z.png';
 
     case 'regenerative-waste-management':
-      return '/quests/quest-6.png';
+      return '/quests/quest-6z.png';
 
     case 'regenerative-water-management':
-      return '/quests/quest-5.png';
+      return '/quests/quest-5z.png';
   }
 };
 

@@ -18,7 +18,7 @@ export default function ProjectItem({ projectItem }: Props) {
   return (
     <div className={`${styles.list_item_container}`}>
       <div className={`${styles.image_container}`}>
-        <Image src="/quests/quest-1.png" fill alt={projectItem?.name} />
+        <Image src="/quests/quest-1z.png" fill alt={projectItem?.name} />
       </div>
       <div className={`${styles.content}`}>
         <h3>{projectItem.name}</h3>

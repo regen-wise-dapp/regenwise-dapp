@@ -19,4 +19,8 @@ export const menuItems = [
     label: 'Quests',
     link: '/quests',
   },
+  {
+    label: 'News',
+    link: '/news',
+  },
 ];
