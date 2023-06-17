@@ -1,4 +1,4 @@
-import { Polybase } from '@polybase/client';
+import { Polybase } from '@polybase/client/dist';
 import { ResponseError } from '@src/models/ResponseError';
 import { User } from '@src/models/user';
 import Cors from 'cors';
@@ -40,11 +40,13 @@ export default async function ProjectHandler(
     let userProjects: string[] = [];
 
     // Get data from the record
+    if (user.projects) {
     user.projects.forEach((project: string) => {
       if (!userProjects.includes(project)) {
         userProjects.push(project);
       }
     });
+  }
 
     user.projectsObjects = [];
 

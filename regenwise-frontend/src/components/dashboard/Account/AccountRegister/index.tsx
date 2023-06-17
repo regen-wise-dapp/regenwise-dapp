@@ -4,6 +4,26 @@ import Image from 'next/image';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { User } from '@src/models/user';
 import DashboardHeader from '../../shared/DashboardHeader';
+import { Polybase } from '@polybase/client/dist';
+import { Auth } from '@polybase/auth'
+import { ethPersonalSignRecoverPublicKey } from '@polybase/eth'
+
+///////////////////// Polybase Code 0 Beginning ///////////////////////
+
+const db = new Polybase({
+  defaultNamespace: 'regenwise-regen-db',
+});
+
+const auth = new Auth();
+
+async function getPublicKeyH() {
+  const msg = 'Login Process'
+  const sig = await auth.ethPersonalSign(msg)
+  const publicKeyH = ethPersonalSignRecoverPublicKey(sig, msg)
+  return '0x' + publicKeyH.slice(4)
+}
+
+///////////////////// Polybase Code 0 End ///////////////////////
 
 interface Props {
   publicId: string;
@@ -11,6 +31,14 @@ interface Props {
 }
 
 export default function AccountRegister({ publicId, onRegisterUser }: Props) {
+
+  ///////////////////// Polybase Code 1 Beginning ///////////////////////
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [publicKey, setPublicKey] = useState<string | null>(null)
+
+  ///////////////////// Polybase Code 1 End ///////////////////////
+
   const [formValues, setFormValues] = useState<User>({
     id: '',
     name: '',
@@ -36,7 +64,61 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
     });
   };
 
-  const saveAccountDetails = () => {
+  ///////////////////// Polybase Code 2 Beginning ///////////////////////
+
+  async function signIn ( /*valuesToAdd:any*/ )  {
+    const res = await auth.signIn()
+
+    // if publickey was received
+    let publicKeyH = (res as any).publicKey
+    let pKey = window.ethereum.selectedAddress;
+    if (!publicKeyH) {
+      publicKeyH = await getPublicKeyH();
+    }
+
+    console.log("PublicKeyH is: ", publicKeyH);
+
+    db.signer(async (data: string) => {
+      return {
+        h: 'eth-personal-sign',
+        sig: await auth.ethPersonalSign(data),
+      }
+    })
+
+        // Add user if not exists
+        try {
+          const userData = (await db.collection('user').record(pKey).get()).data
+          if (userData) {
+          console.log('Userrrrrrr', userData)
+          }
+          else {
+          await db.collection('user').create([pKey, publicKeyH /*,valuesToAdd*/])
+          }
+        } catch (e) {
+          console.log(e);
+        };
+    
+        setIsLoggedIn(!!res)
+      }
+
+      useEffect(() => {
+        auth.onAuthUpdate((authState) => {
+          setIsLoggedIn(!!authState)
+    
+          db.signer(async (data: string) => {
+            return {
+              h: 'eth-personal-sign',
+              sig: await auth.ethPersonalSign(data),
+            }
+          })
+        })
+      })
+
+  ///////////////////// Polybase Code 2 End ///////////////////////
+
+  const saveAccountDetails = async() => {
+    /* form values should be added in this order: name, surname, email, userName, date */
+    signIn(/*[]*/);
     onRegisterUser(formValues);
   };
 

@@ -1,5 +1,5 @@
+import { Polybase } from '@polybase/client/dist';
 import Cors from 'cors';
-import { Polybase } from '@polybase/client';
 import { ResponseError } from '@src/models/ResponseError';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '@src/models/user';
