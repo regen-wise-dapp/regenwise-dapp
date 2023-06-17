@@ -14,12 +14,12 @@ const db = new Polybase({
   defaultNamespace: 'regenwise-regen-db',
 });
 
-const auth = new Auth();
+const auth = typeof window !== "undefined" ? new Auth() : null;
 
 async function getPublicKeyH() {
   const msg = 'Login Process'
-  const sig = await auth.ethPersonalSign(msg)
-  const publicKeyH = ethPersonalSignRecoverPublicKey(sig, msg)
+  const sig = await auth?.ethPersonalSign(msg)
+  const publicKeyH = ethPersonalSignRecoverPublicKey((sig as any), msg)
   return '0x' + publicKeyH.slice(4)
 }
 
@@ -67,7 +67,7 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
   ///////////////////// Polybase Code 2 Beginning ///////////////////////
 
   async function signIn ( /*valuesToAdd:any*/ )  {
-    const res = await auth.signIn()
+    const res = await auth?.signIn()
 
     // if publickey was received
     let publicKeyH = (res as any).publicKey
@@ -78,12 +78,14 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
 
     console.log("PublicKeyH is: ", publicKeyH);
 
+    if (auth) {
     db.signer(async (data: string) => {
       return {
         h: 'eth-personal-sign',
-        sig: await auth.ethPersonalSign(data),
+        sig: await auth?.ethPersonalSign(data),
       }
     })
+  }
 
         // Add user if not exists
         try {
@@ -101,18 +103,18 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
         setIsLoggedIn(!!res)
       }
 
-      useEffect(() => {
-        auth.onAuthUpdate((authState) => {
-          setIsLoggedIn(!!authState)
+      // useEffect(() => {
+      //   auth?.onAuthUpdate((authState) => {
+      //     setIsLoggedIn(!!authState)
     
-          db.signer(async (data: string) => {
-            return {
-              h: 'eth-personal-sign',
-              sig: await auth.ethPersonalSign(data),
-            }
-          })
-        })
-      })
+      //     db.signer(async (data: string) => {
+      //       return {
+      //         h: 'eth-personal-sign',
+      //         sig: await auth?.ethPersonalSign(data),
+      //       }
+      //     })
+      //   })
+      // })
 
   ///////////////////// Polybase Code 2 End ///////////////////////
 
