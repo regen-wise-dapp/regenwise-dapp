@@ -17,6 +17,8 @@ const conditionZero = "if (!ctx.publicKey){error('You should sign in first to ad
 const conditionOne = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to call this function.');}";
 // pkey check for constructor
 const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to add a record to this collection.');}";
+// pkey check for constructor
+const conditionThree = "if (ctx.publicKey.toHex() != this.publicKeyH) {error('You are not allowed to change the record data.');}";
 
 
 await db.applySchema(`
@@ -26,20 +28,20 @@ await db.applySchema(`
   collection user 
   {
     id: string;
-    userName?: string;
+    publicKeyH?: string; 
     name?: string;
-    surname?:string;
-    projects?: string[];
-    points?: string;
-    nftCids?: string[];
-    publicKeyH?: string;
-    image?: string;
+    surname?: string; 
+    email?: string;
+    userName?: string; 
     date?: string;
+    projects?: string[]; 
+    nftCids?: string[]; 
+    image?: string;
     role?: string;
+    points?: string;
 
-    constructor (id: string, userName?: string, name?: string, surname?: string, projects?: string[], nftCids?: string[], publicKeyH?: string, image?: string, date?: string, role?: string) {
+    constructor (id: string, publicKeyH?: string, name?: string, surname?: string, email?: string, userName?: string, date?: string, projects?: string[], nftCids?: string[], image?: string, role?: string) {
         ${conditionZero}
-        ${conditionTwo}
         this.id = id;
         this.userName = userName;
         this.name = name;
@@ -51,23 +53,24 @@ await db.applySchema(`
         this.image = image;
         this.date = date;
         this.role = role;
+        this.email = email;
     }
 
     function setUserName (userName: string) {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionThree}
         this.userName = userName;
     }
 
     function setName (name: string) {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionThree}
         this.name = name;
     }
 
     function setSurname (surname: string) {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionThree}
         this.surname = surname;
     }
 
@@ -95,11 +98,6 @@ await db.applySchema(`
         this.publicKeyH = publicKeyH;
     }
 
-    function setIsRegistered (isRegistered: boolean) {
-        ${conditionZero}
-        ${conditionOne}
-        this.isRegistered = isRegistered;
-    }
 
     function setImage (image: string) {
         ${conditionZero}
@@ -119,6 +117,11 @@ await db.applySchema(`
         this.role = role;
     }
 
+    function setEmail (email: string) {
+        ${conditionZero}
+        ${conditionThree}
+        this.email = email;
+    }
 
     del () {
         ${conditionZero}
