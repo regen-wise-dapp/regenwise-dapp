@@ -12,22 +12,8 @@ const db = new Polybase({
   });
 
 
-/*  
-  Regen user Model
 
-id: string, 
-publicKeyH?: string, 
-name?: string, 
-surname?: string, , 
-email?: string, 
-userName?: string, 
-date?: string, 
-projects?: string[], 
-nftCids?: string[], 
-image?: string,
-role?: string
-  
-*/
 
-await db.collection("user").create([ "0x6k8b06fa8a51d2597b3158e27690a3343e493c40"
- ])
+await db.collection("user").record("0x8f499e9f6f3c048600800a1bc90d4ccb5a64331a").call("setEmail", ["keenregen@gmail.com"]);
+
+
