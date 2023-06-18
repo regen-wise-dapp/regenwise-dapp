@@ -47,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Overview Of The Project
 
-<img  src="/regenwise-frontend/public/read/banner.png" alt="Logo" width="830" height="350">
+<img  src="/regenwise-frontend/public/read/banner1.png" alt="Logo" width="830" height="350">
 
 RegenWise is a DApp that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, project suggestions and support, interactive quests, and marketplaces for regenerative-themed non-fungible tokens (NFTs).
 
