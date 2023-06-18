@@ -21,7 +21,7 @@ export default function Account({ user }: Props): JSX.Element {
           <AccountType user={user} />
         </div>
       ) : (
-        <AccountRegister publicId={''}  />
+        <AccountRegister  />
       )}
     </div>
   );
