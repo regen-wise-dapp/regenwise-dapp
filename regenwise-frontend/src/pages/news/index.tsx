@@ -1,6 +1,5 @@
 'use client';
 import styles from './index.module.scss';
-import { useWeb3React } from '@web3-react/core';
 import * as PushSDK from '@pushprotocol/restapi';
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
@@ -37,7 +36,7 @@ export default function News() {
     <div className={styles.main_container}>
       <SectionHeader
         title="RegenWise News"
-        subtitle="You can follow latest updates about RegenWise platform"
+        subtitle="To contribute to the efforts of making our world a healthier place to live, there are some concepts that we should embrace"
       />
       <div>
         {notifications.map((oneNotification, i) => {

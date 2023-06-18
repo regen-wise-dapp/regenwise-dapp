@@ -20,7 +20,7 @@ const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d2134
 // pkey check for constructor
 const conditionThree = "if (ctx.publicKey.toHex() != this.publicKeyH) {error('You are not allowed to change the record data.');}";
 // pkey check for constructor
-// const conditionFour = "if ((ctx.publicKey.toHex() != this.publicKeyH) || (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca')) {error('You are not allowed to change the record data.');}";
+// const conditionFour = "if (ctx.publicKey.toHex() != this.publicKeyH || ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to change the record data.');}";
 
 
 
@@ -152,7 +152,7 @@ await db.applySchema(`
     isInstutional?: boolean;
     status?: string;
     approvalStatus?: string;
-    implementers?: string;
+    implementers?: string[];
     concepts?: string[];
     contactEmail?: string;
     date?: string;
@@ -164,7 +164,7 @@ await db.applySchema(`
     country?: string;
     likes?: number;
 
-    constructor (id: string, cid?: string, name?: string, description?: string, isInstutional?: boolean, status?: string, approvalStatus?: string, implementers?: string, concepts?: string[], contactEmail?:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+    constructor (id: string, cid?: string, name?: string, description?: string, isInstutional?: boolean, status?: string, approvalStatus?: string, implementers?: string[], concepts?: string[], contactEmail?:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         ${conditionTwo}
         this.id = id;
@@ -212,7 +212,7 @@ await db.applySchema(`
         this.isInstutional = isInstutional;
     }
   
-    function setImplementers (implementers: string) {
+    function setImplementers (implementers: string[]) {
         ${conditionZero}
         ${conditionOne}
         this.implementers = implementers;
@@ -292,7 +292,7 @@ await db.applySchema(`
             this.likes = likes;
         }
 
-        function updateProject (name: string, implementers: string, contactEmail:string, country:string, state: string, city:string, address:string, concepts:string[], description: string, ghgPuller: string, isInstutional: boolean, link: string, status: string) {
+        function updateProject (name: string, implementers: string[], contactEmail:string, country:string, state: string, city:string, address:string, concepts:string[], description: string, ghgPuller: string, isInstutional: boolean, link: string, status: string) {
             ${conditionZero}
             ${conditionThree}
             this.name = name;
@@ -313,7 +313,7 @@ await db.applySchema(`
 
         del () {
             ${conditionZero}
-            ${conditionThree}
+            ${conditionOne}
             selfdestruct();
           }
   }
