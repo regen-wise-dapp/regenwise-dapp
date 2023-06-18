@@ -14,14 +14,5 @@ const db = new Polybase({
 
 
 
-await db.collection("RegenProject").record("regenwise-web-platform").call("setImplementers", ["RegenWiseTeam, Omar"]);
-// await db.collection("RegenProject").record("regenwise-web-platform").call("setConcepts", [["regeneration",
-// "regenerative-agriculture-and-forestry",
-// "regenerative-buildings",
-// "regenerative-education",
-// "regenerative-energy",
-// "regenerative-fisheries",
-// "regenerative-landscaping",
-// "regenerative-waste-management",
-// "regenerative-water-management"]]);
+await db.collection("RegenProject").record("regenwise-nft-collection-zero").call("setDescription", ["'RegenWise Trees With The Regenerative Benefits' is a meaningful and attractive NFT collection featuring 12 special artworks. Each NFT showcases some beautiful tree art and inform about a regenerative benefit (such as carbon sequestration) as its description. Experience the connection between trees and regeneration in digital form."]);
 
