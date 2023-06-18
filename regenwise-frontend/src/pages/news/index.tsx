@@ -6,10 +6,15 @@ import {ethers} from 'ethers';
 import { useEffect, useState } from 'react';
 import { ENV } from '@pushprotocol/uiweb';
 import { NotificationItem, chainNameType } from "@pushprotocol/uiweb";
+import AlertModal from '@src/components/quests/AlertModal';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@store/index';
+import { setModalOpen } from '@slices/gameModalSlice';
 
 
 
 export default function News() {
+  const dispatch = useDispatch<AppDispatch>();
   const [notifications, setNotifications] = useState([]);
   let provider;
   let signer;
@@ -29,9 +34,18 @@ export default function News() {
         })
         setNotifications(notifs);
         console.log(notifs);
-        console.log("inside");
     }
+    try {
     notifications();
+    }
+    catch (e) {
+      dispatch(
+        setModalOpen([
+          'Attention',
+          `There is a problem about this page right now, try to come later.`,
+        ])
+      );
+    }
 
   }, [])
   
@@ -39,7 +53,7 @@ export default function News() {
   return (
     <div className={styles.main_container}>
       <div>
-{notifications.map((oneNotification, i) => {
+{notifications && notifications.map((oneNotification, i) => {
     const { 
         cta,
         title,
@@ -68,7 +82,7 @@ export default function News() {
         );
     })}
 </div>
-
+<AlertModal />
       </div>
   );
 }
