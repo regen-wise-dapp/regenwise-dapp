@@ -29,4 +29,4 @@ const db = new Polybase({
   
 */
 
-await db.collection("user").record("0x01e246e4e3c4ace6a42385790edbd72f4ec1efb7").call("del");
+await db.collection("user").record("0x70569f25376b361663a7fffbb307fc4ee707b53d").call("del");

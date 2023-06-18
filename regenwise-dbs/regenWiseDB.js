@@ -13,14 +13,12 @@ const db = new Polybase({
 });
 // sign-in condition
 const conditionZero = "if (!ctx.publicKey){error('You should sign in first to add a record to this collection. If you think there is an error, contact us.');}";
-// pkey check for function call condition
+// pkey check for admin function call condition
 const conditionOne = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to call this function.');}";
 // pkey check for constructor
 const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to add a record to this collection.');}";
-// pkey check for constructor
+// pkey check for users
 const conditionThree = "if (ctx.publicKey.toHex() != this.publicKeyH) {error('You are not allowed to change the record data.');}";
-// pkey check for constructor
-// const conditionFour = "if (ctx.publicKey.toHex() != this.publicKeyH || ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to change the record data.');}";
 
 
 
@@ -79,7 +77,7 @@ await db.applySchema(`
 
     function setProjects (projects: string[]) {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionThree}
         this.projects = projects;
     }
 
@@ -166,7 +164,6 @@ await db.applySchema(`
 
     constructor (id: string, cid?: string, name?: string, description?: string, isInstutional?: boolean, status?: string, approvalStatus?: string, implementers?: string[], concepts?: string[], contactEmail?:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
-        ${conditionTwo}
         this.id = id;
         this.cid = cid;
         this.name = name;

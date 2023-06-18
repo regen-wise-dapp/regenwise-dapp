@@ -12,21 +12,5 @@ const db = new Polybase({
   });
 
 
-/*  
-  Regen user Model
 
-  id: string, 
-  userName?: string, 
-  name?: string, 
-  surname?: string, 
-  projects?: string[], 
-  nftCids?: string[], 
-  publicKeyH?: string, 
-  isRegistered?: boolean,   [unregistered, registered]
-  image?: string, 
-  date?: string, 
-  role?: string
-  
-*/
-
-await db.collection("RegenProject").record("regenwise-nft-collection-zero").call("del");
+await db.collection("RegenProject").record("my-project").call("del");

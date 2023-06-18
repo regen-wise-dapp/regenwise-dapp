@@ -36,7 +36,7 @@ export default function News() {
     <div className={styles.main_container}>
       <SectionHeader
         title="RegenWise News"
-        subtitle="To contribute to the efforts of making our world a healthier place to live, there are some concepts that we should embrace"
+        subtitle="A Place Where You Could Follow News About Regen and RegenWise Project"
       />
       <div>
         {notifications.map((oneNotification, i) => {
