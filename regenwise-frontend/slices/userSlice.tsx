@@ -7,7 +7,7 @@ export const fetchUserInfo = createAsyncThunk(
   async (id: string) => {
     try {
       const response = await fetcherWithNoCache(
-        `http://localhost:3000/api/users/${id}`
+        `https://regenwise.net/api/users/${id}`
       );
       return response;
     } catch (error) {
