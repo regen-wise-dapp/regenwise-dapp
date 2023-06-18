@@ -10,11 +10,11 @@ export interface Project {
   contactEmail: string;
   country: string;
   date: number | string | Date;
-  description: string[];
+  description: string;
   ghgPuller: string;
   id: string;
-  implementers: string;
-  isInstutional: boolean;
+  implementers: string[];
+  isInstitutional: boolean;
   likes: number;
   link: string;
   name: string;

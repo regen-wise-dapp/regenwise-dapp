@@ -14,36 +14,70 @@ import dynamic from 'next/dynamic';
 import DashboardHeader from '../../shared/DashboardHeader';
 import { mainConcepts } from '@src/constants/concepts';
 import { Project } from '@src/models/project';
+import { Auth } from '@polybase/auth';
+import { Polybase } from '@polybase/client';
+import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
+import setSlugify from '@src/utils/setSlugify';
+import { useSelector } from 'react-redux';
+import { RootState } from '@store/index';
 
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
   { ssr: false }
 );
 
-interface Props {
-  project: string;
+///////////////////// Polybase Code 0 Beginning ///////////////////////
+
+const db = new Polybase({
+  defaultNamespace: 'regenwise-regen-db',
+});
+
+const auth = typeof window !== 'undefined' ? new Auth() : null;
+
+async function getPublicKeyH() {
+  const msg = 'Login Process';
+  const sig = await auth?.ethPersonalSign(msg);
+  const publicKeyH = ethPersonalSignRecoverPublicKey(sig as any, msg);
+  return '0x' + publicKeyH.slice(4);
 }
 
-export default function ProjectEditor(props: Props) {
+///////////////////// Polybase Code 0 End ///////////////////////
+
+interface Props {
+  project?: Project;
+  editMode: boolean;
+  onCloseEditMode?: () => void;
+}
+
+const emptyFormValues = {
+  name: '',
+  city: '',
+  country: '',
+  state: '',
+  status: '',
+  address: '',
+  ghgPuller: '',
+  isInstitutional: false,
+  link: '',
+  contactEmail: '',
+  implementers: [] as string[],
+  concepts: [] as string[],
+  date: new Date().getFullYear(),
+};
+
+export default function ProjectEditor({
+  project,
+  editMode,
+  onCloseEditMode,
+}: Props) {
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const [implementer, setImplementer] = useState<string>('');
   const [concept, setConcept] = useState<string>('');
   const [open, setOpen] = useState(false);
   const [errors, setErrors] = useState<any>({} as any);
-  const [formValues, setFormValues] = useState({
-    name: '',
-    city: '',
-    country: '',
-    state: '',
-    status: '',
-    address: '',
-    ghgPuller: '',
-    isInstitutional: false,
-    link: '',
-    contactEmail: '',
-    implementers: [] as string[],
-    concepts: [] as string[],
-    date: new Date(),
-  });
+  const [formValues, setFormValues] = useState(emptyFormValues);
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -93,30 +127,48 @@ export default function ProjectEditor(props: Props) {
   };
 
   useEffect(() => {
-    let detailedInformationEditor = null;
-    if (props.project) {
-      const blocksFromHTML = convertFromHTML(props.project);
-      const universityInfo = ContentState.createFromBlockArray(
+    if (editMode === false) {
+      setFormValues(emptyFormValues);
+      let detailedInformationEditor = null;
+      const blocksFromHTML = convertFromHTML('');
+      const content = ContentState.createFromBlockArray(
         blocksFromHTML.contentBlocks,
         blocksFromHTML.entityMap
       );
-      detailedInformationEditor = EditorState.createWithContent(universityInfo);
+      detailedInformationEditor = EditorState.createWithContent(content);
       setEditorState(detailedInformationEditor);
     }
-  }, [props.project]);
+  }, [editMode]);
 
-  const saveProject = () => {
-    const isValid = validateForm();
-    if (isValid) {
-      let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-      const finalFormObject = {
-        ...formValues,
-        description: html,
-      };
-      //do backend post request in here, use debounce mechanism as well
-      // setOpen(true);
+  useEffect(() => {
+    let detailedInformationEditor = null;
+    if (project) {
+      const blocksFromHTML = convertFromHTML(
+        `<div>${project.description}</div>`
+      );
+      const content = ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap
+      );
+      detailedInformationEditor = EditorState.createWithContent(content);
+      setEditorState(detailedInformationEditor);
+      setFormValues({
+        name: project.name,
+        city: project.city,
+        country: project.country,
+        state: project.state,
+        status: project.status,
+        address: project.address,
+        ghgPuller: project.ghgPuller,
+        isInstitutional: project.isInstitutional,
+        link: project.link,
+        contactEmail: project.contactEmail,
+        implementers: project.implementers,
+        concepts: project.concepts,
+        date: project.date as any,
+      });
     }
-  };
+  }, [project]);
 
   const addImplementer = () => {
     setFormValues((prev) => {
@@ -149,10 +201,112 @@ export default function ProjectEditor(props: Props) {
     setOpen(false);
   };
 
+  const saveProject = () => {
+    const isValid = validateForm();
+    if (isValid) {
+      let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+      const finalFormObject = {
+        ...formValues,
+        isInstitutional:
+          formValues.isInstitutional === Boolean(1) ? true : false,
+        description: html,
+      };
+
+      saveProjectDetails(finalFormObject).then(async () => {
+        let projects = structuredClone((currentUser as any).projects);
+        console.log(projects);
+        let slugProject = setSlugify(finalFormObject.name);
+        console.log(slugProject);
+        console.log(typeof slugProject);
+
+        projects.push(slugProject);
+        console.log(projects);
+
+        await db
+          .collection('user')
+          .record((currentUser as any).id)
+          .call('setProjects', [structuredClone(projects)])
+          .then(() => {
+            setModalTitle('SUCCESS!');
+            setModalMessage('Your project was saved successfully!');
+            setOpen(true);
+            setFormValues(emptyFormValues);
+            let detailedInformationEditor = null;
+            const blocksFromHTML = convertFromHTML('');
+            const content = ContentState.createFromBlockArray(
+              blocksFromHTML.contentBlocks,
+              blocksFromHTML.entityMap
+            );
+            detailedInformationEditor = EditorState.createWithContent(content);
+            setEditorState(detailedInformationEditor);
+          });
+      });
+    }
+  };
+
+  ///////////////////// Polybase Code 1 Beginning ///////////////////////
+
+  async function saveProjectDetails(finalFormObject: any) {
+    const res = await auth?.signIn();
+
+    // if publickey was received
+    let publicKeyH = (res as any).publicKey;
+    let pKey = window.ethereum.selectedAddress;
+    if (!publicKeyH) {
+      publicKeyH = await getPublicKeyH();
+    }
+
+    if (auth) {
+      db.signer(async (data: string) => {
+        return {
+          h: 'eth-personal-sign',
+          sig: await auth?.ethPersonalSign(data),
+        };
+      });
+    }
+
+    // Add user if not exists
+    try {
+      const userData = (await db.collection('RegenProject').record(pKey).get())
+        .data;
+      if (!userData) {
+        await db
+          .collection('RegenProject')
+          .create([
+            setSlugify(formValues.name),
+            '',
+            finalFormObject.name,
+            finalFormObject.description as any,
+            finalFormObject.isInstitutional,
+            finalFormObject.status,
+            'pending',
+            finalFormObject.implementers,
+            finalFormObject.concepts,
+            finalFormObject.contactEmail,
+            finalFormObject.date,
+            finalFormObject.address,
+            finalFormObject.link,
+            finalFormObject.ghgPuller,
+            finalFormObject.city,
+            finalFormObject.state,
+            finalFormObject.country,
+          ]);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  ///////////////////// Polybase Code 2 End //////////////////////
+
+  const editProject = () => {
+    console.log('edit project');
+  };
+
   return (
     <div className={`${styles.main_container}`}>
       <div className={`${styles.wrapper}`}>
-        <DashboardHeader header="NEW PROJECT" />
+        <DashboardHeader header={editMode ? 'EDIT PROJECT' : 'NEW PROJECT'} />
         <div className={`${styles.project_information}`}>
           <Row>
             <Col xs={12} sm={6}>
@@ -231,11 +385,17 @@ export default function ProjectEditor(props: Props) {
                 <InputGroup className="mb-3">
                   <Form.Select
                     aria-label="Default select example"
-                    onChange={(e) => setConcept(e.target.value)}
+                    onChange={(e) =>
+                      setConcept(e.target.value && e.target.value)
+                    }
                   >
                     <option>Select a concept</option>
-                    {mainConcepts.map((item) => {
-                      return <option value={item.value}>{item.name}</option>;
+                    {mainConcepts.map((item, index) => {
+                      return (
+                        <option key={index} value={item.value}>
+                          {item.name}
+                        </option>
+                      );
                     })}
                   </Form.Select>
                   <Button
@@ -246,7 +406,7 @@ export default function ProjectEditor(props: Props) {
                     Add Item
                   </Button>
                 </InputGroup>
-                {formValues.concepts.length > 0 && (
+                {formValues.concepts?.length > 0 && (
                   <Form.Text id="conceptsBlock" muted>
                     Your concepts are:{' '}
                     {formValues.concepts.map((item, index, array) => {
@@ -265,7 +425,7 @@ export default function ProjectEditor(props: Props) {
             <Col xs={12} sm={6}>
               <Form.Group className="mb-3" controlId="contactEmail">
                 <Form.Label className="font-extrabold">
-                  Contact email*
+                  Contact Email*
                 </Form.Label>
                 <Form.Control
                   type="email"
@@ -281,7 +441,7 @@ export default function ProjectEditor(props: Props) {
 
               <Form.Group className="mb-3" controlId="link">
                 <Form.Label className="font-extrabold">
-                  Project link*
+                  Project Link*
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -317,7 +477,7 @@ export default function ProjectEditor(props: Props) {
 
               <Form.Group className="mb-3" controlId="ghgPuller">
                 <Form.Label className="font-extrabold">
-                  Greenhouse Gas*
+                  Greenhouse Gas Puller*
                 </Form.Label>
                 <Form.Select
                   aria-label="Default select Greenhouse Gas"
@@ -345,8 +505,8 @@ export default function ProjectEditor(props: Props) {
                   isInvalid={!!errors.isInstitutional}
                 >
                   <option>Select an option</option>
-                  <option value={false as any}>Personal</option>
-                  <option value={true as any}>Institutional</option>
+                  <option value={0}>Personal</option>
+                  <option value={1}>Institutional</option>
                 </Form.Select>
                 <Form.Control.Feedback type="invalid">
                   {errors.isInstitutional}
@@ -371,10 +531,10 @@ export default function ProjectEditor(props: Props) {
                     Add Item
                   </Button>
                 </InputGroup>
-                {formValues.implementers.length > 0 && (
+                {formValues.implementers?.length > 0 && (
                   <Form.Text id="implementerBlock" muted>
                     Your implementers are:{' '}
-                    {formValues.implementers.map((item, index, array) => {
+                    {formValues.implementers?.map((item, index, array) => {
                       return (
                         <span key={item}>
                           {item}
@@ -398,33 +558,82 @@ export default function ProjectEditor(props: Props) {
             toolbarClassName={`${styles.toolbarc_lass}`}
           />
         </div>
-        <div className="flex justify-center my-2">
-          <Button
-            style={{
-              borderRadius: '20px',
-              width: '130px',
-              padding: '0.4em 2em',
-            }}
-            variant="success"
-            onClick={saveProject}
-          >
-            SAVE
-          </Button>
-        </div>
+        {editMode ? (
+          <div className="flex justify-center my-2 gap-2">
+            <Button
+              style={{
+                borderRadius: '20px',
+                width: '130px',
+                padding: '0.4em 2em',
+              }}
+              variant="success"
+              onClick={editProject}
+            >
+              EDIT
+            </Button>
+
+            <Button
+              style={{
+                borderRadius: '20px',
+                width: '130px',
+                padding: '0.4em 2em',
+              }}
+              variant="success"
+              onClick={onCloseEditMode}
+            >
+              CANCEL
+            </Button>
+          </div>
+        ) : (
+          <div className="flex justify-center my-2">
+            <Button
+              style={{
+                borderRadius: '20px',
+                width: '130px',
+                padding: '0.4em 2em',
+              }}
+              variant="success"
+              onClick={saveProject}
+            >
+              SAVE
+            </Button>
+          </div>
+        )}
       </div>
-      <Modal show={open} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Not yet ready!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          This functionality is not yet ready. We are working on it!
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <CustomModal
+        show={open}
+        handleClose={handleClose}
+        message={modalMessage}
+        title={modalTitle}
+      ></CustomModal>
     </div>
   );
 }
+
+interface CustomModalInterface {
+  show: boolean;
+  handleClose: () => void;
+  message: string;
+  title: string;
+}
+
+const CustomModal = ({
+  show,
+  handleClose,
+  title,
+  message,
+}: CustomModalInterface) => {
+  return (
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{message}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};

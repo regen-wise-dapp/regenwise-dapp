@@ -57,7 +57,6 @@ export default function AccountDetails({ user }: Props) {
   } as User);
 
   useEffect(() => {
-    console.log(user);
     if (user !== undefined) {
       setFormValues(user);
     }
