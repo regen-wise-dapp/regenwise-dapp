@@ -35,8 +35,6 @@ export default function ProjectList({
       const projectConcepts = project.concepts.map((concept) =>
         concept.toLowerCase()
       );
-      const projectImplementers = project.implementers.toLowerCase();
-      
 
       const matchYear =
         advanceFilters.years?.length === 0
@@ -48,14 +46,8 @@ export default function ProjectList({
           : advanceFilters.concepts?.some((concept) =>
               projectConcepts.includes(concept.toLowerCase())
             );
-      const matchImplementers =
-        advanceFilters.implementers?.length === 0
-          ? true
-          : advanceFilters.implementers?.some((imp) =>
-              projectImplementers.includes(imp.toLowerCase())
-            );
 
-      return matchYear && matchConcepts && matchImplementers;
+      return matchYear && matchConcepts;
     })
     .sort((a: Project, b: Project) => {
       if (order.orderType === '' || !order.orderDirection) {

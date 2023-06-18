@@ -6,15 +6,15 @@ import { Project } from '@src/models/project';
 
 interface Props {
   projectItem: Project;
+  setEditedProject: (projectItem: Project) => void;
+  onDeleteItem: (projectItem: any) => void;
 }
 
-export default function ProjectItem({ projectItem }: Props) {
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+export default function ProjectItem({
+  projectItem,
+  onDeleteItem,
+  setEditedProject,
+}: Props) {
   return (
     <div className={`${styles.list_item_container}`}>
       <div className={`${styles.image_container}`}>
@@ -36,7 +36,8 @@ export default function ProjectItem({ projectItem }: Props) {
         </div>
         <div className="flex justify-center gap-2">
           <Button
-            onClick={() => setOpen(true)}
+            // onClick={() => onDeleteItem(projectItem)}
+            onClick={() => alert("Not yet ready!")}
             style={{
               borderRadius: '20px',
               width: '130px',
@@ -47,7 +48,8 @@ export default function ProjectItem({ projectItem }: Props) {
             DELETE
           </Button>
           <Button
-            onClick={() => setOpen(true)}
+            // onClick={() => setEditedProject(projectItem)}
+            onClick={() => alert("Not yet ready!")}
             style={{
               borderRadius: '20px',
               width: '130px',
@@ -59,19 +61,6 @@ export default function ProjectItem({ projectItem }: Props) {
           </Button>
         </div>
       </div>
-      <Modal show={open} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Not yet ready!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          This functionality is not yet ready. We are working on it!
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }

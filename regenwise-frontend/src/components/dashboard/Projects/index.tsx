@@ -48,7 +48,7 @@ export default function Projects({projects}: Props) {
         </Button>
       </div>
       {activeButton[0] === true && <ProjectList projects={projects}/>}
-      {activeButton[1] === true && <ProjectEditor project={""}/>}
+      {activeButton[1] === true && <ProjectEditor editMode={false}/>}
     </div>
   );
 }

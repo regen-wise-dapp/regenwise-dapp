@@ -73,9 +73,9 @@ export default function AccountRegister() {
       newErrors.username = 'Username is required';
     }
     if (!formValues.email) {
-      newErrors.contactEmail = 'Contact email is required';
+      newErrors.email = 'Contact email is required';
     } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formValues.email)) {
-      newErrors.contactEmail = 'Invalid email format';
+      newErrors.email = 'Invalid email format';
     }
 
     setErrors(newErrors);
@@ -100,7 +100,7 @@ export default function AccountRegister() {
     }
   }
 
-  ///////////////////// Polybase Code 2 Beginning ///////////////////////
+  ///////////////////// Polybase Code 1 Beginning ///////////////////////
 
   async function saveAccountDetails() {
     const res = await auth?.signIn();
