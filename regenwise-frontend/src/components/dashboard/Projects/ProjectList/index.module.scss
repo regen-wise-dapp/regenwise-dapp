@@ -1,6 +1,7 @@
 .main_container {
   .wrapper {
     .list {
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       gap: 2em;

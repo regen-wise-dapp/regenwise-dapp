@@ -131,12 +131,6 @@ export default function Purchases() {
               itemArray.push(meta);
             }
           }
-          // console.log('Item Array loop end: ', itemArray);
-          if (itemArray.length === 0) {
-            // console.log(
-            //   'There is no nft in your wallet from this collection to show.'
-            // );
-          }
           setNFTItems(itemArray);
           setLoading(false);
         });
@@ -224,7 +218,7 @@ export default function Purchases() {
   }
 
   return (
-    <div className={`${styles.main_container} flex flex-col gap-16`}>
+    <div className={`${styles.main_container} flex flex-col gap-2`}>
       {isLoading ? (
         <Loading theme="dark" loadingMessage={loadingMessage} />
       ) : (

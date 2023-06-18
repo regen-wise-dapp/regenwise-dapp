@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { User } from '@src/models/user';
@@ -28,18 +28,12 @@ async function getPublicKeyH() {
 
 ///////////////////// Polybase Code 0 End ///////////////////////
 
-interface Props {
-  publicId: string;
-  onRegisterUser: (val: User) => void;
-}
-
-export default function AccountRegister({ publicId, onRegisterUser }: Props) {
-  ///////////////////// Polybase Code 1 Beginning ///////////////////////
+export default function AccountRegister() {
   const dispatch = useDispatch<AppDispatch>();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  ///////////////////// Polybase Code 1 End ///////////////////////
-
+  const [errors, setErrors] = useState<any>({} as any);
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [open, setOpen] = useState(false);
   const [formValues, setFormValues] = useState<User>({
     id: '',
     name: '',
@@ -65,9 +59,50 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {} as any;
+
+    // Validate the required fields
+    if (!formValues.name) {
+      newErrors.name = 'Name is required';
+    }
+    if (!formValues.surname) {
+      newErrors.surname = 'Surname is required';
+    }
+    if (!formValues.userName) {
+      newErrors.username = 'Username is required';
+    }
+    if (!formValues.email) {
+      newErrors.contactEmail = 'Contact email is required';
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formValues.email)) {
+      newErrors.contactEmail = 'Invalid email format';
+    }
+
+    setErrors(newErrors);
+
+    // Return true if there are no errors
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const saveAccount = ()=>{
+
+    const isValid = validateForm();
+    if (isValid) {
+      saveAccountDetails().then(()=>{
+        setModalTitle('SUCCESS!');
+        setModalMessage('Your account info was saved successfully!');
+        setOpen(true);
+      })
+    }
+  }
+
   ///////////////////// Polybase Code 2 Beginning ///////////////////////
 
-  async function signIn() {
+  async function saveAccountDetails() {
     const res = await auth?.signIn();
 
     // if publickey was received
@@ -110,17 +145,9 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
     } catch (e) {
       console.log(e);
     }
-
-    setIsLoggedIn(!!res);
   }
 
   ///////////////////// Polybase Code 2 End ///////////////////////
-
-  const saveAccountDetails = async () => {
-    /* form values should be added in this order: name, surname, email, userName, date */
-    signIn();
-    onRegisterUser(formValues);
-  };
 
   return (
     <div className={`${styles.main_container}`}>
@@ -141,33 +168,45 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
           </div>
           <div className={`${styles.information_container}`}>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Label className="font-extrabold">User Name</Form.Label>
+              <Form.Label className="font-extrabold">Name</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.name ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your name"
+                isInvalid={!!errors.name}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.name}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="surname">
-              <Form.Label className="font-extrabold">User Surname</Form.Label>
+              <Form.Label className="font-extrabold">Surname</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.surname ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your surname"
+                isInvalid={!!errors.surname}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.surname}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="email">
-              <Form.Label className="font-extrabold">User email</Form.Label>
+              <Form.Label className="font-extrabold">Email</Form.Label>
               <Form.Control
                 type="email"
                 value={formValues?.email ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your email"
+                isInvalid={!!errors.email}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="userName">
@@ -177,14 +216,18 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
                 value={formValues?.userName ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your username"
+                isInvalid={!!errors.username}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.username}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="publicId">
               <Form.Label className="font-extrabold">Public Id</Form.Label>
               <Form.Control
                 type="text"
-                value={formValues?.id?.toLocaleUpperCase() ?? ''}
+                value={(window as any).ethereum.selectedAddress}
                 onChange={handleFormInput}
                 disabled
               />
@@ -197,7 +240,7 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
                   padding: '0.4em 2em',
                 }}
                 variant="success"
-                onClick={saveAccountDetails}
+                onClick={saveAccount}
               >
                 REGISTER
               </Button>
@@ -205,6 +248,41 @@ export default function AccountRegister({ publicId, onRegisterUser }: Props) {
           </div>
         </div>
       </div>
+      <CustomModal
+        show={open}
+        handleClose={handleClose}
+        message={modalMessage}
+        title={modalTitle}
+      ></CustomModal>
     </div>
   );
 }
+
+interface CustomModalInterface {
+  show: boolean;
+  handleClose: () => void;
+  message: string;
+  title: string;
+}
+
+const CustomModal = ({
+  show,
+  handleClose,
+  title,
+  message,
+}: CustomModalInterface) => {
+
+  return (
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{message}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};

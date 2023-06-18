@@ -5,10 +5,14 @@ import { fetcherWithNoCache } from '@src/utils/fetcher';
 export const fetchUserInfo = createAsyncThunk(
   'user/fetchUserInfo',
   async (id: string) => {
-    const response = await fetcherWithNoCache(
-      `http://localhost:3000/api/users/${id}`
-    );
-    return response;
+    try {
+      const response = await fetcherWithNoCache(
+        `http://localhost:3000/api/users/${id}`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 

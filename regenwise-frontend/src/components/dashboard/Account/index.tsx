@@ -9,21 +9,19 @@ interface Props {
   user: User;
 }
 
-export default function Account({ user }: Props) {
+export default function Account({ user }: Props): JSX.Element {
   const changeUserDetails = (val: User) => {};
-  const registerUser = (val: any) => {
-    console.log(val);
-  };
+
 
   return (
     <div>
       {user.id ? (
         <div>
-          <AccountDetails user={user} onChangeUserDetails={changeUserDetails} />
+          <AccountDetails user={user}  />
           <AccountType user={user} />
         </div>
       ) : (
-        <AccountRegister publicId={''} onRegisterUser={registerUser} />
+        <AccountRegister publicId={''}  />
       )}
     </div>
   );

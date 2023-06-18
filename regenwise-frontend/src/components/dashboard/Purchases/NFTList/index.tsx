@@ -12,9 +12,9 @@ export default function NFTList({ header, nftItems, executeRelist }: Props) {
   return (
     <>
       <DashboardHeader header={header} />
-      <CardGroup className="flex flex-row justify-center flex-wrap gap-12">
-        {nftItems.length > 0 ? (
-          nftItems.map((card: NFTItem) => {
+      {nftItems.length > 0 ? (
+        <CardGroup className="flex flex-row justify-center flex-wrap gap-12">
+          {nftItems.map((card: NFTItem) => {
             return (
               <NFTCard
                 key={card.description}
@@ -22,11 +22,11 @@ export default function NFTList({ header, nftItems, executeRelist }: Props) {
                 executeRelist={executeRelist}
               />
             );
-          })
-        ) : (
-          <div>There is no item to show under this category.</div>
-        )}
-      </CardGroup>
+          })}
+        </CardGroup>
+      ) : (
+        <div>You do not have any NFT item to show in here.</div>
+      )}
     </>
   );
 }
