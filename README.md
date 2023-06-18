@@ -28,7 +28,7 @@
       <a href="#overview-of-the-project">Overview Of The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
-       <li><a href="#images-from-the-dapp">Images From The DApp</a></li>
+       <!-- <li><a href="#images-from-the-dapp">Images From The DApp</a></li> -->
       </ul>
     </li>
     <li>
@@ -104,8 +104,10 @@ If you want to run the project on your local machine, read the steps below:
   npm install
   ```
 * If you do not already have it, install Metamask wallet to your browser and connect it to Polygon Mumbai Testnet. (You can find how to do these on the net, it is easy.)
-* 
-  
+
+* You should add .env file in .\regenwise-frontend\ directory and inside it there should be your testnet account's private key named as NEXT_PUBLIC_key1 .
+
+
 * Then run the command below:
   ```sh
   npm run dev
@@ -118,7 +120,7 @@ If you want to run the project on your local machine, read the steps below:
 
 
 <!-- ROADMAP -->
-## Roadmap in Broad Terms
+## Roadmap
 
 * Finish the mvp of the DApp including frontend design (Almost Done)
 * Get feedback from the users and improve accordingly
