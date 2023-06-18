@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const { id } = context.query;
   try {
     const project: Project = await fetcherWithNoCache(
-      `http://localhost:3000/api/projects/${id}`
+      `https://regenwise.net/api/projects/${id}`
     );
     return { props: { project } };
   } catch (error) {
