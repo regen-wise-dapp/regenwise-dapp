@@ -13,7 +13,7 @@ export interface Project {
   description: string[];
   ghgPuller: string;
   id: string;
-  implementers: string[];
+  implementers: string;
   isInstutional: boolean;
   likes: number;
   link: string;

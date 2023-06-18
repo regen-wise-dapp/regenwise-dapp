@@ -29,4 +29,4 @@ const db = new Polybase({
   
 */
 
-await db.collection("user").record("0x8f499e9f6f3c048600800a1bc90d4ccb5a64331a").call("del");
+await db.collection("RegenProject").record("regenwise-nft-collection-zero").call("del");

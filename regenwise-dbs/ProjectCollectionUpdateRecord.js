@@ -14,7 +14,7 @@ const db = new Polybase({
 
 
 
-await db.collection("RegenProject").record("regenerative-education").call("setParentConcepts", [[]]);
+await db.collection("RegenProject").record("regenwise-web-platform").call("setImplementers", ["RegenWiseTeam, Omar"]);
 // await db.collection("RegenProject").record("regenwise-web-platform").call("setConcepts", [["regeneration",
 // "regenerative-agriculture-and-forestry",
 // "regenerative-buildings",

@@ -28,7 +28,7 @@ const db = new Polybase({
 // await db.collection("RegenConcept").record("others").call("setSubconcepts", [["Regenerative Water Management", "Regenerative Waste Management", "Regenerative Fisheries", "Regenerative Education", "Regenerative Landscaping", "Regenerative Diets"]]);
 
 
-await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setLikes", [0]);
+await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setCid", ["0"]);
 // await db.collection("RegenConcept").record("regenerative-education").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("setParentConcepts", [[]]);
 // await db.collection("RegenConcept").record("regenerative-energy-and-buildings").call("setParentConcepts", [[]]);
