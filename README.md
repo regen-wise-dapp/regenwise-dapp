@@ -10,7 +10,7 @@
   <p align="center">
     Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate regen efforts by offering various services and resources to users. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. The platform's NFT markets is another essential feature that users may benefit from. The users can earn, buy, and sell valuable NFTs from our platform's collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in fields like agriculture and energy.
     <br />
-    <a href="https://regenwise.xyz">View Demo</a>
+    <a href="https://regenwise.net">View Demo</a>
     ·
     <a href="https://github.com/regen-wise-dapp/regenwise-dapp/issues">Report Bug</a>
     ·
@@ -28,7 +28,7 @@
       <a href="#overview-of-the-project">Overview Of The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
-        <li><a href="#images-from-the-dapp">Images From The DApp</a></li>
+       <li><a href="#images-from-the-dapp">Images From The DApp</a></li>
       </ul>
     </li>
     <li>
@@ -75,34 +75,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Images From The DApp
-### Homepage
-<img  src="/public/Images/home_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/home_2.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/home_3.png" alt="Logo" width="830" height="350">
 
-### Concepts Page
-<img  src="/public/Images/concepts_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/concepts_2.png" alt="Logo" width="830" height="350">
-
-### Projects
-<img  src="/public/Images/projects_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/projects_2.png" alt="Logo" width="830" height="350">
-
-
-### NFT Markets
-<img  src="/public/Images/markets_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/markets_2.png" alt="Logo" width="830" height="350">
-
-### Quests
-<img  src="/public/Images/quests_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/quests_2.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/quests_3.png" alt="Logo" width="830" height="350">
-
-### Dashboard
-<img  src="/public/Images/dashboard_1.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/dashboard_2.png" alt="Logo" width="830" height="350">
-<img  src="/public/Images/dashboard_3.png" alt="Logo" width="830" height="350">
 
 
 
@@ -115,7 +88,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-We have a demo version of the platform on this url: <a href="https://regenwise.xyz">DemoUrl</a>
+We have a demo version of the platform on this url: <a href="https://regenwise.net">DemoUrl</a>
 
 If you want to run the project on your local machine, read the steps below:
 
