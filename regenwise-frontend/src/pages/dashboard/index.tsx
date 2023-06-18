@@ -8,25 +8,33 @@ import Stats from '@src/components/dashboard/Stats';
 import Projects from '@src/components/dashboard/Projects';
 import { User } from '@src/models/user';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 function Dashboard() {
+  const router = useRouter();
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
+
+  useEffect(() => {
+    if (!(window as any).ethereum.selectedAddress) {
+      router.push('/');
+    }
+  }, [currentUser]);
+
   const tabComponents = [
     {
       eventKey: 'nftList',
       title: 'MY NFTs',
       icon: '/dashboard/nft.png',
       component: <Purchases />,
-      display: true,
-      disabled: (!currentUser || !(currentUser as User).id ),
+      display: !(!currentUser || !(currentUser as User).id),
     },
     {
       eventKey: 'stats',
       title: 'Stats',
       icon: '/dashboard/stats.png',
       component: <Stats />,
-      display: true,
-      disabled: (!currentUser || !(currentUser as User).id ),
+      display: !(!currentUser || !(currentUser as User).id),
     },
     {
       eventKey: 'editor',
@@ -37,15 +45,13 @@ function Dashboard() {
       ) : (
         <></>
       ),
-      disabled: (!currentUser || !(currentUser as User).id ),
-      display: true,
+      display: !(!currentUser || !(currentUser as User).id),
     },
     {
       eventKey: 'account',
       title: 'Account',
       icon: '/dashboard/user.png',
       component: currentUser ? <Account user={currentUser} /> : <></>,
-      disabled: false,
       display: true,
     },
   ];
@@ -53,7 +59,7 @@ function Dashboard() {
     <div className={styles.main_container}>
       <div className={styles.wrapper}>
         <Tabs
-          defaultActiveKey="nftList"
+          defaultActiveKey="account"
           id="justify-tab-example"
           className="mb-3"
           justify
@@ -64,7 +70,6 @@ function Dashboard() {
               return (
                 <Tab
                   eventKey={item.eventKey}
-                  disabled={item.disabled}
                   title={
                     <div className="flex flex-col items-center">
                       <Image

@@ -36,24 +36,26 @@ export default async function ProjectHandler(
 
   try {
     const user = (await collectionReference.record(id as string).get()).data;
+    if (!user) return res.status(200).json({ message: `User not found.` });
+
     let userProjectsObjects: Promise<any>[] = [];
     let userProjects: string[] = [];
+    user.projectsObjects = [];
 
     // Get data from the record
     if (user.projects) {
-    user.projects.forEach((project: string) => {
-      if (!userProjects.includes(project)) {
-        userProjects.push(project);
-      }
-    });
-  }
-
-    user.projectsObjects = [];
-
-    user.projects.forEach((project: any) => {
-      let userProjectObject = projectsCollectionReference.record(project).get();
-      userProjectsObjects.push(userProjectObject);
-    });
+      user.projects.forEach((project: string) => {
+        if (!userProjects.includes(project)) {
+          userProjects.push(project);
+        }
+      });
+      user.projects.forEach((project: any) => {
+        let userProjectObject = projectsCollectionReference
+          .record(project)
+          .get();
+        userProjectsObjects.push(userProjectObject);
+      });
+    }
 
     Promise.allSettled(userProjectsObjects).then((results) => {
       results.forEach((result) => {
@@ -63,10 +65,7 @@ export default async function ProjectHandler(
           console.log('Promise rejected:', result.reason);
         }
       });
-
-      user
-        ? res.status(200).json(user)
-        : res.status(404).json({ message: `User not found.` });
+      res.status(200).json(user);
     });
   } catch (error) {
     console.log('Error:', error);

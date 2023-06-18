@@ -4,15 +4,42 @@ import Image from 'next/image';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { User } from '@src/models/user';
 import DashboardHeader from '../../shared/DashboardHeader';
+import { Auth } from '@polybase/auth';
+import { Polybase } from '@polybase/client';
+import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
+import { fetchUserInfo } from '@slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@store/index';
 
 interface Props {
   user: User;
-  onChangeUserDetails: (val: User) => void;
 }
 
-export default function AccountDetails({ user, onChangeUserDetails }: Props) {
+///////////////////// Polybase Code 0 Beginning ///////////////////////
+
+const db = new Polybase({
+  defaultNamespace: 'regenwise-regen-db',
+});
+
+const auth = typeof window !== 'undefined' ? new Auth() : null;
+
+async function getPublicKeyH() {
+  const msg = 'Login Process';
+  const sig = await auth?.ethPersonalSign(msg);
+  const publicKeyH = ethPersonalSignRecoverPublicKey(sig as any, msg);
+  return '0x' + publicKeyH.slice(4);
+}
+
+///////////////////// Polybase Code 0 End ///////////////////////
+
+export default function AccountDetails({ user }: Props) {
   const [isEditable, setIsEditable] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
+  const [errors, setErrors] = useState<any>({} as any);
   const [formValues, setFormValues] = useState<User>({
     id: '',
     name: '',
@@ -30,6 +57,7 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
   } as User);
 
   useEffect(() => {
+    console.log(user);
     if (user !== undefined) {
       setFormValues(user);
     }
@@ -45,14 +73,128 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
   };
 
   const saveAccountDetails = () => {
-    setIsEditable(false);
-    onChangeUserDetails(formValues);
-    setOpen(true);
+    const isValid = validateForm();
+    if (isValid) {
+      updateAccount().then(() => {
+        setIsEditable(false);
+        setModalTitle('SUCCESS!');
+        setModalMessage('Your account info was saved successfully!');
+        setIsDeleteModal(false);
+        setOpen(true);
+      });
+    }
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const deleteAccount = () => {
+    setModalTitle('ATTENTION!');
+    setModalMessage(
+      'Are you sure to delete your account. This operation is irreversible!'
+    );
+    setIsDeleteModal(true);
+    setOpen(true);
+  };
+
+  const onHandleDelete = async () => {
+    const res = await auth?.signIn();
+    // if publickey was received
+    let publicKeyH = (res as any).publicKey;
+    let pKey = window.ethereum.selectedAddress;
+    if (!publicKeyH) {
+      publicKeyH = await getPublicKeyH();
+    }
+    if (auth) {
+      db.signer(async (data: string) => {
+        return {
+          h: 'eth-personal-sign',
+          sig: await auth?.ethPersonalSign(data),
+        };
+      });
+    }
+
+    // Add user if not exists
+    try {
+      await db
+        .collection('user')
+        .record(pKey)
+        .call('del')
+        .then(() => {
+          dispatch(fetchUserInfo((window as any).ethereum.selectedAddress));
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {} as any;
+
+    // Validate the required fields
+    if (!formValues.name) {
+      newErrors.name = 'Name is required';
+    }
+    if (!formValues.surname) {
+      newErrors.surname = 'Surname is required';
+    }
+    if (!formValues.userName) {
+      newErrors.username = 'Username is required';
+    }
+    if (!formValues.email) {
+      newErrors.contactEmail = 'Contact email is required';
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formValues.email)) {
+      newErrors.contactEmail = 'Invalid email format';
+    }
+
+    setErrors(newErrors);
+
+    // Return true if there are no errors
+    return Object.keys(newErrors).length === 0;
+  };
+
+  ///////////////////// Polybase Code 2 Beginning ///////////////////////
+
+  async function updateAccount() {
+    const res = await auth?.signIn();
+
+    // if publickey was received
+    let publicKeyH = (res as any).publicKey;
+    let pKey = window.ethereum.selectedAddress;
+    if (!publicKeyH) {
+      publicKeyH = await getPublicKeyH();
+    }
+
+    if (auth) {
+      db.signer(async (data: string) => {
+        return {
+          h: 'eth-personal-sign',
+          sig: await auth?.ethPersonalSign(data),
+        };
+      });
+    }
+
+    // Add user if not exists
+    try {
+      await db
+        .collection('user')
+        .record(pKey)
+        .call('updateUser', [
+          formValues.name,
+          formValues.surname,
+          formValues.email,
+          formValues.userName ?? '',
+        ])
+        .then(() => {
+          dispatch(fetchUserInfo((window as any).ethereum.selectedAddress));
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  ///////////////////// Polybase Code 2 End ///////////////////////
 
   return (
     <div className={`${styles.main_container}`}>
@@ -73,70 +215,99 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
           </div>
           <div className={`${styles.information_container}`}>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Label className="font-extrabold">User Name</Form.Label>
+              <Form.Label className="font-extrabold">Name</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.name ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your name"
                 readOnly={!isEditable}
+                isInvalid={!!errors.name}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.name}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="surname">
-              <Form.Label className="font-extrabold">User Surname</Form.Label>
+              <Form.Label className="font-extrabold">Surname</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.surname ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your surname"
                 readOnly={!isEditable}
+                isInvalid={!!errors.surname}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.surname}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="email">
-              <Form.Label className="font-extrabold">User email</Form.Label>
+              <Form.Label className="font-extrabold">Email</Form.Label>
               <Form.Control
                 type="email"
                 value={formValues?.email ?? ''}
                 onChange={handleFormInput}
                 placeholder="Enter your email"
                 readOnly={!isEditable}
+                isInvalid={!!errors.email}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="username">
+            <Form.Group className="mb-3" controlId="userName">
               <Form.Label className="font-extrabold">Username</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.userName ?? ''}
                 onChange={handleFormInput}
                 readOnly={!isEditable}
+                isInvalid={!!errors.userName}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.userName}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="publicId">
               <Form.Label className="font-extrabold">Public Id</Form.Label>
               <Form.Control
                 type="text"
-                value={formValues?.id?.toLocaleUpperCase() ?? ''}
+                value={(window as any).ethereum.selectedAddress}
                 onChange={handleFormInput}
                 disabled
               />
             </Form.Group>
             <div className="flex justify-center gap-2">
               {!isEditable ? (
-                <Button
-                  style={{
-                    borderRadius: '20px',
-                    width: '130px',
-                    padding: '0.4em 2em',
-                  }}
-                  variant="success"
-                  onClick={() => setIsEditable(true)}
-                >
-                  EDIT
-                </Button>
+                <>
+                  <Button
+                    style={{
+                      borderRadius: '20px',
+                      width: '130px',
+                      padding: '0.4em 1em',
+                    }}
+                    variant="success"
+                    onClick={() => setIsEditable(true)}
+                  >
+                    EDIT INFO
+                  </Button>
+                  <Button
+                    style={{
+                      borderRadius: '20px',
+                      width: '130px',
+                      padding: '0.4em 1em',
+                    }}
+                    variant="danger"
+                    onClick={deleteAccount}
+                  >
+                    DELETE
+                  </Button>
+                </>
               ) : (
                 <>
                   <Button
@@ -167,19 +338,56 @@ export default function AccountDetails({ user, onChangeUserDetails }: Props) {
           </div>
         </div>
       </div>
-      <Modal show={open} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Not yet ready!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          This functionality is not yet ready. We are working on it!
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <CustomModal
+        show={open}
+        handleClose={handleClose}
+        message={modalMessage}
+        title={modalTitle}
+        isDeleteModal={isDeleteModal}
+        onHandleDelete={onHandleDelete}
+      ></CustomModal>
     </div>
   );
 }
+
+interface CustomModalInterface {
+  show: boolean;
+  handleClose: () => void;
+  message: string;
+  title: string;
+  isDeleteModal: boolean;
+  onHandleDelete: () => void;
+}
+
+const CustomModal = ({
+  show,
+  handleClose,
+  title,
+  message,
+  isDeleteModal,
+  onHandleDelete,
+}: CustomModalInterface) => {
+  const handleDelete = () => {
+    onHandleDelete();
+    handleClose();
+  };
+
+  return (
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{message}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        {isDeleteModal && (
+          <Button variant="danger" onClick={handleDelete}>
+            DELETE
+          </Button>
+        )}
+      </Modal.Footer>
+    </Modal>
+  );
+};
