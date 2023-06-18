@@ -20,7 +20,7 @@ export default function ProjectAuthor({ project }: Props): JSX.Element {
           </tr>
           <tr>
             <td className="font-extrabold">Project Type:</td>
-            <td>{project.isInstutional ? `Institutional` : `Personal`}</td>
+            <td>{project.isInstitutional ? `Institutional` : `Personal`}</td>
           </tr>
           <tr>
             <td className="font-extrabold">Country:</td>
