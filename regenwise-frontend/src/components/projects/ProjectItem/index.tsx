@@ -45,9 +45,7 @@ export default function ProjectItem({ project }: Props) {
             bg="secondary"
             style={{ height: '20px', minWidth: '60px' }}
           >
-            <span>{` ${project.implementers.map(
-              (item, index, array) => `${item} `
-            )}`}</span>
+            <span>{` ${project.implementers}`}</span>
           </Badge>
         </div>
         <Badge pill bg="secondary" style={{ height: '20px', minWidth: '60px' }}>

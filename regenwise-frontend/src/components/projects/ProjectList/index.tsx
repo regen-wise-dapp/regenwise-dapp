@@ -35,9 +35,8 @@ export default function ProjectList({
       const projectConcepts = project.concepts.map((concept) =>
         concept.toLowerCase()
       );
-      const projectImplementers = project.implementers.map((imp) =>
-        imp.toLowerCase()
-      );
+      const projectImplementers = project.implementers.toLowerCase();
+      
 
       const matchYear =
         advanceFilters.years?.length === 0

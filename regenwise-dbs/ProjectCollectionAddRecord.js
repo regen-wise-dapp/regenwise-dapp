@@ -35,19 +35,19 @@ const db = new Polybase({
   
 */
 
-await db.collection("RegenProject").create(["regenwise-nft-collection-zero",
+await db.collection("RegenProject").create(["regenwise-nft-collection-zero0",
                                             "",
-                                            "RegenWise Trees With The Regenerative Benefits",
-                                            ["'RegenWise Trees With The Regenerative Benefits' is a meaningful and attractive NFT collection featuring 12 special artworks. Each NFT showcases some beautiful tree art and inform about a regenerative benefit (such as carbon sequestration) as its description. Experience the connection between trees and regeneration in digital form."],
+                                            "RegenWise Trees With The Regenerative Benefits NFT Collection",
+                                            "'RegenWise Trees With The Regenerative Benefits' is a meaningful and attractive NFT collection featuring 12 special artworks. Each NFT showcases some beautiful tree art and inform about a regenerative benefit (such as carbon sequestration) as its description. Experience the connection between trees and regeneration in digital form.",
                                             true,
                                             "Ongoing",
                                             "Approved",
-                                            ["RegenWise Team"],
+                                            "RegenWise Team, Omar",
                                             ["regeneration", "regenerative-agriculture-and-forestry"],
                                             "keenregen@gmail.com",
                                             "2023",
                                             "Kartal",
-                                            "https://regenwise.xyz/nftmarket",
+                                            "",
                                             "Might Be",
                                             "Istanbul",
                                             "",
@@ -55,15 +55,3 @@ await db.collection("RegenProject").create(["regenwise-nft-collection-zero",
                                         ])
 
 
-
-
-/* await db.collection("RegenConcept").create(["regeneration",
-                                            "<cid>",
-                                            "Regeneration",
-                                            "regenWiseTeam0",
-                                            [["Explanation"]],
-                                            [["Categories"]],
-                                            [[]],
-                                            [[]],
-                                            ""
-                                        ]);  */
