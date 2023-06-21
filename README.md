@@ -19,7 +19,7 @@
 </div>
 
 
-
+## Readme Top
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -123,7 +123,11 @@ If you want to run the project on your local machine, read the steps below:
 <!-- ROADMAP -->
 ## Roadmap
 
-* Finish the mvp of the DApp including frontend design (Almost Done)
+<div align="center">
+<img  src="/regenwise-frontend/public/read/RoadMap.png" alt="Roadmap">
+</div>
+
+<!-- * Finish the mvp of the DApp including frontend design (Almost Done)
 * Get feedback from the users and improve accordingly
 * Try to find funding for the project
 * Explore and try some other api's for fetching the data from the chain faster
@@ -134,7 +138,7 @@ If you want to run the project on your local machine, read the steps below:
 * <strong>Finish the production version of the web platform until the first quarter of the 2024 ends</strong>
 * Evaluate scalability options as the database grows
 * Consider using <strong>Bacalhau</strong> for computations on the regen data
-* Mobile app development
+* Mobile app development -->
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
