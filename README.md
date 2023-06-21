@@ -19,7 +19,7 @@
 </div>
 
 
-## Readme Top
+## Readme ToC
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -60,7 +60,7 @@ RegenWise also features marketplaces dedicated to regen-themed NFTs. NFTs are un
 
 The combination of education, quests, and the NFT marketplaces within RegenWise reveal a comprehensive and immersive experience for users. It not only informs knowledge about regeneration but also directs individuals to actively contribute to regen efforts. Through its innovative approach, RegenWise strives to contribute to the regen endeavor. 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -74,7 +74,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
  
  
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p> -->
 
 
 
@@ -82,7 +82,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -116,7 +116,7 @@ If you want to run the project on your local machine, read the steps below:
 * If there happens a problem, just contact us via e-mail: <strong>keenregen@gmail.com</strong>
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -141,7 +141,7 @@ If you want to run the project on your local machine, read the steps below:
 * Mobile app development -->
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -151,7 +151,7 @@ If you want to run the project on your local machine, read the steps below:
 If you have any suggestion that would make our platform better according to you, please inform us. You can also simply open an issue with the tag "suggestion".
 If you like the project, don't forget to give it a star!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -163,7 +163,7 @@ RegenWise Team - keenregen@gmail.com
 
 Project Link: [https://github.com/regen-wise-dapp/regenwise-dapp](https://github.com/regen-wise-dapp/regenwise-dapp)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
