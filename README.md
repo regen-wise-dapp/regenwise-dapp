@@ -26,10 +26,10 @@
   <ol>
     <li>
       <a href="#overview-of-the-project">Overview Of The Project</a>
-      <ul>
+      <!-- <ul>
         <li><a href="#built-with">Built With</a></li>
-       <!-- <li><a href="#images-from-the-dapp">Images From The DApp</a></li> -->
-      </ul>
+       <li><a href="#images-from-the-dapp">Images From The DApp</a></li>
+      </ul> -->
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -64,7 +64,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 
 
 
-### Built With
+<!-- ### Built With
 
  ![Typescript][Typescript]
  ![Solidity][Solidity]
@@ -74,7 +74,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
  
  
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
