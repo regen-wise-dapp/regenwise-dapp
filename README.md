@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/regen-wise-dapp/regenwise-dapp">
-    <img  src="/regenwise-frontend/public/read/Cover1.png" alt="Logo" width="640" height="360">
+    <img  src="/regenwise-frontend/public/read/banner1.png" alt="Logo" width="830" height="370">
   </a>
 
 <h2 align="center"> Summary of The RegenWise DApp Project</h2>
@@ -19,17 +19,17 @@
 </div>
 
 
-
+## Readme ToC
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#overview-of-the-project">Overview Of The Project</a>
-      <ul>
+      <!-- <ul>
         <li><a href="#built-with">Built With</a></li>
-       <!-- <li><a href="#images-from-the-dapp">Images From The DApp</a></li> -->
-      </ul>
+       <li><a href="#images-from-the-dapp">Images From The DApp</a></li>
+      </ul> -->
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -46,8 +46,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Overview Of The Project
-
-<img  src="/regenwise-frontend/public/read/banner1.png" alt="Logo" width="830" height="350">
+<div align="center">
+<img  src="/regenwise-frontend/public/read/Cover1.png" alt="Logo" width="640" height="360">
+</div>
 
 RegenWise is a DApp that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, project suggestions and support, interactive quests, and marketplaces for regenerative-themed non-fungible tokens (NFTs).
 
@@ -59,11 +60,11 @@ RegenWise also features marketplaces dedicated to regen-themed NFTs. NFTs are un
 
 The combination of education, quests, and the NFT marketplaces within RegenWise reveal a comprehensive and immersive experience for users. It not only informs knowledge about regeneration but also directs individuals to actively contribute to regen efforts. Through its innovative approach, RegenWise strives to contribute to the regen endeavor. 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
-### Built With
+<!-- ### Built With
 
  ![Typescript][Typescript]
  ![Solidity][Solidity]
@@ -73,15 +74,8 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
  
  
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p> -->
 
-
-
-
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -115,14 +109,18 @@ If you want to run the project on your local machine, read the steps below:
 * If there happens a problem, just contact us via e-mail: <strong>keenregen@gmail.com</strong>
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-* Finish the mvp of the DApp including frontend design (Almost Done)
+<div align="center">
+<img  src="/regenwise-frontend/public/read/RoadMap.png" alt="Roadmap">
+</div>
+
+<!-- * Finish the mvp of the DApp including frontend design (Almost Done)
 * Get feedback from the users and improve accordingly
 * Try to find funding for the project
 * Explore and try some other api's for fetching the data from the chain faster
@@ -133,10 +131,10 @@ If you want to run the project on your local machine, read the steps below:
 * <strong>Finish the production version of the web platform until the first quarter of the 2024 ends</strong>
 * Evaluate scalability options as the database grows
 * Consider using <strong>Bacalhau</strong> for computations on the regen data
-* Mobile app development
+* Mobile app development -->
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -146,7 +144,7 @@ If you want to run the project on your local machine, read the steps below:
 If you have any suggestion that would make our platform better according to you, please inform us. You can also simply open an issue with the tag "suggestion".
 If you like the project, don't forget to give it a star!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
@@ -158,7 +156,7 @@ RegenWise Team - keenregen@gmail.com
 
 Project Link: [https://github.com/regen-wise-dapp/regenwise-dapp](https://github.com/regen-wise-dapp/regenwise-dapp)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
 
 
