@@ -79,13 +79,6 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 
 
 
-
-
-
-<p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
-
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
