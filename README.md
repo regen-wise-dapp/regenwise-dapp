@@ -22,7 +22,7 @@
 ## Readme ToC
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary><strong>Table of Contents</strong></summary>
   <ol>
     <li>
       <a href="#overview-of-the-project">Overview Of The Project</a>
