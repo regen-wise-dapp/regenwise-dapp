@@ -15,7 +15,7 @@ export const features: Feature[] = [
     title: 'Share Your Regen Projects and Plans',
     description:
       'Contribute to regen efforts by adding your project(s) and project idea(s) to our database.',
-    icon: '/scope/scope-icons/2.png',
+    icon: '/scope/scope-icons/5.png',
     backgroundColor: '#fbe6d4',
   },
   {
@@ -32,7 +32,7 @@ export const features: Feature[] = [
     title: 'Engage in Meaningful Quests',
     description:
       'Enjoy educational games while learning about regen in details. Compete with others and get opportunities to earn prizes.',
-    icon: '/scope/scope-icons/1.png',
+    icon: '/scope/scope-icons/7d.png',
     backgroundColor: '#f1eff8',
   },
 ];
