@@ -31,7 +31,7 @@ export default async function handler(
   const db = new Polybase({
     defaultNamespace: 'regenwise-regen-db',
   });
-
+  res.setHeader('Cache-Control', 'no-store');
   const userCollectionData = (await db.collection('user').get()).data;
   let users: User[] = userCollectionData.map((user) => {
     {

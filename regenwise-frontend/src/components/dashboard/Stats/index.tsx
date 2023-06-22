@@ -4,7 +4,6 @@ import DashboardHeader from '../shared/DashboardHeader';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store';
-import { getFromApi } from '@src/utils/getFromApi';
 import { QuestsStatistics, QuestsRankings } from '@src/models/stats';
 
 export default function Stats() {
@@ -18,8 +17,8 @@ export default function Stats() {
 
   useEffect(() => {
     async function fetchData() {
-      const questStatistics: QuestsStatistics[] = await getFromApi(``);
-      const playerRanking: QuestsRankings[] = await getFromApi(``);
+      const questStatistics: QuestsStatistics[] = [];
+      const playerRanking: QuestsRankings[] = [];
 
       setQuestStatistics(questStatistics);
       setPlayeRanking(playerRanking);

@@ -53,9 +53,7 @@ export default function ProjectList({ projects }: Props) {
   };
 
   const onHandleDelete = async (event: any) => {
-    console.log(event);
     const res = await auth?.signIn();
-
     let publicKeyH = (res as any).publicKey;
     let pKey = window.ethereum.selectedAddress;
     if (!publicKeyH) {

@@ -168,7 +168,7 @@ export default function AccountRegister() {
           </div>
           <div className={`${styles.information_container}`}>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Label className="font-extrabold">Name</Form.Label>
+              <Form.Label className="font-extrabold">Name*</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.name ?? ''}
@@ -182,7 +182,7 @@ export default function AccountRegister() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="surname">
-              <Form.Label className="font-extrabold">Surname</Form.Label>
+              <Form.Label className="font-extrabold">Surname*</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.surname ?? ''}
@@ -196,7 +196,7 @@ export default function AccountRegister() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="email">
-              <Form.Label className="font-extrabold">Email</Form.Label>
+              <Form.Label className="font-extrabold">Email*</Form.Label>
               <Form.Control
                 type="email"
                 value={formValues?.email ?? ''}
@@ -210,7 +210,7 @@ export default function AccountRegister() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="userName">
-              <Form.Label className="font-extrabold">Username</Form.Label>
+              <Form.Label className="font-extrabold">Username*</Form.Label>
               <Form.Control
                 type="text"
                 value={formValues?.userName ?? ''}
@@ -237,7 +237,7 @@ export default function AccountRegister() {
                 style={{
                   borderRadius: '20px',
                   width: '130px',
-                  padding: '0.4em 2em',
+                  padding: '',
                 }}
                 variant="success"
                 onClick={saveAccount}

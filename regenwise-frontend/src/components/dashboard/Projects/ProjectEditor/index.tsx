@@ -214,14 +214,8 @@ export default function ProjectEditor({
 
       saveProjectDetails(finalFormObject).then(async () => {
         let projects = structuredClone((currentUser as any).projects);
-        console.log(projects);
         let slugProject = setSlugify(finalFormObject.name);
-        console.log(slugProject);
-        console.log(typeof slugProject);
-
         projects.push(slugProject);
-        console.log(projects);
-
         await db
           .collection('user')
           .record((currentUser as any).id)

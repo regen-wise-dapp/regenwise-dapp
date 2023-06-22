@@ -11,28 +11,31 @@ import { fetcherWithNoCache } from '@src/utils/fetcher';
 
 interface Props {
   concepts: Concept[];
+  selectedTab: string;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
+    const { query } = context;
     const concepts = await fetcherWithNoCache(
-      `https://testnet.polybase.xyz/v0/collections/regenwise-regen-db%2FRegenConcept/records`
+      `https://regenwise.net/api/concepts`
     );
-    const preparedData = concepts.data.map((item: any) => item.data);
-    return { props: { concepts: preparedData } };
+    return { props: { concepts: concepts, selectedTab: query.tab || '' } };
   } catch (error) {
-    return { props: { concepts: [] } };
+    return { props: { concepts: [], selectedTab: '' } };
   }
 };
 
-export default function Concepts({ concepts }: Props) {
+export default function Concepts({ concepts, selectedTab }: Props) {
   const [selectedConcept, setSelectedConcept] = useState({} as Concept);
   const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     if (concepts) {
-      setSelectedConcept(concepts[0]);
+      const concept = concepts.find((concept) => concept.id === selectedTab);
+      setSelectedConcept(concept || concepts[0]);
     }
-  }, []);
+  }, [concepts, selectedTab]);
 
   const handleSearch = (event: any) => {
     setSearchTerm(event);
@@ -57,7 +60,7 @@ export default function Concepts({ concepts }: Props) {
           />
         </section>
         <section className={styles.list_container}>
-          <ConceptItem concept={selectedConcept} />
+          {selectedConcept && <ConceptItem concept={selectedConcept} />}
         </section>
       </div>
     </div>

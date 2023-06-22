@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 function Dashboard() {
   const router = useRouter();
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
-
+  console.log(currentUser);
   useEffect(() => {
     if (!(window as any).ethereum.selectedAddress) {
       router.push('/');
