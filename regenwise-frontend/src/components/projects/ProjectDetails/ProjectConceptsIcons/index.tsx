@@ -30,7 +30,7 @@ const getImage = (id: string) => {
       return '/quests/quest-5z.png';
 
     case 'regenerative-landscaping':
-      return '/quests/quest-3z.png';
+      return '/quests/quest-4z.png';
 
     case 'regenerative-waste-management':
       return '/quests/quest-6z.png';
