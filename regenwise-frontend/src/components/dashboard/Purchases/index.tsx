@@ -8,7 +8,7 @@ import {
   testNet,
   mumbaiResellConAddr,
   mumbaiNftConAddr,
-  key1
+  key1,
 } from '../../../../web3config/configuration';
 import resellAbi from '../../../../web3config/resellAbi.json';
 import nftConAbi from '../../../../web3config/nftConAbi.json';
@@ -20,8 +20,6 @@ import { useDispatch } from 'react-redux';
 import { setModalOpen } from '../../../../slices/gameModalSlice';
 import AlertModal from '@src/components/quests/AlertModal';
 import Loading from '@src/components/shared/Loading';
-import { getFromApi } from '@src/utils/getFromApi';
-import { TransactionData } from '@src/models/transaction';
 
 export default function Purchases() {
   const [isLoading, setLoading] = useState(false);
@@ -31,25 +29,22 @@ export default function Purchases() {
   const [user, setUser] = useState(null);
   const [nftItems, setNFTItems] = useState([]);
   const router = useRouter();
-  const [transactions, setTransactions] = useState<TransactionData[]>(
-    [] as TransactionData[]
-  );
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (typeof(window.ethereum) !== 'undefined') {
-      if (window.ethereum.selectedAddress !== null) {
-        const getUser = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        if (window.ethereum.selectedAddress !== null) {
+          const getUser = async () => {
+            setUser(window.ethereum.selectedAddress);
+          };
+          getUser();
+        } else if (window.ethereum.selectedAddress === null) {
           setUser(window.ethereum.selectedAddress);
-        };
-        getUser();
-      } else if (window.ethereum.selectedAddress === null) {
-        setUser(window.ethereum.selectedAddress);
-        setNFTItems([]);
+          setNFTItems([]);
+        }
       }
     }
-  }
   }, []);
 
   useEffect(() => {
@@ -61,16 +56,16 @@ export default function Purchases() {
   }, [user]);
 
   if (typeof window !== 'undefined') {
-    if (typeof(window.ethereum) !== 'undefined') {
-    window.ethereum.on('accountsChanged', async () => {
-      if (window.ethereum.selectedAddress === null) {
-        setUser(window.ethereum.selectedAddress);
-        setNFTItems([]);
-      } else {
-        setUser(window.ethereum.selectedAddress);
-      }
-    });
-  }
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('accountsChanged', async () => {
+        if (window.ethereum.selectedAddress === null) {
+          setUser(window.ethereum.selectedAddress);
+          setNFTItems([]);
+        } else {
+          setUser(window.ethereum.selectedAddress);
+        }
+      });
+    }
   }
 
   async function getWalletNFTs() {
@@ -152,19 +147,6 @@ export default function Purchases() {
     }
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      const transactionData: TransactionData[] = await getFromApi(
-        ``
-      );
-      setTransactions(transactionData);
-    }
-
-    if (currentUser) {
-      fetchData();
-    }
-  }, [currentUser]);
-
   async function relistNFT(nft: any, salePrice: { price: string }) {
     setLoading(true);
     const web3Modal = new Web3Modal();
@@ -232,7 +214,6 @@ export default function Purchases() {
           />
         )
       )}
-      {/* <Transactions transactionData={transactions} /> */}
       <AlertModal />
     </div>
   );

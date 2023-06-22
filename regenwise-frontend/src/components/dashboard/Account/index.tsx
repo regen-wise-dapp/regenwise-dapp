@@ -10,9 +10,6 @@ interface Props {
 }
 
 export default function Account({ user }: Props): JSX.Element {
-  const changeUserDetails = (val: User) => {};
-
-
   return (
     <div>
       {user.id ? (

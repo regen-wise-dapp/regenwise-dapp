@@ -26,8 +26,6 @@ export default function News() {
         env: ENV.STAGING,
       });
       setNotifications(notifs);
-      console.log(notifs);
-      console.log('inside');
     };
     notifications();
   }, []);

@@ -65,10 +65,18 @@ export default function ProjectConceptsIcons({ project }: Props) {
       <div className={`${styles.content_container}`}>
         {project.conceptsObjects?.length > 0 ? (
           project.conceptsObjects.map((item: any) => {
+            const query = { tab: item.id };
+            const href = {
+              pathname: '/concepts',
+              query,
+            };
             return (
               <OverlayTrigger placement="bottom" overlay={renderTooltip}>
                 <Link
-                  href={`/concepts`}
+                  href={href}
+                  target="_blank"
+                  as={`/concepts?tab=${item.id}`}
+                  passHref
                   className={`${styles.image_container}`}
                   onMouseEnter={() => handleMouseEnter(item.name)}
                   onMouseLeave={handleMouseLeave}

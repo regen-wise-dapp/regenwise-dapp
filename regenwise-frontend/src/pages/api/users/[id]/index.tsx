@@ -30,13 +30,16 @@ export default async function ProjectHandler(
   const { query } = req;
   const { id } = query;
 
+  res.setHeader('Cache-Control', 'no-store');
   const db = new Polybase({ defaultNamespace: 'regenwise-regen-db' });
   const collectionReference = db.collection('user');
   const projectsCollectionReference = db.collection('RegenProject');
 
   try {
     const user = (await collectionReference.record(id as string).get()).data;
-    if (!user) return res.status(200).json({ message: `User not found.` });
+    if (!user) {
+      return res.status(200).json({ message: `User not found.` });
+    }
 
     let userProjectsObjects: Promise<any>[] = [];
     let userProjects: string[] = [];
@@ -68,7 +71,6 @@ export default async function ProjectHandler(
       res.status(200).json(user);
     });
   } catch (error) {
-    console.log('Error:', error);
     res.status(500).json({ message: 'Internal server error.' });
   }
 }
