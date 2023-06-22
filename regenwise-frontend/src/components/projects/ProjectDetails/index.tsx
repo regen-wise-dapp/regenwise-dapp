@@ -23,7 +23,7 @@ export default function ProjectDetails({ project }: Props) {
       <div className={styles.wrapper}>
         <div className={styles.banner_section}>
           <ProjectBanner
-            image={'/projects/project.jpg'}
+            image={'/banner/carbon_1a.jpg'}
             title={project.name ?? ''}
           ></ProjectBanner>
           <ProjectInfo project={project}></ProjectInfo>
