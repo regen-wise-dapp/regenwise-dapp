@@ -48,6 +48,7 @@ export default function Projects({ projects }: Props) {
           onHandleSearch={handleSearch}
           headerText="REGEN PROJECTS"
           bannerImage="/projects/banner1.jpg"
+          searchBarText="Search projects"
         />
       </section>
       <div className={styles.content_container}>

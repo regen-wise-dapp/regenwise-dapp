@@ -3,13 +3,7 @@
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  @media (min-width: 992px) {
-    border-radius: 10px;
-  }
+  border-radius: 10px;
   box-shadow: 0px 0px 5px 1px grey, 0px 0px 15px 1px white,
     0px 0px 20px 1px rgb(85, 187, 200), 0px 0px 45px 3px rgb(24, 11, 82);
   .wrapper {
@@ -25,21 +19,6 @@
     @media (min-width: 992px) {
       overflow-x: hidden;
     }
-    &::-webkit-scrollbar {
-      position: relative;
-      background-color: #212529;
-      width: 10px;
-      height: 10px;
-    }
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      background-color: rgb(60, 57, 57);
-    }
-    &::-webkit-scrollbar-thumb {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      background-color: rebeccapurple;
-    }
     button {
       min-width: 140px;
       border-radius: 25px;
@@ -53,9 +32,88 @@
       }
     }
   }
-
-  .header{
+  .header {
     border-radius: 10px;
-    background-color: #3d2863;
-  }
+    background-image: radial-gradient(
+      circle at 29% 55%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 4%,
+      transparent 4%,
+      transparent 44%,
+      transparent 44%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 85% 89%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 51%,
+      transparent 51%,
+      transparent 52%,
+      transparent 52%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 6% 90%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 53%,
+      transparent 53%,
+      transparent 64%,
+      transparent 64%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 35% 75%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 6%,
+      transparent 6%,
+      transparent 98%,
+      transparent 98%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 56% 75%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 16%,
+      transparent 16%,
+      transparent 23%,
+      transparent 23%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 42% 0%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 3%,
+      transparent 3%,
+      transparent 26%,
+      transparent 26%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 29% 28%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 51%,
+      transparent 51%,
+      transparent 75%,
+      transparent 75%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 77% 21%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 35%,
+      transparent 35%,
+      transparent 55%,
+      transparent 55%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 65% 91%,
+      hsla(329, 0%, 99%, 0.05) 0%,
+      hsla(329, 0%, 99%, 0.05) 46%,
+      transparent 46%,
+      transparent 76%,
+      transparent 76%,
+      transparent 100%
+    ),
+    linear-gradient(45deg, rgb(12, 13, 35), rgb(37, 1, 92));  }
 }
