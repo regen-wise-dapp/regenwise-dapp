@@ -129,7 +129,10 @@ export default function Navigation() {
                 <Button
                   variant="success"
                   className="ml-2 w-full md:w-auto mt-[30px] md:mt-[0px]"
-                  onClick={() => router.push('/dashboard')}
+                  onClick={() => {
+                    handleClose();
+                    return router.push('/dashboard');
+                  }}
                 >
                   <span className="font-extrabold">Dashboard</span>
                 </Button>
@@ -149,4 +152,3 @@ export default function Navigation() {
     </Navbar>
   );
 }
-

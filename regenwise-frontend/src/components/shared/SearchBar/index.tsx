@@ -14,6 +14,7 @@ interface Props {
   headerText: string;
   bannerImage: string;
   animativeHeader?: boolean;
+  searchBarText?: string;
 }
 
 export default function SearchBar({
@@ -21,6 +22,7 @@ export default function SearchBar({
   headerText,
   bannerImage,
   animativeHeader,
+  searchBarText,
 }: Props) {
   const [search, setSearch] = useState('');
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -43,10 +45,10 @@ export default function SearchBar({
           </h1>
         ) : (
           <h1
-          className={`${styles.header_text2} ${alfa_Slab_One.className} text-4xl md:text-5xl lg:text-8xl`}
-        >
-          {headerText}
-        </h1>
+            className={`${styles.header_text2} ${alfa_Slab_One.className} text-4xl md:text-5xl lg:text-8xl`}
+          >
+            {headerText}
+          </h1>
         )}
       </div>
       <div className={styles.wrapper}>
@@ -58,7 +60,7 @@ export default function SearchBar({
             style={{ height: '60px', borderRadius: '50px', padding: '0 2em' }}
             type="text"
             value={search}
-            placeholder="Search Project"
+            placeholder={searchBarText ? searchBarText : 'Search'}
             onChange={handleChange}
           />
         </Form.Group>

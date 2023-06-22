@@ -425,7 +425,7 @@ export default function ProjectEditor({
                   type="email"
                   value={formValues['contactEmail']}
                   onChange={handleFormInput}
-                  placeholder="Enter project email"
+                  placeholder="Enter a contact email"
                   isInvalid={!!errors.contactEmail}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -511,8 +511,8 @@ export default function ProjectEditor({
                 <Form.Label className="font-extrabold">Implementers</Form.Label>
                 <InputGroup className="mb-3">
                   <Form.Control
-                    placeholder="Enter an project implementer"
-                    aria-label="Enter an project implementer"
+                    placeholder="Enter a project implementer"
+                    aria-label="Enter a project implementer"
                     aria-describedby="implementersBlock"
                     value={implementer}
                     onChange={(e) => setImplementer(e.target.value)}

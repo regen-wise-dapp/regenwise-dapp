@@ -49,6 +49,7 @@ export default function Concepts({ concepts, selectedTab }: Props) {
           headerText="REGEN CONCEPTS"
           bannerImage="/concepts/banner.jpg"
           animativeHeader
+          searchBarText="Search concepts"
         />
       </section>
       <div className={styles.content_container}>
