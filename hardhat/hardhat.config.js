@@ -17,7 +17,7 @@ module.exports = {
   networks: {
     "polygon_mumbai": {
       url: "https://rpc-mumbai.maticvigil.com",
-      accounts: [process.env.key1]
+      accounts: ["0x10c4679a4b67a14ce772a3fd81db2ecc87283df23625dd31abfc797ee193d759"]
       },
       },
 };
