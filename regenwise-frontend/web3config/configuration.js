@@ -1,7 +1,7 @@
 import 'dotenv/config';
 
 // key from environment variables
-export const key1 = "0x10c4679a4b67a14ce772a3fd81db2ecc87283df23625dd31abfc797ee193d759";
+export const key1 = process.env.NEXT_PUBLIC_key1;
 // NFT Marketplace contract adrresses
 export const mumbaiResellConAddr = "0x958B1A9DFac62B4D7CAaef55eD3BD1AE0077192f"; // mumbai testnet
 export const sepoliaResellConAddr = "0x"; // sepolia testnet
