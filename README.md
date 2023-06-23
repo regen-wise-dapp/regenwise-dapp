@@ -97,7 +97,7 @@ If you want to run the project on your local machine, read the steps below:
   ```sh
   npm install
   ```
-* If you do not already have it, install Metamask wallet to your browser and connect it to Polygon Mumbai Testnet. (You can find how to do these on the net, it is easy.)
+* If you do not already have it, install Metamask wallet to your browser. (You can find how to do these on the net, it is easy.)
 
 * You should add .env file in .\regenwise-frontend\ directory and inside it there should be your testnet account's private key named as NEXT_PUBLIC_key1 .
 
