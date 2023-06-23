@@ -17,7 +17,7 @@ interface Props {
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const projects = await fetcherWithNoCache(
-      `https://regenwise.net/api/projects`
+      `https://dappregenwise.netlify.app/api/projects`
     );
     return { props: { projects } };
   } catch (error) {

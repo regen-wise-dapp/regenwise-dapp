@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/regen-wise-dapp/regenwise-dapp">
+  <a href="https://github.com/keenregen/regenwise-dapp-aurora">
     <img  src="/regenwise-frontend/public/read/banner1.png" alt="Banner">
   </a>
 
@@ -10,11 +10,11 @@
   <p align="center">
     Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate regen efforts by offering various services and resources to users. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. The platform's NFT markets is another essential feature that users may benefit from. The users can earn, buy, and sell valuable NFTs from our platform's collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in various fields.
     <br />
-    <a href="https://regenwise.net">View Demo</a>
+    <a href="https://dappregenwise.netlify.app">View Demo</a>
     ·
-    <a href="https://github.com/regen-wise-dapp/regenwise-dapp/issues">Report Bug</a>
+    <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Report Bug</a>
     ·
-    <a href="https://github.com/regen-wise-dapp/regenwise-dapp/issues">Request Feature</a>
+    <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Request Feature</a>
   </p>
 </div>
 
@@ -82,7 +82,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-We have a demo version of the platform on this url: <a href="https://regenwise.net">DemoUrl</a>
+We have a demo version of the platform on this url: <a href="https://dappregenwise.netlify.app">DemoUrl</a>
 
 If you want to run the project on your local machine, read the steps below:
 
@@ -98,9 +98,6 @@ If you want to run the project on your local machine, read the steps below:
   npm install
   ```
 * If you do not already have it, install Metamask wallet to your browser. (You can find how to do these on the net, it is easy.)
-
-* You should add .env file in .\regenwise-frontend\ directory and inside it there should be your testnet account's private key named as NEXT_PUBLIC_key1 .
-
 
 * Then run the command below:
   ```sh
@@ -154,7 +151,7 @@ If you like the project, don't forget to give it a star!
 
 RegenWise Team - keenregen@gmail.com
 
-Project Link: [https://github.com/regen-wise-dapp/regenwise-dapp](https://github.com/regen-wise-dapp/regenwise-dapp)
+Project Link: [https://github.com/keenregen/regenwise-dapp-aurora](https://github.com/keenregen/regenwise-dapp-aurora)
 
 <p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
