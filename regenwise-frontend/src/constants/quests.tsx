@@ -575,6 +575,22 @@ export const buildingQuestions = [
   },
   {
     question:
+      'Which of the following is a regenerative building approach for enhancing indoor air quality?',
+    options: [
+      { id: '1', option: 'Limited consideration for ventilation systems' },
+      { id: '2', option: 'Excessive use of toxic building materials' },
+      {
+        id: '3',
+        option:
+          'Implementation of natural ventilation and air filtration systems',
+      },
+      { id: '4', option: 'Disregard for occupant comfort' },
+      { id: '5', option: 'None of the other choices' },
+    ],
+    correctAnswer: '3',
+  },
+  {
+    question:
       'What is the role of green infrastructure in regenerative buildings?',
     options: [
       { id: '1', option: 'To increase energy consumption' },
