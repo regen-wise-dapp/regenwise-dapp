@@ -13,10 +13,10 @@ module.exports = {
       },
     ],
   },
-  defaultNetwork: "polygon_mumbai",
+  defaultNetwork: "aurora_tn",
   networks: {
-    "polygon_mumbai": {
-      url: "https://rpc-mumbai.maticvigil.com",
+    "aurora_tn": {
+      url: "https://testnet.aurora.dev",
       accounts: [process.env.key1]
       },
       },

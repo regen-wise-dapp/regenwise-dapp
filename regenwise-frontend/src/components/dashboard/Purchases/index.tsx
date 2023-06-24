@@ -6,8 +6,8 @@ import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
 import {
   testNet,
-  mumbaiResellConAddr,
-  mumbaiNftConAddr,
+  auroraTnResellConAddr,
+  auroraTnNftConAddr,
   key1,
 } from '../../../../web3config/configuration';
 import resellAbi from '../../../../web3config/resellAbi.json';
@@ -74,7 +74,7 @@ export default function Purchases() {
     const key = key1;
     const wallet = new ethers.Wallet(key as any, provider);
     const contract = new ethers.Contract(
-      mumbaiNftConAddr as any,
+      auroraTnNftConAddr as any,
       nftConAbi,
       wallet
     );
@@ -155,17 +155,17 @@ export default function Purchases() {
     const signer = provider.getSigner();
     const price = ethers.utils.parseUnits(salePrice.price, 'ether');
     const contractnft = new ethers.Contract(
-      mumbaiNftConAddr as any,
+      auroraTnNftConAddr as any,
       nftConAbi,
       signer
     );
     let approved = await contractnft.isApprovedForAll(
       (nft as any).wallet,
-      mumbaiResellConAddr
+      auroraTnResellConAddr
     );
     if (!approved) {
       let transaction0 = await contractnft.setApprovalForAll(
-        mumbaiResellConAddr,
+        auroraTnResellConAddr,
         true
       );
       setloadingMessage('Approving');
@@ -173,7 +173,7 @@ export default function Purchases() {
     }
     setloadingMessage('Loading');
     let contract = new ethers.Contract(
-      mumbaiResellConAddr as any,
+      auroraTnResellConAddr as any,
       resellAbi,
       signer
     );

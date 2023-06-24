@@ -24,9 +24,9 @@ contract RWiseNftMrkplc is IERC721Receiver, ReentrancyGuard, Ownable {
 
     // mrkplc deployer
     address payable deployer;
-    // nft contract addr (Mumbai Testnet Address of nft contract = 0xA6A3A5C121B30F6D51Da4d907D711bc181952531)
+    // nft contract addr (Aurora Testnet Address of nft contract = 0x0614424Be6FeCA10C6Ce91B73f63E4B2Fe8BBc94)
     ERC721Enumerable nft;
-    uint256 listingFee = 1000000000000000; // 0.001 MATIC
+    uint256 listingFee = 10000000000000; // 0.00001 ETH
 
     struct List {
         uint256 tokenId;
@@ -81,7 +81,7 @@ contract RWiseNftMrkplc is IERC721Receiver, ReentrancyGuard, Ownable {
         if (msg.sender != deployer) {
         require(
             msg.value == listingFee,
-            "Please transfer 0.01 MATIC to pay listing fee"
+            "Please transfer 0.00001 ETH to pay listing fee"
         );}
         nft.transferFrom(msg.sender, address(this), tokenId);
         fairItems[tokenId] = List(
