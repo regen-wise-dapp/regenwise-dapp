@@ -536,7 +536,7 @@ export const buildingQuestions = [
       {
         id: '3',
         option:
-          'To create buildings that positively impact the environment and occupants',
+          'To construct buildings that positively impact the environment and occupants',
       },
       {
         id: '4',
@@ -572,28 +572,6 @@ export const buildingQuestions = [
       { id: '5', option: 'None of the other choices' },
     ],
     correctAnswer: '3',
-  },
-  {
-    question:
-      'Which of the following is a regenerative building certification?',
-    options: [
-      {
-        id: '1',
-        option: 'LEED (Leadership in Energy and Environmental Design)',
-      },
-      {
-        id: '2',
-        option: 'No certification programs exist for regenerative buildings',
-      },
-      {
-        id: '3',
-        option:
-          'BREEAM (Building Research Establishment Environmental Assessment Method)',
-      },
-      { id: '4', option: 'Passive House Certification' },
-      { id: '5', option: 'None of the other choices' },
-    ],
-    correctAnswer: '1',
   },
   {
     question:
@@ -679,7 +657,7 @@ export const buildingQuestions = [
       { id: '2', option: 'To maximize noise pollution and stress levels' },
       {
         id: '3',
-        option: 'To create healthy and productive indoor environments',
+        option: 'To construct healthy and productive indoor environments',
       },
       {
         id: '4',
