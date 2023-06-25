@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { query } = context;
     const concepts = await fetcherWithNoCache(
-      `https://dappregenwise.netlify.app/api/concepts`
+      `https://regenwise.xyz/api/concepts`
     );
     return { props: { concepts: concepts, selectedTab: query.tab || '' } };
   } catch (error) {

@@ -1,7 +1,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-We have a demo version of the platform on this url: <a href="https://dappregenwise.netlify.app">DemoUrl</a>
+We have a demo version of the platform on this url: <a href="https://regenwise.xyz">DemoUrl</a>
 
 If you want to run the project on your local machine, read the steps below:
 

@@ -10,7 +10,7 @@
   <p align="center">
     Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible utilization and management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate the regen efforts by offering various services and resources to its users. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. In addition, the platform's NFT markets are another essential features that users may benefit from. The users can earn and trade valuable NFTs from the platform's regen collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in various fields.
     <br />
-    <a href="https://dappregenwise.netlify.app">View Demo</a>
+    <a href="https://regenwise.xyz">View Demo</a>
     ·
     <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Report Bug</a>
     ·
@@ -82,7 +82,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-We have a demo version of the platform on this url: <a href="https://dappregenwise.netlify.app">DemoUrl</a>
+We have a demo version of the platform on this url: <a href="https://regenwise.xyz">DemoUrl</a>
 
 If you want to run the project on your local machine, read the steps below:
 
