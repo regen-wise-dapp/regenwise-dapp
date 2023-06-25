@@ -34,9 +34,7 @@ export default async function handler(
   res.setHeader('Cache-Control', 'no-store');
   const userCollectionData = (await db.collection('user').get()).data;
   let users: User[] = userCollectionData.map((user) => {
-    {
-      return { ...user.data, userProjects: [] };
-    }
+    return { ...user.data, userProjects: [] };
   });
 
   users
