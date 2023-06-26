@@ -2,13 +2,13 @@ import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Web3Modal from 'web3modal';
-import resellAbi from '../../../web3config/resellAbi.json';
-import nftConAbi from '../../../web3config/nftConAbi.json';
+import resellAbi from '../../../web3config/resellAbiTwo.json';
+import nftConAbi from '../../../web3config/nftConAbiTwo.json';
 import styles from './index.module.scss';
 import {
   testNet,
-  auroraTnResellConAddr,
-  auroraTnNftConAddr,
+  auroraTnResellTreConAddr,
+  auroraTnNftTreConAddr,
   key1
 } from '../../../web3config/configuration';
 import NFTListInMarket from '@src/components/nftMarket/NFTListInMarket';
@@ -37,7 +37,7 @@ export default function NFTmarket() {
       const provider = new ethers.providers.Web3Provider(connection);
       const signer = provider.getSigner();
       const market = new ethers.Contract(
-        auroraTnResellConAddr as any,
+        auroraTnResellTreConAddr as any,
         resellAbi,
         signer
       );
@@ -80,12 +80,12 @@ export default function NFTmarket() {
     const key = key1;
     const wallet = new ethers.Wallet(key as any, provider);
     const contract = new ethers.Contract(
-      auroraTnNftConAddr as any,
+      auroraTnNftTreConAddr as any,
       nftConAbi,
       wallet
     );
     const market = new ethers.Contract(
-      auroraTnResellConAddr as any,
+      auroraTnResellTreConAddr as any,
       resellAbi,
       wallet
     );
@@ -106,7 +106,7 @@ export default function NFTmarket() {
             });
 
             if (
-              nftOwner.toLowerCase() === (auroraTnResellConAddr as any).toLowerCase()
+              nftOwner.toLowerCase() === (auroraTnResellTreConAddr as any).toLowerCase()
             ) {
               rawUri = await contract.tokenURI(i).catch(function (error: any) {
                 console.log(error);
