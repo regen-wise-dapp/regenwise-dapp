@@ -50,7 +50,7 @@ export default function NFTmarket() {
         dispatch(
           setModalOpen([
             'Success!',
-            'The NTF was successfully purchased, you can see it in your dashboard.',
+            'The NTF was successfully purchased, you can see it on your dashboard.',
           ])
         );
         setLoadingMessage('Loading');
