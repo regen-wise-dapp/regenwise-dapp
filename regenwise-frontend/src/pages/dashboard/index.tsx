@@ -26,24 +26,24 @@ function Dashboard() {
     {
       eventKey: 'nftList',
       title: 'MY RW NFTs',
-      icon: '/dashboard/nft.png',
+      icon: '/dashboard/nft0.png',
       component: <Purchases />,
       display: !(!currentUser || !(currentUser as User).id),
     },
     {
       eventKey: 'nftListTwo',
       title: 'MY TRE NFTs',
-      icon: '/dashboard/nft.png',
+      icon: '/dashboard/nft2.png',
       component: <PurchasesTwo />,
       display: !(!currentUser || !(currentUser as User).id),
     },
-    {
+/*     {
       eventKey: 'stats',
       title: 'Stats',
       icon: '/dashboard/stats.png',
       component: <Stats />,
       display: !(!currentUser || !(currentUser as User).id),
-    },
+    }, */
     {
       eventKey: 'editor',
       title: 'Projects',

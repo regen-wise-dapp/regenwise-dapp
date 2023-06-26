@@ -25,7 +25,7 @@ export default function NFTList({ header, nftItems, executeRelist }: Props) {
           })}
         </CardGroup>
       ) : (
-        <div>You do not have any NFT item to show in here.</div>
+        <div>You do not have any NFT item to be shown here.</div>
       )}
     </>
   );
