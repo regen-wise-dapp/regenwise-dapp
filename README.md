@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/keenregen/regenwise-dapp-aurora">
-    <img  src="/regenwise-frontend/public/read/banner1.png" alt="Banner">
+    <img  src="/regenwise-frontend/public/read/banner0.png" alt="Banner">
   </a>
 
 <h2 align="center"> Summary of The RegenWise DApp Project</h2>
