@@ -29,6 +29,25 @@ export default async function handler(
   await runMiddleware(req, res, cors);
   res.setHeader('Cache-Control', 'no-store');
 
+  const commonWords = [
+    'Earth',
+    'Field',
+    'Fresh',
+    'Fruit',
+    'Grass',
+    'Fungi',
+    'Green',
+    'Light',
+    'Ocean',
+    'Plant',
+    'Quest',
+    'Grain',
+    'Reuse',
+    'Daily',
+    'Water',
+    'Yield',
+  ];
+
   const easyWords = [
     'Adapt',
     'Bloom',
@@ -112,8 +131,8 @@ export default async function handler(
     'Restoring',
     'Temperate',
   ];
-
-  const allWords = [...easyWords, ...mediumWords, ...hardWords];
+  
+  const allWords = [...commonWords,...easyWords, ...mediumWords, ...hardWords];
 
   let selectedword = '';
   if (req.query['difficulty'] === 'easy') {

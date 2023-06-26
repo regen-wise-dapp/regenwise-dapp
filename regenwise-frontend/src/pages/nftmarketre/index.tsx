@@ -170,7 +170,7 @@ export default function NFTmarket() {
       )}
       <Alert style={{ textAlign: 'center' }} variant={'warning'}>
         Since the platform fetches data from the blockchain, it may take some
-        time to load (generally 10 to 30 seconds). Be patient about this. <br /> Also, from time to time,
+        time to load (generally 1 to 30 seconds). Be patient about this. <br /> Also, from time to time,
         there may be problems while getting the data. Try refreshing the page
         and inform us if the problem continues.
       </Alert>
