@@ -1,7 +1,9 @@
 import { ethers } from 'ethers';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import Web3Modal from 'web3modal';
+import {NFTStorage} from "nft.storage";
+import 'dotenv/config';
 import resellAbi from '../../../web3config/resellAbiTwo.json';
 import nftConAbi from '../../../web3config/nftConAbiTwo.json';
 import styles from './index.module.scss';
@@ -9,20 +11,22 @@ import {
   testNet,
   auroraTnResellTreConAddr,
   auroraTnNftTreConAddr,
-  key1
+  key1,
+  key2
 } from '../../../web3config/configuration';
 import NFTListInMarket from '@src/components/nftMarket/NFTListInMarket';
 import MarketHeader from '@src/components/nftMarket/MarketHeaderTwo';
 import CategoriesBar from '@src/components/nftMarket/CategoriesBarTwo';
 import Loading from '@src/components/shared/Loading';
 import { NFTItem } from '@src/models/nftItem';
-import { Alert } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store';
 import { setModalOpen } from '../../../slices/gameModalSlice';
 import AlertModal from '@src/components/quests/AlertModal';
 
 export default function NFTmarket() {
+  const [uploadedFile, setUploadedFile] = useState<File>();
   const [listNfts, setListNfts] = useState([]);
   const [start, setStart] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -157,10 +161,41 @@ export default function NFTmarket() {
     listNftForSale();
   }, [setListNfts]);
 
+  const handleFileUpload =  (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setUploadedFile(e.target.files[0]);
+    }
+  };
+  
+  
+  const uploadNFTContent = async (file: any) =>{
+    //Initialize NFTStorage
+    const nftStorage = new NFTStorage({token: key2 as string,});
+    try {
+        //Upload NFT to IPFS & Filecoin
+        const cid = await nftStorage.store({
+          name: file.name,
+          description: 'Collection #0, Learning by Writing Challenge #0',
+          image: file
+      });
+        console.log(cid);
+
+
+    } catch (error) {
+        console.log(error);
+    }
+  };
+
+  async function handleClick() {
+    await uploadNFTContent(uploadedFile);
+  }
+
   return (
     <div className={styles.main_container}>
       <MarketHeader />
       <CategoriesBar />
+      <Form.Control type="file" className="w-50" size='lg' onChange={handleFileUpload} />
+      <Button size="lg" className="w-50 mt-n3 pt-n1" onClick={handleClick}>Upload The File</Button>
       {loading ? (
         <Loading theme="light" loadingMessage={loadingMessage} />
       ) : (
