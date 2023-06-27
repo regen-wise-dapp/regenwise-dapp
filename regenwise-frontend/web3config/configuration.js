@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 // key from environment variables
 export const key1 = process.env.NEXT_PUBLIC_key1;
+export const key2 = process.env.NEXT_PUBLIC_key2;
 // NFT RW Marketplace contract adrresses
 export const auroraTnResellConAddr = "0x53fCCa246Ab7fEb5C4301f483bc0aC59Ea91B688"; // aurora testnet
 export const mumbaiResellConAddr = "0x958B1A9DFac62B4D7CAaef55eD3BD1AE0077192f"; // mumbai testnet
