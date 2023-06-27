@@ -175,7 +175,7 @@ export default function NFTmarket() {
         //Upload NFT to IPFS & Filecoin
         const cid = await nftStorage.store({
           name: file.name,
-          description: 'Collection #0, Learning by Writing Challenge #0',
+          description: 'Tre Collection #0, Learning by Writing Challenge #0',
           image: file
       });
         console.log(cid);
