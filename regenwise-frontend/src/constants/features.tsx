@@ -6,7 +6,7 @@ export const features: Feature[] = [
     title: 'Explore Regen Data To Get Insights',
     description:
       'Access to various concepts and projects related to regen through our well-grounded databases.',
-    icon: '/scope/scope-icons/3.png',
+    icon: '/scope/scope-icons/1a.png',
     backgroundColor: '#f0fffc',
 
   },
@@ -23,7 +23,7 @@ export const features: Feature[] = [
     title: 'Discover and Trade Valuable NFTs',
     description:
       'Discover and trade NFTs from regen collections via the platform\'s NFT Markets.',
-    icon: '/scope/scope-icons/4.png',
+    icon: '/scope/scope-icons/4u.png',
     backgroundColor: '#f8e1eb',
   },
   {
@@ -31,7 +31,7 @@ export const features: Feature[] = [
     id: '4',
     title: 'Engage in Meaningful Quests',
     description:
-      'Enjoy educational games while learning about regen in details. Compete with others and get opportunities to earn prizes.',
+      'Enjoy educational regen games while getting opportunities to earn prizes.',
     icon: '/scope/scope-icons/7d.png',
     backgroundColor: '#f1eff8',
   },

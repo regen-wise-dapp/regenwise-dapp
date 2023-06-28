@@ -12,7 +12,7 @@ interface Props {
 const getImage = (id: string) => {
   switch (id) {
     case 'regenerative-education':
-      return '/quests/quest-1z.png';
+      return '/quests/education-1e.png';
 
     case 'regeneration':
       return '/quests/quest-1z.png';
@@ -27,10 +27,10 @@ const getImage = (id: string) => {
       return '/quests/quest-4z.png';
 
     case 'regenerative-fisheries':
-      return '/quests/quest-5z.png';
+      return '/quests/fishing-1a.png';
 
     case 'regenerative-landscaping':
-      return '/quests/quest-4z.png';
+      return '/quests/landscaping-1e.png';
 
     case 'regenerative-waste-management':
       return '/quests/quest-6z.png';

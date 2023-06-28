@@ -7,8 +7,8 @@ import nftConAbi from '../../../web3config/nftConAbi.json';
 import styles from './index.module.scss';
 import {
   testNet,
-  mumbaiResellConAddr,
-  mumbaiNftConAddr,
+  auroraTnResellConAddr,
+  auroraTnNftConAddr,
   key1
 } from '../../../web3config/configuration';
 import NFTListInMarket from '@src/components/nftMarket/NFTListInMarket';
@@ -37,7 +37,7 @@ export default function NFTmarket() {
       const provider = new ethers.providers.Web3Provider(connection);
       const signer = provider.getSigner();
       const market = new ethers.Contract(
-        mumbaiResellConAddr as any,
+        auroraTnResellConAddr as any,
         resellAbi,
         signer
       );
@@ -50,7 +50,7 @@ export default function NFTmarket() {
         dispatch(
           setModalOpen([
             'Success!',
-            'The NTF was successfully purchased, you can see it in your dashboard.',
+            'The NTF was successfully purchased, you can see it on your dashboard.',
           ])
         );
         setLoadingMessage('Loading');
@@ -80,12 +80,12 @@ export default function NFTmarket() {
     const key = key1;
     const wallet = new ethers.Wallet(key as any, provider);
     const contract = new ethers.Contract(
-      mumbaiNftConAddr as any,
+      auroraTnNftConAddr as any,
       nftConAbi,
       wallet
     );
     const market = new ethers.Contract(
-      mumbaiResellConAddr as any,
+      auroraTnResellConAddr as any,
       resellAbi,
       wallet
     );
@@ -106,7 +106,7 @@ export default function NFTmarket() {
             });
 
             if (
-              nftOwner.toLowerCase() === (mumbaiResellConAddr as any).toLowerCase()
+              nftOwner.toLowerCase() === (auroraTnResellConAddr as any).toLowerCase()
             ) {
               rawUri = await contract.tokenURI(i).catch(function (error: any) {
                 console.log(error);

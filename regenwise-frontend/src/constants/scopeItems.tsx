@@ -4,7 +4,7 @@ export const scopeItems: ScopeItem[] = [
   {
     id: '1',
     title: 'In Education',
-    description: `<h4>Encouraging education and awareness about regenerative practices is essential for widespread adoption. This involves promoting regen projects, organizing workshops, and preparing educational resources to canalize individuals and communities to actively participate in regenerative efforts.</h4>`,
+    description: `<h4>Encouraging education and awareness about regenerative concepts and practices is essential for widespread adoption. This involves promoting regen projects, organizing workshops, and preparing educational resources to canalize individuals and communities to actively participate in regenerative efforts.</h4>`,
     url: '',
     image: '/scope/2c.png',
     icon: '/scope/scope-icons/1a.png',
@@ -28,12 +28,12 @@ export const scopeItems: ScopeItem[] = [
     increase carbon sequestration.</h4>`,
     url: '',
     image: '/scope/4b.png',
-    icon: '/scope/scope-icons/4.png',
+    icon: '/scope/scope-icons/4u.png',
     backgroundColor: '#eff7e9',
   },
   {
     id: '4',
-    title: 'In Water Management',
+    title: `In Management of Water Bodies`,
     description: `<h4>Regenerative practices in this field focus on restoring and preserving the health of water bodies, such as rivers and lakes. They involve implementing strategies to reduce pollution, restore natural water flows, and protect aquatic ecosystems, ensuring a sustainable and clean water supply for ecosystems.</h4>`,
     url: '',
     image: '/scope/3a.png',
@@ -46,7 +46,7 @@ export const scopeItems: ScopeItem[] = [
     description: `<h4>Regenerative energy encompasses renewable sources like solar, wind, hydro, and 
     geothermal energy that naturally replenish over time. Unlike non-renewable energy sources like coal and oil, 
     regenerative energy is clean, sustainable, and crucial for reducing our carbon 
-    footprint and countering the climate change. It plays a pivotal role in transitioning 
+    footprint thus countering the climate change. It plays a pivotal role in transitioning 
     towards a low-carbon economy.</h4>`,
     url: '',
     image: '/scope/6b.png',

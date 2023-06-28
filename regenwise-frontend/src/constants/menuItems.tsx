@@ -12,8 +12,16 @@ export const menuItems = [
     link: '/projects',
   },
   {
-    label: 'NFT Markets',
+    label: 'RW NFT Market',
     link: '/nftmarket',
+  },
+  {
+    label: 'TRE NFT Market',
+    link: '/nftmarketre',
+  },
+  {
+    label: 'Games',
+    link: '/games',
   },
   {
     label: 'Quests',

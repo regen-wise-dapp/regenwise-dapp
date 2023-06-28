@@ -5,11 +5,11 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-
+// auroraTnConAddr: 0x0614424Be6FeCA10C6Ce91B73f63E4B2Fe8BBc94
 contract RWiseTreesZero is ERC721Enumerable, Ownable {
     using Strings for uint256;
     string public baseURI;
-    uint256 public cost = 0.001 ether;
+    uint256 public cost = 0.00001 ether;
     uint256 public maxSupply = 12;
     uint256 public maxMintAmount = 12;
 
@@ -61,7 +61,7 @@ contract RWiseTreesZero is ERC721Enumerable, Ownable {
         );
 
         if (msg.sender != owner()) {
-            require(msg.value == cost * _mintAmount, "You should send 0.001 MATIC per Nft mint.");
+            require(msg.value == cost * _mintAmount, "You should send 0.00001 ETH per Nft mint.");
         }
 
         for (uint256 i = 0; i < _mintAmount; i++) {

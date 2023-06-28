@@ -15,7 +15,7 @@ export default function ProjectScope() {
     <HomePageLayout>
       <SectionHeader
         title="Regenerative Practices"
-        subtitle="To contribute to the efforts of making our world a healthier place to live, there are some concepts that we should embrace"
+        subtitle="In order to help achieve a healthier Earth as a place to live, there are certain concepts and practices that we should adopt and support"
       />
       <div className='flex flex-col gap-5' >
       <div id='main-page--scope-element'>

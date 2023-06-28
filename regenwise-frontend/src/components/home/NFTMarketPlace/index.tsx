@@ -46,12 +46,12 @@ export default function NFTMarketPlace() {
                 <HiOutlineBadgeCheck fontSize={36} />
               </span>
               <span className="pl-2 text-justify">
-                Tokenized Regenerative Effort (TRE) Market (coming soon) offers
+                Tokenized Regenerative Effort (TRE) Market offers
                 a unique opportunity for regen enthusiasts to showcase their
                 projects and be supported. After they prove the regen effort(s) that
                 they have been working on, they can be tokenized via the platform and held or traded as
                 NFTs. These NFTs are expected to serve as symbols of support to the crucial
-                contributions to regen goal.
+                contributions to the regen goal.
               </span>
             </p>
           </article>

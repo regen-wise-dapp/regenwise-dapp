@@ -1,20 +1,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/regen-wise-dapp/regenwise-dapp">
-    <img  src="/regenwise-frontend/public/read/banner1.png" alt="Banner">
+  <a href="https://github.com/keenregen/regenwise-dapp-aurora">
+    <img  src="/regenwise-frontend/public/read/banner0b.png" alt="Banner">
   </a>
 
 <h2 align="center"> Summary of The RegenWise DApp Project</h2>
 
   <p align="center">
-    Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate regen efforts by offering various services and resources to users. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. The platform's NFT markets is another essential feature that users may benefit from. The users can earn, buy, and sell valuable NFTs from our platform's collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in various fields.
+    Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible utilization and management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate the regen efforts by offering various services and resources to its users. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. In addition, the platform's NFT markets are another essential features that users may benefit from. The users can earn and trade valuable NFTs from the platform's regen collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in various fields.
     <br />
-    <a href="https://regenwise.net">View Demo</a>
+    <a href="https://regenwise.xyz">View Demo</a>
     ·
-    <a href="https://github.com/regen-wise-dapp/regenwise-dapp/issues">Report Bug</a>
+    <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Report Bug</a>
     ·
-    <a href="https://github.com/regen-wise-dapp/regenwise-dapp/issues">Request Feature</a>
+    <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Request Feature</a>
   </p>
 </div>
 
@@ -52,11 +52,11 @@
 
 RegenWise is a DApp that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, project suggestions and support, interactive quests, and marketplaces for regenerative-themed non-fungible tokens (NFTs).
 
-The primary goal of RegenWise is to educate users about regeneration, which refers to the restoration and responsible management of environmental systems. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies.  The DApp provides a user-friendly interface that offers a wide range of educational content, including concept explanations, project suggestions and registration, regen NFTs. These resources cover various topics related to regeneration, such as regenerative education, regenerative nutrition, regenerative energy usage, regenerative agriculture and forestry and so on.
+The primary goal of RegenWise is to educate users about regeneration, which refers to the restoration and responsible utilization and management of environmental systems. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies.  The DApp provides a user-friendly interface that offers a wide range of educational content, including concept explanations, project suggestions and registration, regen NFTs. These resources cover various topics related to regeneration, such as regenerative education, regenerative nutrition, regenerative energy usage, regenerative agriculture and forestry and so on.
 
-To make the learning experience more interactive and engaging, RegenWise incorporates quests into its platform. These quests encourage users to apply their knowledge and take real-world actions. If users choose to register on the platform,completing quests and collecting points may result in meaningful gifts such as regen NFTs.
+To make the learning experience more interactive and engaging, RegenWise incorporates quests into its platform. These quests encourage users to apply their knowledge and take real-world actions. Completing quests and collecting points may result in meaningful gifts such as regen NFTs.
 
-RegenWise also features marketplaces dedicated to regen-themed NFTs. NFTs are unique digital assets that can represent various forms of digital or tangible content. In the context of RegenWise, the marketplace offers NFTs related to regeneration, including artwork, collectibles, and even digital representations of regenerative projects via Tokenized Regenerative Effort (TRE) Market (coming soon). By using blockchain technology, the marketplace ensures the authenticity and ownership of these NFTs, allowing users to buy, sell, or trade them within the platform.
+RegenWise also features marketplaces dedicated to regen-themed NFTs. NFTs are unique digital assets that can represent various forms of digital or tangible content. In the context of RegenWise, the marketplace offers NFTs related to regeneration, including artwork, collectibles, and even digital representations of regenerative projects via Tokenized Regenerative Effort (TRE) Market. By using blockchain technology, the marketplace ensures the authenticity and ownership of these NFTs, allowing users to buy, sell, or trade them within the platform.
 
 The combination of education, quests, and the NFT marketplaces within RegenWise reveal a comprehensive and immersive experience for users. It not only informs knowledge about regeneration but also directs individuals to actively contribute to regen efforts. Through its innovative approach, RegenWise strives to contribute to the regen endeavor. 
 
@@ -82,7 +82,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-We have a demo version of the platform on this url: <a href="https://regenwise.net">DemoUrl</a>
+We have a demo version of the platform on this url: <a href="https://regenwise.xyz">DemoUrl</a>
 
 If you want to run the project on your local machine, read the steps below:
 
@@ -97,10 +97,9 @@ If you want to run the project on your local machine, read the steps below:
   ```sh
   npm install
   ```
-* If you do not already have it, install Metamask wallet to your browser and connect it to Polygon Mumbai Testnet. (You can find how to do these on the net, it is easy.)
+* If you do not already have it, install Metamask wallet to your browser. (You can find how to do these on the net, it is easy.)
 
 * You should add .env file in .\regenwise-frontend\ directory and inside it there should be your testnet account's private key named as NEXT_PUBLIC_key1 .
-
 
 * Then run the command below:
   ```sh
@@ -154,7 +153,7 @@ If you like the project, don't forget to give it a star!
 
 RegenWise Team - keenregen@gmail.com
 
-Project Link: [https://github.com/regen-wise-dapp/regenwise-dapp](https://github.com/regen-wise-dapp/regenwise-dapp)
+Project Link: [https://github.com/keenregen/regenwise-dapp-aurora](https://github.com/keenregen/regenwise-dapp-aurora)
 
 <p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 

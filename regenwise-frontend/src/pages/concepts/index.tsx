@@ -1,7 +1,6 @@
 'use client';
 import styles from './index.module.scss';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import ConceptItem from '@src/components/concepts/ConceptItem';
 import ConceptsNavBar from '@src/components/concepts/ConceptsNavBar';
@@ -18,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { query } = context;
     const concepts = await fetcherWithNoCache(
-      `https://regenwise.net/api/concepts`
+      `https://regenwise.xyz/api/concepts`
     );
     return { props: { concepts: concepts, selectedTab: query.tab || '' } };
   } catch (error) {

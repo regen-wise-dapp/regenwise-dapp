@@ -1,5 +1,5 @@
 import { DifficultyButton } from '@src/models/quest';
-export const EASY_GAME_TIME = 180;
+export const EASY_GAME_TIME = 15;
 export const MEDIUM_GAME_TIME = 300;
 export const HARD_GAME_TIME = 420;
 
@@ -536,7 +536,7 @@ export const buildingQuestions = [
       {
         id: '3',
         option:
-          'To create buildings that positively impact the environment and occupants',
+          'To construct buildings that positively impact the environment and occupants',
       },
       {
         id: '4',
@@ -575,25 +575,19 @@ export const buildingQuestions = [
   },
   {
     question:
-      'Which of the following is a regenerative building certification?',
+      'Which of the following is a regenerative building approach for enhancing indoor air quality?',
     options: [
-      {
-        id: '1',
-        option: 'LEED (Leadership in Energy and Environmental Design)',
-      },
-      {
-        id: '2',
-        option: 'No certification programs exist for regenerative buildings',
-      },
+      { id: '1', option: 'Limited consideration for ventilation systems' },
+      { id: '2', option: 'Excessive use of toxic building materials' },
       {
         id: '3',
         option:
-          'BREEAM (Building Research Establishment Environmental Assessment Method)',
+          'Implementation of natural ventilation and air filtration systems',
       },
-      { id: '4', option: 'Passive House Certification' },
+      { id: '4', option: 'Disregard for occupant comfort' },
       { id: '5', option: 'None of the other choices' },
     ],
-    correctAnswer: '1',
+    correctAnswer: '3',
   },
   {
     question:
@@ -679,7 +673,7 @@ export const buildingQuestions = [
       { id: '2', option: 'To maximize noise pollution and stress levels' },
       {
         id: '3',
-        option: 'To create healthy and productive indoor environments',
+        option: 'To construct healthy and productive indoor environments',
       },
       {
         id: '4',

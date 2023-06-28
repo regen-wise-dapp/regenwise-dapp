@@ -14,5 +14,5 @@ export interface TransactionData {
 export interface MetaData {
   description: string;
   artist: string;
-  yearCreated: number;
+  yearMade: number;
 }

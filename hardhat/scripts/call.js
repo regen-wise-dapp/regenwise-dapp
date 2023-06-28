@@ -3,7 +3,7 @@ const hre = require("hardhat");
 async function main() {
 
     const RWiseNftMrkplc = await hre.ethers.getContractFactory("RWiseNftMrkplc");
-    const rWiseNftMrkplc = await RWiseNftMrkplc.attach('0x958B1A9DFac62B4D7CAaef55eD3BD1AE0077192f');
+    const rWiseNftMrkplc = await RWiseNftMrkplc.attach('0x53fCCa246Ab7fEb5C4301f483bc0aC59Ea91B688');
 
     const listingFee = await rWiseNftMrkplc.listSale("1","100000000000000000");
 

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import Account from '@src/components/dashboard/Account';
 import Purchases from '@src/components/dashboard/Purchases';
+import PurchasesTwo from '@src/components/dashboard/PurchasesTwo';
 import Stats from '@src/components/dashboard/Stats';
 import Projects from '@src/components/dashboard/Projects';
 import { User } from '@src/models/user';
@@ -24,18 +25,25 @@ function Dashboard() {
   const tabComponents = [
     {
       eventKey: 'nftList',
-      title: 'MY NFTs',
-      icon: '/dashboard/nft.png',
+      title: 'MY RW NFTs',
+      icon: '/dashboard/nft0.png',
       component: <Purchases />,
       display: !(!currentUser || !(currentUser as User).id),
     },
     {
+      eventKey: 'nftListTwo',
+      title: 'MY TRE NFTs',
+      icon: '/dashboard/nft2.png',
+      component: <PurchasesTwo />,
+      display: !(!currentUser || !(currentUser as User).id),
+    },
+/*     {
       eventKey: 'stats',
       title: 'Stats',
       icon: '/dashboard/stats.png',
       component: <Stats />,
       display: !(!currentUser || !(currentUser as User).id),
-    },
+    }, */
     {
       eventKey: 'editor',
       title: 'Projects',
