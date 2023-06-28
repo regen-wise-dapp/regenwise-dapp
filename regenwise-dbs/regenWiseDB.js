@@ -389,7 +389,7 @@ await db.applySchema(`
 
     function setProjects (projects: string[]) {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionThree}
         this.projects = projects;
     }
 

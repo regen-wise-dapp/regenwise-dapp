@@ -114,7 +114,7 @@ export default function AccountDetails({ user }: Props) {
       });
     }
 
-    // Add user if not exists
+    // Delete user
     try {
       await db
         .collection('user')
@@ -174,7 +174,7 @@ export default function AccountDetails({ user }: Props) {
       });
     }
 
-    // Add user if not exists
+    // Update user info
     try {
       await db
         .collection('user')

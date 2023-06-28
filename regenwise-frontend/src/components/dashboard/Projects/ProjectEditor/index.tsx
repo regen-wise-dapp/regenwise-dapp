@@ -234,7 +234,7 @@ export default function ProjectEditor({
             );
             detailedInformationEditor = EditorState.createWithContent(content);
             setEditorState(detailedInformationEditor);
-            router.push('/dashboard');
+            window.location.reload();
           });
       });
     }
