@@ -20,7 +20,7 @@ import {
 
 const press_Start_2P = Press_Start_2P({
   weight: ['400'],
-  subsets: ['latin'],
+  subsets: ['cyrillic'],
 });
 
 const Grid = dynamic(() => import('../Grid'));
@@ -33,13 +33,13 @@ interface Props {
 
 export default function GameLayout({ setupConfigs }: Props) {
   const [solution, setSolution] = useState('');
+  const [isTimerVisible, setIsTimerVisible] = useState(true);
   const [resetTimer, setResetTimer] = useState(new Date());
   const [stopTimer, setStopTimer] = useState(false);
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [score, setScore] = useState(0);
-
   const {
     currentGuess,
     guesses,
@@ -49,6 +49,12 @@ export default function GameLayout({ setupConfigs }: Props) {
     handleKeyup,
     onGameReset,
   } = useWordle(solution);
+
+  const toggleTimerVisibility = () => {
+    setIsTimerVisible((prev) => {
+      return !prev;
+    });
+  };
 
   const fetchData = useCallback(async () => {
     let word = '';
@@ -143,7 +149,11 @@ export default function GameLayout({ setupConfigs }: Props) {
   return solution ? (
     <div className={`${styles.main_container} flex flex-col `}>
       <div className={`${styles.header} w-full flex justify-center py-12`}>
-        <div className={`${press_Start_2P.className} text-white m-0`}>
+        <div
+          className={`${press_Start_2P.className} ${
+            isTimerVisible ? 'text-white m-0' : 'text-transparent'
+          }`}
+        >
           <Timer
             resetTimer={resetTimer}
             stopTimer={stopTimer}
@@ -164,7 +174,10 @@ export default function GameLayout({ setupConfigs }: Props) {
             className={`${styles.button_container} ${styles.button_container2}`}
           >
             <Button variant="light">
-              <MdOutlineTimer style={{ width: '30px', height: '30px' }} />
+              <MdOutlineTimer
+                style={{ width: '30px', height: '30px' }}
+                onClick={toggleTimerVisibility}
+              />
             </Button>
           </div>
         </>
