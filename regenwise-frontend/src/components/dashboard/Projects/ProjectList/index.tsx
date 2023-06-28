@@ -82,7 +82,7 @@ export default function ProjectList({ projects }: Props) {
         };
       });
     }
-    // Add user if not exists
+    // Delete project
     try {
       await db
         .collection('RegenProject')
@@ -94,7 +94,7 @@ export default function ProjectList({ projects }: Props) {
             'The record was deleted successfully!'
           );
           setOpen(true);
-          router.push(`/dashboard`);
+          window.location.reload();
         });
     } catch (e) {
       console.log(e);

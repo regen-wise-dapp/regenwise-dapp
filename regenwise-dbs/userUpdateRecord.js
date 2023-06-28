@@ -14,6 +14,6 @@ const db = new Polybase({
 
 
 
-await db.collection("user").record("0x20f57f30bcad3ce95ea2d0d39dfb9b6dcadc1d5a").call("setProjects", [["regenwise-web-platform","regenwise-nft-collection-zero"]]);
-
+// await db.collection("user").record("0xa542f07ea98d4e7a2e3be21486465f36f8a52474").call("setProjects", [["regenwise-web-platform","regenwise-nft-collection-zero"]]);
+await db.collection("user").record("0xa542f07ea98d4e7a2e3be21486465f36f8a52474").call("setImage", ["keenImage1"]);
 
