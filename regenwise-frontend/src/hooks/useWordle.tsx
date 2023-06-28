@@ -19,7 +19,6 @@ const useWordle = (solution: string) => {
   useEffect(() => {
     const solutionLength = getTurnsOnSolutionLength(solution.length);
     setGuesses([...Array(solutionLength)]);
-    console.log(solution);
   }, [solution]);
 
   const onGameReset = () => {

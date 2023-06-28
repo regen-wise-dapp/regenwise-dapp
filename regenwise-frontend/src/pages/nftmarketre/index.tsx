@@ -19,11 +19,12 @@ import MarketHeader from '@src/components/nftMarket/MarketHeaderTwo';
 import CategoriesBar from '@src/components/nftMarket/CategoriesBarTwo';
 import Loading from '@src/components/shared/Loading';
 import { NFTItem } from '@src/models/nftItem';
-import { Alert, Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form, Modal } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store';
 import { setModalOpen } from '../../../slices/gameModalSlice';
 import AlertModal from '@src/components/quests/AlertModal';
+import { useRouter } from 'next/router';
 
 export default function NFTmarket() {
   const [uploadedFile, setUploadedFile] = useState<File>();
@@ -32,6 +33,10 @@ export default function NFTmarket() {
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('Loading');
   const dispatch = useDispatch<AppDispatch>();
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   async function buylistNft(nft: NFTItem) {
     if (typeof (window as any).ethereum !== 'undefined') {
@@ -178,7 +183,6 @@ export default function NFTmarket() {
           description: 'Tre Collection #0, Learning by Writing Challenge #0',
           image: file
       });
-        console.log(cid);
 
 
     } catch (error) {
@@ -187,8 +191,23 @@ export default function NFTmarket() {
   };
 
   async function handleClick() {
+    try {
     await uploadNFTContent(uploadedFile);
+    setModalTitle('SUCCESS!');
+          setModalMessage(
+            'The file was uploaded successfully!'
+          );
+          setOpen(true);
+          router.push(`/nftmarketre`);
+    }
+    catch (e) {
+      console.log(e);
+    }
   }
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={styles.main_container}>
@@ -210,7 +229,41 @@ export default function NFTmarket() {
         and inform us if the problem continues.
       </Alert>
       <AlertModal />
+      <CustomModal
+        show={open}
+        handleClose={handleClose}
+        message={modalMessage}
+        title={modalTitle}
+      ></CustomModal>
     </div>
   );
 }
+
+interface CustomModalInterface {
+  show: boolean;
+  handleClose: () => void;
+  message: string;
+  title: string;
+}
+
+const CustomModal = ({
+  show,
+  handleClose,
+  title,
+  message,
+}: CustomModalInterface) => {
+  return (
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{message}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
 

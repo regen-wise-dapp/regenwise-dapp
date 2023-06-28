@@ -57,7 +57,6 @@ export default function GameLayout({ setupConfigs }: Props) {
         word = await fetcherWithNoCache(
           'https://regenwise.xyz/api/words?difficulty=easy'
         );
-        console.log('word: ', word);
         setSolution(word.toLowerCase());
         break;
       case MEDIUM:

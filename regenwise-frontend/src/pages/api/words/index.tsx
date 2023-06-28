@@ -129,7 +129,6 @@ export default async function handler(
   ];
 
   const allWords = [...easyWords, ...mediumWords, ...hardWords];
-  console.log(req.query['difficulty']);
   let selectedword = '';
   switch (req.query['difficulty']) {
     case 'easy':

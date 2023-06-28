@@ -29,9 +29,9 @@ export default function Modal({
             You found The Correct Word in {turn} guesses!
             </p>
             <p className="pb-2 text-center">
-            You can learn more about Regen in our knowledge-base.
+            You can learn more about Regen via our concepts page.
             </p>
-            <Button variant="primary" href='/knowledge'>Go To The Knowledge-Base</Button>
+            <Button variant="primary" href='/concepts'>Go To The Concepts Page</Button>
             <br />
           </>
         ) : (
@@ -43,9 +43,9 @@ export default function Modal({
               The word was <span className={styles.solution}>{solution}</span>
             </p>
             <p className="pb-2 text-center">
-            You can learn more about Regen in our knowledge-base.
+            You can learn more about Regen via our concepts page.
             </p>
-            <Button variant="primary" href='/knowledge'>Go To The Knowledge-Base</Button>
+            <Button variant="primary" href='/concepts'>Go To The Concepts Page</Button>
             <br />
           </>
         )}
