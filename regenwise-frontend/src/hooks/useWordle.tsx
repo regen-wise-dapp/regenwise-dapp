@@ -19,7 +19,6 @@ const useWordle = (solution: string) => {
   useEffect(() => {
     const solutionLength = getTurnsOnSolutionLength(solution.length);
     setGuesses([...Array(solutionLength)]);
-    console.log(solution);
   }, [solution]);
 
   const onGameReset = () => {
@@ -142,7 +141,7 @@ const useWordle = (solution: string) => {
     }
     if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < solution.length) {
-        setCurrentGuess((prev) => prev + key);
+        setCurrentGuess((prev) => prev + key.toLowerCase());
       }
     }
   };

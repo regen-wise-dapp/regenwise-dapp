@@ -102,7 +102,7 @@ export default function GameSetup({ isMember, onHandleSetup }: Props) {
           {isMember ? (
             <div className="flex flex-column items-center">
               <h3 className="text-center mb-4 text-white">
-                Start, Play, Compete and Learn
+                Practice, Play, Compete and Learn
               </h3>
               <div className="d-flex gap-4">
                 <Button

@@ -1,4 +1,4 @@
-import { DifficultyLevels } from '@src/constants/misc';
+import { DifficultyLevels, EASY, HARD, MEDIUM } from '@src/constants/misc';
 import {
   EASY_GAME_TIME,
   HARD_GAME_TIME,
@@ -125,13 +125,13 @@ export const calculateRemainingTime = (
 ) => {
   let remainingTime = 0;
   switch (difficulty) {
-    case 'easy':
+    case EASY:
       remainingTime = EASY_GAME_TIME - time;
       break;
-    case 'easy':
+    case MEDIUM:
       remainingTime = MEDIUM_GAME_TIME - time;
       break;
-    case 'easy':
+    case HARD:
       remainingTime = HARD_GAME_TIME - time;
       break;
   }

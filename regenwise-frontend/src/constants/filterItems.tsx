@@ -13,4 +13,4 @@ export const concepts = [
   'regenerative-water-management',
 ];
 
-export const years = [2023, 2022, 2021, 2020];
+export const years = ["2023", "2022", "2021", "2020"];

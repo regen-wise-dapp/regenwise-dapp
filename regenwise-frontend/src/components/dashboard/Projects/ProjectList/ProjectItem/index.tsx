@@ -36,8 +36,7 @@ export default function ProjectItem({
         </div>
         <div className="flex justify-center gap-2">
           <Button
-            // onClick={() => onDeleteItem(projectItem)}
-            onClick={() => alert("Not yet ready!")}
+            onClick={() => onDeleteItem(projectItem)}
             style={{
               borderRadius: '20px',
               width: '130px',
@@ -49,7 +48,7 @@ export default function ProjectItem({
           </Button>
           <Button
             // onClick={() => setEditedProject(projectItem)}
-            onClick={() => alert("Not yet ready!")}
+            onClick={() => setEditedProject(projectItem)}
             style={{
               borderRadius: '20px',
               width: '130px',

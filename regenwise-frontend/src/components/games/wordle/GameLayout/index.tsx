@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { SetupConfigs } from '../GameSetup';
-import { EASY, MEDIUM, HARD } from '@src/constants/misc';
+import { EASY, MEDIUM, HARD, DifficultyLevels } from '@src/constants/misc';
 import { fetcherWithNoCache } from '@src/utils/fetcher';
 import { getTurns } from '@src/utils/getTurns';
 import useWordle from '@src/hooks/useWordle';
@@ -12,10 +12,15 @@ import { Press_Start_2P } from 'next/font/google';
 import Timer from '@src/components/quests/Timer';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
+import {
+  calculateRemainingTime,
+  calculateScore,
+  calculateTimeDifferenceInSeconds,
+} from '@src/utils/gameOperatios';
 
 const press_Start_2P = Press_Start_2P({
   weight: ['400'],
-  subsets: ['latin'],
+  subsets: ['cyrillic'],
 });
 
 const Grid = dynamic(() => import('../Grid'));
@@ -28,12 +33,13 @@ interface Props {
 
 export default function GameLayout({ setupConfigs }: Props) {
   const [solution, setSolution] = useState('');
-  const [isTimerVisible, setIsTimerVisible] = useState(false);
+  const [isTimerVisible, setIsTimerVisible] = useState(true);
   const [resetTimer, setResetTimer] = useState(new Date());
   const [stopTimer, setStopTimer] = useState(false);
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [score, setScore] = useState(0);
   const {
     currentGuess,
     guesses,
@@ -52,12 +58,12 @@ export default function GameLayout({ setupConfigs }: Props) {
 
   const fetchData = useCallback(async () => {
     let word = '';
+    setCurrentTime(new Date());
     switch (setupConfigs.difficulty) {
       case EASY:
         word = await fetcherWithNoCache(
           'https://regenwise.xyz/api/words?difficulty=easy'
         );
-        console.log('word: ', word);
         setSolution(word.toLowerCase());
         break;
       case MEDIUM:
@@ -85,6 +91,7 @@ export default function GameLayout({ setupConfigs }: Props) {
     window.addEventListener('keyup', handleKeyup);
 
     if (isCorrect) {
+      calculateScoreAndTime();
       setTimeout(() => {
         setShowModal(true);
         setStopTimer(true);
@@ -92,6 +99,7 @@ export default function GameLayout({ setupConfigs }: Props) {
       window.removeEventListener('keyup', handleKeyup);
     }
     if (turn >= getTurns(setupConfigs.difficulty)) {
+      calculateScoreAndTime();
       setTimeout(() => {
         setShowModal(true);
         setStopTimer(true);
@@ -101,6 +109,26 @@ export default function GameLayout({ setupConfigs }: Props) {
 
     return () => window.removeEventListener('keyup', handleKeyup);
   }, [handleKeyup, isCorrect, setupConfigs.difficulty, turn]);
+
+  const calculateScoreAndTime = () => {
+    const timePassed = calculateTimeDifferenceInSeconds(
+      currentTime,
+      new Date()
+    );
+
+    const remainingTime = calculateRemainingTime(
+      timePassed,
+      setupConfigs.difficulty
+    );
+
+    let score = calculateScore(
+      turn,
+      isCorrect,
+      remainingTime,
+      setupConfigs.difficulty
+    );
+    setScore(score);
+  };
 
   const resetTheGame = () => {
     onGameReset();
@@ -123,8 +151,8 @@ export default function GameLayout({ setupConfigs }: Props) {
       <div className={`${styles.header} w-full flex justify-center py-12`}>
         <div
           className={`${press_Start_2P.className} ${
-            isTimerVisible === true ? 'block' : 'hidden'
-          } text-white m-0`}
+            isTimerVisible ? 'text-white m-0' : 'text-transparent'
+          }`}
         >
           <Timer
             resetTimer={resetTimer}
@@ -133,14 +161,6 @@ export default function GameLayout({ setupConfigs }: Props) {
             onTimeFinish={() => setShowModal(true)}
           />
         </div>
-
-        <h1
-          className={`${press_Start_2P.className} ${
-            isTimerVisible === true ? 'hidden' : 'block'
-          } text-white m-0`}
-        >
-          WORDLE
-        </h1>
 
         <>
           <div
@@ -153,13 +173,16 @@ export default function GameLayout({ setupConfigs }: Props) {
           <div
             className={`${styles.button_container} ${styles.button_container2}`}
           >
-            <Button variant="light" onClick={toggleTimerVisibility}>
-              <MdOutlineTimer style={{ width: '30px', height: '30px' }} />
+            <Button variant="light">
+              <MdOutlineTimer
+                style={{ width: '30px', height: '30px' }}
+                onClick={toggleTimerVisibility}
+              />
             </Button>
           </div>
         </>
       </div>
-      <div className='flex-1 flex flex-col gap-2 justify-center items-center'>
+      <div className="flex-1 flex flex-col gap-2 justify-center items-center">
         <Grid
           guesses={guesses}
           currentGuess={currentGuess}
@@ -171,9 +194,10 @@ export default function GameLayout({ setupConfigs }: Props) {
       {showModal && (
         <Modal
           isCorrect={isCorrect}
+          score={score}
           turn={turn}
           solution={solution}
-          closeModal={resetTheGame}
+          closeModal={() => resetTheGame()}
         />
       )}
     </div>
@@ -181,4 +205,3 @@ export default function GameLayout({ setupConfigs }: Props) {
     <div className="text-white">Loading...</div>
   );
 }
-

@@ -19,6 +19,8 @@ const conditionOne = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d2134
 const conditionTwo = "if (ctx.publicKey.toHex() != '0xd5b7c1b3d87f41e7ea850d213402bd158e1a5b6bbb8aa8d8e1f9a84f22cfb929a5edd453e6a2d378b180de69ad2086e3e01bd4b1f023bb8908b05467628e9cca') {error('You are not allowed to add a record to this collection.');}";
 // pkey check for users
 const conditionThree = "if (ctx.publicKey.toHex() != this.publicKeyH) {error('You are not allowed to change the record data.');}";
+// pkey check for projects and concepts
+const conditionFour = "if (ctx.publicKey.toHex() != this.adderPublicKeyH) {error('You are not allowed to change the record data.');}";
 
 
 
@@ -291,7 +293,7 @@ await db.applySchema(`
 
         function updateProject (name: string, implementers: string[], contactEmail:string, country:string, state: string, city:string, address:string, concepts:string[], description: string, ghgPuller: string, isInstutional: boolean, link: string, status: string) {
             ${conditionZero}
-            ${conditionThree}
+            ${conditionFour}
             this.name = name;
             this.implementers = implementers;
             this.contactEmail = contactEmail;
@@ -308,9 +310,10 @@ await db.applySchema(`
 
         }
 
+
         del () {
             ${conditionZero}
-            ${conditionOne}
+            ${conditionFour}
             selfdestruct();
           }
   }
@@ -386,7 +389,7 @@ await db.applySchema(`
 
     function setProjects (projects: string[]) {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionThree}
         this.projects = projects;
     }
 
@@ -410,7 +413,7 @@ await db.applySchema(`
 
     del () {
         ${conditionZero}
-        ${conditionOne}
+        ${conditionFour}
         selfdestruct();
       }
 }

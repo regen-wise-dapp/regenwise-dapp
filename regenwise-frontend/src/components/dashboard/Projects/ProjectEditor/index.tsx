@@ -20,6 +20,7 @@ import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
 import setSlugify from '@src/utils/setSlugify';
 import { useSelector } from 'react-redux';
 import { RootState } from '@store/index';
+import { useRouter } from 'next/router';
 
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
@@ -62,7 +63,7 @@ const emptyFormValues = {
   contactEmail: '',
   implementers: [] as string[],
   concepts: [] as string[],
-  date: new Date().getFullYear(),
+  date: '2023',
 };
 
 export default function ProjectEditor({
@@ -78,6 +79,7 @@ export default function ProjectEditor({
   const [formValues, setFormValues] = useState(emptyFormValues);
   const [modalMessage, setModalMessage] = useState('');
   const [modalTitle, setModalTitle] = useState('');
+  const router = useRouter();
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -125,7 +127,6 @@ export default function ProjectEditor({
     // Return true if there are no errors
     return Object.keys(newErrors).length === 0;
   };
-
   useEffect(() => {
     if (editMode === false) {
       setFormValues(emptyFormValues);
@@ -151,6 +152,7 @@ export default function ProjectEditor({
         blocksFromHTML.entityMap
       );
       detailedInformationEditor = EditorState.createWithContent(content);
+      console.log('project', project);
       setEditorState(detailedInformationEditor);
       setFormValues({
         name: project.name,
@@ -160,7 +162,7 @@ export default function ProjectEditor({
         status: project.status,
         address: project.address,
         ghgPuller: project.ghgPuller,
-        isInstitutional: project.isInstitutional,
+        isInstitutional: (project as any).isInstutional,
         link: project.link,
         contactEmail: project.contactEmail,
         implementers: project.implementers,
@@ -199,6 +201,9 @@ export default function ProjectEditor({
 
   const handleClose = () => {
     setOpen(false);
+    if (editMode) {
+      (onCloseEditMode as any)();
+    }
   };
 
   const saveProject = () => {
@@ -233,6 +238,7 @@ export default function ProjectEditor({
             );
             detailedInformationEditor = EditorState.createWithContent(content);
             setEditorState(detailedInformationEditor);
+            window.location.reload();
           });
       });
     }
@@ -259,7 +265,7 @@ export default function ProjectEditor({
       });
     }
 
-    // Add user if not exists
+    // Add project if not exists
     try {
       const userData = (await db.collection('RegenProject').record(pKey).get())
         .data;
@@ -294,8 +300,80 @@ export default function ProjectEditor({
   ///////////////////// Polybase Code 2 End //////////////////////
 
   const editProject = () => {
-    console.log('edit project');
+    const isValid = validateForm();
+    console.log('final:', formValues);
+
+    if (isValid) {
+      let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+      const finalFormObject = {
+        ...formValues,
+        description: html,
+        implementers: [...formValues.implementers],
+        concepts: [...formValues.concepts],
+      };
+      editProjectDetails(finalFormObject).then(() => {
+        setModalTitle('SUCCESS!');
+        setModalMessage('Your project was edited!');
+        setOpen(true);
+        setFormValues(emptyFormValues);
+        let detailedInformationEditor = null;
+        const blocksFromHTML = convertFromHTML('');
+        const content = ContentState.createFromBlockArray(
+          blocksFromHTML.contentBlocks,
+          blocksFromHTML.entityMap
+        );
+        detailedInformationEditor = EditorState.createWithContent(content);
+        setEditorState(detailedInformationEditor);
+      });
+    }
   };
+
+  async function editProjectDetails(finalFormObject: any) {
+    const res = await auth?.signIn();
+
+    // if publickey was received
+    let publicKeyH = (res as any).publicKey;
+    let pKey = window.ethereum.selectedAddress;
+    if (!publicKeyH) {
+      publicKeyH = await getPublicKeyH();
+    }
+
+    if (auth) {
+      db.signer(async (data: string) => {
+        return {
+          h: 'eth-personal-sign',
+          sig: await auth?.ethPersonalSign(data),
+        };
+      });
+    }
+    console.log('publicKeyH:', publicKeyH);
+    console.log('pKey:', pKey);
+    console.log(finalFormObject);
+    // Update project info
+    try {
+      await db
+        .collection('RegenProject')
+        .record(setSlugify(formValues.name))
+        .call('updateProject', [
+          finalFormObject.name ?? '',
+          finalFormObject.implementers ?? [],
+          finalFormObject.contactEmail ?? '',
+          finalFormObject.country ?? '',
+          finalFormObject.state ?? '',
+          finalFormObject.city ?? '',
+          finalFormObject.address ?? '',
+          finalFormObject.concepts ?? [],
+          (finalFormObject.description as any) ?? '',
+          finalFormObject.ghgPuller ?? '',
+          Boolean(finalFormObject.isInstitutional) ?? false,
+          finalFormObject.link ?? '',
+          finalFormObject.status ?? '',
+        ])
+        .then(() => {});
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <div className={`${styles.main_container}`}>
@@ -454,6 +532,7 @@ export default function ProjectEditor({
                   Project Status*
                 </Form.Label>
                 <Form.Select
+                  value={formValues['status']}
                   aria-label="Default select example"
                   onChange={(e) => handleFormInput(e)}
                   isInvalid={!!errors.status}
@@ -474,6 +553,7 @@ export default function ProjectEditor({
                   Greenhouse Gas Puller*
                 </Form.Label>
                 <Form.Select
+                  value={formValues['ghgPuller']}
                   aria-label="Default select Greenhouse Gas"
                   onChange={(e) => handleFormInput(e)}
                   isInvalid={!!errors.ghgPuller}
@@ -494,6 +574,7 @@ export default function ProjectEditor({
                   Personal/Institutional*
                 </Form.Label>
                 <Form.Select
+                  value={formValues['isInstitutional'] ? 1 : 0}
                   aria-label="Default select example"
                   onChange={(e) => handleFormInput(e)}
                   isInvalid={!!errors.isInstitutional}

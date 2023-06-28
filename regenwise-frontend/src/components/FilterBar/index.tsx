@@ -9,7 +9,7 @@ const SortingSection = dynamic(() => import('./SortingSection'));
 const FilterList = dynamic(() => import('./FilterList'));
 
 export interface AdvanceFilter {
-  years: number[];
+  years: string[];
   implementers: string[];
   concepts: string[];
 }

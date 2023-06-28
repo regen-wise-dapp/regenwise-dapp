@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 interface Props {
   solution: string;
   isCorrect: boolean;
+  score?: number;
   turn: number;
   closeModal: () => void;
 }
@@ -11,6 +12,7 @@ interface Props {
 export default function Modal({
   isCorrect,
   solution,
+  score,
   turn,
   closeModal,
 }: Props) {
@@ -20,18 +22,27 @@ export default function Modal({
         {isCorrect ? (
           <>
             <h1 className="text-center pb-4 text-2xl md:text-4xl font-extrabold">
-              Correct! 
+              Correct!
             </h1>
+            {score ? (
+              <p className="pb-2 text-center">
+                Your score is <span className={styles.solution}>{score}</span>
+              </p>
+            ) : (
+              <></>
+            )}
             <p className="pb-2 text-center">
               The word was <span className={styles.solution}>{solution}</span>
             </p>
             <p className="pb-2 text-center">
-            You found The Correct Word in {turn} guesses!
+              You found The Correct Word in {turn} guesses!
             </p>
             <p className="pb-2 text-center">
-            You can learn more about Regen in our knowledge-base.
+              You can learn more about Regen in our knowledge-base.
             </p>
-            <Button variant="primary" href='/knowledge'>Go To The Knowledge-Base</Button>
+            <Button variant="primary" href="/concepts">
+              Go To The Concepts
+            </Button>
             <br />
           </>
         ) : (
@@ -39,13 +50,22 @@ export default function Modal({
             <h1 className="text-center pb-4 text-2xl md:text-4xl font-extrabold">
               Incorrect Guesses <br /> No Problem!
             </h1>
+            {score ? (
+              <p className="pb-2 text-center">
+                Your score is <span className={styles.solution}>{score}</span>
+              </p>
+            ) : (
+              <></>
+            )}
             <p className="pb-2 text-center">
               The word was <span className={styles.solution}>{solution}</span>
             </p>
             <p className="pb-2 text-center">
-            You can learn more about Regen in our knowledge-base.
+              You can learn more about Regen in our knowledge-base.
             </p>
-            <Button variant="primary" href='/knowledge'>Go To The Knowledge-Base</Button>
+            <Button variant="primary" href="/concepts">
+              Go To The Concepts
+            </Button>
             <br />
           </>
         )}
