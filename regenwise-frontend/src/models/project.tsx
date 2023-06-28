@@ -9,7 +9,7 @@ export interface Project {
   concepts: string[];
   contactEmail: string;
   country: string;
-  date: number | string | Date;
+  date: string;
   description: string;
   ghgPuller: string;
   id: string;
