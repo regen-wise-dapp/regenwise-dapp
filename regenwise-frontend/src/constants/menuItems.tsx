@@ -20,6 +20,10 @@ export const menuItems = [
     link: '/nftmarketre',
   },
   {
+    label: 'Games',
+    link: '/games',
+  },
+  {
     label: 'Quests',
     link: '/quests',
   },
