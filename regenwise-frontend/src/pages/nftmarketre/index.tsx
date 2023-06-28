@@ -192,7 +192,10 @@ export default function NFTmarket() {
 
   async function handleClick() {
     try {
+    setLoading(true);
+    setLoadingMessage('Uploading');
     await uploadNFTContent(uploadedFile);
+    setLoading(false);
     setModalTitle('SUCCESS!');
           setModalMessage(
             'The file was uploaded successfully!'
