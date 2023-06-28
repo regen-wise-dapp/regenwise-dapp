@@ -32,6 +32,7 @@ export default function ConceptsNavBar({
             .map((item: Concept) => {
               return (
                 <ListGroupItem
+                  key={item.name}
                   className={`${styles.list_item} my-1`}
                   onClick={() => handleClick(item)}
                 >
