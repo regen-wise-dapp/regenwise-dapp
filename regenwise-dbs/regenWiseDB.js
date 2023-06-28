@@ -293,7 +293,7 @@ await db.applySchema(`
 
         function updateProject (name: string, implementers: string[], contactEmail:string, country:string, state: string, city:string, address:string, concepts:string[], description: string, ghgPuller: string, isInstutional: boolean, link: string, status: string) {
             ${conditionZero}
-            ${conditionThree}
+            ${conditionFour}
             this.name = name;
             this.implementers = implementers;
             this.contactEmail = contactEmail;
