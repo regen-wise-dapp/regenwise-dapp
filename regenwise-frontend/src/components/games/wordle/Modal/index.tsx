@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 interface Props {
   solution: string;
   isCorrect: boolean;
-  score: number;
+  score?: number;
   turn: number;
   closeModal: () => void;
 }
@@ -24,9 +24,13 @@ export default function Modal({
             <h1 className="text-center pb-4 text-2xl md:text-4xl font-extrabold">
               Correct!
             </h1>
-            <p className="pb-2 text-center">
-              Your score is <span className={styles.solution}>{score}</span>
-            </p>
+            {score ? (
+              <p className="pb-2 text-center">
+                Your score is <span className={styles.solution}>{score}</span>
+              </p>
+            ) : (
+              <></>
+            )}
             <p className="pb-2 text-center">
               The word was <span className={styles.solution}>{solution}</span>
             </p>
@@ -46,9 +50,13 @@ export default function Modal({
             <h1 className="text-center pb-4 text-2xl md:text-4xl font-extrabold">
               Incorrect Guesses <br /> No Problem!
             </h1>
-            <p className="pb-2 text-center">
-              Your score is <span className={styles.solution}>{score}</span>
-            </p>
+            {score ? (
+              <p className="pb-2 text-center">
+                Your score is <span className={styles.solution}>{score}</span>
+              </p>
+            ) : (
+              <></>
+            )}
             <p className="pb-2 text-center">
               The word was <span className={styles.solution}>{solution}</span>
             </p>

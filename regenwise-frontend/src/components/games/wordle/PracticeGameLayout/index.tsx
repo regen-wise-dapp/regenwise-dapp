@@ -11,10 +11,12 @@ import styles from './index.module.scss';
 import { fetcherWithNoCache } from '@src/utils/fetcher';
 import { SetupConfigs } from '../GameSetup';
 import { getTurns } from '@src/utils/getTurns';
+
 const press_Start_2P = Press_Start_2P({
   weight: ['400'],
-  subsets: ['latin'],
+  subsets: ['cyrillic'],
 });
+
 const Grid = dynamic(() => import('../Grid'));
 const Keypad = dynamic(() => import('../Keypad'));
 const Modal = dynamic(() => import('../Modal'));
@@ -25,7 +27,7 @@ interface Props {
 
 export default function PracticeGameLayout({ setupConfigs }: Props) {
   const [solution, setSolution] = useState('');
-  const [isTimerVisible, setIsTimerVisible] = useState(false);
+  const [isTimerVisible, setIsTimerVisible] = useState(true);
   const [resetTimer, setResetTimer] = useState(new Date());
   const [stopTimer, setStopTimer] = useState(false);
   const router = useRouter();
@@ -42,6 +44,7 @@ export default function PracticeGameLayout({ setupConfigs }: Props) {
 
   const toggleTimerVisibility = () => {
     setIsTimerVisible((prev) => {
+      console.log(!prev);
       return !prev;
     });
   };
@@ -101,8 +104,8 @@ export default function PracticeGameLayout({ setupConfigs }: Props) {
       <div className={`${styles.header} w-full flex justify-center py-12`}>
         <div
           className={`${press_Start_2P.className} ${
-            isTimerVisible === true ? 'block' : 'hidden'
-          } text-white m-0`}
+            isTimerVisible ? 'text-white m-0' : 'text-transparent'
+          }`}
         >
           <Timer
             resetTimer={resetTimer}
@@ -111,14 +114,6 @@ export default function PracticeGameLayout({ setupConfigs }: Props) {
             onTimeFinish={() => setShowModal(true)}
           />
         </div>
-
-        <h1
-          className={`${press_Start_2P.className} ${
-            isTimerVisible === true ? 'hidden' : 'block'
-          } text-white m-0`}
-        >
-          WORDLE
-        </h1>
 
         <>
           <div
@@ -159,4 +154,3 @@ export default function PracticeGameLayout({ setupConfigs }: Props) {
     <div>Loading...</div>
   );
 }
-
