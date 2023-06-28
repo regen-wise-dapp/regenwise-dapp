@@ -141,7 +141,7 @@ const useWordle = (solution: string) => {
     }
     if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < solution.length) {
-        setCurrentGuess((prev) => prev + key);
+        setCurrentGuess((prev) => prev + key.toLowerCase());
       }
     }
   };
