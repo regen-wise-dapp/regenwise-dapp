@@ -9,9 +9,16 @@ import {
 interface Props {
   difficulty: DifficultyLevels;
   onTimeFinish: () => void;
+  resetTimer?: Date;
+  stopTimer?: boolean;
 }
 
-function Timer({ difficulty, onTimeFinish }: Props) {
+function Timer({
+  difficulty,
+  onTimeFinish,
+  resetTimer,
+  stopTimer = false,
+}: Props) {
   const [time, setTime] = useState(EASY_GAME_TIME);
 
   useEffect(() => {
@@ -26,11 +33,11 @@ function Timer({ difficulty, onTimeFinish }: Props) {
         setTime(HARD_GAME_TIME);
         break;
     }
-  }, [difficulty]);
+  }, [difficulty, resetTimer]);
 
   useEffect(() => {
     let timerId: any;
-    if (time > 0) {
+    if (time > 0 && stopTimer === false) {
       timerId = setInterval(() => {
         setTime((prevTime) => {
           return prevTime - 1;
@@ -42,7 +49,7 @@ function Timer({ difficulty, onTimeFinish }: Props) {
     return () => {
       clearInterval(timerId);
     };
-  }, [time]);
+  }, [time, stopTimer]);
 
   const formatTime = (timeInSeconds: any) => {
     const hours = Math.floor(timeInSeconds / 3600)

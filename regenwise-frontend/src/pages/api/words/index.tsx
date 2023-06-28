@@ -29,13 +29,12 @@ export default async function handler(
   await runMiddleware(req, res, cors);
   res.setHeader('Cache-Control', 'no-store');
 
-  const commonWords = [
+  const easyWords = [
     'Earth',
     'Field',
     'Fresh',
     'Fruit',
     'Grass',
-    'Fungi',
     'Green',
     'Light',
     'Ocean',
@@ -46,9 +45,6 @@ export default async function handler(
     'Daily',
     'Water',
     'Yield',
-  ];
-
-  const easyWords = [
     'Adapt',
     'Bloom',
     'Cover',
@@ -131,27 +127,37 @@ export default async function handler(
     'Restoring',
     'Temperate',
   ];
-  
-  const allWords = [...commonWords,...easyWords, ...mediumWords, ...hardWords];
 
+  const allWords = [...easyWords, ...mediumWords, ...hardWords];
+  console.log(req.query['difficulty']);
   let selectedword = '';
-  if (req.query['difficulty'] === 'easy') {
-    const randomNumber = Math.floor(Math.random() * (easyWords.length - 1));
-    selectedword = easyWords[randomNumber];
-  }
-  if (req.query['difficulty'] === 'medium') {
-    const randomNumber = Math.floor(Math.random() * (mediumWords.length - 1));
-    selectedword = mediumWords[randomNumber];
-  }
-  if (req.query['difficulty'] === 'hard') {
-    const randomNumber = Math.floor(Math.random() * (hardWords.length - 1));
-    selectedword = hardWords[randomNumber];
-  } else {
-    const randomNumber = Math.floor(Math.random() * (allWords.length - 1));
-    selectedword = allWords[randomNumber];
+  switch (req.query['difficulty']) {
+    case 'easy':
+      let randomNumberEasy = Math.floor(Math.random() * (easyWords.length - 1));
+      selectedword = easyWords[randomNumberEasy];
+      break;
+    case 'medium':
+      const randomNumbermedium = Math.floor(
+        Math.random() * (mediumWords.length - 1)
+      );
+      selectedword = mediumWords[randomNumbermedium];
+      break;
+    case 'hard':
+      const randomNumberHard = Math.floor(
+        Math.random() * (hardWords.length - 1)
+      );
+      selectedword = hardWords[randomNumberHard];
+      break;
+
+    default:
+      const randomNumberGeneral = Math.floor(
+        Math.random() * (allWords.length - 1)
+      );
+      selectedword = allWords[randomNumberGeneral];
+      break;
   }
 
   selectedword
-    ? res.status(200).json(selectedword as any)
+    ? res.status(200).json(selectedword.toLowerCase() as any)
     : res.status(404).json({ message: `No word exist.` });
 }

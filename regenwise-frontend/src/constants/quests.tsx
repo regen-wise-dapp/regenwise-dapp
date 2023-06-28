@@ -1,5 +1,5 @@
 import { DifficultyButton } from '@src/models/quest';
-export const EASY_GAME_TIME = 180;
+export const EASY_GAME_TIME = 15;
 export const MEDIUM_GAME_TIME = 300;
 export const HARD_GAME_TIME = 420;
 
