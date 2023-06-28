@@ -14,7 +14,6 @@ export interface Project {
   ghgPuller: string;
   id: string;
   implementers: string[];
-  isInstitutional: boolean;
   likes: number;
   link: string;
   name: string;
