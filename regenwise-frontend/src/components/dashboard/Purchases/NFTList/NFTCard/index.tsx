@@ -34,7 +34,7 @@ export default function NFTCard({ card, executeRelist }: Props) {
             marginBottom: '2em',
           }}
           value={salePrice.price}
-          placeholder="Set Price"
+          placeholder="Set Price in ETH"
           onChange={(e) =>
             setSalePrice({
               price: (e.target as any).value,

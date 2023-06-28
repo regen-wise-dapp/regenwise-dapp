@@ -39,7 +39,7 @@ export default function ProjectList({
       const matchYear =
         advanceFilters.years?.length === 0
           ? true
-          : advanceFilters.years?.includes(Number(projectYear));
+          : advanceFilters.years?.includes(projectYear);
       const matchConcepts =
         advanceFilters.concepts?.length === 0
           ? true

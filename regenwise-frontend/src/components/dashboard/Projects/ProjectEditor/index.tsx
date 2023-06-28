@@ -62,7 +62,7 @@ const emptyFormValues = {
   contactEmail: '',
   implementers: [] as string[],
   concepts: [] as string[],
-  date: new Date().getFullYear(),
+  date: "2023",
 };
 
 export default function ProjectEditor({
@@ -233,6 +233,7 @@ export default function ProjectEditor({
             );
             detailedInformationEditor = EditorState.createWithContent(content);
             setEditorState(detailedInformationEditor);
+            window.location.reload();
           });
       });
     }
@@ -259,7 +260,7 @@ export default function ProjectEditor({
       });
     }
 
-    // Add user if not exists
+    // Add project if not exists
     try {
       const userData = (await db.collection('RegenProject').record(pKey).get())
         .data;

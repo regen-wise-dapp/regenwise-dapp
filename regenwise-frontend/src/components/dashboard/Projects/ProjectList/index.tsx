@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DashboardHeader from '../../shared/DashboardHeader';
 import { Project } from '@src/models/project';
 import ProjectItem from './ProjectItem';
@@ -42,6 +42,14 @@ export default function ProjectList({ projects }: Props) {
   const [modalMessage, setModalMessage] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [open, setOpen] = useState(false);
+  const [needSignIn, setNeedSignIn] = useState<boolean>(false)
+
+
+  useEffect(() => {
+    auth?.onAuthUpdate((authState) => {
+      if (!authState) setNeedSignIn(true)
+    });
+  }, [])
 
   const onEditProject = (project: Project) => {
     setToBeEditedProject(project);
@@ -53,7 +61,14 @@ export default function ProjectList({ projects }: Props) {
   };
 
   const onHandleDelete = async (event: any) => {
-    const res = await auth?.signIn();
+    let res;
+    if (needSignIn) {
+      console.log("againnnnnnnnnnnnnn",res);
+      res = await auth?.signIn();
+    }
+    else {
+      res = auth?.state;
+    }
     let publicKeyH = (res as any).publicKey;
     let pKey = window.ethereum.selectedAddress;
     if (!publicKeyH) {
@@ -79,6 +94,7 @@ export default function ProjectList({ projects }: Props) {
             'The record was deleted successfully!'
           );
           setOpen(true);
+          window.location.reload();
         });
     } catch (e) {
       console.log(e);
@@ -104,9 +120,11 @@ export default function ProjectList({ projects }: Props) {
             {projects.length > 0 ? (
               <>
                 <div className={`${styles.list}`}>
-                  {projects
+                  {projects&&
+                  projects
                     .slice((page - 1) * itemPerPage, page * itemPerPage)
                     .map((item: Project) => {
+                      if (item)
                       return (
                         <ProjectItem
                           key={item.id}
