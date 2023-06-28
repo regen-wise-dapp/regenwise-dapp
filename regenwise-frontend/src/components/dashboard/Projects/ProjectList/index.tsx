@@ -11,6 +11,7 @@ import { Polybase } from '@polybase/client';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@store/index';
 import { Modal, Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 
 interface Props {
   projects: Project[];
@@ -43,7 +44,7 @@ export default function ProjectList({ projects }: Props) {
   const [modalTitle, setModalTitle] = useState('');
   const [open, setOpen] = useState(false);
   const [needSignIn, setNeedSignIn] = useState<boolean>(false)
-
+  const router = useRouter();
 
   useEffect(() => {
     auth?.onAuthUpdate((authState) => {
@@ -63,7 +64,6 @@ export default function ProjectList({ projects }: Props) {
   const onHandleDelete = async (event: any) => {
     let res;
     if (needSignIn) {
-      console.log("againnnnnnnnnnnnnn",res);
       res = await auth?.signIn();
     }
     else {
@@ -94,7 +94,7 @@ export default function ProjectList({ projects }: Props) {
             'The record was deleted successfully!'
           );
           setOpen(true);
-          window.location.reload();
+          router.push(`/dashboard`);
         });
     } catch (e) {
       console.log(e);

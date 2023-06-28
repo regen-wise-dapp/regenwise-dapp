@@ -20,6 +20,7 @@ import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
 import setSlugify from '@src/utils/setSlugify';
 import { useSelector } from 'react-redux';
 import { RootState } from '@store/index';
+import { useRouter } from 'next/router';
 
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
@@ -125,7 +126,7 @@ export default function ProjectEditor({
     // Return true if there are no errors
     return Object.keys(newErrors).length === 0;
   };
-
+  const router = useRouter();
   useEffect(() => {
     if (editMode === false) {
       setFormValues(emptyFormValues);
@@ -233,7 +234,7 @@ export default function ProjectEditor({
             );
             detailedInformationEditor = EditorState.createWithContent(content);
             setEditorState(detailedInformationEditor);
-            window.location.reload();
+            router.push('/dashboard');
           });
       });
     }
