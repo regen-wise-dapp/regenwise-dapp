@@ -7,6 +7,7 @@ import { setUser } from '../../../../../slices/authenticationSlice';
 import { fetchUserInfo } from '../../../../../slices/userSlice';
 import { setModalOpen } from '../../../../../slices/gameModalSlice';
 import { DifficultyLevels } from '@src/constants/misc';
+import { useRouter } from 'next/router';
 interface Props {
   isMember: boolean;
   onHandleSetup: ({}: SetupConfigs) => void;
@@ -38,6 +39,8 @@ const difficultyButtons = [
 export default function GameSetup({ isMember, onHandleSetup }: Props) {
   const [difficulty, setDifficulty] = useState<DifficultyLevels>('easy');
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
+
   const handleSetup = (isPractice: boolean) => {
     const setupConfigs: SetupConfigs = {
       difficulty: difficulty,
@@ -63,6 +66,10 @@ export default function GameSetup({ isMember, onHandleSetup }: Props) {
         ])
       );
     }
+  };
+
+  const handleBackToGames = () => {
+    router.push('/games');
   };
 
   return (
@@ -97,12 +104,20 @@ export default function GameSetup({ isMember, onHandleSetup }: Props) {
               <h3 className="text-center mb-4 text-white">
                 Start, Play, Compete and Learn
               </h3>
-              <Button
-                className={styles.start_button}
-                onClick={() => handleSetup(false)}
-              >
-                START THE GAME
-              </Button>
+              <div className="d-flex gap-4">
+                <Button
+                  className={styles.start_button}
+                  onClick={() => handleSetup(true)}
+                >
+                  PRACTICE
+                </Button>
+                <Button
+                  className={styles.start_button}
+                  onClick={() => handleSetup(false)}
+                >
+                  START THE GAME
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="flex flex-column items-center">
@@ -120,14 +135,12 @@ export default function GameSetup({ isMember, onHandleSetup }: Props) {
           )}
           <div className={styles.divider}></div>
           <div className=" flex flex-column items-center">
-            <h4 className="text-center mb-4 text-base text-white m-0">
-              Or, you can make more practice to prepare for the actual game.
-            </h4>
+            <h4 className="text-center mb-4 text-base text-white m-0">Or</h4>
             <Button
-              className={styles.practice_button}
-              onClick={() => handleSetup(true)}
+              className={styles.back_button}
+              onClick={() => handleBackToGames()}
             >
-              PRACTICE
+              BACK TO GAMES
             </Button>
           </div>
         </div>
