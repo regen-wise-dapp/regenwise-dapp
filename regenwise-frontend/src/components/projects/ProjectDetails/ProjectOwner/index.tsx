@@ -19,10 +19,6 @@ export default function ProjectAuthor({ project }: Props): JSX.Element {
             <td>{project.approvalStatus}</td>
           </tr>
           <tr>
-            <td className="font-extrabold">Project Type:</td>
-            <td>{project.isInstitutional ? `Institutional` : `Personal`}</td>
-          </tr>
-          <tr>
             <td className="font-extrabold">Country:</td>
             <td>{project.country}</td>
           </tr>

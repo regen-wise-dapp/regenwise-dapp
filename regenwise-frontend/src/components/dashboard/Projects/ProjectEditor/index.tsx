@@ -58,7 +58,6 @@ const emptyFormValues = {
   status: '',
   address: '',
   ghgPuller: '',
-  isInstitutional: false,
   link: '',
   contactEmail: '',
   implementers: [] as string[],
@@ -112,9 +111,6 @@ export default function ProjectEditor({
     if (!formValues.ghgPuller) {
       newErrors.ghgPuller = 'GreenHouse gas is required';
     }
-    if (!formValues.isInstitutional) {
-      newErrors.isInstitutional = 'Personal/institutional is required';
-    }
     if (!formValues.contactEmail) {
       newErrors.contactEmail = 'Contact email is required';
     } else if (
@@ -162,7 +158,6 @@ export default function ProjectEditor({
         status: project.status,
         address: project.address,
         ghgPuller: project.ghgPuller,
-        isInstitutional: (project as any).isInstutional,
         link: project.link,
         contactEmail: project.contactEmail,
         implementers: project.implementers,
@@ -212,8 +207,6 @@ export default function ProjectEditor({
       let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
       const finalFormObject = {
         ...formValues,
-        isInstitutional:
-          formValues.isInstitutional === Boolean(1) ? true : false,
         description: html,
       };
 
@@ -277,7 +270,6 @@ export default function ProjectEditor({
             '',
             finalFormObject.name,
             finalFormObject.description as any,
-            finalFormObject.isInstitutional,
             finalFormObject.status,
             'pending',
             finalFormObject.implementers,
@@ -313,7 +305,7 @@ export default function ProjectEditor({
       };
       editProjectDetails(finalFormObject).then(() => {
         setModalTitle('SUCCESS!');
-        setModalMessage('Your project was edited!');
+        setModalMessage('Your project was updated!');
         setOpen(true);
         setFormValues(emptyFormValues);
         let detailedInformationEditor = null;
@@ -324,6 +316,7 @@ export default function ProjectEditor({
         );
         detailedInformationEditor = EditorState.createWithContent(content);
         setEditorState(detailedInformationEditor);
+        window.location.reload();
       });
     }
   };
@@ -350,10 +343,12 @@ export default function ProjectEditor({
     console.log('pKey:', pKey);
     console.log(finalFormObject);
     // Update project info
+    
     try {
+      if (project) {
       await db
         .collection('RegenProject')
-        .record(setSlugify(formValues.name))
+        .record(project.id)
         .call('updateProject', [
           finalFormObject.name ?? '',
           finalFormObject.implementers ?? [],
@@ -365,11 +360,10 @@ export default function ProjectEditor({
           finalFormObject.concepts ?? [],
           (finalFormObject.description as any) ?? '',
           finalFormObject.ghgPuller ?? '',
-          Boolean(finalFormObject.isInstitutional) ?? false,
           finalFormObject.link ?? '',
           finalFormObject.status ?? '',
-        ])
-        .then(() => {});
+        ]).then(() => {});}
+        
     } catch (e) {
       console.log(e);
     }
@@ -569,24 +563,6 @@ export default function ProjectEditor({
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="isInstitutional">
-                <Form.Label className="font-extrabold">
-                  Personal/Institutional*
-                </Form.Label>
-                <Form.Select
-                  value={formValues['isInstitutional'] ? 1 : 0}
-                  aria-label="Default select example"
-                  onChange={(e) => handleFormInput(e)}
-                  isInvalid={!!errors.isInstitutional}
-                >
-                  <option>Select an option</option>
-                  <option value={0}>Personal</option>
-                  <option value={1}>Institutional</option>
-                </Form.Select>
-                <Form.Control.Feedback type="invalid">
-                  {errors.isInstitutional}
-                </Form.Control.Feedback>
-              </Form.Group>
 
               <Form.Group className="mb-3" controlId="implementers">
                 <Form.Label className="font-extrabold">Implementers</Form.Label>
@@ -644,7 +620,7 @@ export default function ProjectEditor({
               variant="success"
               onClick={editProject}
             >
-              EDIT
+              UPDATE
             </Button>
 
             <Button

@@ -33,6 +33,8 @@
     "eslint-config-next": "13.3.1",
     "ethers": "^5.6",
     "framer-motion": "^10.12.16",
+    "html-to-text": "^9.0.5",
+    "htmlparser2": "^9.0.0",
     "lodash": "^4.17.21",
     "next": "^13.3.1",
     "nft.storage": "^7.1.0",

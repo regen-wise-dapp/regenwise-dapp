@@ -164,14 +164,14 @@ await db.applySchema(`
     country?: string;
     likes?: number;
 
-    constructor (id: string, cid?: string, name?: string, description?: string, isInstutional?: boolean, status?: string, approvalStatus?: string, implementers?: string[], concepts?: string[], contactEmail?:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
+    constructor (id: string, cid?: string, name?: string, description?: string, status?: string, approvalStatus?: string, implementers?: string[], concepts?: string[], contactEmail?:string, date?: string, address?:string, link?: string, ghgPuller?: string, city?: string, state?: string, country?: string, likes?:number) {
         ${conditionZero}
         this.id = id;
         this.cid = cid;
         this.name = name;
         this.adderPublicKeyH = ctx.publicKey.toHex();
         this.description = description;
-        this.isInstutional = isInstutional;
+        this.isInstutional = false;
         this.status = status;
         this.approvalStatus = approvalStatus;
         this.implementers = implementers;
@@ -291,7 +291,7 @@ await db.applySchema(`
             this.likes = likes;
         }
 
-        function updateProject (name: string, implementers: string[], contactEmail:string, country:string, state: string, city:string, address:string, concepts:string[], description: string, ghgPuller: string, isInstutional: boolean, link: string, status: string) {
+        function updateProject (name: string, implementers: string[], contactEmail:string, country:string, state: string, city:string, address:string, concepts:string[], description: string, ghgPuller: string, link: string, status: string) {
             ${conditionZero}
             ${conditionFour}
             this.name = name;
@@ -304,7 +304,7 @@ await db.applySchema(`
             this.concepts = concepts;
             this.description = description;
             this.ghgPuller = ghgPuller;
-            this.isInstutional = isInstutional;
+            this.isInstutional = false;
             this.link = link;
             this.status = status;
 

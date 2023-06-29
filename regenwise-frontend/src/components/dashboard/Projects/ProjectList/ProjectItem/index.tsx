@@ -23,7 +23,7 @@ export default function ProjectItem({
       <div className={`${styles.content}`}>
         <h3>{projectItem.name}</h3>
         <div className={styles.description}>
-          <p>{projectItem.description}</p>
+          <p>{projectItem.status}</p>
         </div>
         <div className={styles.concepts}>
           {projectItem.concepts.map((item, index, array) => {
