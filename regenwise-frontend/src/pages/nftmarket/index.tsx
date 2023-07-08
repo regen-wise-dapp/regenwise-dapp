@@ -1,7 +1,6 @@
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Web3Modal from 'web3modal';
 import resellAbi from '../../../web3config/resellAbi.json';
 import nftConAbi from '../../../web3config/nftConAbi.json';
 import styles from './index.module.scss';
@@ -32,9 +31,8 @@ export default function NFTmarket() {
   async function buylistNft(nft: NFTItem) {
     if (typeof (window as any).ethereum !== 'undefined') {
       setLoading(true);
-      const web3Modal = new Web3Modal();
-      const connection = await web3Modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
+      const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+      await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
       const market = new ethers.Contract(
         auroraTnResellConAddr as any,
@@ -178,4 +176,3 @@ export default function NFTmarket() {
     </div>
   );
 }
-

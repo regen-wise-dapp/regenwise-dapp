@@ -19,9 +19,9 @@ module.exports = {
       url: "https://testnet.aurora.dev",
       accounts: [process.env.key1]
       },
-    "hackathon_silo": {
-      url: "https://hackathon.aurora.dev",
-      accounts: [process.env.key1]
-      },
+      "polygon_mumbai": {
+        url: "https://rpc-mumbai.maticvigil.com",
+        accounts: [process.env.key2]
+        },
       },
 };
