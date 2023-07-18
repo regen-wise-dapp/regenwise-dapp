@@ -13,8 +13,8 @@ export default function News() {
   let signer;
 
   if (typeof window !== 'undefined') {
-    if (window.ethereum) {
-      provider = new ethers.providers.Web3Provider(window.ethereum);
+    if ((window as any).ethereum) {
+      provider = new ethers.providers.Web3Provider((window as any).ethereum);
       signer = provider.getSigner();
     }
   }

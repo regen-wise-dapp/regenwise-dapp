@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import NFTList from './NFTList';
-import Transactions from './Transactions';
 import styles from './index.module.scss';
 import { ethers } from 'ethers';
-import Web3Modal from 'web3modal';
 import {
   testNet,
   auroraTnResellConAddr,
@@ -33,14 +31,14 @@ export default function Purchases() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (typeof window.ethereum !== 'undefined') {
-        if (window.ethereum.selectedAddress !== null) {
+      if (typeof (window as any).ethereum !== 'undefined') {
+        if ((window as any).ethereum.selectedAddress !== null) {
           const getUser = async () => {
-            setUser(window.ethereum.selectedAddress);
+            setUser((window as any).ethereum.selectedAddress);
           };
           getUser();
-        } else if (window.ethereum.selectedAddress === null) {
-          setUser(window.ethereum.selectedAddress);
+        } else if ((window as any).ethereum.selectedAddress === null) {
+          setUser((window as any).ethereum.selectedAddress);
           setNFTItems([]);
         }
       }
@@ -56,13 +54,13 @@ export default function Purchases() {
   }, [user]);
 
   if (typeof window !== 'undefined') {
-    if (typeof window.ethereum !== 'undefined') {
-      window.ethereum.on('accountsChanged', async () => {
-        if (window.ethereum.selectedAddress === null) {
-          setUser(window.ethereum.selectedAddress);
+    if (typeof (window as any).ethereum !== 'undefined') {
+      (window as any).ethereum.on('accountsChanged', async () => {
+        if ((window as any).ethereum.selectedAddress === null) {
+          setUser((window as any).ethereum.selectedAddress);
           setNFTItems([]);
         } else {
-          setUser(window.ethereum.selectedAddress);
+          setUser((window as any).ethereum.selectedAddress);
         }
       });
     }
@@ -149,9 +147,8 @@ export default function Purchases() {
 
   async function relistNFT(nft: any, salePrice: { price: string }) {
     setLoading(true);
-    const web3Modal = new Web3Modal();
-    const connection = await web3Modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
+    const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+    await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     const price = ethers.utils.parseUnits(salePrice.price, 'ether');
     const contractnft = new ethers.Contract(
