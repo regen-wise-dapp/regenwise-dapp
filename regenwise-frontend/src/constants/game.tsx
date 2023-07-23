@@ -6,9 +6,9 @@ export const games = [
       disabled: false,
     },
     {
-      name: 'RegenMan',
+      name: 'HoldCarbon',
       image: '/games/regenman3.png',
-      link: 'regenman',
+      link: 'holdcarbon',
       disabled: true,
     },
   ];
@@ -19,7 +19,7 @@ export const games = [
       id: 'wordle',
     },
     {
-      name: 'RegenMan',
-      id: 'regenman',
+      name: 'HoldCarbon',
+      id: 'holdcarbon',
     },
   ];

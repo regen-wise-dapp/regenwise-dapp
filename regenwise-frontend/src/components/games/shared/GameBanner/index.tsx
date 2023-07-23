@@ -19,7 +19,7 @@ export default function GameBanner() {
       <h1
         className={`${styles.header_text} ${press_Start_2P.className} text-xl md:text-4xl lg:text-7xl`}
       >
-        World of Web3 Regen Gaming
+        World of Regen Word Games
       </h1>
     </div>
   );
