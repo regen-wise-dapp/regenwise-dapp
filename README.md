@@ -72,12 +72,11 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <img  src="/regenwise-frontend/public/read/0b.PNG"><br />
 <img  src="/regenwise-frontend/public/read/0c.png"><br />
 <img  src="/regenwise-frontend/public/read/0da.PNG"><br />
-<img  src="/regenwise-frontend/public/read/0dc.PNG"><br />
+<img  src="/regenwise-frontend/public/read/0dc.png"><br />
 <img  src="/regenwise-frontend/public/read/0dd.png"><br />
 <img  src="/regenwise-frontend/public/read/0e.png"><br />
-<img  src="/regenwise-frontend/public/read/0eb.PNG"><br />
-<img  src="/regenwise-frontend/public/read/0f.PNG"><br />
-<img  src="/regenwise-frontend/public/read/0g.PNG">
+<img  src="/regenwise-frontend/public/read/0eb.PNG">
+
 </div>
 <p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
