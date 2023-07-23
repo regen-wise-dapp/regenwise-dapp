@@ -107,7 +107,7 @@ export default function AccountRegister() {
 
     // if publickey was received
     let publicKeyH = (res as any).publicKey;
-    let pKey = window.ethereum.selectedAddress;
+    let pKey = (window as any).ethereum.selectedAddress;
     if (!publicKeyH) {
       publicKeyH = await getPublicKeyH();
     }
