@@ -5,7 +5,7 @@ We have a demo version of the platform on this url: <a href="https://regenwise.x
 
 If you want to run the project on your local machine, read the steps below:
 
-### Steps To Run The DApp On Your Local Machine
+### Steps To Run The Web Platform On Your Local Machine
 
 * First you should clone this repo to your local machine.
 * After you get inside the cloned folder, you should go into the related folder with the command below:

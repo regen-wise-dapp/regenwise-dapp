@@ -1,20 +1,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/keenregen/regenwise-dapp-aurora">
+  <a href="https://github.com/keenregen/regenwise-web-platform">
     <img  src="/regenwise-frontend/public/read/banner0b.png" alt="Banner">
   </a>
 
-<h2 align="center"> Summary of The RegenWise DApp Project</h2>
+<h2 align="center"> Summary of The RegenWise Web Platform Project</h2>
 
   <p align="center">
-    Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible utilization and management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate the regen efforts by offering various services and resources to its users. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. In addition, the platform's NFT markets are another essential features that users may benefit from. The users can earn and trade valuable NFTs from the platform's regen collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in various fields.
+    Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. "Regeneration" in our context is a term used to describe the restoration and responsible utilization and management of environmental systems. Our regen (the short form of the word regeneration) platform aims to facilitate the regen efforts by offering various services and resources to its users. The platform's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies. In addition, the platform's NFT markets are another essential features that users may benefit from. The users can earn and trade valuable NFTs from the platform's regen collections while spending valuable time to learn and contribute to the regen goal. Additionally, we offer a unique learning experience through quests that educate users about regen concepts and practices in various fields.
     <br />
     <a href="https://regenwise.xyz">View Demo</a>
     ·
-    <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Report Bug</a>
+    <a href="https://github.com/keenregen/regenwise-web-platform/issues">Report Bug</a>
     ·
-    <a href="https://github.com/keenregen/regenwise-dapp-aurora/issues">Request Feature</a>
+    <a href="https://github.com/keenregen/regenwise-web-platform/issues">Request Feature</a>
   </p>
 </div>
 
@@ -28,13 +28,13 @@
       <a href="#overview-of-the-project">Overview Of The Project</a>
       <ul>
         <!-- <li><a href="#built-with">Built With</a></li> -->
-       <li><a href="#images-from-the-dapp">Images From The DApp</a></li>
+       <li><a href="#images-from-the-web-platform">Images From The Web Platform</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#steps-to-run-the-dapp-on-your-local-machine">Steps To Run The DApp On Your Local Machine</a></li>
+        <li><a href="#steps-to-run-the-web-platform-on-your-local-machine">Steps To Run The Platform On Your Local Machine</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -50,9 +50,9 @@
 <img  src="/regenwise-frontend/public/read/Cover1.png" alt="Cover">
 </div>
 
-RegenWise is a DApp that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, project suggestions and support, interactive quests, and marketplaces for regenerative-themed non-fungible tokens (NFTs).
+RegenWise is a web platform that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, project suggestions and support, interactive quests, and marketplaces for regenerative-themed non-fungible tokens (NFTs).
 
-The primary goal of RegenWise is to educate users about regeneration, which refers to the restoration and responsible utilization and management of environmental systems. The DApp's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies.  The DApp provides a user-friendly interface that offers a wide range of educational content, including concept explanations, project suggestions and registration, regen NFTs. These resources cover various topics related to regeneration, such as regenerative education, regenerative nutrition, regenerative energy usage, regenerative agriculture and forestry and so on.
+The primary goal of RegenWise is to educate users about regeneration, which refers to the restoration and responsible utilization and management of environmental systems. The web platform's two main database collections on regen concepts and regen projects serve as the primary features, connecting it to the world of data analytics and trustworthy web 3 database technologies.  The web platform provides a user-friendly interface that offers a wide range of educational content, including concept explanations, project suggestions and registration, regen NFTs. These resources cover various topics related to regeneration, such as regenerative education, regenerative nutrition, regenerative energy usage, regenerative agriculture and forestry and so on.
 
 To make the learning experience more interactive and engaging, RegenWise incorporates quests into its platform. These quests encourage users to apply their knowledge and take real-world actions. Completing quests and collecting points may result in meaningful gifts such as regen NFTs.
 
@@ -64,7 +64,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 
 
 <!-- IMAGES FROM THE DEMO -->
-## Images From The DApp
+## Images From The Web Platform
 <div align="center">
 <img  src="/regenwise-frontend/public/read/0a.png"><br />
 <img  src="/regenwise-frontend/public/read/0aa.png"><br />
@@ -72,8 +72,8 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 <img  src="/regenwise-frontend/public/read/0b.PNG"><br />
 <img  src="/regenwise-frontend/public/read/0c.png"><br />
 <img  src="/regenwise-frontend/public/read/0da.PNG"><br />
-<img  src="/regenwise-frontend/public/read/0db.PNG"><br />
-<img  src="/regenwise-frontend/public/read/0d.png"><br />
+<img  src="/regenwise-frontend/public/read/0dc.PNG"><br />
+<img  src="/regenwise-frontend/public/read/0dd.png"><br />
 <img  src="/regenwise-frontend/public/read/0e.png"><br />
 <img  src="/regenwise-frontend/public/read/0eb.PNG"><br />
 <img  src="/regenwise-frontend/public/read/0f.PNG"><br />
@@ -105,7 +105,7 @@ We have a demo version of the platform on this url: <a href="https://regenwise.x
 
 If you want to run the project on your local machine, read the steps below:
 
-### Steps To Run The DApp On Your Local Machine
+### Steps To Run The Web Platform On Your Local Machine
 
 * First you should clone this repo to your local machine.
 * After you get inside the cloned folder, you should go into the related folder with the command below:
@@ -138,7 +138,7 @@ If you want to run the project on your local machine, read the steps below:
 <img  src="/regenwise-frontend/public/read/RoadMap.png" alt="Roadmap">
 </div>
 
-<!-- * Finish the mvp of the DApp including frontend design (Almost Done)
+<!-- * Finish the mvp of the Web Platform including frontend design (Almost Done)
 * Get feedback from the users and improve accordingly
 * Try to find funding for the project
 * Explore and try some other api's for fetching the data from the chain faster
@@ -172,7 +172,7 @@ If you like the project, don't forget to give it a star!
 
 RegenWise Team - keenregen@gmail.com
 
-Project Link: [https://github.com/keenregen/regenwise-dapp-aurora](https://github.com/keenregen/regenwise-dapp-aurora)
+Project Link: [https://github.com/keenregen/regenwise-web-platform](https://github.com/keenregen/regenwise-web-platform)
 
 <p align="right">(<a href="#readme-toc">back to ToC</a>)</p>
 
@@ -181,13 +181,13 @@ Project Link: [https://github.com/keenregen/regenwise-dapp-aurora](https://githu
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/regen-wise-dapp/regenwise-dapp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/regen-wise-dapp/regenwise-dapp.svg?style=for-the-badge
-[forks-url]: https://github.com/regen-wise-dapp/regenwise-dapp/network/members
-[stars-shield]: https://img.shields.io/github/stars/regen-wise-dapp/regenwise-dapp.svg?style=for-the-badge
-[stars-url]: https://github.com/regen-wise-dapp/regenwise-dapp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/regen-wise-dapp/regenwise-dapp.svg?style=for-the-badge
-[issues-url]: https://github.com/regen-wise-dapp/regenwise-dapp/issues
+[contributors-url]: https://github.com/regen-wise-web-platform/regenwise-web-platform/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/regen-wise-web-platform/regenwise-web-platform.svg?style=for-the-badge
+[forks-url]: https://github.com/regen-wise-web-platform/regenwise-web-platform/network/members
+[stars-shield]: https://img.shields.io/github/stars/regen-wise-web-platform/regenwise-web-platform.svg?style=for-the-badge
+[stars-url]: https://github.com/regen-wise-web-platform/regenwise-web-platform/stargazers
+[issues-shield]: https://img.shields.io/github/issues/regen-wise-web-platform/regenwise-web-platform.svg?style=for-the-badge
+[issues-url]: https://github.com/regen-wise-web-platform/regenwise-web-platform/issues
 [Solidity]: https://img.shields.io/badge/Solidity-363636?logo=solidity&logoColor=fff&style=for-the-badge
 [Next]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [React]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
