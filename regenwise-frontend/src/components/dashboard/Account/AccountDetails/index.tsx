@@ -101,7 +101,7 @@ export default function AccountDetails({ user }: Props) {
     const res = await auth?.signIn();
     // if publickey was received
     let publicKeyH = (res as any).publicKey;
-    let pKey = window.ethereum.selectedAddress;
+    let pKey = (window as any).ethereum.selectedAddress;
     if (!publicKeyH) {
       publicKeyH = await getPublicKeyH();
     }
@@ -160,7 +160,7 @@ export default function AccountDetails({ user }: Props) {
 
     // if publickey was received
     let publicKeyH = (res as any).publicKey;
-    let pKey = window.ethereum.selectedAddress;
+    let pKey = (window as any).ethereum.selectedAddress;
     if (!publicKeyH) {
       publicKeyH = await getPublicKeyH();
     }

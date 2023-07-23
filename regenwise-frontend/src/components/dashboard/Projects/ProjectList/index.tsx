@@ -70,7 +70,7 @@ export default function ProjectList({ projects }: Props) {
       res = auth?.state;
     }
     let publicKeyH = (res as any).publicKey;
-    let pKey = window.ethereum.selectedAddress;
+    let pKey = (window as any).ethereum.selectedAddress;
     if (!publicKeyH) {
       publicKeyH = await getPublicKeyH();
     }
