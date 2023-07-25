@@ -15,9 +15,13 @@ export const auroraTnNftTreConAddr ="0xC9822fEfF0Ab8821Fd5cC12B120da64484428324"
 /*
 Network Rpc Addresses
 */
-let auroraTnRpc =  'https://testnet.aurora.dev';	// aurora testnet rpc
-
+const auroraTnRpc =  'https://testnet.aurora.dev';	// aurora testnet rpc
+const optimismTnRpc =  'https://goerli.optimism.io';  // optimism testnet rpc
 /*
 Choice of TestNet
 */
-export var testNet = auroraTnRpc
+export let testNetRpc = auroraTnRpc;
+export let testResellConAddr = auroraTnResellConAddr;
+export let testResellTreConAddr = auroraTnResellTreConAddr;
+export let testNftConAddr = auroraTnNftConAddr;
+export let testNftTreConAddr = auroraTnNftTreConAddr;
