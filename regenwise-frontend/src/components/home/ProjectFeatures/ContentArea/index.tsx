@@ -9,7 +9,7 @@ export default function ContentArea() {
   return (
     <div className="mt-5 flex flex-col max-w-[600px] w-full items-center justify-center" id='main-page--content-element'>
       <SectionHeader
-        title="Overcoming Environmental Degradation via Environmental Regeneration"
+        title="Mitigating Environmental Degradation via Environmental Regeneration"
         subtitle="For those eager to learn and make a meaningful contribution to the regen goal, this platform provides a diverse range of resources to delve into the concepts and practices of regeneration."
       />
       <p className="text-center"  >

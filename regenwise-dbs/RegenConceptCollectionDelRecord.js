@@ -25,4 +25,4 @@ const db = new Polybase({
     likes?: number;
     
 */
-await db.collection("RegenConcept").record("regenerative-agriculture-and-forestry").call("del");
+await db.collection("RegenConcept").record("regenerative-fisheries").call("del");

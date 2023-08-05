@@ -27,4 +27,4 @@ const db = new Polybase({
 */
 
 
-await db.collection("RegenConcept").record("regeneration").call("setExplanation", [["Human actions have caused significant environmental degradation and serious harm to the inhabitants, now it is crucial for us to contribute to the process of regeneration. 'Regeneration' in our context is a term used to describe the restoration and responsible utilization and management of environmental systems."]]);
+await db.collection("RegenConcept").record("regeneration").call("setExplanation", [["Regeneration in our context is a term used to describe the restoration and responsible utilization and management of environmental systems."]]);
