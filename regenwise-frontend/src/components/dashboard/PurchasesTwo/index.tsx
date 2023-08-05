@@ -3,9 +3,9 @@ import NFTList from './NFTList';
 import styles from './index.module.scss';
 import { ethers } from 'ethers';
 import {
-  testNet,
-  auroraTnResellTreConAddr,
-  auroraTnNftTreConAddr,
+  testNetRpc,
+  testResellTreConAddr,
+  testNftTreConAddr,
   key1,
 } from '../../../../web3config/configuration';
 import resellAbi from '../../../../web3config/resellAbiTwo.json';
@@ -68,11 +68,11 @@ export default function PurchasesTwo() {
 
   async function getWalletNFTs() {
     setLoading(true);
-    const provider = new ethers.providers.JsonRpcProvider(testNet);
+    const provider = new ethers.providers.JsonRpcProvider(testNetRpc);
     const key = key1;
     const wallet = new ethers.Wallet(key as any, provider);
     const contract = new ethers.Contract(
-      auroraTnNftTreConAddr as any,
+      testNftTreConAddr as any,
       nftConAbi,
       wallet
     );
@@ -152,17 +152,17 @@ export default function PurchasesTwo() {
     const signer = provider.getSigner();
     const price = ethers.utils.parseUnits(salePrice.price, 'ether');
     const contractnft = new ethers.Contract(
-      auroraTnNftTreConAddr as any,
+      testNftTreConAddr as any,
       nftConAbi,
       signer
     );
     let approved = await contractnft.isApprovedForAll(
       (nft as any).wallet,
-      auroraTnResellTreConAddr
+      testResellTreConAddr
     );
     if (!approved) {
       let transaction0 = await contractnft.setApprovalForAll(
-        auroraTnResellTreConAddr,
+        testResellTreConAddr,
         true
       );
       setloadingMessage('Approving');
@@ -170,7 +170,7 @@ export default function PurchasesTwo() {
     }
     setloadingMessage('Loading');
     let contract = new ethers.Contract(
-      auroraTnResellTreConAddr as any,
+      testResellTreConAddr as any,
       resellAbi,
       signer
     );

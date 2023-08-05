@@ -13,4 +13,4 @@ const db = new Polybase({
 
 
 
-await db.collection("RegenProject").record("deneme-project-1").call("del");
+await db.collection("RegenProject").record("regenerative-buildings").call("del");

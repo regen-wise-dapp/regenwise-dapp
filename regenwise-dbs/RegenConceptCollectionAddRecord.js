@@ -25,15 +25,15 @@ const db = new Polybase({
     link?: string;
  
 */
-await db.collection("RegenConcept").create(["id",
-                                            "cid",
-                                            "name",
+await db.collection("RegenConcept").create(["regenerative-fisheries",
+                                            "",
+                                            "Regenerative Fisheries",
                                             "regenWiseTeam",
-                                            ["explanation"],
-                                            ["parent-concepts"],
-                                            ["child-concepts"],
-                                            ["projects"],
-                                            "link"
+                                            ["Regenerative fisheries focus on sustainable fishing practices that prioritize ecosystem health and long-term viability. This includes actions such as implementing fishing techniques that minimize bycatch, protecting critical habitats, and promoting responsible fishing quotas to prevent overfishing."],
+                                            ["regeneration"],
+                                            [],
+                                            [],
+                                            ""
                                         ])
 
 
