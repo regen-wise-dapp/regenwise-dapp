@@ -8,10 +8,6 @@ export const menuItems = [
     link: '/concepts',
   },
   {
-    label: 'Projects',
-    link: '/projects',
-  },
-  {
     label: 'RW NFT Market',
     link: '/nftmarket',
   },
