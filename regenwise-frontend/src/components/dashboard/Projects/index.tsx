@@ -21,7 +21,7 @@ export default function Projects({projects}: Props) {
 
   return (
     <div className={`${styles.main_container}`}>
-      <div className="flex justify-center items-center gap-4 my-2">
+      {/* <div className="flex justify-center items-center gap-4 my-2">
         <Button
           onClick={openProjectList}
           active={activeButton[0]}
@@ -48,7 +48,7 @@ export default function Projects({projects}: Props) {
         </Button>
       </div>
       {activeButton[0] === true && <ProjectList projects={projects}/>}
-      {activeButton[1] === true && <ProjectEditor editMode={false}/>}
+      {activeButton[1] === true && <ProjectEditor editMode={false}/>} */}
     </div>
   );
 }

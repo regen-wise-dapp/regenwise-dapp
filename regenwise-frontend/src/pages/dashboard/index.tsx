@@ -43,17 +43,17 @@ function Dashboard() {
       component: <Stats />,
       display: !(!currentUser || !(currentUser as User).id),
     }, */
-    {
-      eventKey: 'editor',
-      title: 'Projects',
-      icon: '/dashboard/project.png',
-      component: currentUser ? (
-        <Projects projects={(currentUser as User)?.projectsObjects ?? []} />
-      ) : (
-        <></>
-      ),
-      display: !(!currentUser || !(currentUser as User).id),
-    },
+    // {
+    //   eventKey: 'editor',
+    //   title: 'Projects',
+    //   icon: '/dashboard/project.png',
+    //   component: currentUser ? (
+    //     <Projects projects={(currentUser as User)?.projectsObjects ?? []} />
+    //   ) : (
+    //     <></>
+    //   ),
+    //   display: !(!currentUser || !(currentUser as User).id),
+    // },
     {
       eventKey: 'account',
       title: 'Account',
