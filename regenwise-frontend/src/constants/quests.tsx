@@ -11,18 +11,6 @@ export const quests = [
     disabled: false,
   },
   {
-    name: 'Regenerative Energy',
-    image: '/quests/quest-2z.png',
-    link: 'regenerative_energy',
-    disabled: false,
-  },
-  {
-    name: 'Regenerative Buildings',
-    image: '/quests/quest-3z.png',
-    link: 'regenerative_buildings',
-    disabled: false,
-  },
-  {
     name: 'Regenerative Forestry',
     image: '/quests/quest-4z.png',
     link: 'regenerative_forestry',
