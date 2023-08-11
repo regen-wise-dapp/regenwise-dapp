@@ -50,7 +50,7 @@
 <img  src="/regenwise-frontend/public/read/Cover1.png" alt="Cover">
 </div>
 
-RegenWise is a web platform that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, project suggestions and support, interactive quests, and marketplaces for regenerative-themed non-fungible tokens (NFTs).
+RegenWise is a web platform that aims to educate and engage users in the concepts and practices of regeneration. It serves as a comprehensive platform that combines learning, interactive quests, educative word games and marketplaces for regenerative-themed non-fungible tokens (NFTs).
 
 The primary goal of RegenWise is to educate users about regeneration, which refers to the restoration and responsible utilization and management of environmental systems. The web platform provides a user-friendly interface that offers a wide range of educational content, including concept explanations, regen NFTs. These resources cover various topics related to regeneration, such as regenerative education, regenerative nutrition, regenerative agriculture and so on.
 
@@ -67,7 +67,7 @@ The combination of education, quests, and the NFT marketplaces within RegenWise 
 ## Images From The Web Platform
 <div align="center">
 <img  src="/regenwise-frontend/public/read/0a.png"><br />
-<img  src="/regenwise-frontend/public/read/0b.PNG"><br />
+<img  src="/regenwise-frontend/public/read/0bu.PNG"><br />
 <img  src="/regenwise-frontend/public/read/0dc.png"><br />
 <img  src="/regenwise-frontend/public/read/0c.png"><br />
 <img  src="/regenwise-frontend/public/read/0da.PNG"><br />
